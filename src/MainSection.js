@@ -34,6 +34,7 @@ displayTab () {
   render () {
     return (
         <div className="main-section">
+        <div className="page-heading">Meal delivery</div>
             <div className="find-tabs">
                 <div className="container">
                     <div className="flex-tabs">

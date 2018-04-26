@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import Menu from './Menu';
 import MainSection from './MainSection';
 import 'font-awesome/scss/font-awesome.scss';
+import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Menu />
-        <div className="page-heading">Meal delivery</div>
-        <MainSection /> 
-      </div>
+      <BrowserRouter>
+        <div>
+          <Menu />
+        </div>
+      </BrowserRouter>
     );
   }
 }
