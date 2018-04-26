@@ -79,7 +79,7 @@ export default class FindYourMeal extends React.Component {
     return (
         <div id="find-your-meal-body">
             <div className="find-tab-body">
-
+                {/* Left sidebar start */} 
                 <div className="sidebar sidebar-left">
                     <div className="search-container">
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchMealInput = input} onChange={this.handleMealInputChange} />
@@ -91,17 +91,12 @@ export default class FindYourMeal extends React.Component {
                         </div>
                     </div>
                 </div>   
-
+                {/* Left sidebar end */} 
                 <div className="center-container">
                     <img alt={this.state.currentMeal.name} src={window.location.origin + this.state.currentMeal.src} />
                 </div> 
-<<<<<<< HEAD
                 {/* Right sidebar start */}
                 <div className="sidebar sidebar-right">
-=======
-
-                <div class="sidebar sidebar-right">
->>>>>>> 86c7a0073ea6554fa1dfd149429638db5e469e9f
                     <div className="search-container">
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
                         <i className="fa fa-search"></i>
@@ -112,7 +107,7 @@ export default class FindYourMeal extends React.Component {
                         </div>
                     </div>
                 </div>
-
+                {/* Right sidebar end */}
             </div>
         </div>
     );
