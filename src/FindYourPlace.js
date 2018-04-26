@@ -1,6 +1,5 @@
 import React from 'react';
 import Places from './Places';
-import GoogleMapReact from 'google-map-react';
 import SimpleMap from './GoogleMap'
 
 export default class FindYourPlace extends React.Component {

@@ -1,9 +1,9 @@
 const PlacesList = [
 
     {name: 'Honest meat', address: 'Rynok sq 28', description: 'some description', lat: 49.845210, lng: 24.030431},
-    {name: 'Honest meat', address: 'Rynok sq 28', description: 'some description', lat: 49.845210, lng: 24.030431},
-    {name: 'Honest meat', address: 'Rynok sq 28', description: 'some description', lat: 49.845210, lng: 24.030431},
-    {name: 'Honest meat', address: 'Rynok sq 28', description: 'some description', lat: 49.845210, lng: 24.030431},
+    {name: 'Tex-Mex BBQ', address: 'Dudaeva 7', description: 'some description', lat: 49.836465, lng: 24.030287},
+    {name: 'Kryva Lypa', address: 'Kryva Lypa', description: 'some description', lat: 49.840712, lng: 24.026686},
+    {name: 'Mons Pius', address: 'Lesi Ukrainky 14', description: 'some description', lat: 49.843607, lng: 24.031427},
     {name: 'Honest meat', address: 'Rynok sq 28', description: 'some description', lat: 49.845210, lng: 24.030431},
     {name: 'Honest meat', address: 'Rynok sq 28', description: 'some description', lat: 49.845210, lng: 24.030431}
     
