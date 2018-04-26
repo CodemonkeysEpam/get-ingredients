@@ -1,6 +1,5 @@
 import React from 'react';
 import Places from './Places';
-import GoogleMapReact from 'google-map-react';
 import SimpleMap from './GoogleMap'
 
 export default class FindYourPlace extends React.Component {
@@ -19,7 +18,7 @@ export default class FindYourPlace extends React.Component {
             return (
                 <div className="place-item">
                     <div className="flex-item-info">
-                    <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true"></i></a>
+                    <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true" onClick={() => this.onPlaceClick(place)}></i></a>
                         <div className="place-info">
                             <div className="place-name">{place.name}</div>
                             <div className="place-address">{place.address}</div>
@@ -44,6 +43,13 @@ export default class FindYourPlace extends React.Component {
             currentPlace: filtered[0] || {}
         });
     }
+
+    onPlaceClick = (place) => {
+        this.setState({
+            currentPlace: place
+        });
+        console.log(this.state.currentPlace.center);
+    }
     
 
     render () {
@@ -51,7 +57,9 @@ export default class FindYourPlace extends React.Component {
             <div id="find-your-place-body">
                 <div className="find-tab-body">
                     <div className="center-container">
-                        <SimpleMap lat={this.state.currentPlace.lat} lng={this.state.currentPlace.lng} name={this.state.currentPlace.name}/>
+                        <SimpleMap lat={this.state.currentPlace.lat} lng={this.state.currentPlace.lng} name={this.state.currentPlace.name} 
+                        center={this.state.currentPlace.center}
+                        />
                     </div> 
                     <div class="sidebar sidebar-right">
                         <div className="search-container">
