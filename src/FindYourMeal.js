@@ -48,14 +48,18 @@ export default class FindYourMeal extends React.Component {
 
   renderMealsList = () => {
     return this.state.currentMealsList.map(meal => {
-        return <div class="category-body-item" onClick={() => this.onMealClick(meal)}>{meal.name}<hr /></div>
+        return <div 
+            key={meal.name}
+            className="category-body-item" 
+            onClick={() => this.onMealClick(meal)}>{meal.name}<hr />
+        </div>
     })
   }
 
   renderPlacesList = () => {
     return this.state.currentPlacesList.map(place => {
         return (
-            <div className="place-item">
+            <div key={place.id} className="place-item">
                 <div className="flex-item-info">
                 <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true"></i></a>
                     <div className="place-info">
@@ -64,8 +68,8 @@ export default class FindYourMeal extends React.Component {
                     </div>
                 </div>
                 <div className="place-description">{place.description}</div>
-                <button class="place-button">ADD TO CARD</button>
-                <button class="place-button">PHONE</button>
+                <button className="place-button">ADD TO CARD</button>
+                <button className="place-button">PHONE</button>
             </div>
         )
     })
@@ -81,8 +85,8 @@ export default class FindYourMeal extends React.Component {
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchMealInput = input} onChange={this.handleMealInputChange} />
                         <i className="fa fa-search"></i>
                     </div>
-                    <div class="search-result-container">
-                        <div class="search-response">
+                    <div className="search-result-container">
+                        <div className="search-response">
                             {this.renderMealsList()}
                         </div>
                     </div>
@@ -92,7 +96,7 @@ export default class FindYourMeal extends React.Component {
                     <img alt={this.state.currentMeal.name} src={window.location.origin + this.state.currentMeal.src} />
                 </div> 
                 {/* Right sidebar start */}
-                <div class="sidebar sidebar-right">
+                <div className="sidebar sidebar-right">
                     <div className="search-container">
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
                         <i className="fa fa-search"></i>
