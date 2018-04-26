@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Link, NavLink} from 'react-router-dom';
 import Home from './Home';
-import MainSection from './MainSection';
-import Meat from './Meat';
+import MealsSection from './MealsSection';
+import MeatSection from './MeatSection';
 import Ashot from './Ashot';
 import Shop from './Shop';
 
@@ -32,8 +32,8 @@ export default class Menu extends React.Component {
             </div>
 
             <Route path="/" exact component={Home}/>
-            <Route path="/meals" component={MainSection}/>
-            <Route path="/meat"  component={Meat}/>
+            <Route path="/meals" component={MealsSection}/>
+            <Route path="/meat"  component={MeatSection}/>
             <Route path="/ashot"  component={Ashot}/>
             <Route path="/shop"  component={Shop}/>
         </header>
