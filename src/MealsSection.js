@@ -1,6 +1,7 @@
 import React from 'react';
-import FindYourPlace from './FindYourPlace';
 import FindYourMeal from './FindYourMeal';
+import FindLocation from './FindLocation';
+import Places from './Places';
 
 export default class MainSection extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export default class MainSection extends React.Component {
 
 displayTab () {
     if (this.state.currentTab === 'FindYourPlace') {
-        return <FindYourPlace />
+        return (<div id="find-your-place-body"><FindLocation list={Places.PlacesList} /></div>)
     } else {
         return <FindYourMeal />
     }
