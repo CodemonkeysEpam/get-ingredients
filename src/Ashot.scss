@@ -42,39 +42,32 @@
   position: absolute;
 }
 
-.image-gallery-thumbnails{
-  padding: 10px 0;
-}
-
-.image-gallery-thumbnail{
-  margin-left: 10px;
-  margin-right: 10px;
+.image-gallery-thumbnails-container{
+  margin: 40px 0 10px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 10px 146px;
 }
 
 .image-gallery-thumbnail-label{
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  margin-top: 30px;
+color: #fff;
+font-size: 18px;
+text-align: center;
+margin-top: 30px;
 }
-
 
 // MEAT ICONS
 .ashot-icons-item {
-  height: 65px;
-  width: 65px;
+  height: 82px;
+  width: 82px;
   border: 1px solid #fff;
-  border-radius: 100%;
+  border-radius: 50%;
   text-align: center;
 
-  p{
-    margin-top: 18px;
-    color: #fff;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.2);
-  } 
+&:hover {
+  background: rgba(255, 255, 255, 0.2);
+} 
 }
 
 //   KNIVES
