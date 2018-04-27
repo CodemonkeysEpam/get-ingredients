@@ -27,7 +27,7 @@ export default class MainSection extends React.Component {
 
 displayTab () {
     if (this.state.currentTab === 'FindYourPlace') {
-        return (<div id="find-your-place-body"><FindLocation list={Places.PlacesList} /></div>)
+        return (<div id="find-your-place-body"><FindLocationTab list={Places.PlacesList} /></div>)
     } else {
         return <FindFoodTab itemsList={Meals.MealsList} placesList={Places.PlacesList} />
     }

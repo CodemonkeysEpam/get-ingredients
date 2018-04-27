@@ -1,6 +1,6 @@
 import React from 'react';
 import FindFoodTab from './FindFoodTab';
-import FindLocation from './FindLocation';
+import FindLocationTab from './FindLocationTab';
 import Meat from './Meat';
 import MeatShops from './MeatShops';
 
@@ -37,7 +37,7 @@ displayTab () {
                     <div className="meat-icons-item"><img src="/img/meat_icons/sea_food.png" alt="Sea food" /></div>
                 </div>
                 <div id="find-your-place-body">
-                    <FindLocation list={MeatShops.MeatShopsList} />
+                    <FindLocationTab list={MeatShops.MeatShopsList} />
                 </div>
             </div>
         );
