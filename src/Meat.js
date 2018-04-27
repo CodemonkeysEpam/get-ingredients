@@ -1,14 +1,14 @@
 const MeatList = [
 
-    {name: 'Angus burger', src: '/img/angus_burger.jpg'},
-    {name: 'Australian burger', src: '/img/australian_burger.jpg'},
-    {name: 'Bacon cheeseburger', src: '/img/bacon_cheeseburger.jpg'},
-    {name: 'Barbecue burger', src: '/img/barbecue_burger.jpg'},
-    {name: 'Buffalo burger', src: '/img/buffalo_burger.jpg'},
-    {name: 'Butter burger', src: '/img/butter_burger.jpg'},
-    {name: 'California burger', src: '/img/california_burger.jpg'},
-    {name: 'Cheeseburger', src: '/img/cheeseburger.jpg'},
-    {name: 'Chili burger', src: '/img/chili_burger.jpg'}
+    {name: 'Bacon', src: '/img/meat/bacon.jpg'},
+    {name: 'Beef', src: '/img/meat/beef.jpg'},
+    {name: 'Chicken', src: '/img/meat/chicken.jpg'},
+    {name: 'Crab', src: '/img/meat/crab.jpg'},
+    {name: 'Duck', src: '/img/meat/duck.jpg'},
+    {name: 'Pork', src: '/img/meat/pork.jpg'},
+    {name: 'Rabbit', src: '/img/meat/rabbit.jpg'},
+    {name: 'Stewing Steak', src: '/img/meat/stewing_steak.jpg'},
+    {name: 'Veal', src: '/img/meat/veal.jpg'}
     
 ]
 
