@@ -1,42 +1,40 @@
 import React from 'react';
-import Meals from './Meals';
-import Places from './Places';
 
-export default class FindYourMeal extends React.Component {
+export default class FindFoodTab extends React.Component {
   
   constructor(props) {
       super(props);
 
       this.state = {
-          currentMealsList: Meals.MealsList,
-          currentPlacesList: Places.PlacesList,
-          currentMeal: Meals.MealsList[0],
-          searchMealQuery: "",
+          currentItemsList: this.props.itemsList,
+          currentPlacesList: this.props.placesList,
+          currentItem: this.props.itemsList[0],
+          searchItemQuery: "",
           searchPlaceQuery: ""
       }
   }
 
-  onMealClick = (meal) => {
+  onItemClick = (item) => {
       this.setState({
-          currentMeal: meal
+          currentItem: item
       });
   }
 
-  handleMealInputChange = () => {
-    let pattern = new RegExp(this.searchMealInput.value, 'i');
-    let filtered = Meals.MealsList.filter((meal) => {
-        return pattern.test(meal.name)
+  handleItemInputChange = () => {
+    let pattern = new RegExp(this.searchItemInput.value, 'i');
+    let filtered = this.props.itemsList.filter((item) => {
+        return pattern.test(item.name)
     });
     this.setState({
-        searchMealQuery: this.searchMealInput.value,
-        currentMealsList: filtered,
-        currentMeal: filtered[0] || {}
+        searchItemQuery: this.searchItemInput.value,
+        currentItemsList: filtered,
+        currentItem: filtered[0] || {}
     });
   }
 
   handlePlaceInputChange = () => {
     let pattern = new RegExp(this.searchPlaceInput.value, 'i');
-    let filtered = Places.PlacesList.filter((place) => {
+    let filtered = this.props.placesList.filter((place) => {
         return pattern.test(place.name)
     });
     this.setState({
@@ -46,12 +44,12 @@ export default class FindYourMeal extends React.Component {
     });
   }
 
-  renderMealsList = () => {
-    return this.state.currentMealsList.map(meal => {
+  renderItemsList = () => {
+    return this.state.currentItemsList.map(item => {
         return <div 
-            key={meal.name}
+            key={item.name}
             className="category-body-item" 
-            onClick={() => this.onMealClick(meal)}>{meal.name}<hr />
+            onClick={() => this.onItemClick(item)}>{item.name}<hr />
         </div>
     })
   }
@@ -77,25 +75,21 @@ export default class FindYourMeal extends React.Component {
 
   render () {
     return (
-        <div id="find-your-meal-body">
             <div className="find-tab-body">
-                {/* Left sidebar start */} 
                 <div className="sidebar sidebar-left">
                     <div className="search-container">
-                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchMealInput = input} onChange={this.handleMealInputChange} />
+                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchItemInput = input} onChange={this.handleItemInputChange} />
                         <i className="fa fa-search"></i>
                     </div>
                     <div className="search-result-container">
                         <div className="search-response">
-                            {this.renderMealsList()}
+                            {this.renderItemsList()}
                         </div>
                     </div>
                 </div>   
-                {/* Left sidebar end */} 
                 <div className="center-container">
-                    <img alt={this.state.currentMeal.name} src={window.location.origin + this.state.currentMeal.src} />
+                    <img alt={this.state.currentItem.name} src={window.location.origin + this.state.currentItem.src} />
                 </div> 
-                {/* Right sidebar start */}
                 <div className="sidebar sidebar-right">
                     <div className="search-container">
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
@@ -107,9 +101,7 @@ export default class FindYourMeal extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* Right sidebar end */}
             </div>
-        </div>
     );
   }
 }

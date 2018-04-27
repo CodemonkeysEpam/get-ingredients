@@ -1,7 +1,7 @@
 import React from 'react';
 import SimpleMap from './GoogleMap'
 
-export default class FindLocation extends React.Component {
+export default class FindLocationTab extends React.Component {
     constructor(props) {
         super(props);
   
@@ -59,7 +59,7 @@ export default class FindLocation extends React.Component {
                     center={this.state.currentPlace.center}
                     />
                 </div> 
-                <div class="sidebar sidebar-right">
+                <div className="sidebar sidebar-right">
                     <div className="search-container">
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
                         <i className="fa fa-search"></i>

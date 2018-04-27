@@ -1,6 +1,7 @@
 import React from 'react';
-import FindYourMeal from './FindYourMeal';
-import FindLocation from './FindLocation';
+import FindFoodTab from './FindFoodTab';
+import FindLocationTab from './FindLocationTab';
+import Meals from './Meals';
 import Places from './Places';
 
 export default class MainSection extends React.Component {
@@ -28,7 +29,7 @@ displayTab () {
     if (this.state.currentTab === 'FindYourPlace') {
         return (<div id="find-your-place-body"><FindLocation list={Places.PlacesList} /></div>)
     } else {
-        return <FindYourMeal />
+        return <FindFoodTab itemsList={Meals.MealsList} placesList={Places.PlacesList} />
     }
 }
 

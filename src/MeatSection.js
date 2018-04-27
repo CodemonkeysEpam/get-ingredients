@@ -1,6 +1,7 @@
 import React from 'react';
-import FindYourMeal from './FindYourMeal';
+import FindFoodTab from './FindFoodTab';
 import FindLocation from './FindLocation';
+import Meat from './Meat';
 import MeatShops from './MeatShops';
 
 export default class MeatSection extends React.Component {
@@ -41,7 +42,11 @@ displayTab () {
             </div>
         );
     } else {
-        return <FindYourMeal />
+        return (
+            <div id="find-your-meal-body">
+                <FindFoodTab itemsList={Meat.MeatList} placesList={MeatShops.MeatShopsList} />
+            </div>
+        )
     }
 }
 
