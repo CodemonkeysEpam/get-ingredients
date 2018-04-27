@@ -41,12 +41,14 @@ export default class Ashot extends React.Component {
       {
         renderItem: this.renderShrink,
         thumbnail: 'icons/1x/shrink.png',
-        thumbnailClass: "meat-icons-item"
+        thumbnailClass: "ashot-icons-item",
+        thumbnailLabel: "Shrimp"  
       },
       {
         renderItem: this.renderKnives,
         thumbnail: 'icons/1x/knives.png',
-        thumbnailClass: "meat-icons-item"
+        thumbnailClass: "ashot-icons-item",
+        thumbnailLabel: "Knives" 
       },
     ]
 

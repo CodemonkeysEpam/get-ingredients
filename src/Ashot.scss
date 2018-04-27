@@ -21,6 +21,14 @@
   filter: brightness(100%);
 }
 
+.image-gallery-left-nav{
+  margin-left: 250px;
+}
+
+.image-gallery-right-nav{
+  margin-right: 250px;
+}
+
 .image-gallery-left-nav:hover::before, .image-gallery-right-nav:hover::before {
   color: rgba(182, 182, 182, .8);
 }
@@ -34,8 +42,25 @@
   position: absolute;
 }
 
+.image-gallery-thumbnails{
+  padding: 10px 0;
+}
+
+.image-gallery-thumbnail{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.image-gallery-thumbnail-label{
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+
 // MEAT ICONS
-.meat-icons-item {
+.ashot-icons-item {
   height: 65px;
   width: 65px;
   border: 1px solid #fff;
