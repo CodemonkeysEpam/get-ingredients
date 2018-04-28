@@ -7,30 +7,30 @@ export default class Ashot extends React.Component {
   renderBear(){
     return(
       <div>
-        <div class="bear">
-            <div class="head hovered"></div>
-            <div class="ear hovered"></div>
-            <div class="neck hovered"></div>
-            <div class="chuck hovered"></div>
-            <div class="rib hovered"></div>
-            <div class="shotr-loin hovered"></div>
-            <div class="loin hovered"></div>
-            <div class="rump hovered"></div>
-            <div class="tail hovered"></div>
-            <div class="brisket hovered"></div>
-            <div class="shoulder hovered"></div>
-            <div class="short-ribs hovered"></div>
-            <div class="plate hovered"></div>
-            <div class="flank hovered"></div>
-            <div class="round hovered"></div>
-            <div class="fore-shank hovered"></div>
-            <div class="fore-shank-1 hovered"></div>
-            <div class="hind-shank hovered"></div>
-            <div class="hind-shank-1 hovered"></div>
-            <div class="foot-1"></div>
-            <div class="foot-2"></div>
-            <div class="foot-3"></div>
-            <div class="foot-4"></div>
+        <div className="bear">
+            <div className="head hovered"></div>
+            <div className="ear hovered"></div>
+            <div className="neck hovered"></div>
+            <div className="chuck hovered"></div>
+            <div className="rib hovered"></div>
+            <div className="shotr-loin hovered"></div>
+            <div className="loin hovered"></div>
+            <div className="rump hovered"></div>
+            <div className="tail hovered"></div>
+            <div className="brisket hovered"></div>
+            <div className="shoulder hovered"></div>
+            <div className="short-ribs hovered"></div>
+            <div className="plate hovered"></div>
+            <div className="flank hovered"></div>
+            <div className="round hovered"></div>
+            <div className="fore-shank hovered"></div>
+            <div className="fore-shank-1 hovered"></div>
+            <div className="hind-shank hovered"></div>
+            <div className="hind-shank-1 hovered"></div>
+            <div className="foot-1"></div>
+            <div className="foot-2"></div>
+            <div className="foot-3"></div>
+            <div className="foot-4"></div>
         </div>
         <div className="caption">Bear</div>
       </div>      
@@ -40,17 +40,17 @@ export default class Ashot extends React.Component {
   renderBeef(){
     return(
       <div>
-        <div class="beef">
-            <div class="head hovered"></div>
-            <div class="chuck hovered"></div>
-            <div class="rib hovered"></div>
-            <div class="loin hovered"></div>
-            <div class="sirloin hovered"></div>
-            <div class="round hovered"></div>
-            <div class="brisket hovered"></div>
-            <div class="plate hovered"></div>
-            <div class="flank hovered"></div>
-            <div class="shank hovered"></div>
+        <div className="beef">
+            <div className="head hovered"></div>
+            <div className="chuck hovered"></div>
+            <div className="rib hovered"></div>
+            <div className="loin hovered"></div>
+            <div className="sirloin hovered"></div>
+            <div className="round hovered"></div>
+            <div className="brisket hovered"></div>
+            <div className="plate hovered"></div>
+            <div className="flank hovered"></div>
+            <div className="shank hovered"></div>
         </div>
         <div className="caption">Beef</div>
       </div>      
@@ -60,15 +60,15 @@ export default class Ashot extends React.Component {
   renderPork(){
     return(
       <div>
-        <div class="pork">
-            <div class="head hovered"></div>
-            <div class="arm-shoulder hovered"></div>
-            <div class="blade-shoulder hovered"></div>
-            <div class="hock hovered"></div>
-            <div class="loin hovered"></div>
-            <div class="spare-rib hovered"></div>
-            <div class="side hovered"></div>
-            <div class="leg hovered"></div>
+        <div className="pork">
+            <div className="head hovered"></div>
+            <div className="arm-shoulder hovered"></div>
+            <div className="blade-shoulder hovered"></div>
+            <div className="hock hovered"></div>
+            <div className="loin hovered"></div>
+            <div className="spare-rib hovered"></div>
+            <div className="side hovered"></div>
+            <div className="leg hovered"></div>
         </div>
         <div className="caption">Pork</div>
       </div>      
@@ -78,13 +78,13 @@ export default class Ashot extends React.Component {
   renderChicken(){
     return(
       <div>
-        <div class="chicken">
-          <div class="neck hovered"></div>
-          <div class="breast hovered"></div>
-          <div class="leg hovered"></div>
-          <div class="wing hovered"></div>
-          <div class="tail hovered"></div>
-          <div class="thign hovered"></div>
+        <div className="chicken">
+          <div className="neck hovered"></div>
+          <div className="breast hovered"></div>
+          <div className="leg hovered"></div>
+          <div className="wing hovered"></div>
+          <div className="tail hovered"></div>
+          <div className="thign hovered"></div>
         </div>
         <div className="caption">Chicken</div>
       </div>      
@@ -94,13 +94,13 @@ export default class Ashot extends React.Component {
   renderLamb(){
     return(
       <div>
-        <div class="lamb">
-          <div class="neck hovered"></div>
-          <div class="chuck hovered"></div>
-          <div class="sholder hovered"></div>
-          <div class="breast hovered"></div>
-          <div class="loin hovered"></div>
-          <div class="leg hovered"></div>
+        <div className="lamb">
+          <div className="neck hovered"></div>
+          <div className="chuck hovered"></div>
+          <div className="sholder hovered"></div>
+          <div className="breast hovered"></div>
+          <div className="loin hovered"></div>
+          <div className="leg hovered"></div>
         </div>
         <div className="caption">Lamb</div>
       </div>
@@ -110,14 +110,14 @@ export default class Ashot extends React.Component {
   renderRabbit(){
     return(
       <div>
-        <div class="rabbit">
-          <div class="head-tail"></div>
-          <div class="shoulder hovered"></div>
-          <div class="front-leg hovered"></div>
-          <div class="saddle hovered"></div>
-          <div class="rib hovered"></div>
-          <div class="loin hovered"></div>
-          <div class="hind-leg hovered"></div>
+        <div className="rabbit">
+          <div className="head-tail"></div>
+          <div className="shoulder hovered"></div>
+          <div className="front-leg hovered"></div>
+          <div className="saddle hovered"></div>
+          <div className="rib hovered"></div>
+          <div className="loin hovered"></div>
+          <div className="hind-leg hovered"></div>
         </div>
         <div className="caption">Rabbit</div>
       </div>
@@ -127,12 +127,12 @@ export default class Ashot extends React.Component {
   renderFish(){
     return (
       <div>
-        <div class="fish">
-          <div class="head hovered"></div>
-          <div class="back hovered"></div>
-          <div class="caviar hovered"></div>
-          <div class="abdomen-meat hovered"></div>
-          <div class="tail-meat hovered"></div>
+        <div className="fish">
+          <div className="head hovered"></div>
+          <div className="back hovered"></div>
+          <div className="caviar hovered"></div>
+          <div className="abdomen-meat hovered"></div>
+          <div className="tail-meat hovered"></div>
         </div>
         <div className="caption">Fish</div>
       </div>
@@ -142,10 +142,10 @@ export default class Ashot extends React.Component {
   renderCrab(){
     return (
       <div>
-        <div class="crab">
-          <div class="legs"></div>
-          <div class="claw-meat hovered"></div>
-          <div class="white-meat hovered"></div>
+        <div className="crab">
+          <div className="legs"></div>
+          <div className="claw-meat hovered"></div>
+          <div className="white-meat hovered"></div>
         </div>
         <div className="caption">Crab</div>
       </div>
