@@ -9,10 +9,6 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
-.image-gallery-thumbnail img {
-   width: 60%; 
-}
-
 .image-gallery-slides{
   height: 600px;
 }
@@ -39,7 +35,7 @@
   font-size: 35px;
   text-align: center;
   top: 580px;
-  left: 45%;
+  left: 50%;
   position: absolute;
 }
 
@@ -55,7 +51,7 @@
 color: #fff;
 font-size: 18px;
 text-align: center;
-margin-top: 30px;
+margin-top: 20px;
 }
 
 // MEAT ICONS
@@ -176,7 +172,7 @@ margin-top: 30px;
 .crab {
   position: relative;
   background: #7c0f0f;
-  left: 86%; 
+  left: 91%; 
   top: 100px;
   transform: scale(2);
 
@@ -270,7 +266,7 @@ margin-top: 30px;
 .rabbit {
   position: relative;
   background: #7c0f0f;
-  left: 32%; 
+  left: 35%; 
   bottom: 100px;
 
   div{
@@ -345,7 +341,7 @@ margin-top: 30px;
 .lamb {
   position: relative;
   background: #7c0f0f;
-  left: 35%;
+  left: 40%;
   bottom: 50px; 
   transform: scale(1.2); 
 
@@ -412,7 +408,7 @@ margin-top: 30px;
 .chicken {
   position: relative;
   background: #7c0f0f;
-  left: 40%; 
+  left: 45%; 
   top: 20px;
 
   div{
@@ -476,7 +472,7 @@ margin-top: 30px;
 .pork {
   position: relative;
   background: #7c0f0f;
-  left: 48%; 
+  left: 50%; 
   bottom: 50px;
   transform: scale(1.5); 
 
@@ -863,7 +859,23 @@ margin-top: 30px;
 }
 
 
+.recepts{
+  margin: 50px auto;
+  text-align: center;
+  color: #fff;
+}
 
+.recepts p{
+  width: 60%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.recepts img{
+  margin: 30px 0;
+  min-width: 100%;
+  height: auto;
+}
 
 
 
