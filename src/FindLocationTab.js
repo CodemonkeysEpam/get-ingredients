@@ -57,7 +57,9 @@ export default class FindLocationTab extends React.Component {
         return (
             <div className="find-tab-body">
                 <div className="center-container">
-                    <SimpleMap lat={this.state.currentPlace.lat} lng={this.state.currentPlace.lng} name={this.state.currentPlace.name} />
+                    <SimpleMap lat={this.state.currentPlace.lat} lng={this.state.currentPlace.lng} name={this.state.currentPlace.name} 
+                    center={{lat:this.state.currentPlace.lat, lng:this.state.currentPlace.lng}} placesList={this.state.currentPlacesList}
+                    />
                 </div> 
                 <div className="sidebar sidebar-right">
                     <div className="search-container">
