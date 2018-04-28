@@ -19,6 +19,7 @@
 
 .hovered:hover {
   filter: brightness(100%);
+  cursor: pointer;
 }
 
 .image-gallery-left-nav{
@@ -144,7 +145,9 @@ margin-top: 30px;
 .shrimp {
   position: relative;
   background: #7c0f0f;
-  left: 32%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+  left: 50%;      
+  top: 50px; 
+  transform: scale(1.5);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
   div{
     filter: brightness(60%);
@@ -173,7 +176,9 @@ margin-top: 30px;
 .crab {
   position: relative;
   background: #7c0f0f;
-  left: 42%; 
+  left: 86%; 
+  top: 100px;
+  transform: scale(2);
 
   div{
     filter: brightness(60%);
@@ -209,7 +214,9 @@ margin-top: 30px;
 .fish {
   position: relative;
   background: #7c0f0f;
-  left: 35%; 
+  left: 55%; 
+  top: 150px;
+  transform: scale(1.5); 
 
   div{
     filter: brightness(60%);
@@ -263,7 +270,7 @@ margin-top: 30px;
 .rabbit {
   position: relative;
   background: #7c0f0f;
-  left: 35%; 
+  left: 32%; 
   bottom: 100px;
 
   div{
@@ -338,7 +345,9 @@ margin-top: 30px;
 .lamb {
   position: relative;
   background: #7c0f0f;
-  left: 35%; 
+  left: 35%;
+  bottom: 50px; 
+  transform: scale(1.2); 
 
   div{
     filter: brightness(60%);
@@ -404,6 +413,7 @@ margin-top: 30px;
   position: relative;
   background: #7c0f0f;
   left: 40%; 
+  top: 20px;
 
   div{
     filter: brightness(60%);
@@ -466,7 +476,9 @@ margin-top: 30px;
 .pork {
   position: relative;
   background: #7c0f0f;
-  left: 30%; 
+  left: 48%; 
+  bottom: 50px;
+  transform: scale(1.5); 
 
   div{
     filter: brightness(60%);
@@ -550,7 +562,9 @@ margin-top: 30px;
 .beef {
   position: relative;
   background: #7c0f0f;
-  left: 30%; 
+  left: 50%;
+  top: 50px; 
+  transform: scale(1.5); 
 
   div{
     filter: brightness(60%);
@@ -649,7 +663,9 @@ margin-top: 30px;
 .bear {
   position: relative;
   background: #7c0f0f;
-  left: 35%; 
+  left: 53%; 
+  top: 30px;
+  transform: scale(1.5); 
 
   div{
     filter: brightness(60%);

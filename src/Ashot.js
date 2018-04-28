@@ -7,30 +7,30 @@ export default class Ashot extends React.Component {
   renderBear(){
     return(
       <div>
-        <div class="bear">
-            <div class="head hovered"></div>
-            <div class="ear hovered"></div>
-            <div class="neck hovered"></div>
-            <div class="chuck hovered"></div>
-            <div class="rib hovered"></div>
-            <div class="shotr-loin hovered"></div>
-            <div class="loin hovered"></div>
-            <div class="rump hovered"></div>
-            <div class="tail hovered"></div>
-            <div class="brisket hovered"></div>
-            <div class="shoulder hovered"></div>
-            <div class="short-ribs hovered"></div>
-            <div class="plate hovered"></div>
-            <div class="flank hovered"></div>
-            <div class="round hovered"></div>
-            <div class="fore-shank hovered"></div>
-            <div class="fore-shank-1 hovered"></div>
-            <div class="hind-shank hovered"></div>
-            <div class="hind-shank-1 hovered"></div>
-            <div class="foot-1"></div>
-            <div class="foot-2"></div>
-            <div class="foot-3"></div>
-            <div class="foot-4"></div>
+        <div className="bear">
+            <div className="head hovered"></div>
+            <div className="ear hovered"></div>
+            <div className="neck hovered"></div>
+            <div className="chuck hovered"></div>
+            <div className="rib hovered"></div>
+            <div className="shotr-loin hovered"></div>
+            <div className="loin hovered"></div>
+            <div className="rump hovered"></div>
+            <div className="tail hovered"></div>
+            <div className="brisket hovered"></div>
+            <div className="shoulder hovered"></div>
+            <div className="short-ribs hovered"></div>
+            <div className="plate hovered"></div>
+            <div className="flank hovered"></div>
+            <div className="round hovered"></div>
+            <div className="fore-shank hovered"></div>
+            <div className="fore-shank-1 hovered"></div>
+            <div className="hind-shank hovered"></div>
+            <div className="hind-shank-1 hovered"></div>
+            <div className="foot-1"></div>
+            <div className="foot-2"></div>
+            <div className="foot-3"></div>
+            <div className="foot-4"></div>
         </div>
         <div className="caption">Bear</div>
       </div>      
