@@ -4,6 +4,7 @@ import FindLocationTab from './FindLocationTab';
 import Meals from './Meals';
 import Places from './Places';
 import Menus from './Menus';
+import './styles/MealsSection.scss';
 
 export default class MainSection extends React.Component {
   constructor(props) {
@@ -18,11 +19,11 @@ export default class MainSection extends React.Component {
     if (tab === 'FindYourPlace') {
       this.setState({
           currentTab: 'FindYourPlace'
-      });  
+      });
     } else {
       this.setState({
           currentTab: 'FindYourMeal'
-      });   
+      });
     }
 }
 

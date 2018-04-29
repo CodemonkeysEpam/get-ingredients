@@ -1,8 +1,9 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import './styles/GoogleMap.scss';
 
 export default class SimpleMap extends React.Component {
-   
+
     static defaultProps = {
       zoom: 17
     };
@@ -17,7 +18,7 @@ export default class SimpleMap extends React.Component {
           )
       })
   }
-   
+
   render() {
     return (
       <GoogleMapReact

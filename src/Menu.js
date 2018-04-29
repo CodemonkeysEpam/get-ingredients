@@ -5,6 +5,7 @@ import MealsSection from './MealsSection';
 import MeatSection from './MeatSection';
 import Ashot from './Ashot';
 import Shop from './Shop';
+import './styles/Menu.scss';
 
 export default class Menu extends React.Component {
   render () {
@@ -28,7 +29,7 @@ export default class Menu extends React.Component {
                 <div className="menu-item menu-item-dark-green">
                     <Link to="/shop">Shop</Link>
                 </div>
-                <div className="menu-sign"><a href="#">Sign In</a> | <a href="#">Sign Up</a></div>  
+                <div className="menu-sign"><a href="#">Sign In</a> | <a href="#">Sign Up</a></div>
             </div>
 
             <Route path="/" exact component={Home}/>

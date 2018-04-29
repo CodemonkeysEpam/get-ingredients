@@ -1,0 +1,64 @@
+.place-item {
+    padding: 15px 20px;
+
+    &:first-of-type {
+        padding-top: 0;
+    }
+
+    &:last-of-type {
+        padding-bottom: 0;
+    }
+}
+
+.flex-item-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.place-info {
+    text-align: center;
+    margin: 0 5px;
+}
+
+.place-name {
+    font-size:19px;
+    color: #fff;
+}
+
+.place-address {
+    margin-top: 5px;
+    font-size:16px;
+    color: #fff;
+}
+
+.place-description {
+    padding-top: 15px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.place-price {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    padding: 12px 0;
+}
+
+.fa-map-marker {
+    margin: 0 15px;
+    color: #fff;
+}
+
+.place-button {
+    width: 230px;
+    text-align: center;
+    height: 30px;
+    margin: 3px 0;
+    background: #fff;
+    color: #7c0f0f;
+    text-transform: uppercase;
+    border: none;
+}

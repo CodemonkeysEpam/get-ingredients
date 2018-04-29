@@ -1,7 +1,8 @@
 import React from 'react';
+import './styles/FindFoodTab.scss';
 
 export default class FindFoodTab extends React.Component {
-  
+
   constructor(props) {
       super(props);
 
@@ -78,7 +79,7 @@ export default class FindFoodTab extends React.Component {
   renderItemsList = () => {
     return this.state.currentItemsList.map(item => {
 
-        return <div 
+        return <div
             key={item.name}
             className={item === this.state.currentItem ? "category-body-item category-body-item-active": "category-body-item"}
             onClick={() => this.onItemClick(item)}>{item.name}<hr />
@@ -122,10 +123,10 @@ export default class FindFoodTab extends React.Component {
                             {this.renderItemsList()}
                         </div>
                     </div>
-                </div>   
+                </div>
                 <div className="center-container">
                     <img alt={this.state.currentItem.name} src={window.location.origin + this.state.currentItem.src} />
-                </div> 
+                </div>
                 <div className="sidebar sidebar-right">
                     <div className="search-container">
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />

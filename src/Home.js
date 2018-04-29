@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/Home.scss';
 
 export default class Home extends React.Component {
   render () {

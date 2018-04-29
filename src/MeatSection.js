@@ -4,6 +4,7 @@ import FindLocationTab from './FindLocationTab';
 import Meat from './Meat';
 import MeatShops from './MeatShops';
 import Menus from './Menus';
+import './styles/MeatSection.scss';
 
 export default class MeatSection extends React.Component {
   constructor(props) {
@@ -18,18 +19,18 @@ export default class MeatSection extends React.Component {
     if (tab === 'FindYourPlace') {
       this.setState({
           currentTab: 'FindYourPlace'
-      });  
+      });
     } else {
       this.setState({
           currentTab: 'FindYourMeat'
-      });   
+      });
     }
 }
 
 displayTab () {
     if (this.state.currentTab === 'FindYourPlace') {
         return (
-            <div id="find-meat-shop-body">   
+            <div id="find-meat-shop-body">
                 <div class="meat-icons">
                     <div class="meat-icons-item"><div class="meat-icons-item-icon"><img src="img/meat_icons/beef.png" alt="Beef" /></div><div class="meat-icons-item-name">Beef</div></div>
                     <div class="meat-icons-item"><div class="meat-icons-item-icon meat-icons-item-icon-active"><img src="img/meat_icons/pork.png" alt="Pork" /></div><div class="meat-icons-item-name">Pork</div></div>
