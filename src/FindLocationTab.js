@@ -9,7 +9,8 @@ export default class FindLocationTab extends React.Component {
         this.state = {
             currentPlacesList: this.props.list,
             searchPlaceQuery: "",
-            currentPlace: this.props.list[0]
+            currentPlace: this.props.list[0],
+            hoverPlace: null
         }
     }
 
@@ -18,7 +19,7 @@ export default class FindLocationTab extends React.Component {
         return this.state.currentPlacesList.map((place, i) => {
             return (
                 <React.Fragment>
-                    <div className="place-item">
+                    <div onMouseEnter={() => this.onPlaceHover(place)} onMouseLeave={() => this.onPlaceHover(null)} className="place-item">
                         <div className="flex-item-info">
                         <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true" onClick={() => this.onPlaceClick(place)}></i></a>
                             <div className="place-info">
@@ -50,7 +51,12 @@ export default class FindLocationTab extends React.Component {
         this.setState({
             currentPlace: place
         });
-        console.log(this.state.currentPlace.center);
+    }
+
+    onPlaceHover = (place) => {
+        this.setState({
+            hoverPlace: place
+        });
     }
 
 
@@ -61,6 +67,7 @@ export default class FindLocationTab extends React.Component {
                     <SimpleMap 
                     places={this.state.currentPlacesList}
                     currentPlace={this.state.currentPlace}
+                    hoverPlace={this.state.hoverPlace}
                     />
                 </div>
                 <div className="sidebar sidebar-right">
