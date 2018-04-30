@@ -77,8 +77,12 @@ const MapWithAMarkers = compose(
                 position={{ lat: place.lat, lng: place.lng }}
                 icon= {{
                     path: google.maps.SymbolPath.CIRCLE,
+                    // strokeColor: '#ccc',
+                    fillColor: '#fff',
+                    fillOpacity: 1,
+                    strokeWeight: 2,
                     strokeColor: props.isHover === index || props.isOpen === index ? "#e33834" : "black=",
-                    scale: props.isHover === index || props.isOpen === index ? 10 : 7,
+                    scale: props.isHover === index || props.isOpen === index ? 8 : 6,
                 }}
                 onClick={() => props.onToggleOpen(index)}
                 onMouseOver={() => props.onToggleHover(index)}

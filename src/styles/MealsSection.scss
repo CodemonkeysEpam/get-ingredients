@@ -30,29 +30,26 @@
 
 .tab-red {
     color: #e33834;
-}
-
-.tab-red:hover, .tab-red-active {
-    color: #fff;
-    background: #e33834;
+    &:hover, &.active {
+        color: #fff;
+        background: #e33834;
+    }
 }
 
 .tab-yellow {
     color: #e9a836;
-}
-
-.tab-yellow:hover, .tab-yellow-active {
-    color: #fff;
-    background: #e9a836;
+    &:hover, &.active {
+        color: #fff;
+        background: #e9a836;
+    }
 }
 
 .tab-light-green {
     color: #a0a90e;
-}
-
-.tab-light-green:hover, .tab-light-green-active {
-    color: #fff;
-    background: #a0a90e;
+    &:hover, &.active {
+        color: #fff;
+        background: #a0a90e;
+    }
 }
 
 .find-tab-body {

@@ -77,13 +77,18 @@ export default class FindFoodTab extends React.Component {
   }
 
   renderItemsList = () => {
-    return this.state.currentItemsList.map(item => {
-
-        return <div
-            key={item.name}
-            className={item === this.state.currentItem ? "category-body-item category-body-item-active": "category-body-item"}
-            onClick={() => this.onItemClick(item)}>{item.name}<hr />
-        </div>
+    const length = this.state.currentItemsList.length;
+    return this.state.currentItemsList.map((item, i) => {
+        return (
+            <React.Fragment>
+            <div key={item.name}
+                className={item === this.state.currentItem ? "category-body-item active": "category-body-item"}
+                onClick={() => this.onItemClick(item)}>
+                {item.name}
+            </div>
+            { length !== i+1 ? <hr></hr> : null }
+            </React.Fragment>
+        )
     })
   }
 

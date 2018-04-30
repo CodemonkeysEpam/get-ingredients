@@ -12,24 +12,24 @@ export default class Menu extends React.Component {
     return (
         <header>
             <div className="menu">
-                <div className="menu-title">Meat is life</div>
+                <div className="title">Meat is life</div>
 
-                <div className="menu-item menu-item-maroon menu-item-maroon-active">
+                <div className="item item-maroon active">
                     <Link to="/">Home</Link>
                 </div>
-                <div className="menu-item menu-item-red">
+                <div className="item item-red">
                     <Link to="/meals">Meals</Link>
                 </div>
-                <div className="menu-item menu-item-yellow">
+                <div className="item item-yellow">
                     <Link to="/meat">Meat</Link>
                 </div>
-                <div className="menu-item menu-item-light-green">
+                <div className="item item-light-green">
                     <Link to="/ashot">Ashot`s</Link>
                 </div>
-                <div className="menu-item menu-item-dark-green">
+                <div className="item item-dark-green">
                     <Link to="/shop">Shop</Link>
                 </div>
-                <div className="menu-sign"><a href="#">Sign In</a> | <a href="#">Sign Up</a></div>
+                <div className="sign"><a href="#">Sign In</a> | <a href="#">Sign Up</a></div>
             </div>
 
             <Route path="/" exact component={Home}/>

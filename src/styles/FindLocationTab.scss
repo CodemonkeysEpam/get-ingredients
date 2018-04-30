@@ -1,12 +1,16 @@
 .place-item {
     padding: 15px 20px;
 
-    &:first-of-type {
+    /*&:first-of-type {
         padding-top: 0;
     }
 
     &:last-of-type {
         padding-bottom: 0;
+    }*/
+    &:hover, &.active {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 5%;
     }
 }
 

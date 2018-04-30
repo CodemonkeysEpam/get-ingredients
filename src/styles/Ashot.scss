@@ -48,10 +48,10 @@
 }
 
 .image-gallery-thumbnail-label{
-color: #fff;
-font-size: 18px;
-text-align: center;
-margin-top: 20px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 // MEAT ICONS
@@ -62,9 +62,9 @@ margin-top: 20px;
   border-radius: 50%;
   text-align: center;
 
-&:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
 }
 
 //   KNIVES
@@ -884,31 +884,32 @@ margin-top: 20px;
     justify-content: space-between;
     flex-direction: row;
     padding: 0 146px;
-}
 
-.ashot-icons-item-icon {
-    height: 55px;
-    width: 55px;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    text-align: center;
+    .item {
 
-    img {
-        margin-top: 10px;
     }
 
-    &:hover{
-        background: rgba(255, 255, 255, 0.2);
-    }
-}
-.ashot-icons-item-icon-active {
-    background: rgba(255, 255, 255, 0.2);
-}
+    .item-icon {
+        height: 55px;
+        width: 55px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        text-align: center;
 
-.ashot-icons-item-name {
-    font-size: 16px;
-    font-weight: 300;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0 5px 0;
+        img {
+            margin-top: 10px;
+        }
+
+        &:hover, &.active{
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    .item-name {
+        font-size: 16px;
+        font-weight: 300;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0 5px 0;
+    }
 }

@@ -42,8 +42,8 @@ displayTab () {
             <div className="find-tabs">
                 <div className="container">
                     <div className="flex-tabs">
-                        <div id="find-your-place" className={this.state.currentTab === 'FindYourPlace' ? "find-tab tab-red-active": "find-tab tab-red"} onClick={() => this.handleClick('FindYourPlace')}>Find your place</div>
-                        <div id="find-your-meal" className={this.state.currentTab === 'FindYourMeal' ? "find-tab tab-yellow-active": "find-tab tab-yellow"} onClick={() => this.handleClick('FindYourMeal')}>Find your meal</div>
+                        <div id="find-your-place" className={this.state.currentTab === 'FindYourPlace' ? "find-tab tab-red active": "find-tab tab-red"} onClick={() => this.handleClick('FindYourPlace')}>Find your place</div>
+                        <div id="find-your-meal" className={this.state.currentTab === 'FindYourMeal' ? "find-tab tab-yellow active": "find-tab tab-yellow"} onClick={() => this.handleClick('FindYourMeal')}>Find your meal</div>
                     </div>
                 </div>
             </div>
