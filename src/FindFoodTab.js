@@ -80,8 +80,8 @@ export default class FindFoodTab extends React.Component {
     const length = this.state.currentItemsList.length;
     return this.state.currentItemsList.map((item, i) => {
         return (
-            <React.Fragment>
-            <div key={item.name}
+            <React.Fragment key={i}>
+            <div 
                 className={item === this.state.currentItem ? "category-body-item active": "category-body-item"}
                 onClick={() => this.onItemClick(item)}>
                 {item.name}
@@ -96,8 +96,8 @@ export default class FindFoodTab extends React.Component {
     const length = this.state.currentPlacesList.length;
     return this.state.currentPlacesList.map((place,i) => {
         return (
-            <React.Fragment>
-                <div key={place.id} className="place-item">
+            <React.Fragment key={i}>
+                <div className="place-item">
                     <div className="flex-item-info">
                     <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true"></i></a>
                         <div className="place-info">

@@ -31,12 +31,12 @@ displayTab () {
     if (this.state.currentTab === 'FindYourPlace') {
         return (
             <div id="find-meat-shop-body">
-                <div class="meat-icons">
-                    <div class="item"><div class="item-icon"><img src="img/meat_icons/beef.png" alt="Beef" /></div><div class="item-name">Beef</div></div>
-                    <div class="item"><div class="item-icon active"><img src="img/meat_icons/pork.png" alt="Pork" /></div><div class="item-name">Pork</div></div>
-                    <div class="item"><div class="item-icon"><img src="img/meat_icons/lamb.png" alt="Lamb" /></div><div class="item-name">Lamb</div></div>
-                    <div class="item"><div class="item-icon"><img src="img/meat_icons/chicken.png" alt="Chicken" /></div><div class="item-name">Chicken</div></div>
-                    <div class="item"><div class="item-icon"><img src="img/meat_icons/sea_food.png" alt="Sea food" /></div><div class="item-name">Sea food</div></div>
+                <div className="meat-icons">
+                    <div className="item"><div className="item-icon"><img src="img/meat_icons/beef.png" alt="Beef" /></div><div className="item-name">Beef</div></div>
+                    <div className="item"><div className="item-icon active"><img src="img/meat_icons/pork.png" alt="Pork" /></div><div className="item-name">Pork</div></div>
+                    <div className="item"><div className="item-icon"><img src="img/meat_icons/lamb.png" alt="Lamb" /></div><div className="item-name">Lamb</div></div>
+                    <div className="item"><div className="item-icon"><img src="img/meat_icons/chicken.png" alt="Chicken" /></div><div className="item-name">Chicken</div></div>
+                    <div className="item"><div className="item-icon"><img src="img/meat_icons/sea_food.png" alt="Sea food" /></div><div className="item-name">Sea food</div></div>
                 </div>
                 <div id="find-your-place-body">
                     <FindLocationTab list={MeatShops.MeatShopsList} />
