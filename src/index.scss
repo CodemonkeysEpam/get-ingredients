@@ -112,3 +112,6 @@ footer {
     height: 120px;
     background: #fff;
 }
+
+/*hide close button from google map InfoWindow */
+.gm-style-iw + div {display: none;}

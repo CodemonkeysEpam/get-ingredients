@@ -29,7 +29,7 @@ const MapWithAMarkers = compose(
     }),
     withStateHandlers(() => ({
     isOpen: null,
-    isHover: null,
+    // isHover: null,
   }), {
     onToggleOpen: ({ isOpen }) => (index) => {
         if(isOpen !== index) {
@@ -43,18 +43,18 @@ const MapWithAMarkers = compose(
             }
         }
     },
-    onToggleHover: ({ isHover }) => (index) => {
-        if(isHover !== index) {
-            return {
-                isHover: index,
-            }
-        }
-        else {
-            return {
-                isOpen: null,
-            }
-        }
-    },
+    // onToggleHover: ({ isHover }) => (index) => {
+    //     if(isHover !== index) {
+    //         return {
+    //             isHover: index,
+    //         }
+    //     }
+    //     else {
+    //         return {
+    //             isOpen: null,
+    //         }
+    //     }
+    // },
     // currentPlace2: ({ isOpen }) => (index) => {
     //     return {
     //         isOpen: index,
@@ -84,9 +84,9 @@ const MapWithAMarkers = compose(
                     strokeColor: props.isHover === index || props.isOpen === index ? "#e33834" : "black=",
                     scale: props.isHover === index || props.isOpen === index ? 8 : 6,
                 }}
-                onClick={() => props.onToggleOpen(index)}
-                onMouseOver={() => props.onToggleHover(index)}
-                onMouseOut={() => props.onToggleHover(null)}
+                // onClick={() => props.onToggleOpen(index)}
+                onMouseOver={() => props.onToggleOpen(index)}
+                onMouseOut={() => props.onToggleOpen(null)}
                 
             >
                 {(props.isOpen === index) && <InfoWindow onCloseClick={() => props.onToggleOpen(null)}>
