@@ -1,0 +1,80 @@
+.sign-container {
+    width: 800px;
+    margin: auto;
+    margin-top: 100px;
+    background: whitesmoke;
+    display: flex;
+}
+
+.sign-left-container, .sign-right-container {
+    width: 50%;
+    height: 300px;
+    border: none;
+    text-align: center;
+    padding-top: 100px;
+}
+ 
+.sign-right-container {
+    background-image: url('./login_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.sign-right-container h3 {
+    text-transform: uppercase;
+    color: whitesmoke;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.sign-right-container p {
+    font-size: 13px;
+}
+
+.form-group {
+    width: 300px;
+    margin: auto;
+    padding: 10px;
+}
+ 
+.control-label {
+    display: block;
+    padding: 5px;
+    font-size: 13px;
+}
+ 
+.login-input {
+    width: 240px;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid black;
+    background: whitesmoke;
+}
+ 
+.left-button {
+    display: block;
+    width: 200px;
+    text-align: center;
+    height: 30px;
+    margin: auto;
+    background: #7c0f0f;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 50px;
+}
+
+.right-button {
+    display: block;
+    width: 200px;
+    text-align: center;
+    height: 30px;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #fff;
+    opacity: 0.5;
+    color: black;
+    text-transform: uppercase;
+    border: none;
+}
