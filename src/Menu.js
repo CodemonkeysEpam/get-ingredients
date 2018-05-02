@@ -20,7 +20,7 @@ export default class Menu extends React.Component {
                 <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>
                 <NavLink to="/ashot" className="item item-light-green">Ashot`s</NavLink>
                 <NavLink to="/shop" className="item item-dark-green">Shop</NavLink>
-                <div className="sign"><a href="#">Sign In</a> | <a href="#">Sign Up</a></div>
+                <div className="sign"><Link to="/login">Sign In</Link> | <Link to="/login">Sign Up</Link></div>
             </div>
             <Switch>
                 <Route path="/" exact component={Home}/>
