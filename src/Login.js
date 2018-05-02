@@ -32,6 +32,11 @@ export default class Login extends Component {
           return (
             <div className="sign-container">
                 <div className="sign-left-container"> 
+                    <div className="social-icons-container">
+                        <i class="fa fa-facebook-f"></i>
+                        <i class="fa fa-envelope"></i>
+                        <i class="fa fa-twitter"></i>
+                    </div>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group" controlId="email" bsSize="large">
                             <p className="control-label">Please enter your email:</p>
@@ -55,6 +60,11 @@ export default class Login extends Component {
         return (
             <div className="sign-container">
                 <div className="sign-left-container"> 
+                    <div className="social-icons-container">
+                        <i class="fa fa-facebook-f"></i>
+                        <i class="fa fa-envelope"></i>
+                        <i class="fa fa-twitter"></i>
+                    </div>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group" controlId="email" bsSize="large">
                             <p className="control-label">Please enter your email:</p>
