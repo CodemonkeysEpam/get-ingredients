@@ -15,7 +15,7 @@ export default class Menu extends React.Component {
     return (
         <header>
             <div className="menu">
-                <div className="title">Meat is life</div>
+                <NavLink exact to="/" className="title">Meat is life</NavLink>
                 <NavLink exact to="/" className="item item-maroon">Home</NavLink>
                 <NavLink to="/meals" className="item item-red">Meals</NavLink>
                 <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>

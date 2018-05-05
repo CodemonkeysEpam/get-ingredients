@@ -4,8 +4,6 @@ import ImageGallery from 'react-image-gallery';
 import AshotResources from './AshotResources';
 
 export default class Ashot extends React.Component {
-
-
   constructor(props) {
     super(props);
 
