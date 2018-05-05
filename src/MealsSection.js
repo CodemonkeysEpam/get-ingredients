@@ -16,20 +16,14 @@ export default class MainSection extends React.Component {
   }
 
   handleClick (tab) {
-    if (tab === 'FindYourPlace') {
       this.setState({
-          currentTab: 'FindYourPlace'
+          currentTab: tab
       });
-    } else {
-      this.setState({
-          currentTab: 'FindYourMeal'
-      });
-    }
 }
 
 displayTab () {
     if (this.state.currentTab === 'FindYourPlace') {
-        return (<div id="find-your-place-body"><FindLocationTab list={Places.PlacesList} /></div>)
+        return (<FindLocationTab list={Places.PlacesList} />)
     } else {
         return <FindFoodTab itemsList={Meals.MealsList} placesList={Places.PlacesList} menusList={Menus.MenusList} />
     }

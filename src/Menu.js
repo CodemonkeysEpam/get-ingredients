@@ -6,6 +6,7 @@ import MeatSection from './MeatSection';
 import Ashot from './Ashot';
 import Shop from './Shop';
 import Login from './Login';
+import Account from './Account';
 import PageNotFound from './PageNotFound';
 import './styles/Menu.scss';
 
@@ -29,6 +30,7 @@ export default class Menu extends React.Component {
                 <Route path="/ashot"  component={Ashot}/>
                 <Route path="/shop"  component={Shop}/>
                 <Route path="/login"  component={Login}/>
+                <Route path="/account"  component={Account}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </header>
