@@ -5,7 +5,7 @@ import MealsSection from './MealsSection';
 import MeatSection from './MeatSection';
 import Recepies from './Recepies';
 import Shop from './Shop';
-import { Login, SignUp } from './Login';
+import Login from './Login';
 import Account from './Account';
 import ContactUs from './ContactUs'
 import PageNotFound from './PageNotFound';
@@ -31,7 +31,7 @@ export default class Menu extends React.Component {
                 <Route path="/recepies"  component={Recepies}/>
                 <Route path="/shop"  component={Shop}/>
                 <Route path="/login"  component={Login}/>
-                <Route path="/signup"  component={SignUp}/>
+                <Route path="/signup"  component={Login}/>
                 <Route path="/contactus"  component={ContactUs}/>
                 <Route path="/account"  component={Account}/>
                 <Route component={PageNotFound}/>

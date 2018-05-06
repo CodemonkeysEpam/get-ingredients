@@ -2,24 +2,13 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import './styles/Login.scss';
 
-class Login extends Component {
-    render() {
-        return <LoginTab loginActive={true} />
-    }
-}
 
-class SignUp extends Component {
-    render() {
-        return <LoginTab loginActive={false} />
-    }
-}
-
-class LoginTab extends Component {
+export default class LoginTab extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loginActive: this.props.loginActive,
+      loginActive: true,
       email: "",
       password: "",
       emailValid: true,
@@ -61,9 +50,7 @@ class LoginTab extends Component {
   }
 
   toggleActiveState = () => {
-      this.setState({
-          loginActive: !this.state.loginActive
-      });
+      this.state.loginActive ? this.props.history.push('/signup') : this.props.history.push('/login');
   }
 
   validateForm = () => {
@@ -117,14 +104,15 @@ class LoginTab extends Component {
       }
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+        loginActive: nextProps.location.pathname === "/login" ? true : false
+    };
+  }
+
   render() {
     return (
         <div className="login-page-body">{this.renderCurrentState()}</div>
     );
   }
-}
-
-export {
-    Login, 
-    SignUp
 }
