@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/Ashot.scss';
+import './styles/Recepies.scss';
 import ImageGallery from 'react-image-gallery';
 import RecepiesResources from './RecepiesResources';
 
