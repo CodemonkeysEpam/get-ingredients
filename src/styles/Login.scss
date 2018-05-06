@@ -1,35 +1,83 @@
+
+.login-page-body {
+    background-image: url('./login-page-background.jpg');
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    background-size: cover;
+}
+
 .sign-container {
     width: 800px;
-    margin: auto;
-    margin-top: 100px;
-    background: whitesmoke;
+    margin: 0 auto;
+    background: #fff;
     display: flex;
 }
 
-.sign-left-container, .sign-right-container {
+.sign-form-container, .sign-info-container {
     width: 50%;
-    height: 400px;
+    height: 470px;
     border: none;
     text-align: center;
+    position: relative;
+}
+
+.or-container {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #dadada;
+    border-radius: 50%;
+    line-height: 50px;
+    left: -25px;
+    top: calc(50% - 25px);
+    font-size: 16px;
+    color: #000;
 }
  
-.sign-right-container {
-    background-image: url('./login_background.jpg');
+.sign-info-container {
+    background-image: url('./login-info.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
-}
+    
+    h3 {
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 36px;
+        font-weight: 300;
+        margin-top: 165px;
+        margin-bottom: 50px; 
+    }
 
-.sign-right-container h3 {
-    text-transform: uppercase;
-    color: whitesmoke;
-    font-size: 26px;
-    margin-top: 130px;
-    margin-bottom: 30px; 
-}
+    p {
+        margin-top: 5px;
+        font-size: 12px;
+        font-weight: 500;
+    }
 
-.sign-right-container p {
-    font-size: 13px;
+    .change-button {
+        display: block;
+        width: 200px;
+        text-align: center;
+        height: 45px;
+        margin: auto;
+        background: rgba(255,255,255,0.3);
+        border: 2px solid #fff;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+
+        &:hover {
+            background: rgba(255,255,255,0.7);
+            color: #000;
+        }
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+
 }
 
 .social-icons-container {
@@ -71,20 +119,27 @@
  
 .control-label {
     display: block;
-    padding: 5px;
-    font-size: 13px;
+    font-size: 16px;
+    text-align: left;
+    margin-left: 10px;
 }
  
 .login-input {
-    width: 240px;
+    box-sizing: border-box;
+    width: 265px;
     height: 25px;
     border: none;
     border-bottom: 1px solid black;
-    background: whitesmoke;
+    font-size: 14px;
     margin-bottom: 30px;
+    padding: 0 5px;
 
     &:focus{
         outline: none;
+    }
+
+    &:placeholder {
+        color: #c5c5c5
     }
 }
  
@@ -92,25 +147,12 @@
     display: block;
     width: 200px;
     text-align: center;
-    height: 30px;
+    height: 45px;
+    font-size: 16px;
     margin: auto;
     background: #7c0f0f;
     color: #fff;
-    text-transform: uppercase;
     border: none;
     margin-top: 50px;
 }
 
-.right-button {
-    display: block;
-    width: 200px;
-    text-align: center;
-    height: 30px;
-    margin: auto;
-    background: #fff;
-    border: 1px solid #fff;
-    opacity: 0.5;
-    color: black;
-    text-transform: uppercase;
-    border: none;
-}
