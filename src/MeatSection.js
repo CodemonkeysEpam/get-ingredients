@@ -16,15 +16,9 @@ export default class MeatSection extends React.Component {
   }
 
   handleClick (tab) {
-    if (tab === 'FindYourPlace') {
-      this.setState({
-          currentTab: 'FindYourPlace'
-      });
-    } else {
-      this.setState({
-          currentTab: 'FindYourMeat'
-      });
-    }
+    this.setState({
+        currentTab: tab
+    });
 }
 
 displayTab () {
@@ -38,9 +32,7 @@ displayTab () {
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/chicken.png" alt="Chicken" /></div><div className="item-name">Chicken</div></div>
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/sea_food.png" alt="Sea food" /></div><div className="item-name">Sea food</div></div>
                 </div>
-                <div id="find-your-place-body">
-                    <FindLocationTab list={MeatShops.MeatShopsList} />
-                </div>
+                <FindLocationTab list={MeatShops.MeatShopsList} />
             </div>
         );
     } else {
