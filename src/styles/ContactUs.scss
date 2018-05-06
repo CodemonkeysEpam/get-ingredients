@@ -1,0 +1,62 @@
+.contact-us {
+    padding: 50px 30px;
+    color: white;
+
+    h3 {
+        font-weight: bold;
+        padding: 10px 0;
+        width: 80%;
+    }
+
+    div {
+        display: inline-block;
+    }
+
+    .map {
+        padding: 25px 0;
+    }
+
+    .contacts {
+        position: relative;
+        left: 70px;
+        bottom: 150px;
+
+        address{
+            font-size: 1.2em;
+            padding: 5px 0;
+        }
+
+        ul {
+            padding: 5px 0;
+            li {
+                padding: 1px 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        padding: 30px 0;
+        h3 {
+            width: 100%;
+        }
+        .contacts {
+            left: 50px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 20px;
+
+        .map{
+            width: 100% !important;
+            display: block;
+        }
+
+        .contacts {
+            display: block;
+            position: static;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
