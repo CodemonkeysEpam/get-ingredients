@@ -5,7 +5,7 @@ import MealsSection from './MealsSection';
 import MeatSection from './MeatSection';
 import Recepies from './Recepies';
 import Shop from './Shop';
-import Login from './Login';
+import { Login, SignUp } from './Login';
 import Account from './Account';
 import ContactUs from './ContactUs'
 import PageNotFound from './PageNotFound';
@@ -22,7 +22,7 @@ export default class Menu extends React.Component {
                 <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>
                 <NavLink to="/recepies" className="item item-light-green">Recepies</NavLink>
                 <NavLink to="/shop" className="item item-dark-green">Shop</NavLink>
-                <div className="sign"><Link to="/login">Sign In</Link> | <Link to="/login">Sign Up</Link></div>
+                <div className="sign"><Link to="/login">Sign In</Link> | <Link to="/signup">Sign Up</Link></div>
             </div>
             <Switch>
                 <Route path="/" exact component={Home}/>
@@ -31,6 +31,7 @@ export default class Menu extends React.Component {
                 <Route path="/recepies"  component={Recepies}/>
                 <Route path="/shop"  component={Shop}/>
                 <Route path="/login"  component={Login}/>
+                <Route path="/signup"  component={SignUp}/>
                 <Route path="/contactus"  component={ContactUs}/>
                 <Route path="/account"  component={Account}/>
                 <Route component={PageNotFound}/>

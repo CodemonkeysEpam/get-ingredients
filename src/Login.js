@@ -2,12 +2,24 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import './styles/Login.scss';
 
-export default class Login extends Component {
+class Login extends Component {
+    render() {
+        return <LoginTab loginActive={true} />
+    }
+}
+
+class SignUp extends Component {
+    render() {
+        return <LoginTab loginActive={false} />
+    }
+}
+
+class LoginTab extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loginActive: true,
+      loginActive: this.props.loginActive,
       email: "",
       password: "",
       emailValid: true,
@@ -110,4 +122,9 @@ export default class Login extends Component {
         <div className="login-page-body">{this.renderCurrentState()}</div>
     );
   }
+}
+
+export {
+    Login, 
+    SignUp
 }
