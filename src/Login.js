@@ -50,6 +50,7 @@ export default class Login extends Component {
       if(this.state.loginActive) {
           return (
             <div className="sign-container">
+            
                <div className="sign-info-container">
                    <h3>Meat is life</h3>
                    <button className="change-button" onClick={()=>this.setState({loginActive: false})}>Sign Up</button>
@@ -76,13 +77,14 @@ export default class Login extends Component {
                         </div>
                         <button className="left-button" disabled={!this.validateForm()} type="submit">Sign In</button>
                     </form>
-                    <div className="or-container">or</div>
                </div>
+               <div className="or-container">or</div>
             </div>
         );
       } else {
         return (
             <div className="sign-container">
+            <div className="or-container">or</div>
                 <div className="sign-form-container"> 
                     <div className="social-icons-container">
                         <i className="fa fa-facebook-f"></i>
@@ -109,8 +111,8 @@ export default class Login extends Component {
                    <h3>Meat is life</h3>
                    <button className="change-button" onClick={()=>this.setState({loginActive: true})}>Sign In</button>
                    <p>Already have an account?</p>
-                   <div className="or-container">or</div>
                </div>
+               <div className="or-container">or</div>
             </div>
         );
       }
