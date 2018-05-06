@@ -99,7 +99,7 @@ export default class FindFoodTab extends React.Component {
             <React.Fragment key={i}>
                 <div className="place-item">
                     <div className="flex-item-info">
-                    <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true"></i></a>
+                    <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i>
                         <div className="place-info">
                             <div className="place-name">{place.name}</div>
                             <div className="place-address">{place.address}</div>

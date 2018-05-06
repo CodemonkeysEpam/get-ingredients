@@ -1,6 +1,6 @@
 /* global google */  //must be here to work (else we got to add window before google)
 import React from "react"
-import { compose, withProps, lifecycle, withStateHandlers, withHandlers } from "recompose"
+import { compose, withProps, lifecycle, withStateHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
 const MapWithAMarkers = compose(
@@ -30,7 +30,7 @@ const MapWithAMarkers = compose(
     }),
     lifecycle({
         componentWillReceiveProps(nextProps) {
-            if (nextProps.hoverPlace != this.props.hoverPlace) {
+            if (nextProps.hoverPlace !== this.props.hoverPlace) {
                 this.setState({
                     isHoverSidebarItem: nextProps.hoverPlace != null ? nextProps.hoverPlace.id : null
                 });

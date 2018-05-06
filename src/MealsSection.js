@@ -5,6 +5,7 @@ import Meals from './Meals';
 import Places from './Places';
 import Menus from './Menus';
 import './styles/MealsSection.scss';
+import { Link } from 'react-router-dom';
 
 export default class MainSection extends React.Component {
   constructor(props) {
@@ -15,9 +16,6 @@ export default class MainSection extends React.Component {
       }
   }
 
-handleClick (tab) {
-      this.props.history.push(`/meals?${tab}`);
-}
 
 displayTab () {
     if (this.state.currentTab === 'findyourplace') {
@@ -40,8 +38,8 @@ static getDerivedStateFromProps(nextProps, prevState) {
             <div className="find-tabs">
                 <div className="container">
                     <div className="flex-tabs">
-                        <a href="#" id="find-your-place" className={this.state.currentTab === 'findyourplace' ? "find-tab tab-red active": "find-tab tab-red"} onClick={() => this.handleClick('findyourplace')}>Find your place</a>
-                        <a href="#" id="find-your-meal" className={this.state.currentTab === 'findyourmeal' ? "find-tab tab-yellow active": "find-tab tab-yellow"} onClick={() => this.handleClick('findyourmeal')}>Find your meal</a>
+                    <Link to="/meals?findyourplace" className={this.state.currentTab === 'findyourplace' ? "find-tab tab-red active": "find-tab tab-red"}>Find your place</Link>
+                    <Link to="/meals?findyourmeal" className={this.state.currentTab === 'findyourmeal' ? "find-tab tab-yellow active": "find-tab tab-yellow"}>Find your meal</Link>
                     </div>
                 </div>
             </div>

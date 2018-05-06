@@ -21,7 +21,7 @@ export default class FindLocationTab extends React.Component {
                 <React.Fragment key={i}>
                     <div onMouseEnter={() => this.onPlaceHover(place)} onMouseLeave={() => this.onPlaceHover(null)} className="place-item">
                         <div className="flex-item-info">
-                        <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true" onClick={() => this.onPlaceClick(place)}></i></a>
+                        <i className="fa fa-map-marker fa-3x" aria-hidden="true" onClick={() => this.onPlaceClick(place)}></i>
                             <div className="place-info">
                                 <div className="place-name">{place.name}</div>
                                 <div className="place-address">{place.address}</div>
