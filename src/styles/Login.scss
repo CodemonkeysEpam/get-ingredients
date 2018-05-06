@@ -32,16 +32,26 @@
     font-size: 13px;
 }
 
-.fa-facebook-f,
-.fa-envelope,
-.fa-twitter {
-    color: #7c0f0f;
-    background-color: #fff;
-    border: 2px solid #7c0f0f;
-    border-radius: 100%;
-    padding: 10px;
-    margin: 3px;
-    width: 13px;
+.social-icons-container {
+    position: relative;
+    margin: auto;
+    margin-top: -20px;
+    margin-bottom: 70px;
+    background-color: #7c0f0f;
+    width: 220px;
+
+    .fa {
+        color: #7c0f0f;
+        background-color: #fff;
+        border: 2px solid #7c0f0f;
+        border-radius: 50%;
+        margin: 8px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 30px;
+    }
 }
 
 .fa.fa-times-circle {
@@ -52,16 +62,6 @@
 .fa.fa-check-circle {
     color: green;
     font-size: 25px;
-}
-
-.social-icons-container {
-    position: relative;
-    margin: auto;
-    margin-top: -20px;
-    margin-bottom: 70px;
-    background-color: #7c0f0f;
-    width: 130px;
-    padding: 5px;
 }
 
 .form-group {
@@ -82,6 +82,10 @@
     border-bottom: 1px solid black;
     background: whitesmoke;
     margin-bottom: 30px;
+
+    &:focus{
+        outline: none;
+    }
 }
  
 .left-button {
