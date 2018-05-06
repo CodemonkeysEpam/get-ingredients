@@ -5,8 +5,6 @@ export default class Shop extends React.Component {
 
   constructor(props){
     super(props);
-
-    
   }
 
   render () {
