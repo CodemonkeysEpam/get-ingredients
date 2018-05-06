@@ -11,20 +11,18 @@ export default class MeatSection extends React.Component {
       super(props);
 
       this.state = {
-          currentTab: 'FindYourMeat'
+          currentTab: 'findyourmeat'
       }
   }
 
   handleClick (tab) {
-    this.setState({
-        currentTab: tab
-    });
+    this.props.history.push(`/meat?${tab}`);
 }
 
 displayTab () {
-    if (this.state.currentTab === 'FindYourPlace') {
+    if (this.state.currentTab === 'findmeatshop') {
         return (
-            <div id="find-meat-shop-body">
+            <div>
                 <div className="meat-icons">
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/beef.png" alt="Beef" /></div><div className="item-name">Beef</div></div>
                     <div className="item"><div className="item-icon active"><img src="img/meat_icons/pork.png" alt="Pork" /></div><div className="item-name">Pork</div></div>
@@ -37,12 +35,18 @@ displayTab () {
         );
     } else {
         return (
-            <div id="find-your-meal-body">
+            <div>
                 <FindFoodTab itemsList={Meat.MeatList} placesList={MeatShops.MeatShopsList} menusList={Menus.MenusList}/>
             </div>
         )
     }
 }
+
+static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+        currentTab: nextProps.location.search === "?findmeatshop" ? "findmeatshop" : "findyourmeat"
+    };
+  }
 
   render () {
     return (
@@ -51,8 +55,8 @@ displayTab () {
             <div className="find-tabs">
                 <div className="container">
                     <div className="flex-tabs">
-                    <a href="#" id="find-your-place" className={this.state.currentTab === 'FindYourPlace' ? "find-tab tab-red active": "find-tab tab-red"} onClick={() => this.handleClick('FindYourPlace')}>Find your place</a>
-                    <a href="#" id="find-your-meal" className={this.state.currentTab === 'FindYourMeat' ? "find-tab tab-yellow active": "find-tab tab-yellow"} onClick={() => this.handleClick('FindYourMeat')}>Find your meal</a>
+                    <a href="#" id="find-your-place" className={this.state.currentTab === 'findmeatshop' ? "find-tab tab-red active": "find-tab tab-red"} onClick={() => this.handleClick('findmeatshop')}>Find meat shop</a>
+                    <a href="#" id="find-your-meal" className={this.state.currentTab === 'findyourmeat' ? "find-tab tab-yellow active": "find-tab tab-yellow"} onClick={() => this.handleClick('findyourmeat')}>Find your meat</a>
                     </div>
                 </div>
             </div>

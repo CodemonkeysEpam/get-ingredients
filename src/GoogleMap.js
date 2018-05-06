@@ -36,13 +36,9 @@ const MapWithAMarkers = compose(
                 });
             }
         },
-        componentWillMount() {
-            this.setState({
-                isHoverSidebarItem: this.hoverPlace != null ? this.hoverPlace.id : null
-            });
-        },
         componentDidMount() {  
             this.setState({
+                isHoverSidebarItem: this.hoverPlace != null ? this.hoverPlace.id : null,
                 zoomToMarkers: map => {
                     if(map != null) {
                         const bounds = new google.maps.LatLngBounds();
