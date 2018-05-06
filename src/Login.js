@@ -15,8 +15,47 @@ export default class Login extends Component {
     };
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+  signInfo = () => {
+    return  <div className="sign-info-container">
+                <h3>Meat is life</h3>
+                <button className="change-button" onClick={this.toggleActiveState}>{this.state.loginActive ? 'Sign Up' : 'Sign In'}</button>
+                <p>{this.state.loginActive ? 'Do you want to sign up?' : 'Already have an account?'}</p>
+            </div>
+  }
+
+  signForm = () => {
+      return <div className="sign-form-container"> 
+                 <div className="social-icons-container">
+                     <i className="fa fa-facebook-f"></i>
+                     <i className="fa fa-google"></i>
+                     <i className="fa fa-twitter"></i>
+                 </div>
+                 <form onSubmit={this.handleSubmit}>
+                     <div className="form-group">
+                         <p className="control-label">Please enter your email:</p>
+                         <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onChange={this.handleEmailChange} />
+                         <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
+                         <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
+                     </div>
+                     <div className="form-group">
+                         <p className="control-label">Please enter your password:</p>
+                         <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onChange={this.handlePasswordChange} type="password" />
+                         <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
+                         <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
+                     </div>
+                     <button className="left-button" disabled={!this.validateForm()} type="submit">{this.state.loginActive ? 'Sign In' : 'Sign Up'}</button>
+                 </form>
+             </div>
+  }
+
+  toggleActiveState = () => {
+      this.setState({
+          loginActive: !this.state.loginActive
+      });
+  }
+
+  validateForm = () => {
+    return this.checkEmailValidity() && this.checkPasswordValidity();
   }
 
   handleEmailChange = () => {
@@ -50,68 +89,16 @@ export default class Login extends Component {
       if(this.state.loginActive) {
           return (
             <div className="sign-container">
-            
-               <div className="sign-info-container">
-                   <h3>Meat is life</h3>
-                   <button className="change-button" onClick={()=>this.setState({loginActive: false})}>Sign Up</button>
-                   <p>Do you want to sign up?</p>
-               </div>
-               <div className="sign-form-container"> 
-                    <div className="social-icons-container">
-                        <i className="fa fa-facebook-f"></i>
-                        <i className="fa fa-envelope"></i>
-                        <i className="fa fa-twitter"></i>
-                    </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your email:</p>
-                            <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onChange={this.handleEmailChange} />
-                            <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your password:</p>
-                            <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onChange={this.handlePasswordChange} type="password" />
-                            <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <button className="left-button" disabled={!this.validateForm()} type="submit">Sign In</button>
-                    </form>
-               </div>
+               {this.signInfo()}
+               {this.signForm()}
                <div className="or-container">or</div>
             </div>
         );
       } else {
         return (
             <div className="sign-container">
-            <div className="or-container">or</div>
-                <div className="sign-form-container"> 
-                    <div className="social-icons-container">
-                        <i className="fa fa-facebook-f"></i>
-                        <i className="fa fa-envelope"></i>
-                        <i className="fa fa-twitter"></i>
-                    </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your email:</p>
-                            <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onChange={this.handleEmailChange} />
-                            <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your password:</p>
-                            <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onChange={this.handlePasswordChange} type="password" />
-                            <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <button className="left-button" disabled={!this.validateForm()} type="submit">Sign Up</button>
-                    </form>
-               </div>
-               <div className="sign-info-container">
-                   <h3>Meat is life</h3>
-                   <button className="change-button" onClick={()=>this.setState({loginActive: true})}>Sign In</button>
-                   <p>Already have an account?</p>
-               </div>
+               {this.signForm()}
+               {this.signInfo()}
                <div className="or-container">or</div>
             </div>
         );
