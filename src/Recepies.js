@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/Ashot.scss';
 import ImageGallery from 'react-image-gallery';
-import AshotResources from './AshotResources';
+import RecepiesResources from './RecepiesResources';
 
 export default class Ashot extends React.Component {
   constructor(props) {
@@ -14,11 +14,11 @@ export default class Ashot extends React.Component {
   }
 
   renderRecept(index, str){
-    if (AshotResources.Recepies[index][str]){
+    if (RecepiesResources.Recepies[index][str]){
       return(
         <div className="recepts">
-          <p>{AshotResources.Recepies[index][str]}</p>
-          <img src={AshotResources.Recepies[index].img}/>
+          <p>{RecepiesResources.Recepies[index][str]}</p>
+          <img src={RecepiesResources.Recepies[index].img}/>
         </div>
       );
     }
@@ -39,7 +39,7 @@ export default class Ashot extends React.Component {
       <div>
         <div className="carousel">
           <ImageGallery
-            items={AshotResources.images}
+            items={RecepiesResources.images}
             thumbnailPosition="top"
             showFullscreenButton={false}
             showPlayButton={false}
