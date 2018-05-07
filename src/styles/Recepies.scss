@@ -19,11 +19,11 @@
 }
 
 .image-gallery-left-nav{
-  margin-left: 250px;
+  margin-left: 150px;
 }
 
 .image-gallery-right-nav{
-  margin-right: 250px;
+  margin-right: 150px;
 }
 
 .image-gallery-left-nav:hover::before, .image-gallery-right-nav:hover::before {
@@ -37,6 +37,10 @@
   top: 580px;
   left: 50%;
   position: absolute;
+}
+
+.image-gallery-thumbnails-wrapper {
+  margin-bottom: 20px;
 }
 
 .image-gallery-thumbnails-container{
@@ -880,7 +884,7 @@
 
   img {
     margin: 30px 0;
-    min-width: 100%;
+    width: 100%;
     height: auto;
   }
 

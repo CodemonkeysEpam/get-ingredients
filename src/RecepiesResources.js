@@ -92,6 +92,7 @@ const Recepies = [
     },
     // CRAB
     {
+      "legs": `LEGS`,
       "claw-meat": `CLAW-MEAT`,
       "white-meat": "WHITE-MEAT",
       img: '/ashot-images/pork.jpg'
@@ -255,7 +256,7 @@ let renderCrab = () => {
   return (
     <div>
       <div className="crab">
-        <div className="legs"></div>
+        <div className="legs hovered"></div>
         <div className="claw-meat hovered"></div>
         <div className="white-meat hovered"></div>
       </div>

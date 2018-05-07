@@ -26,8 +26,8 @@ export default class LoginTab extends Component {
   signForm = () => {
       return <div className="sign-form-container"> 
                  <div className="social-icons-container">
-                     <i className="fa fa-facebook-f"></i>
                      <i className="fa fa-google"></i>
+                     <i className="fa fa-facebook-f"></i>
                      <i className="fa fa-twitter"></i>
                  </div>
                  <form onSubmit={this.handleSubmit}>
