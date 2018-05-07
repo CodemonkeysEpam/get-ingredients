@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import './styles/Login.scss';
+import firebase from 'firebase';
+import { firebaseApp } from './base';
 
 
 export default class LoginTab extends Component {
@@ -26,11 +28,11 @@ export default class LoginTab extends Component {
   signForm = () => {
       return <div className="sign-form-container"> 
                  <div className="social-icons-container">
-                     <i className="fa fa-google"></i>
-                     <i className="fa fa-facebook-f"></i>
-                     <i className="fa fa-twitter"></i>
+                     <a href="#" onClick={() => this.authSocial("Google")}><i className="fa fa-google"></i></a>
+                     <a href="#" onClick={() => this.authSocial("Facebook")}><i className="fa fa-facebook-f"></i></a>
+                     <a href="#" onClick={() => this.authSocial("Twitter")}><i className="fa fa-twitter"></i></a>
                  </div>
-                 <form onSubmit={this.handleSubmit}>
+                 <form onSubmit={this.authEmail}>
                      <div className="form-group">
                          <p className="control-label">Please enter your email:</p>
                          <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onChange={this.handleEmailChange} />
@@ -43,7 +45,7 @@ export default class LoginTab extends Component {
                          <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
                      </div>
-                     <button className="left-button" disabled={!this.validateForm()} type="submit">{this.state.loginActive ? 'Sign In' : 'Sign Up'}</button>
+                     <button className="left-button" type="submit">{this.state.loginActive ? 'Sign In' : 'Sign Up'}</button>
                  </form>
              </div>
   }
@@ -70,8 +72,33 @@ export default class LoginTab extends Component {
     });
   }
 
-  handleSubmit = event => {
+  authHandler = async (authData) => {
+    console.log(authData);
+  }
+
+  authSocial = (provider) => {
+    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+    firebaseApp
+      .auth()
+      .signInWithPopup(authProvider)
+      .then(this.authHandler)
+  }
+
+  authEmail = event => {
     event.preventDefault();
+    new firebase
+      .auth()[`${this.state.loginActive ? "signIn" : "createUser"}WithEmailAndPassword`](this.state.email, this.state.password)
+      .catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode == 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+      })
+      .then(this.authHandler);
   }
 
   checkPasswordValidity() {
