@@ -9,9 +9,16 @@ export default class FindLocationTab extends React.Component {
         this.state = {
             currentPlacesList: this.props.list,
             searchPlaceQuery: "",
-            currentPlace: this.props.list[0],
+            currentPlace: null,
             hoverPlace: null
         }
+    }
+
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
+            currentPlacesList: nextProps.list
+        };
     }
 
     renderPlacesList = () => {
@@ -62,7 +69,7 @@ export default class FindLocationTab extends React.Component {
 
     render () {
         return (
-            <div className="find-tab-body">
+            <React.Fragment>
                 <div className="center-container">
                     <SimpleMap 
                     places={this.state.currentPlacesList}
@@ -81,7 +88,7 @@ export default class FindLocationTab extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

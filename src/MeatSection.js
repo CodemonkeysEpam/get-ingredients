@@ -1,25 +1,51 @@
 import React from 'react';
 import FindFoodTab from './FindFoodTab';
 import FindLocationTab from './FindLocationTab';
-import Meat from './Meat';
-import MeatShops from './MeatShops';
-import Menus from './Menus';
 import './styles/MeatSection.scss';
 import { Link } from 'react-router-dom';
+import base from "./base";
 
 export default class MeatSection extends React.Component {
-  constructor(props) {
-      super(props);
+    constructor(props) {
+        super(props);
 
-      this.state = {
-          currentTab: 'findyourmeat'
-      }
-  }
+        this.state = {
+            currentTab: 'findyourmeat',
+            shopsList: [],
+            meatList: [],
+            productsList: [],
+        }
+    }
+
+componentDidMount() {
+  this.refShops = base.syncState(`meat/shops`, {
+      context: this,
+      state: 'shopsList',
+      asArray: true
+    });
+  this.refMeat = base.syncState(`meat/meat`, {
+      context: this,
+      state: 'meatList',
+      asArray: true
+    });
+  this.refProducts = base.syncState(`meat/products`, {
+      context: this,
+      state: 'productsList',
+      asArray: true
+    });
+
+}
+
+componentWillUnmount() {
+    base.removeBinding(this.refShops);
+    base.removeBinding(this.refMeat);
+    base.removeBinding(this.refProducts);
+}
 
 displayTab () {
     if (this.state.currentTab === 'findmeatshop') {
         return (
-            <div>
+            <React.Fragment>
                 <div className="meat-icons">
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/beef.png" alt="Beef" /></div><div className="item-name">Beef</div></div>
                     <div className="item"><div className="item-icon active"><img src="img/meat_icons/pork.png" alt="Pork" /></div><div className="item-name">Pork</div></div>
@@ -27,13 +53,21 @@ displayTab () {
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/chicken.png" alt="Chicken" /></div><div className="item-name">Chicken</div></div>
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/sea_food.png" alt="Sea food" /></div><div className="item-name">Sea food</div></div>
                 </div>
-                <FindLocationTab list={MeatShops.MeatShopsList} />
-            </div>
+                <div className="find-tab-body">
+                    {this.state.shopsList.length > 0 ?
+                    <FindLocationTab list={this.state.shopsList} />
+                    :
+                    <div>...</div>}
+                </div>
+            </React.Fragment>
         );
     } else {
         return (
-            <div>
-                <FindFoodTab itemsList={Meat.MeatList} placesList={MeatShops.MeatShopsList} menusList={Menus.MenusList}/>
+            <div className="find-tab-body">
+                {this.state.meatList.length > 0 && this.state.shopsList.length > 0 && this.state.productsList.length > 0 ?
+                <FindFoodTab itemsList={this.state.meatList} placesList={this.state.shopsList} menusList={this.state.productsList}/>
+                :
+                <div>...</div>}
             </div>
         )
     }
@@ -58,7 +92,7 @@ static getDerivedStateFromProps(nextProps, prevState) {
                 </div>
             </div>
             <div className="container">
-            {this.displayTab()}
+                {this.displayTab()}
             </div>
         </div>
     );

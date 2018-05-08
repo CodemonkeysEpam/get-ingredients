@@ -117,33 +117,33 @@ export default class FindFoodTab extends React.Component {
 
   render () {
     return (
-            <div className="find-tab-body">
-                <div className="sidebar sidebar-left">
-                    <div className="search-container">
-                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchItemInput = input} onChange={this.handleItemInputChange} />
-                        <i className="fa fa-search"></i>
-                    </div>
-                    <div className="search-result-container">
-                        <div className="search-response">
-                            {this.renderItemsList()}
-                        </div>
-                    </div>
+        <React.Fragment>
+            <div className="sidebar sidebar-left">
+                <div className="search-container">
+                    <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchItemInput = input} onChange={this.handleItemInputChange} />
+                    <i className="fa fa-search"></i>
                 </div>
-                <div className="center-container">
-                    <img alt={this.state.currentItem.name} src={window.location.origin + this.state.currentItem.src} />
-                </div>
-                <div className="sidebar sidebar-right">
-                    <div className="search-container">
-                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
-                        <i className="fa fa-search"></i>
-                    </div>
-                    <div className="search-result-container">
-                        <div className="search-response">
-                            {this.renderPlacesList()}
-                        </div>
+                <div className="search-result-container">
+                    <div className="search-response">
+                        {this.renderItemsList()}
                     </div>
                 </div>
             </div>
+            <div className="center-container">
+                <img alt={this.state.currentItem.name} src={window.location.origin + this.state.currentItem.src} />
+            </div>
+            <div className="sidebar sidebar-right">
+                <div className="search-container">
+                    <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
+                    <i className="fa fa-search"></i>
+                </div>
+                <div className="search-result-container">
+                    <div className="search-response">
+                        {this.renderPlacesList()}
+                    </div>
+                </div>
+            </div>
+        </React.Fragment>
     );
   }
 }

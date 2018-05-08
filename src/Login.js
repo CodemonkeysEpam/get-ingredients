@@ -35,13 +35,13 @@ export default class LoginTab extends Component {
                  <form onSubmit={this.authEmail}>
                      <div className="form-group">
                          <p className="control-label">Please enter your email:</p>
-                         <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onChange={this.handleEmailChange} />
+                         <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onBlur={this.handleEmailChange} />
                          <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
                      </div>
                      <div className="form-group">
                          <p className="control-label">Please enter your password:</p>
-                         <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onChange={this.handlePasswordChange} type="password" />
+                         <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onBlur={this.handlePasswordChange} type="password" />
                          <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
                      </div>

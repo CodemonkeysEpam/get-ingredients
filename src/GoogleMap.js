@@ -30,11 +30,20 @@ const MapWithAMarkers = compose(
     }),
     lifecycle({
         componentWillReceiveProps(nextProps) {
-            if (nextProps.hoverPlace !== this.props.hoverPlace) {
-                this.setState({
-                    isHoverSidebarItem: nextProps.hoverPlace != null ? nextProps.hoverPlace.id : null
-                });
-            }
+            this.setState({
+                isHoverSidebarItem: nextProps.hoverPlace != null ? nextProps.hoverPlace.id : null,
+                zoomToMarkers: map => {
+                    if(map != null) {
+                        const bounds = new google.maps.LatLngBounds();
+                        map.props.children.forEach((child) => {
+                            if (child.type === Marker) {
+                                bounds.extend(new google.maps.LatLng(child.props.position.lat, child.props.position.lng));
+                            }
+                        })
+                        map.fitBounds(bounds);
+                    }
+                }
+            });
         },
         componentDidMount() {  
             this.setState({
