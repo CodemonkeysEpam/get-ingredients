@@ -72,8 +72,8 @@ export default class LoginTab extends Component {
     });
   }
 
-  authHandler = async (authData) => {
-    console.log(authData);
+  authHandler = () => {
+    this.props.history.push('/account');
   }
 
   authSocial = (provider) => {
@@ -81,6 +81,13 @@ export default class LoginTab extends Component {
     firebaseApp
       .auth()
       .signInWithPopup(authProvider)
+      .catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorCode);
+        alert(errorMessage);
+        console.log(error);
+        })
       .then(this.authHandler)
   }
 
