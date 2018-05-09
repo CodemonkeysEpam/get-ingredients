@@ -8,7 +8,8 @@ import Shop from './Shop';
 import Login from './Login';
 import Logout from './Logout';
 import Account from './Account';
-import ContactUs from './ContactUs'
+import ContactUs from './ContactUs';
+import ShoppingCart from './ShoppingCart';
 import PageNotFound from './PageNotFound';
 import './styles/Menu.scss';
 import firebase from 'firebase';
@@ -65,7 +66,7 @@ export default class Menu extends React.Component {
                 
                 {this.state.isLogin ? 
                 <div className="sign">
-                    <Link to="/account">Account</Link> | <Link to="/logout">Log out</Link>
+                    <Link to="/account">Account</Link> | <Link to="/logout">Log out</Link><Link to="/cart"><i className="fa fa-shopping-cart"></i></Link>
                 </div>
                 :
                 <div className="sign">
@@ -84,6 +85,7 @@ export default class Menu extends React.Component {
                 <Route path="/logout"  component={Logout}/>
                 <Route path="/contactus"  component={ContactUs}/>
                 <Route path="/account"  component={Account}/>
+                <Route path="/cart"  component={ShoppingCart}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </header>
