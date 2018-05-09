@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import { firebaseApp } from './base';
 import { withRouter } from "react-router";
 
-
 class LoginTab extends Component {
   constructor(props) {
     super(props);

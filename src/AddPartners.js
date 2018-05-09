@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchAddress from './SearchAddress'
-
+import SearchAddress from './SearchAddress';
+import base from './base';
 
 export default class AddPartners extends React.Component {
     constructor(props) {
@@ -51,7 +51,45 @@ export default class AddPartners extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
+        var immediatelyAvailableReference = base.push(`${this.state.type === "restaurant" ?
+        "meals" : "meat"}/places`, {
+            data: {
+                name: this.state.name,
+                address: this.state.address,
+                location: this.state.location,
+                phone: this.state.phone,
+                userId: this.props.uid,
+                verified: false
+            },
+            then(err){
+                if(err){
+                    console.log(err);
+                }
+            }
+        });
+
+        var generatedKey = immediatelyAvailableReference.key;
+
+        base.update(`${this.state.type === "restaurant" ?
+        "meals" : "meat"}/places/${generatedKey}`, {
+            data: {
+                id: generatedKey,
+                name: this.state.name,
+                address: this.state.address,
+                location: this.state.location,
+                phone: this.state.phone,
+                userId: this.props.uid,
+                verified: false
+            },
+            then(err){
+                if(!err){
+                    console.log("yes");
+                }
+                else {
+                    console.log(err);
+                }
+            }
+        });
     }
 
     render() {
