@@ -13,13 +13,17 @@ import ShoppingCart from './ShoppingCart';
 import PageNotFound from './PageNotFound';
 import './styles/Menu.scss';
 import firebase from 'firebase';
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isLogin : false
+            isLogin : false,
+            loading : true,
+            user: null
         }
     }
 
@@ -44,18 +48,22 @@ export default class Menu extends React.Component {
             //     providerData : user.providerData
             //   })
                 this.setState({
-                    isLogin: true
+                    isLogin: true,
+                    loading: false,
+                    user: user
                 })
               } else {
                 this.setState({
-                    isLogin: false
+                    isLogin: false,
+                    loading: false,
+                    user: null
                 })
               }
             }.bind(this));
       }
   render () {
-    return (
-        <header>
+    return this.state.loading === true ? <h1>Loading</h1> : (
+        <React.Fragment>
             <div className="menu">
                 <Link to="/" className="title">Meat is life</Link>
                 <NavLink exact to="/" className="item item-maroon">Home</NavLink>
@@ -70,7 +78,7 @@ export default class Menu extends React.Component {
                 </div>
                 :
                 <div className="sign">
-                    <Link to="/login">Sign In</Link> | <Link to="/signup">Sign Up</Link>
+                    <Link to="/login">Sign In</Link> | <Link to="/signup">Sign Up</Link><Link to="/cart"><i className="fa fa-shopping-cart"></i></Link>
                 </div>
                 }
             </div>
@@ -80,15 +88,15 @@ export default class Menu extends React.Component {
                 <Route path="/meat"  component={MeatSection}/>
                 <Route path="/recepies"  component={Recepies}/>
                 <Route path="/shop"  component={Shop}/>
-                <Route path="/login"  component={Login}/>
-                <Route path="/signup"  component={Login}/>
-                <Route path="/logout"  component={Logout}/>
+                <PublicRoute path="/login"  component={Login} isLogin={this.state.isLogin}/>
+                <PublicRoute path="/signup"  component={Login} isLogin={this.state.isLogin}/>
+                <PrivateRoute path="/logout"  component={Logout} isLogin={this.state.isLogin}/>
                 <Route path="/contactus"  component={ContactUs}/>
-                <Route path="/account"  component={Account}/>
+                <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin} user={this.state.user}/>
                 <Route path="/cart"  component={ShoppingCart}/>
                 <Route component={PageNotFound}/>
             </Switch>
-        </header>
+        </React.Fragment>
     );
   }
 }

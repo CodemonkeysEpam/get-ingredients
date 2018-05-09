@@ -5,7 +5,6 @@ export default class Logout extends React.Component {
 
     componentDidMount() {
         firebase.auth().signOut();
-        this.props.history.push('/login');
     }
 
     render() {

@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import './styles/Login.scss';
 import firebase from 'firebase';
 import { firebaseApp } from './base';
+import { withRouter } from "react-router";
 
 
-export default class LoginTab extends Component {
+class LoginTab extends Component {
   constructor(props) {
     super(props);
 
@@ -149,3 +150,5 @@ export default class LoginTab extends Component {
     );
   }
 }
+
+export default withRouter(LoginTab);

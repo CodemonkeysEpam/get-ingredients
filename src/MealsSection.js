@@ -12,27 +12,26 @@ export default class MainSection extends React.Component {
             currentTab: 'findyourmeal',
             placesList: [],
             mealsList: [],
-            menusList: [],
+            menusList: []
       }
   }
   
   componentDidMount() {
-    this.refPlaces = base.syncState(`meals/places`, {
+    this.refPlaces = base.bindToState(`meals/places`, {
         context: this,
         state: 'placesList',
         asArray: true
       });
-    this.refMeals = base.syncState(`meals/meals`, {
+    this.refMeals = base.bindToState(`meals/meals`, {
         context: this,
         state: 'mealsList',
         asArray: true
       });
-    this.refMenus = base.syncState(`meals/menus`, {
+    this.refMenus = base.bindToState(`meals/menus`, {
         context: this,
         state: 'menusList',
-        asArray: true
+        asArray: true,
       });
-
   }
 
   componentWillUnmount() {
@@ -42,7 +41,6 @@ export default class MainSection extends React.Component {
   }
 
 displayTab () {
-    
     if (this.state.currentTab === 'findyourplace') {
         return (
         <React.Fragment>
