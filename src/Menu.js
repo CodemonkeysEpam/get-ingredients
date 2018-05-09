@@ -7,8 +7,10 @@ import Recepies from './Recepies';
 import Shop from './Shop';
 import Login from './Login';
 import Account from './Account';
+import ContactUs from './ContactUs';
 import PageNotFound from './PageNotFound';
 import './styles/Menu.scss';
+
 
 export default class Menu extends React.Component {
   render () {
@@ -31,6 +33,7 @@ export default class Menu extends React.Component {
                 <Route path="/shop"  component={Shop}/>
                 <Route path="/login"  component={Login}/>
                 <Route path="/account"  component={Account}/>
+                <Route path="/contact-us" component={ContactUs}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </header>
