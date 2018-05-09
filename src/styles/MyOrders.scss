@@ -1,0 +1,25 @@
+.orders-container {
+    text-align: center;
+}
+
+.orders-heading {
+    div {
+        display: inline-block;
+        border: 2px solid white;
+        border-collapse: collapse;
+        color: grey;
+        padding: 10px;
+        width: 100px;
+    }
+}
+
+.orders-item {
+    div {
+        display: inline-block;
+        border: 2px solid white;
+        border-collapse: collapse;
+        color: white;
+        padding: 10px;
+        width: 100px;
+    }
+}
