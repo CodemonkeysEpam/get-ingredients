@@ -16,6 +16,7 @@ import firebase from 'firebase';
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
+
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
@@ -71,8 +72,8 @@ export default class Menu extends React.Component {
                 <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>
                 <NavLink to="/recepies" className="item item-light-green">Recepies</NavLink>
                 <NavLink to="/shop" className="item item-dark-green">Shop</NavLink>
-                
-                {this.state.isLogin ? 
+
+                {this.state.isLogin ?
                 <div className="sign">
                     <Link to="/account">Account</Link> | <Link to="/logout">Log out</Link><Link to="/cart"><i className="fa fa-shopping-cart"></i></Link>
                 </div>
@@ -94,6 +95,7 @@ export default class Menu extends React.Component {
                 <Route path="/contactus"  component={ContactUs}/>
                 <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin} user={this.state.user}/>
                 <Route path="/cart"  component={ShoppingCart}/>
+
                 <Route component={PageNotFound}/>
             </Switch>
         </React.Fragment>
