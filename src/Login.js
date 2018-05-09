@@ -28,9 +28,9 @@ export default class LoginTab extends Component {
   signForm = () => {
       return <div className="sign-form-container"> 
                  <div className="social-icons-container">
-                     <a href="#" onClick={() => this.authSocial("Google")}><i className="fa fa-google"></i></a>
-                     <a href="#" onClick={() => this.authSocial("Facebook")}><i className="fa fa-facebook-f"></i></a>
-                     <a href="#" onClick={() => this.authSocial("Twitter")}><i className="fa fa-twitter"></i></a>
+                     <i className="fa fa-google" onClick={() => this.authSocial("Google")}></i>
+                     <i className="fa fa-facebook-f" onClick={() => this.authSocial("Facebook")}></i>
+                     <i className="fa fa-twitter" onClick={() => this.authSocial("Twitter")}></i>
                  </div>
                  <form onSubmit={this.authEmail}>
                      <div className="form-group">
@@ -98,7 +98,7 @@ export default class LoginTab extends Component {
       .catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-      if (errorCode == 'auth/weak-password') {
+      if (errorCode === 'auth/weak-password') {
         alert('The password is too weak.');
       } else {
         alert(errorMessage);
@@ -113,7 +113,7 @@ export default class LoginTab extends Component {
   }
 
   checkEmailValidity() {
-      let pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      let pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
       return pattern.test(this.state.email.toLowerCase()); 
   }
 
