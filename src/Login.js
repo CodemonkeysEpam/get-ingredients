@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import './styles/Login.scss';
+import firebase from 'firebase';
+import { firebaseApp } from './base';
+import { withRouter } from "react-router";
 
-export default class Login extends Component {
+class LoginTab extends Component {
   constructor(props) {
     super(props);
 
@@ -15,8 +17,45 @@ export default class Login extends Component {
     };
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+  signInfo = () => {
+    return  <div className="sign-info-container">
+                <h3>Meat is life</h3>
+                <button className="change-button" onClick={this.toggleActiveState}>{this.state.loginActive ? 'Sign Up' : 'Sign In'}</button>
+                <p>{this.state.loginActive ? 'Do you want to sign up?' : 'Already have an account?'}</p>
+            </div>
+  }
+
+  signForm = () => {
+      return <div className="sign-form-container"> 
+                 <div className="social-icons-container">
+                     <i className="fa fa-google" onClick={() => this.authSocial("Google")}></i>
+                     <i className="fa fa-facebook-f" onClick={() => this.authSocial("Facebook")}></i>
+                     <i className="fa fa-twitter" onClick={() => this.authSocial("Twitter")}></i>
+                 </div>
+                 <form onSubmit={this.authEmail}>
+                     <div className="form-group">
+                         <p className="control-label">Please enter your email:</p>
+                         <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onBlur={this.handleEmailChange} />
+                         <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
+                         <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
+                     </div>
+                     <div className="form-group">
+                         <p className="control-label">Please enter your password:</p>
+                         <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onBlur={this.handlePasswordChange} type="password" />
+                         <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
+                         <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
+                     </div>
+                     <button className="left-button" type="submit">{this.state.loginActive ? 'Sign In' : 'Sign Up'}</button>
+                 </form>
+             </div>
+  }
+
+  toggleActiveState = () => {
+      this.state.loginActive ? this.props.history.push('/signup') : this.props.history.push('/login');
+  }
+
+  validateForm = () => {
+    return this.checkEmailValidity() && this.checkPasswordValidity();
   }
 
   handleEmailChange = () => {
@@ -33,8 +72,40 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmit = event => {
+  authHandler = () => {
+    this.props.history.push('/account');
+  }
+
+  authSocial = (provider) => {
+    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+    firebaseApp
+      .auth()
+      .signInWithPopup(authProvider)
+      .catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorCode);
+        alert(errorMessage);
+        console.log(error);
+        })
+      .then(this.authHandler)
+  }
+
+  authEmail = event => {
     event.preventDefault();
+    new firebase
+      .auth()[`${this.state.loginActive ? "signIn" : "createUser"}WithEmailAndPassword`](this.state.email, this.state.password)
+      .catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+      })
+      .then(this.authHandler);
   }
 
   checkPasswordValidity() {
@@ -42,7 +113,7 @@ export default class Login extends Component {
   }
 
   checkEmailValidity() {
-      let pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      let pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
       return pattern.test(this.state.email.toLowerCase()); 
   }
 
@@ -50,70 +121,26 @@ export default class Login extends Component {
       if(this.state.loginActive) {
           return (
             <div className="sign-container">
-               <div className="sign-info-container">
-                   <h3>Meat is life</h3>
-                   <button className="change-button" onClick={()=>this.setState({loginActive: false})}>Sign Up</button>
-                   <p>Do you want to sign up?</p>
-               </div>
-               <div className="sign-form-container"> 
-                    <div className="social-icons-container">
-                        <i className="fa fa-facebook-f"></i>
-                        <i className="fa fa-envelope"></i>
-                        <i className="fa fa-twitter"></i>
-                    </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your email:</p>
-                            <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onChange={this.handleEmailChange} />
-                            <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your password:</p>
-                            <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onChange={this.handlePasswordChange} type="password" />
-                            <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <button className="left-button" disabled={!this.validateForm()} type="submit">Sign In</button>
-                    </form>
-                    <div className="or-container">or</div>
-               </div>
+               {this.signInfo()}
+               {this.signForm()}
+               <div className="or-container">or</div>
             </div>
         );
       } else {
         return (
             <div className="sign-container">
-                <div className="sign-form-container"> 
-                    <div className="social-icons-container">
-                        <i className="fa fa-facebook-f"></i>
-                        <i className="fa fa-envelope"></i>
-                        <i className="fa fa-twitter"></i>
-                    </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your email:</p>
-                            <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onChange={this.handleEmailChange} />
-                            <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <div className="form-group">
-                            <p className="control-label">Please enter your password:</p>
-                            <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onChange={this.handlePasswordChange} type="password" />
-                            <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
-                            <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
-                        </div>
-                        <button className="left-button" disabled={!this.validateForm()} type="submit">Sign Up</button>
-                    </form>
-               </div>
-               <div className="sign-info-container">
-                   <h3>Meat is life</h3>
-                   <button className="change-button" onClick={()=>this.setState({loginActive: true})}>Sign In</button>
-                   <p>Already have an account?</p>
-                   <div className="or-container">or</div>
-               </div>
+               {this.signForm()}
+               {this.signInfo()}
+               <div className="or-container">or</div>
             </div>
         );
       }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+        loginActive: nextProps.location.pathname === "/login" ? true : false
+    };
   }
 
   render() {
@@ -122,3 +149,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withRouter(LoginTab);

@@ -1,6 +1,6 @@
 /* global google */  //must be here to work (else we got to add window before google)
 import React from "react"
-import { compose, withProps, lifecycle, withStateHandlers, withHandlers } from "recompose"
+import { compose, withProps, lifecycle, withStateHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
 const MapWithAMarkers = compose(
@@ -30,19 +30,24 @@ const MapWithAMarkers = compose(
     }),
     lifecycle({
         componentWillReceiveProps(nextProps) {
-            if (nextProps.hoverPlace != this.props.hoverPlace) {
-                this.setState({
-                    isHoverSidebarItem: nextProps.hoverPlace != null ? nextProps.hoverPlace.id : null
-                });
-            }
-        },
-        componentWillMount() {
             this.setState({
-                isHoverSidebarItem: this.hoverPlace != null ? this.hoverPlace.id : null
+                isHoverSidebarItem: nextProps.hoverPlace != null ? nextProps.hoverPlace.id : null,
+                zoomToMarkers: map => {
+                    if(map != null) {
+                        const bounds = new google.maps.LatLngBounds();
+                        map.props.children.forEach((child) => {
+                            if (child.type === Marker) {
+                                bounds.extend(new google.maps.LatLng(child.props.position.lat, child.props.position.lng));
+                            }
+                        })
+                        map.fitBounds(bounds);
+                    }
+                }
             });
         },
         componentDidMount() {  
             this.setState({
+                isHoverSidebarItem: this.hoverPlace != null ? this.hoverPlace.id : null,
                 zoomToMarkers: map => {
                     if(map != null) {
                         const bounds = new google.maps.LatLngBounds();

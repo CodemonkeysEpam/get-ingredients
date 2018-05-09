@@ -7,7 +7,7 @@ export default class Footer extends React.Component {
         return(
             <footer>
                 <ul className="left-column">
-                    <li><a href="/contact-us">Contact Us</a></li>
+                    <li><a href="/contactus">Contact Us</a></li>
                     <li>
                         <div className="social-networks">
                             <a href="https://github.com/CodemonkeysEpam" target="_blank"><div className="github"></div></a>

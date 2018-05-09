@@ -1,33 +1,74 @@
 import React from 'react';
 import FindFoodTab from './FindFoodTab';
 import FindLocationTab from './FindLocationTab';
-import Meals from './Meals';
-import Places from './Places';
-import Menus from './Menus';
 import './styles/MealsSection.scss';
-
+import { Link } from 'react-router-dom';
+import base from './base';
 export default class MainSection extends React.Component {
   constructor(props) {
       super(props);
 
       this.state = {
-          currentTab: 'FindYourMeal'
+            currentTab: 'findyourmeal',
+            placesList: [],
+            mealsList: [],
+            menusList: []
       }
   }
-
-  handleClick (tab) {
-      this.setState({
-          currentTab: tab
+  
+  componentDidMount() {
+    this.refPlaces = base.bindToState(`meals/places`, {
+        context: this,
+        state: 'placesList',
+        asArray: true
       });
-}
+    this.refMeals = base.bindToState(`meals/meals`, {
+        context: this,
+        state: 'mealsList',
+        asArray: true
+      });
+    this.refMenus = base.bindToState(`meals/menus`, {
+        context: this,
+        state: 'menusList',
+        asArray: true,
+      });
+  }
+
+  componentWillUnmount() {
+      base.removeBinding(this.refPlaces);
+      base.removeBinding(this.refMeals);
+      base.removeBinding(this.refMenus);
+  }
 
 displayTab () {
-    if (this.state.currentTab === 'FindYourPlace') {
-        return (<FindLocationTab list={Places.PlacesList} />)
+    if (this.state.currentTab === 'findyourplace') {
+        return (
+        <React.Fragment>
+            {this.state.placesList.length > 0 ?
+            <FindLocationTab list={this.state.placesList} />
+            :
+            <div>...</div>
+            }
+        </React.Fragment>
+        )
     } else {
-        return <FindFoodTab itemsList={Meals.MealsList} placesList={Places.PlacesList} menusList={Menus.MenusList} />
+        return (
+        <React.Fragment>
+            {this.state.mealsList.length > 0 && this.state.placesList.length > 0 && this.state.menusList.length > 0 ?
+            <FindFoodTab itemsList={this.state.mealsList} placesList={this.state.placesList} menusList={this.state.menusList} />
+            :
+            <div>...</div>
+            }
+        </React.Fragment>
+        )
     }
 }
+
+static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+        currentTab: nextProps.location.search === "?findyourplace" ? "findyourplace" : "findyourmeal"
+    };
+  }
 
   render () {
     return (
@@ -36,16 +77,17 @@ displayTab () {
             <div className="find-tabs">
                 <div className="container">
                     <div className="flex-tabs">
-                        <a href="#" id="find-your-place" className={this.state.currentTab === 'FindYourPlace' ? "find-tab tab-red active": "find-tab tab-red"} onClick={() => this.handleClick('FindYourPlace')}>Find your place</a>
-                        <a href="#" id="find-your-meal" className={this.state.currentTab === 'FindYourMeal' ? "find-tab tab-yellow active": "find-tab tab-yellow"} onClick={() => this.handleClick('FindYourMeal')}>Find your meal</a>
+                    <Link to="/meals?findyourplace" className={this.state.currentTab === 'findyourplace' ? "find-tab tab-red active": "find-tab tab-red"}>Find your place</Link>
+                    <Link to="/meals?findyourmeal" className={this.state.currentTab === 'findyourmeal' ? "find-tab tab-yellow active": "find-tab tab-yellow"}>Find your meal</Link>
                     </div>
                 </div>
             </div>
             <div className="container">
-            {this.displayTab()}
+                <div className="find-tab-body">
+                    {this.displayTab()}
+                </div>
             </div>
         </div>
-
     );
   }
 }

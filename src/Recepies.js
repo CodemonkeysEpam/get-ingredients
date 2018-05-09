@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/Ashot.scss';
+import './styles/Recepies.scss';
 import ImageGallery from 'react-image-gallery';
 import RecepiesResources from './RecepiesResources';
 
@@ -18,7 +18,7 @@ export default class Ashot extends React.Component {
       return(
         <div className="recepts">
           <p>{RecepiesResources.Recepies[index][str]}</p>
-          <img src={RecepiesResources.Recepies[index].img}/>
+          <img src={RecepiesResources.Recepies[index].img} alt=""/>
         </div>
       );
     }

@@ -16,8 +16,12 @@ export default class FindFoodTab extends React.Component {
   }
 
   mealList = () => {
-    //unique meals from all menus
-    let uniqueMealsIDs = Array.from(this.props.menusList.reduce((acc,elem)=>acc.add(elem.mealId), new Set()));
+    let uniqueMealsIDs = [];
+    this.props.menusList.forEach(elem => {
+        if(uniqueMealsIDs.indexOf(elem.mealId) === -1) {
+            uniqueMealsIDs.push(elem.mealId)
+        };
+    });
     let currentMeals = [];
     Object.keys(uniqueMealsIDs).forEach(key => this.props.itemsList.forEach(meal => {
         if(meal.id === uniqueMealsIDs[key]){
@@ -29,11 +33,11 @@ export default class FindFoodTab extends React.Component {
 
   placeList = (id) => {
     //places for current meal
-    var currentMeal = this.props.menusList.filter(el => el.mealId === id);
-    var currentPlaces = []
+    let currentMeal = this.props.menusList.filter(el => el.mealId === id);
+    let currentPlaces = []
     currentMeal.forEach(el => this.props.placesList.forEach(place => {
         if(place.id === el.placeId){
-            var obj = {
+            let obj = {
                 id: place.id,
                 name: place.name,
                 address: place.address,
@@ -99,7 +103,7 @@ export default class FindFoodTab extends React.Component {
             <React.Fragment key={i}>
                 <div className="place-item">
                     <div className="flex-item-info">
-                    <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true"></i></a>
+                    <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i>
                         <div className="place-info">
                             <div className="place-name">{place.name}</div>
                             <div className="place-address">{place.address}</div>
@@ -117,33 +121,33 @@ export default class FindFoodTab extends React.Component {
 
   render () {
     return (
-            <div className="find-tab-body">
-                <div className="sidebar sidebar-left">
-                    <div className="search-container">
-                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchItemInput = input} onChange={this.handleItemInputChange} />
-                        <i className="fa fa-search"></i>
-                    </div>
-                    <div className="search-result-container">
-                        <div className="search-response">
-                            {this.renderItemsList()}
-                        </div>
-                    </div>
+        <React.Fragment>
+            <div className="sidebar sidebar-left">
+                <div className="search-container">
+                    <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchItemInput = input} onChange={this.handleItemInputChange} />
+                    <i className="fa fa-search"></i>
                 </div>
-                <div className="center-container">
-                    <img alt={this.state.currentItem.name} src={window.location.origin + this.state.currentItem.src} />
-                </div>
-                <div className="sidebar sidebar-right">
-                    <div className="search-container">
-                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
-                        <i className="fa fa-search"></i>
-                    </div>
-                    <div className="search-result-container">
-                        <div className="search-response">
-                            {this.renderPlacesList()}
-                        </div>
+                <div className="search-result-container">
+                    <div className="search-response">
+                        {this.renderItemsList()}
                     </div>
                 </div>
             </div>
+            <div className="center-container">
+                <img alt={this.state.currentItem.name} src={window.location.origin + this.state.currentItem.src} />
+            </div>
+            <div className="sidebar sidebar-right">
+                <div className="search-container">
+                    <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
+                    <i className="fa fa-search"></i>
+                </div>
+                <div className="search-result-container">
+                    <div className="search-response">
+                        {this.renderPlacesList()}
+                    </div>
+                </div>
+            </div>
+        </React.Fragment>
     );
   }
 }

@@ -1,14 +1,16 @@
 import React from 'react';
 import MyOrders from "./MyOrders";
-import ShippingAddress from "./ShippingAddress";
+import MyInfo from "./MyInfo";
 import Partners from "./Partners";
+import { withRouter } from "react-router";
+import base from './base';
 
-export default class Account extends React.Component {
+class Account extends React.Component {
   constructor(props) {
       super(props);
 
       this.state = {
-          currentTab: 'MyOrders'
+          currentTab: 'MyInfo'
       }
   }
 
@@ -19,12 +21,12 @@ export default class Account extends React.Component {
 }
 
 displayTab () {
-    if(this.state.currentTab === "MyOrders") {
-        return <MyOrders />
-    } else if (this.state.currentTab === "ShippingAddress") {
-        return <ShippingAddress />
+    if(this.state.currentTab === "MyInfo") {
+        return <MyInfo user={this.props.user}/>
+    } else if(this.state.currentTab === "MyOrders") {
+        return <MyOrders uid={this.props.user.uid}/>
     } else if (this.state.currentTab === "Partners") { 
-        return <Partners />
+        return <Partners uid={this.props.user.uid}/>
     }
 }
 
@@ -33,9 +35,10 @@ displayTab () {
         <div className="main-section">
         <div className="container">
         <div className="page-heading">Account</div>
+            <a href="#" onClick={() => this.handleClick('MyInfo')}>My Info</a> | 
             <a href="#" onClick={() => this.handleClick('MyOrders')}>My orders</a> |
-            <a href="#" onClick={() => this.handleClick('ShippingAddress')}>Shipping address</a> | 
             <a href="#" onClick={() => this.handleClick('Partners')}>Partners</a>
+            <br />
             <br />
             {this.displayTab()}
             </div>
@@ -44,3 +47,5 @@ displayTab () {
     );
   }
 }
+
+export default withRouter(Account);

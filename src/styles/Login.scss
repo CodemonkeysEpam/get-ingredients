@@ -8,17 +8,17 @@
 
 .sign-container {
     width: 800px;
+    height: 470px;
     margin: 0 auto;
     background: #fff;
     display: flex;
+    position: relative;
 }
 
 .sign-form-container, .sign-info-container {
     width: 50%;
-    height: 470px;
     border: none;
     text-align: center;
-    position: relative;
 }
 
 .or-container {
@@ -28,10 +28,11 @@
     background: #dadada;
     border-radius: 50%;
     line-height: 50px;
-    left: -25px;
+    left: calc(50% - 25px);
     top: calc(50% - 25px);
     font-size: 16px;
     color: #000;
+    text-align: center;
 }
  
 .sign-info-container {
@@ -76,8 +77,6 @@
             outline: none;
         }
     }
-
-
 }
 
 .social-icons-container {
@@ -99,6 +98,7 @@
         line-height: 50px;
         text-align: center;
         font-size: 30px;
+        cursor: pointer;
     }
 }
 

@@ -1,8 +1,27 @@
 import React from 'react';
 import './styles/ContactUs.scss';
-import GoogleMapReact from 'google-map-react'
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker,} from "react-google-maps";
 
-const Marker = (props) => <div style={{"background": "url(https://image.flaticon.com/icons/svg/33/33622.svg)", "width": "25px", "height": "25px", "backgroundSize": "100%"}}></div>;
+const MyMap = compose(
+withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+    }),
+  withScriptjs,
+  withGoogleMap
+)(props =>
+  <GoogleMap
+    defaultZoom={15}
+    defaultCenter={{lat: 49.8426, lng: 23.9997}}
+  >
+    <Marker
+      position={{lat: 49.8426, lng: 23.9997}}
+    />
+  </GoogleMap>
+  );
 
 export default class ContactUs extends React.Component {
     render() {
@@ -10,15 +29,7 @@ export default class ContactUs extends React.Component {
             <div className="contact-us">
                 <h3>We are crazy about meat. Beef. Pork. Veal. Chicken. Venison. Doesnt matter. This is our lifestyle and this is how we live. We are challenging modern vegetarian culture. We are underground. Like us? Join us.</h3>
                 <div className="map" style={{ height: '400px', width: '60%' }}>
-                    <GoogleMapReact
-                      bootstrapURLKeys={{ key: 'AIzaSyBR6d-Nuc7yQLspw41q5WREpj--vWNQdJo' }}
-                      defaultCenter={{lat: 49.8426, lng: 23.9997}}
-                      defaultZoom={15}>
-                      <Marker
-                        lat={49.842660}
-                        lng={23.999795}
-                      />
-                    </GoogleMapReact>
+                <MyMap />
                 </div>
                 <div className="contacts">
                     <address>

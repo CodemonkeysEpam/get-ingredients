@@ -19,11 +19,11 @@
 }
 
 .image-gallery-left-nav{
-  margin-left: 250px;
+  margin-left: 150px;
 }
 
 .image-gallery-right-nav{
-  margin-right: 250px;
+  margin-right: 150px;
 }
 
 .image-gallery-left-nav:hover::before, .image-gallery-right-nav:hover::before {
@@ -37,6 +37,10 @@
   top: 580px;
   left: 50%;
   position: absolute;
+}
+
+.image-gallery-thumbnails-wrapper {
+  margin-bottom: 20px;
 }
 
 .image-gallery-thumbnails-container{
@@ -77,7 +81,7 @@
   background: #7c0f0f;
 
   div {
-    margin: 20px;
+    margin: 10px;
     filter: brightness(60%);
   }
 
@@ -140,8 +144,9 @@
 //   SHRIMP
 .shrimp {
   position: relative;
+  width: 520px;
+  margin: auto;
   background: #7c0f0f;
-  left: 50%;
   top: 50px;
   transform: scale(1.5);
 
@@ -154,8 +159,8 @@
     height: 212px;
     background: url('../assets/sprites/shrink_sprites.png') -10px -10px;
     position: absolute;
+    left: 20px;
     top: 100px;
-    left: 100px;
   }
 
   .tail-meat {
@@ -164,15 +169,16 @@
     background: url('../assets/sprites/shrink_sprites.png') -10px -242px;
     position: absolute;
     top: 93px;
-    left: 139px;
+    left: 59px;
   }
 }
 
 // CRAB
 .crab {
   position: relative;
+  width: 216px;
   background: #7c0f0f;
-  left: 91%;
+  margin: auto;
   top: 100px;
   transform: scale(2);
 
@@ -209,10 +215,11 @@
 //FISH
 .fish {
   position: relative;
+  width: 500px;
+  margin: auto;
   background: #7c0f0f;
-  left: 55%;
   top: 150px;
-  transform: scale(1.5);
+  transform: scale(1.3);
 
   div{
     filter: brightness(60%);
@@ -265,8 +272,9 @@
 // RABBIT
 .rabbit {
   position: relative;
+  width: 450px;
+  margin: auto;
   background: #7c0f0f;
-  left: 35%;
   bottom: 100px;
 
   div{
@@ -279,7 +287,6 @@
     background: url('../assets/sprites/rabbit_sprites.png') -10px -10px;
     position: absolute;
     top: 100px;
-    left: 100px;
   }
 
   .shoulder {
@@ -288,7 +295,7 @@
     background: url('../assets/sprites/rabbit_sprites.png') -450px -10px;
     position: absolute;
     top: 287px;
-    left: 312px;
+    left: 212px;
   }
 
   .front-leg {
@@ -297,7 +304,7 @@
     background: url('../assets/sprites/rabbit_sprites.png') -450px -205px;
     position: absolute;
     top: 410px;
-    left: 317px;
+    left: 217px;
   }
 
   .saddle {
@@ -306,7 +313,7 @@
     background: url('../assets/sprites/rabbit_sprites.png') -622px -10px;
     position: absolute;
     top: 323px;
-    left: 178px;
+    left: 78px;
   }
 
   .rib {
@@ -315,7 +322,7 @@
     background: url('../assets/sprites/rabbit_sprites.png') -622px -180px;
     position: absolute;
     top: 425px;
-    left: 215px;
+    left: 115px;
   }
 
   .loin {
@@ -324,7 +331,7 @@
     background: url('../assets/sprites/rabbit_sprites.png') -622px -327px;
     position: absolute;
     top: 410px;
-    left: 130px;
+    left: 30px;
   }
 
   .hind-leg {
@@ -333,15 +340,16 @@
     background: url('../assets/sprites/rabbit_sprites.png') -10px -522px;
     position: absolute;
     top: 497px;
-    left: 138px;
+    left: 38px;
   }
 }
 
 // LAMB
 .lamb {
   position: relative;
+  width: 500px;
+  margin: auto;
   background: #7c0f0f;
-  left: 40%;
   bottom: 50px;
   transform: scale(1.2);
 
@@ -355,7 +363,6 @@
     background: url('../assets/sprites/lamb_sprites.png') -292px -10px;
     position: absolute;
     top: 100px;
-    left: 100px;
   }
 
   .chuck {
@@ -364,7 +371,7 @@
     background: url('../assets/sprites/lamb_sprites.png') -292px -154px;
     position: absolute;
     top: 160px;
-    left: 217px;
+    left: 117px;
   }
 
   .sholder {
@@ -373,7 +380,7 @@
     background: url('../assets/sprites/lamb_sprites.png') -156px -10px;
     position: absolute;
     top: 195px;
-    left: 176px
+    left: 76px
   }
 
   .breast {
@@ -382,7 +389,7 @@
     background: url('../assets/sprites/lamb_sprites.png') -10px -326px;
     position: absolute;
     top: 259px;
-    left: 261px;
+    left: 161px;
   }
 
   .loin {
@@ -391,7 +398,7 @@
     background: url('../assets/sprites/lamb_sprites.png') -441px -10px;
     position: absolute;
     top: 160px;
-    left: 327px;
+    left: 227px;
   }
 
   .leg {
@@ -400,15 +407,16 @@
     background: url('../assets/sprites/lamb_sprites.png') -10px -10px;
     position: absolute;
     top: 160px;
-    left: 392px;
+    left: 292px;
   }
 }
 
 // CHICKEN
 .chicken {
   position: relative;
+  width: 360px;
+  margin: auto;
   background: #7c0f0f;
-  left: 45%;
   top: 20px;
 
   div{
@@ -471,9 +479,11 @@
 // PORK
 .pork {
   position: relative;
+  width: 500px;
+  margin: auto;
   background: #7c0f0f;
-  left: 50%;
   bottom: 50px;
+  left: 30px;
   transform: scale(1.5);
 
   div{
@@ -487,7 +497,6 @@
   background: url('../assets/sprites/pork_sprites.png') -317px -129px;
   position: absolute;
   top: 200px;
-  left: 100px;
 }
 
 .arm-shoulder {
@@ -496,7 +505,7 @@
   background: url('../assets/sprites/pork_sprites.png') -160px -132px;
   position: absolute;
   top: 197px;
-  left: 155px;
+  left: 55px;
 }
 
 .blade-shoulder {
@@ -505,7 +514,7 @@
   background: url('../assets/sprites/pork_sprites.png') -10px -334px;
   position: absolute;
   top: 131px;
-  left: 160px;
+  left: 60px;
 }
 
 .hock {
@@ -514,7 +523,7 @@
   background: url('../assets/sprites/pork_sprites.png') -10px -10px;
   position: absolute;
   top: 264px;
-  left: 195px;
+  left: 95px;
 }
 
 .loin {
@@ -523,7 +532,7 @@
   background: url('../assets/sprites/pork_sprites.png') -317px -10px;
   position: absolute;
   top: 116px;
-  left: 264px;
+  left: 164px;
 }
 
 .spare-rib {
@@ -532,7 +541,7 @@
   background: url('../assets/sprites/pork_sprites.png') -160px -245px;
   position: absolute;
   top: 210px;
-  left: 285px;
+  left: 185px;
 }
 
 .side {
@@ -541,7 +550,7 @@
   background: url('../assets/sprites/pork_sprites.png') -153px -334px;
   position: absolute;
   top: 212px;
-  left: 334px;
+  left: 234px;
 }
 
 .leg {
@@ -550,16 +559,18 @@
   background: url('../assets/sprites/pork_sprites.png') -10px -132px;
   position: absolute;
   top: 120px;
-  left: 400px;
+  left: 300px;
 }
 }
 
 // BEEF
 .beef {
   position: relative;
+  width: 550px;
+  margin: auto;
   background: #7c0f0f;
-  left: 50%;
   top: 50px;
+  left: 30px;
   transform: scale(1.5);
 
   div{
@@ -658,8 +669,9 @@
 // BEAR
 .bear {
   position: relative;
+  width: 500px;
+  margin: auto;
   background: #7c0f0f;
-  left: 53%;
   top: 30px;
   transform: scale(1.5);
 
@@ -872,7 +884,7 @@
 
   img {
     margin: 30px 0;
-    min-width: 100%;
+    width: 100%;
     height: auto;
   }
 
