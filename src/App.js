@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'font-awesome/scss/font-awesome.scss';
 import { BrowserRouter } from 'react-router-dom';
 import Menu from './components/Menu/Menu';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Menu />
+          <Footer />
         </div>
       </BrowserRouter>
     );

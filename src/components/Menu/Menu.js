@@ -91,7 +91,7 @@ export default class Menu extends React.Component {
                 <PublicRoute path="/login"  component={Login} isLogin={this.state.isLogin}/>
                 <PublicRoute path="/signup"  component={Login} isLogin={this.state.isLogin}/>
                 <PrivateRoute path="/logout"  component={Logout} isLogin={this.state.isLogin}/>
-                <Route path="/contactus"  component={ContactUs}/>
+                <Route path="/contact-us" component={ContactUs}/>
                 <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin} user={this.state.user}/>
                 <Route path="/cart"  component={ShoppingCart}/>
                 <Route component={PageNotFound}/>
