@@ -16,8 +16,12 @@ export default class FindFoodTab extends React.Component {
   }
 
   mealList = () => {
-    //unique meals from all menus
-    let uniqueMealsIDs = Array.from(this.props.menusList.reduce((acc,elem)=>acc.add(elem.mealId), new Set()));
+    let uniqueMealsIDs = [];
+    this.props.menusList.forEach(elem => {
+        if(uniqueMealsIDs.indexOf(elem.mealId) === -1) {
+            uniqueMealsIDs.push(elem.mealId)
+        };
+    });
     let currentMeals = [];
     Object.keys(uniqueMealsIDs).forEach(key => this.props.itemsList.forEach(meal => {
         if(meal.id === uniqueMealsIDs[key]){
@@ -29,11 +33,11 @@ export default class FindFoodTab extends React.Component {
 
   placeList = (id) => {
     //places for current meal
-    var currentMeal = this.props.menusList.filter(el => el.mealId === id);
-    var currentPlaces = []
+    let currentMeal = this.props.menusList.filter(el => el.mealId === id);
+    let currentPlaces = []
     currentMeal.forEach(el => this.props.placesList.forEach(place => {
         if(place.id === el.placeId){
-            var obj = {
+            let obj = {
                 id: place.id,
                 name: place.name,
                 address: place.address,
