@@ -41,33 +41,33 @@
 
 .image-gallery-thumbnails-wrapper {
   margin-bottom: 20px;
-}
 
-.image-gallery-thumbnails-container{
-  margin: 40px 0 10px 0;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  padding: 10px 146px;
-}
+  .image-gallery-thumbnails-container{
+    margin: 40px 0 10px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 10px 146px;
 
-.image-gallery-thumbnail-label{
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  margin-top: 20px;
-}
+    .image-gallery-thumbnail-label{
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
+    }
 
-// MEAT ICONS
-.ashot-icons-item {
-  height: 82px;
-  width: 82px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  text-align: center;
+    // MEAT ICONS
+    .ashot-icons-item {
+      height: 82px;
+      width: 82px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      text-align: center;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.2);
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
   }
 }
 
@@ -711,6 +711,7 @@
     background: url('./assets/sprites/bear_sprites.png') -10px -10px;
     position: absolute;
     left: 135px;
+    top: 8px;
   }
 
   .rib {
