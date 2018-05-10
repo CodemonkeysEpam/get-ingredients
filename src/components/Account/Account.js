@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from "react-router";
 import base from '../../services/base';
-import MyOrders from "../MyOrders/MyOrders";
-import MyInfo from "../MyInfo/MyInfo";
-import Partners from "../Partners/Partners";
+import MyOrders from "./MyOrders/MyOrders";
+import MyInfo from "./MyInfo/MyInfo";
+import Partners from "./Partners/Partners";
 
 class Account extends React.Component {
   constructor(props) {

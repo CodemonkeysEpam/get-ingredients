@@ -1,6 +1,6 @@
 import React from 'react';
-import base from '../../services/base';
-import AddPartners from "../AddPartners/AddPartners";
+import base from '../../../services/base';
+import AddPartners from "./AddPartners/AddPartners";
 
 export default class Partners extends React.Component {
     constructor(props) {

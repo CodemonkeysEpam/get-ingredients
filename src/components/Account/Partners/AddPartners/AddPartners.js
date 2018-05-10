@@ -1,6 +1,6 @@
 import React from 'react';
-import base from '../../services/base';
-import SearchAddress from '../../services/SearchAddress';
+import base from '../../../../services/base';
+import SearchAddress from './SearchAddress';
 
 export default class AddPartners extends React.Component {
     constructor(props) {

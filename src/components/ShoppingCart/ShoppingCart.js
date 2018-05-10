@@ -1,5 +1,5 @@
 import React from 'react';
-import MyOrders from "../MyOrders/MyOrders";
+import MyOrders from "../Account/MyOrders/MyOrders";
 import OrdersList from './orderList';
 
 export default class ShoppingCart extends React.Component {
