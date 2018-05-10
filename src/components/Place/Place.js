@@ -1,6 +1,18 @@
 import React from 'react';
 
 const Place = (props) => {
+    let price, add, phone;
+
+    if (props.price){
+        price = <div className="place-price">{props.price} $</div>
+    }
+    if (props.addCard){
+        add = <button className="place-button">ADD TO CARD</button>
+    }
+    if (props.phone){
+        phone = <button className="place-button">PHONE</button>
+    }
+
     return (
         <div onMouseEnter={props.MouseEnter} onMouseLeave={props.MouseLeave} className={"place-item"}>
             <div className="flex-item-info">
@@ -11,7 +23,11 @@ const Place = (props) => {
                 </div>
             </div>
             <div className="place-description">{props.description}</div>
+            {price}
+            {add}
+            {phone}
         </div> 
+
     )
 }
 
