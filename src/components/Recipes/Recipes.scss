@@ -2,75 +2,74 @@
 
 .carousel{
   margin-top: 20px;
-}
 
-.image-gallery-thumbnail.active {
-  border: 3px solid #fff;
-  background: rgba(255, 255, 255, 0.2);
-}
+  .image-gallery-thumbnail.active {
+    border: 3px solid #fff;
+    background: rgba(255, 255, 255, 0.2);
+  }
 
-.image-gallery-slides{
-  height: 600px;
-}
+  .image-gallery-slides{
+    height: 600px;
+  }
 
-.hovered:hover {
-  filter: brightness(100%);
-  cursor: pointer;
-}
+  .hovered:hover {
+    filter: brightness(100%);
+    cursor: pointer;
+  }
 
-.image-gallery-left-nav{
-  margin-left: 150px;
-}
+  .image-gallery-left-nav{
+    margin-left: 150px;
+  }
 
-.image-gallery-right-nav{
-  margin-right: 150px;
-}
+  .image-gallery-right-nav{
+    margin-right: 150px;
+  }
 
-.image-gallery-left-nav:hover::before, .image-gallery-right-nav:hover::before {
-  color: rgba(182, 182, 182, .8);
-}
+  .image-gallery-left-nav:hover::before, .image-gallery-right-nav:hover::before {
+    color: rgba(182, 182, 182, .8);
+  }
 
-.caption{
-  color: #fff;
-  font-size: 35px;
-  text-align: center;
-  top: 580px;
-  left: 50%;
-  position: absolute;
-}
+  .caption{
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+    top: 580px;
+    left: 50%;
+    position: absolute;
+  }
 
-.image-gallery-thumbnails-wrapper {
-  margin-bottom: 20px;
+  .image-gallery-thumbnails-wrapper {
+    margin-bottom: 20px;
 
-  .image-gallery-thumbnails-container{
-    margin: 40px 0 10px 0;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    padding: 10px 146px;
+    .image-gallery-thumbnails-container{
+      margin: 40px 0 10px 0;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      padding: 15px 146px;
 
-    .image-gallery-thumbnail-label{
-      color: #fff;
-      font-size: 18px;
-      text-align: center;
-      margin-top: 20px;
-    }
+      .image-gallery-thumbnail-label{
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+      }
 
-    // MEAT ICONS
-    .ashot-icons-item {
-      height: 82px;
-      width: 82px;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      text-align: center;
+      // MEAT ICONS
+      .ashot-icons-item {
+        height: 82px;
+        width: 82px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        text-align: center;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
+       &:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
       }
     }
   }
 }
-
 //   KNIVES
 .knives {
   display: flex;
