@@ -12,6 +12,7 @@ import Logout from '../Logout/Logout';
 import Account from '../Account/Account';
 import ContactUs from '../ContactUs/ContactUs';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
+import Restaurant from '../Restaurant/Restaurant';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import PrivateRoute from '../../services/PrivateRoute.js';
 import PublicRoute from '../../services/PublicRoute.js';
@@ -52,8 +53,8 @@ export default class Menu extends React.Component {
                 <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>
                 <NavLink to="/recepies" className="item item-light-green">Recipes</NavLink>
                 <NavLink to="/shop" className="item item-dark-green">Shop</NavLink>
-                
-                {this.state.isLogin ? 
+
+                {this.state.isLogin ?
                 <div className="sign">
                     <Link to="/account">Account</Link> | <Link to="/logout">Log out</Link><Link to="/cart"><i className="fa fa-shopping-cart"></i></Link>
                 </div>
@@ -75,6 +76,7 @@ export default class Menu extends React.Component {
                 <Route path="/contact-us" component={ContactUs}/>
                 <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin}/>
                 <Route path="/cart"  component={ShoppingCart}/>
+                <Route path="/restaurant/:id" component={Restaurant}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </React.Fragment>

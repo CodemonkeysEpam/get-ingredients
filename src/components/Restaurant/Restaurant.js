@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery';
 import { compose, withProps } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker,} from "react-google-maps";
 import MealItem from '../MealItem/MealItem.js';
+import base from "../../services/base.js";
 
 const MyMap = compose(
 withProps({
@@ -60,7 +61,19 @@ export default class Restaurant extends React.Component{
         console.log(this.state.searchValue);
     }
 
+    componentDidMount() {
+        this.refPlace = base.bindToState(`meals/places/${this.props.match.params.id - 1 }`, {
+            context: this,
+            state: 'place'
+         });
+    }
+
+    componentWillUnmount() {
+        base.removeBinding(this.refPlace);
+    }
+
     render() {
+        console.log(this.state.place);
 
         const images = [
             {
@@ -83,7 +96,7 @@ export default class Restaurant extends React.Component{
 
         return (
             <div className="container restaurant">
-                <h2>{this.state.name}</h2>
+                <h2></h2>
                 <hr/>
                 <div className="carousel">
                     <ImageGallery
@@ -97,7 +110,7 @@ export default class Restaurant extends React.Component{
                 </div>
                 <div className="details">
                     <ul>
-                        <li>some description</li>
+                        <li>{}</li>
                         <li>{this.state.workingTime}</li>
                         <li>{this.state.phoneNumber}</li>
                         <li><address>{this.state.address}</address></li>
