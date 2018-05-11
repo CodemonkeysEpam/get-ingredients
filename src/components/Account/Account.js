@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router";
 import MyOrders from "./MyOrders/MyOrders";
-import MyInfo from "./MyInfo/MyInfo";
+import Dashboard from "./Dashboard/Dashboard";
 import Partners from "./Partners/Partners";
 import firebase from "firebase";
 import "./Account.scss";
@@ -11,7 +11,7 @@ class Account extends React.Component {
       super(props);
 
       this.state = {
-          currentTab: 'MyInfo',
+          currentTab: 'Dashboard',
           user: firebase.auth().currentUser,
           isEditName: false
       }
@@ -24,8 +24,8 @@ class Account extends React.Component {
 }
 
 displayTab () {
-    if(this.state.currentTab === "MyInfo") {
-        return <MyInfo user={this.state.user}/>
+    if(this.state.currentTab === "Dashboard") {
+        return <Dashboard uid={this.state.user.uid}/>
     } else if(this.state.currentTab === "MyOrders") {
         return <MyOrders uid={this.state.user.uid}/>
     } else if (this.state.currentTab === "Partners") { 
@@ -48,13 +48,13 @@ getPhotoURL(defaultURL) {
 
 getFormattedTime = () =>{
     var today = new Date();
-    var y = today.getFullYear();
-    var m = today.getMonth();
-    var d = today.getDate();
+    var Y = today.getFullYear();
+    var M = today.getMonth();
+    var D = today.getDate();
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
-    return y + "-" + m + "-" + d + "-" + h + "-" + m + "-" + s;
+    return Y + "-" + M + "-" + D + "-" + h + "-" + m + "-" + s;
 }
 
 
@@ -123,9 +123,12 @@ render () {
                             }
                         </div>
                     </div>
-                    <a href="#" onClick={() => this.handleClick('MyInfo')}>My Info</a> | 
-                    <a href="#" onClick={() => this.handleClick('MyOrders')}>My orders</a> |
-                    <a href="#" onClick={() => this.handleClick('Partners')}>Partners</a>
+                    <div className="menu-profile">
+                        <div className="item" onClick={() => this.handleClick('Dashboard')}>Dashboard</div> 
+                        <div className="item" onClick={() => this.handleClick('MyOrders')}>My orders</div>
+                        <div className="item" onClick={() => this.handleClick('Partners')}>Partners</div>
+                    </div>
+                    
                     </div>
                     <div className="main-section">
                         {this.displayTab()}

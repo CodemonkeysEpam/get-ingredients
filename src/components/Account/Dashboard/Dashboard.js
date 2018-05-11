@@ -4,9 +4,9 @@ export default class MyInfo extends React.Component {
     render() {
         return (
             <div>
-                <p>Name: {this.props.user.displayName}</p>
-                <p>Email: {this.props.user.email}</p>
-                <p>Photo: </p>
+               All orders: 5, Waiting shipment: 0, Received: 5
+               <br/>
+               Recomended:
             </div>
         )
     }

@@ -45,29 +45,47 @@ export default class Partners extends React.Component {
           base.removeBinding(this.refShops);
       }
     
+    
     displayTab () {
         if(this.state.currentTab === "Partners") {
             return (
                 <React.Fragment>
-                    <a href="#" onClick={() => this.handleClick('AddPartners')}>Add new item</a>
-                    <br />
-                    <h2>Places:</h2>
-                    {this.state.placesList.length > 0 ?
-                    this.state.placesList.map((place, index) => (
-                        <div key={place.id}>{index+1}) Name:{place.name} <br/> Address: {place.address} <br/> Verified: {place.verified.toString()}</div>
-                    ))
-                    :
-                    <div>No data</div>
-                    }
-                    <br />
-                    <h2>Shops:</h2>
-                    {this.state.shopsList.length > 0 ?
-                    this.state.shopsList.map((place, index) => (
-                        <div key={place.id}>{index+1}) Name:{place.name} <br/> Address: {place.address} <br/> Verified: {place.verified.toString()}</div>
-                    ))
-                    :
-                    <div>No data</div>
-                    }
+                    <div className="type-container">
+                        <div className="header">
+                            <div className="title">Places:</div>
+                            <a href="#" className="add-button" onClick={() => this.handleClick('AddPartners')}>Add new item</a>
+                        </div>
+                        
+                        {this.state.placesList.length > 0 ?
+                        this.state.placesList.map((place, index) => (
+                            <div className="item" key={place.id}>
+                            {/* <img src="#" alt="logo"/> */}
+                            <div className="body">
+                                {index+1}) Name:{place.name} <br/> Address: {place.address} <br/> Verified: {place.verified.toString()}
+                            </div>
+                            
+                            
+                            </div>
+                        ))
+                        :
+                        <div>No data</div>
+                        }
+                    </div>
+
+                    <div className="type-container">
+                        <div className="header">
+                            <div className="title">Shops:</div>
+                            <a href="#" className="add-button" onClick={() => this.handleClick('AddPartners')}>Add new item</a>
+                        </div>
+                        
+                        {this.state.shopsList.length > 0 ?
+                        this.state.shopsList.map((place, index) => (
+                            <div className="item" key={place.id}>{index+1}) Name:{place.name} <br/> Address: {place.address} <br/> Verified: {place.verified.toString()}</div>
+                        ))
+                        :
+                        <div>No data</div>
+                        }
+                    </div>
                 </React.Fragment>
             )
         } else {
@@ -83,9 +101,9 @@ export default class Partners extends React.Component {
     }
     render() {
         return (
-            <React.Fragment>
-            {this.displayTab()}
-            </React.Fragment>
+            <div className="partners">
+                {this.displayTab()}
+            </div>
         )
     }
 }

@@ -1,5 +1,7 @@
 .account-body{
     display: flex;
+    box-sizing: border-box;
+    align-items: flex-start;
 
     .left-sidebar {
         width: 300px;
@@ -73,6 +75,7 @@
                     font-size: 20px;
                     cursor: pointer;
                     opacity: 0;
+                    transition: .2s ease;
 
                     &:hover {
                         opacity: 1;
@@ -94,12 +97,63 @@
             }
         }
 
-        
-
-        
+        .menu-profile {
+            .item{
+                padding: 20px;
+                color: #fff;
+                border: 1px solid #fff;
+            }
+        }
     }
 
     .main-section {
         flex: auto;
+        margin-left: 20px;
+        /*border: 1px solid #fff;*/
+        color: #fff;
+
+        .partners {
+            .type-container {
+                border: 1px solid #fff;
+                padding: 20px;
+
+                &:nth-child(n+2) {
+                    margin-top: 20px;
+                }
+
+                .header {
+                    display: flex;
+                    margin-bottom: 20px;
+                    justify-content: space-between;
+
+                    .title {
+                        font-size: 22px;
+                        
+                    }
+
+                    .add-button {
+ 
+                        border: 1px solid #fff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                }
+
+                .item {
+                    border: 1px solid #fff;
+                    padding: 20px;
+                    display: flex;
+
+                    img {
+                        width: 100px;
+                    }
+
+                    .body {
+                        flex: auto;
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
     }
 }
