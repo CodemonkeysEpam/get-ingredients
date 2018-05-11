@@ -3,6 +3,7 @@ import './Restaurant.scss';
 import ImageGallery from 'react-image-gallery';
 import { compose, withProps } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker,} from "react-google-maps";
+import MealItem from '../MealItem/MealItem.js';
 
 const MyMap = compose(
 withProps({
@@ -28,20 +29,38 @@ export default class Restaurant extends React.Component{
 
     constructor(props){
         super(props);
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.state = {
+            searchValue: '',
             name: "McDonalds",
             workingTime: "11:00 - 23:00",
             phoneNumber: "0 800 340 11 11",
-            address: "Rynok Sq 23"
+            address: "Rynok Sq 23",
+            meals: [
+                {
+                    'name': "Australian burger",
+                    'ingredients': ["meat", "bread", "souse", "tomato"]
+                },
+                {
+                    'name': "Californian burger",
+                    'ingredients': ["meat", "bread", "souse", "tomato"]
+                },
+                {
+                    'name': "Cheeseburger",
+                    'ingredients': ["meat", "bread", "souse", "cheese"]
+                }
+            ]
         }
     }
 
+    handleInputChange(event){
+        this.setState({
+            searchValue: event.target.value
+        })
+        console.log(this.state.searchValue);
+    }
+
     render() {
-        // <img className="restaurant-logo" src={this.props.logoUrl} alt={this.props.name} >
-        // <div className="place-name">{this.props.name}</div>
-        // {this.props.address && <div className="place-address">{this.props.address}</div>}
-        // {this.props.showOnMapClick && <button className="restaurant-show-on-map" onClick={() => {this.props.showOnMapClick(this)}}></button>}
-        // <button className="restaurant-details" onClick={() => {this.props.detailsClick(this)}}></button>
 
         const images = [
             {
@@ -54,6 +73,13 @@ export default class Restaurant extends React.Component{
                 original: 'http://gritsandgrids.s3.amazonaws.com/media/2016/03/e22b8326364947.5635482042182.jpg'
             }
         ]
+
+        let filteredArray = this.state.meals.filter((el)=>{
+            let index = el.name.toLowerCase().indexOf(this.state.searchValue);
+            if(index !== -1){
+                return true;
+            } else return false;
+        })
 
         return (
             <div className="container restaurant">
@@ -81,7 +107,15 @@ export default class Restaurant extends React.Component{
                     <MyMap />
                 </div>
                 <hr/>
-                //Restaurant meals component here
+                <h3>Our products</h3>
+                <div className="search-container">
+                    <input type="text" className="searchInput" placeholder="Type the name here" onChange={this.handleInputChange} />
+                </div>
+                {
+                    filteredArray.map((item, index) => {
+                        return <MealItem meal={item} key={index}/>
+                    })
+                }
             </div>
         )
     }
