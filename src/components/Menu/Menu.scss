@@ -13,15 +13,12 @@
     }
 
     .title {
-        text-transform: uppercase;
-        font-weight: 300;
-        font-size: 40px;
+        background-image: url(/img/menu/meatislife.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         width: 20%;
-        img{
-            width: 95%;
-            height: auto;
-            margin: auto;
-        }
+        height: 65px;
     }
     
     .item {
