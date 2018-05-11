@@ -65,7 +65,7 @@ export default class Menu extends React.Component {
     return this.state.loading === true ? <h1>Loading</h1> : (
         <React.Fragment>
             <div className="menu">
-                <Link to="/" className="title">Meat is life</Link>
+                <Link to="/" className="title"><img src='../img/menu/meatislife.png'/></Link>
                 <NavLink exact to="/" className="item item-maroon">Home</NavLink>
                 <NavLink to="/meals" className="item item-red">Meals</NavLink>
                 <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>
