@@ -10,7 +10,6 @@ footer {
 
     .left-column {
         width: 49%;
-        padding-left: 5%;
         text-transform: uppercase;
         .social-networks {
             padding: 5px;
@@ -60,7 +59,17 @@ footer {
         width: 20%;
     }
 
-    @media screen and (max-width: 768px) {
+    .container-wrapper {
+        box-sizing: border-box;
+        width: 1200px;
+        padding: 0 20px;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 992px) {
+        .container-wrapper{
+            width: 100%;
+        }
         ul {
             display: block;
             text-align: center;
