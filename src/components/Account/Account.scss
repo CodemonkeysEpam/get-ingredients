@@ -1,0 +1,58 @@
+.account-body{
+    display: flex;
+
+    .left-sidebar {
+        width: 300px;
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+
+            &:hover .change-button {
+                opacity: 1;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            & > input {
+                display: none;
+            }
+
+            .change-button {
+                height: 45px;
+                line-height: 45px;
+                font-size: 14px;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background: rgba(29,32,34,.7);
+                color: #fff;
+                opacity: 0;
+                transition: .5s ease;
+                cursor: pointer;
+
+                span {
+                    opacity: 0.8;
+                }
+
+                &:hover > span{
+                    opacity: 1;
+                }
+            }
+        }
+
+        
+    }
+
+    .main-section {
+        flex: auto;
+    }
+}
