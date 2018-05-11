@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import base from '../../services/base';
 import FindFoodTab from '../FindFoodTab/FindFoodTab';
-import FindLocationTab from '../FindLocationTab/FindLocationTab';
+import FindLocationTabNew from '../FindLocationTabNew/FindLocationTabNew';
 import './MealsSection.scss';
 
 export default class MainSection extends React.Component {
@@ -46,7 +46,7 @@ displayTab () {
         return (
         <React.Fragment>
             {this.state.placesList.length > 0 ?
-            <FindLocationTab list={this.state.placesList} />
+            <FindLocationTabNew list={this.state.placesList} />
             :
             <div>...</div>
             }
