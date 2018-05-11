@@ -11,12 +11,13 @@ class LoginTab extends Component {
 
     this.state = {
       loginActive: true,
+      forgetActive: false,
       name: "",
       email: "",
       password: "",
-      nameValid: true,
-      emailValid: true,
-      passwordValid: true
+      nameValid: false,
+      emailValid: false,
+      passwordValid: false
     };
   }
 
@@ -35,28 +36,60 @@ class LoginTab extends Component {
                      <i className="fa fa-facebook-f" onClick={() => this.authSocial("Facebook")}></i>
                      <i className="fa fa-twitter" onClick={() => this.authSocial("Twitter")}></i>
                  </div>
-                 <form onSubmit={this.authEmail}>
-                      {this.state.loginActive ? null :
+                 {this.state.loginActive ?
+                  this.state.forgetActive ? 
+                    
+                    <form onSubmit={this.resetPassword}>
+                      <h1>Reset password: </h1>
+                      <br/>
+                      <div className="form-group">
+                          <p className="control-label">Please enter your email:</p>
+                          <input className="login-input" autoFocus={this.state.loginActive} placeholder="Type the e-mail here" type="email" value={this.state.email} onChange={this.handleEmailChange} required/>
+                          <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
+                          <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
+                      </div>
+                      <button className="left-button" type="submit">Submit</button>
+                      <a href="#" onClick={this.handleForget}>Back</a>
+                    </form> 
+                    :
+                    <form onSubmit={this.authEmail}>
+                      <div className="form-group">
+                          <p className="control-label">Please enter your email:</p>
+                          <input className="login-input" autoFocus={this.state.loginActive} placeholder="Type the e-mail here" type="email" value={this.state.email} onChange={this.handleEmailChange} required/>
+                          <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
+                          <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
+                      </div>
+                      <div className="form-group">
+                          <p className="control-label">Please enter your password:</p>
+                          <input className="login-input" placeholder="Type the password here" value={this.state.password} onChange={this.handlePasswordChange} type="password" required/>
+                          <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
+                          <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
+                      </div>
+                      <button className="left-button" type="submit">Sign In</button>
+                      <a href="#" onClick={this.handleForget}>Forgot your password?</a>
+                    </form> 
+                  : 
+                  <form onSubmit={this.authEmail}>
                       <div className="form-group">
                          <p className="control-label">Please enter your name:</p>
-                         <input className="login-input" autoFocus placeholder="Type the name here" type="text" onChange={this.handleNameChange} />
+                         <input className="login-input" autoFocus placeholder="Type the name here" type="text" onChange={this.handleNameChange} required/>
                          <i className="fa fa-check-circle" style={{display: this.state.nameValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.nameValid ? 'none' : 'inline-block'}}></i>
-                     </div>}
+                     </div>
                      <div className="form-group">
                          <p className="control-label">Please enter your email:</p>
-                         <input className="login-input" autoFocus={this.state.loginActive} placeholder="Type the e-mail here" type="email" value={this.state.email} onChange={this.handleEmailChange} />
+                         <input className="login-input" autoFocus={this.state.loginActive} placeholder="Type the e-mail here" type="email" value={this.state.email} onChange={this.handleEmailChange} required/>
                          <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
                      </div>
                      <div className="form-group">
                          <p className="control-label">Please enter your password:</p>
-                         <input className="login-input" placeholder="Type the password here" value={this.state.password} onChange={this.handlePasswordChange} type="password" />
+                         <input className="login-input" placeholder="Type the password here" value={this.state.password} onChange={this.handlePasswordChange} type="password" required/>
                          <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
                      </div>
-                     <button className="left-button" type="submit">{this.state.loginActive ? 'Sign In' : 'Sign Up'}</button>
-                 </form>
+                     <button className="left-button" type="submit">Sign Up</button>
+                 </form>}
              </div>
   }
 
@@ -64,8 +97,32 @@ class LoginTab extends Component {
       this.state.loginActive ? this.props.history.push('/signup') : this.props.history.push('/login');
   }
 
+
+  resetPassword = (event) => {
+    event.preventDefault();
+    if(this.state.emailValid) {
+      firebase.auth().sendPasswordResetEmail(this.state.email).then(function() {
+        console.log("email sent");
+      }).catch(function(error) {
+        console.log(error);
+      });
+    }
+    else {
+      console.log("not valid");
+    }
+    
+  }
+
+  handleForget = () => {
+    this.setState({
+      forgetActive: !this.state.forgetActive
+    })
+  }
+
   validateForm = () => {
-    return this.checkEmailValidity() && this.checkPasswordValidity();
+    return this.state.loginActive ? 
+      this.state.emailValid && this.state.passwordValid:
+      this.state.emailValid && this.state.passwordValid && this.state.name;
   }
 
   handleEmailChange = (event) => {
@@ -90,7 +147,6 @@ class LoginTab extends Component {
   }
 
   authHandler = (authData) => {
-    
     if(this.state.loginActive) {
       this.props.history.push('/account');
     }
@@ -123,7 +179,8 @@ class LoginTab extends Component {
 
   authEmail = event => {
     event.preventDefault();
-    new firebase
+    if(this.validateForm()) {
+      new firebase
       .auth()[`${this.state.loginActive ? "signIn" : "createUser"}WithEmailAndPassword`](this.state.email, this.state.password)
       .catch(function(error) {
       var errorCode = error.code;
@@ -136,6 +193,10 @@ class LoginTab extends Component {
       console.log(error);
       })
       .then(this.authHandler);
+    }
+    else {
+      alert("not valid");
+    }
   }
 
   checkPasswordValidity(password) {
