@@ -1,5 +1,6 @@
 import React from 'react';
 import './FindFoodTab.scss';
+import Place from '../Place/Place';
 
 export default class FindFoodTab extends React.Component {
 
@@ -101,7 +102,7 @@ export default class FindFoodTab extends React.Component {
     return this.state.currentPlacesList.map((place,i) => {
         return (
             <React.Fragment key={i}>
-                <div className="place-item">
+                {/* <div className="place-item">
                     <div className="flex-item-info">
                     <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i>
                         <div className="place-info">
@@ -112,7 +113,15 @@ export default class FindFoodTab extends React.Component {
                     <div className="place-price">{place.price} $</div>
                     <button className="place-button">ADD TO CARD</button>
                     <button className="place-button">PHONE</button>
-                </div>
+                </div> */}
+                <Place
+                    name={place.name}
+                    address={place.address}
+                    price={place.price}
+                    addCard
+                    phone
+                />
+
                 { length !== i+1 ? <hr></hr> : null }
             </React.Fragment>
         )

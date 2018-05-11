@@ -1,6 +1,7 @@
 import React from 'react';
 import SimpleMap from '../GoogleMap/GoogleMap';
 import './FindLocationTab.scss';
+import Place from '../Place/Place';
 
 export default class FindLocationTab extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class FindLocationTab extends React.Component {
         return this.state.currentPlacesList.map((place, i) => {
             return (
                 <React.Fragment key={i}>
-                    <div onMouseEnter={() => this.onPlaceHover(place)} onMouseLeave={() => this.onPlaceHover(null)} className="place-item">
+                    {/* <div onMouseEnter={() => this.onPlaceHover(place)} onMouseLeave={() => this.onPlaceHover(null)} className="place-item">
                         <div className="flex-item-info">
                         <i className="fa fa-map-marker fa-3x" aria-hidden="true" onClick={() => this.onPlaceClick(place)}></i>
                             <div className="place-info">
@@ -35,7 +36,15 @@ export default class FindLocationTab extends React.Component {
                             </div>
                         </div>
                         <div className="place-description">{place.description}</div>
-                    </div>
+                    </div> */}
+                    <Place
+                        MouseEnter={() => this.onPlaceHover(place)}
+                        MouseLeave={() => this.onPlaceHover(null)}
+                        Click={() => this.onPlaceClick(place)}
+                        name={place.name}
+                        address={place.address}
+                        description={place.description}
+                    />
                     { length !== i+1 ? <hr></hr> : null }
                 </React.Fragment>
             )

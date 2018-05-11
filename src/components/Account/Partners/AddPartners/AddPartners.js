@@ -1,6 +1,7 @@
 import React from 'react';
 import base from '../../../../services/base';
 import SearchAddress from './SearchAddress';
+import firebase from 'firebase';
 
 export default class AddPartners extends React.Component {
     constructor(props) {
@@ -11,17 +12,13 @@ export default class AddPartners extends React.Component {
             name: "",
             address: null,
             location: null,
-            phone: ""
+            phone: "",
+            file: null,
+            desc: ""
         }
-        
-        this.getAddressInfo = this.getAddressInfo.bind(this);
-        this.changeType = this.changeType.bind(this);
-        this.changeName = this.changeName.bind(this);
-        this.changePhone = this.changePhone.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    getAddressInfo(place) {
+    getAddressInfo = (place) => {
         this.setState({
             address: place.formatted_address,
             location: {
@@ -31,35 +28,53 @@ export default class AddPartners extends React.Component {
         });
     }
 
-    changeType(event) {
+    changeType = (event) => {
         this.setState({
             type: event.target.value
         });
     }
 
-    changeName(event) {
+    changeName = (event) => {
         this.setState({
             name: event.target.value
         });
     }
 
-    changePhone(event) {
+    changePhone = (event) => {
         this.setState({
             phone: event.target.value
         });
     }
 
-    handleSubmit(event) {
+    changeFile = (event) => {
+        this.setState({
+            file: event.target.files[0]
+        });
+    }
+
+    changeDesc = (event) => {
+        this.setState({
+            desc: event.target.value
+        });
+    }
+
+    getFormattedTime = () =>{
+        var today = new Date();
+        var y = today.getFullYear();
+        var m = today.getMonth();
+        var d = today.getDate();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        return y + "-" + m + "-" + d + "-" + h + "-" + m + "-" + s;
+    }
+
+    handleSubmit = (event) => {
         event.preventDefault();
-        var immediatelyAvailableReference = base.push(`${this.state.type === "restaurant" ?
-        "meals" : "meat"}/places`, {
+        var immediatelyAvailableReference = base.push(this.state.type === "restaurant" ?
+        "meals/places" : "meat/shops", {
             data: {
-                name: this.state.name,
-                address: this.state.address,
-                location: this.state.location,
-                phone: this.state.phone,
-                userId: this.props.uid,
-                verified: false
+                name: this.state.name, //some data to get key
             },
             then(err){
                 if(err){
@@ -69,27 +84,36 @@ export default class AddPartners extends React.Component {
         });
 
         var generatedKey = immediatelyAvailableReference.key;
+        var type = this.state.file.name.split('.').pop();
+        var filename = `logo-${this.getFormattedTime()}.${type}`;
 
-        base.update(`${this.state.type === "restaurant" ?
-        "meals" : "meat"}/places/${generatedKey}`, {
-            data: {
-                id: generatedKey,
-                name: this.state.name,
-                address: this.state.address,
-                location: this.state.location,
-                phone: this.state.phone,
-                userId: this.props.uid,
-                verified: false
-            },
-            then(err){
-                if(!err){
-                    console.log("yes");
+        firebase.storage().ref('/places').child(generatedKey)
+        .child(filename)
+        .put(this.state.file, {contentType: this.state.file.type})
+        .then(snapshot => {
+            base.update(`${this.state.type === "restaurant" ?
+            "meals" : "meat"}/places/${generatedKey}`, {
+                data: {
+                    id: generatedKey,
+                    name: this.state.name,
+                    address: this.state.address,
+                    location: this.state.location,
+                    phone: this.state.phone,
+                    userId: this.props.uid,
+                    logoURL: snapshot.downloadURL,
+                    desc: this.state.desc,
+                    verified: false
+                },
+                then(err){
+                    if(!err){
+                        console.log("yes");
+                    }
+                    else {
+                        console.log(err);
+                    }
                 }
-                else {
-                    console.log(err);
-                }
-            }
-        });
+            });
+        })
     }
 
     render() {
@@ -117,6 +141,16 @@ export default class AddPartners extends React.Component {
                 <label>
                     Phone number:
                     <input type="text" onChange={this.changePhone} value={this.state.phone}/>
+                </label>
+                <br/>
+                <label>
+                    Photo:
+                    <input type="file" onChange={this.changeFile} accept="image/*"/>
+                </label>
+                <br/>
+                <label>
+                    Description:
+                    <textarea onChange={this.changeDesc} value={this.state.desc}></textarea>
                 </label>
                 <br/>
                 <button type="sumbmit">Send</button>
