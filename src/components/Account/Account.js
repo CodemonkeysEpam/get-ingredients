@@ -1,16 +1,17 @@
 import React from 'react';
 import { withRouter } from "react-router";
-import base from '../../services/base';
 import MyOrders from "./MyOrders/MyOrders";
 import MyInfo from "./MyInfo/MyInfo";
 import Partners from "./Partners/Partners";
+import firebase from "firebase";
 
 class Account extends React.Component {
   constructor(props) {
       super(props);
 
       this.state = {
-          currentTab: 'MyInfo'
+          currentTab: 'MyInfo',
+          user: firebase.auth().currentUser
       }
   }
 
@@ -22,11 +23,11 @@ class Account extends React.Component {
 
 displayTab () {
     if(this.state.currentTab === "MyInfo") {
-        return <MyInfo user={this.props.user}/>
+        return <MyInfo user={this.state.user}/>
     } else if(this.state.currentTab === "MyOrders") {
-        return <MyOrders uid={this.props.user.uid}/>
+        return <MyOrders uid={this.state.user.uid}/>
     } else if (this.state.currentTab === "Partners") { 
-        return <Partners uid={this.props.user.uid}/>
+        return <Partners uid={this.state.user.uid}/>
     }
 }
 

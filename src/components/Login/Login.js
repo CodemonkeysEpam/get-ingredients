@@ -11,8 +11,10 @@ class LoginTab extends Component {
 
     this.state = {
       loginActive: true,
+      name: "",
       email: "",
       password: "",
+      nameValid: true,
       emailValid: true,
       passwordValid: true
     };
@@ -34,15 +36,22 @@ class LoginTab extends Component {
                      <i className="fa fa-twitter" onClick={() => this.authSocial("Twitter")}></i>
                  </div>
                  <form onSubmit={this.authEmail}>
+                      {this.state.loginActive ? null :
+                      <div className="form-group">
+                         <p className="control-label">Please enter your name:</p>
+                         <input className="login-input" autoFocus placeholder="Type the name here" type="text" onChange={this.handleNameChange} />
+                         <i className="fa fa-check-circle" style={{display: this.state.nameValid ? 'inline-block' : 'none'}}></i>
+                         <i className="fa fa-times-circle" style={{display: this.state.nameValid ? 'none' : 'inline-block'}}></i>
+                     </div>}
                      <div className="form-group">
                          <p className="control-label">Please enter your email:</p>
-                         <input className="login-input" autoFocus placeholder="Type the e-mail here" type="email" ref={input => this.emailInput = input} onBlur={this.handleEmailChange} />
+                         <input className="login-input" autoFocus={this.state.loginActive} placeholder="Type the e-mail here" type="email" value={this.state.email} onChange={this.handleEmailChange} />
                          <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
                      </div>
                      <div className="form-group">
                          <p className="control-label">Please enter your password:</p>
-                         <input className="login-input" placeholder="Type the password here" ref={input => this.passwordInput = input} onBlur={this.handlePasswordChange} type="password" />
+                         <input className="login-input" placeholder="Type the password here" value={this.state.password} onChange={this.handlePasswordChange} type="password" />
                          <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
                      </div>
@@ -59,22 +68,42 @@ class LoginTab extends Component {
     return this.checkEmailValidity() && this.checkPasswordValidity();
   }
 
-  handleEmailChange = () => {
+  handleEmailChange = (event) => {
     this.setState({
-      email: this.emailInput.value,
-      emailValid: this.checkEmailValidity()
+      email: event.target.value,
+      emailValid: this.checkEmailValidity(event.target.value)
     });
   }
 
-  handlePasswordChange = () => {
+  handleNameChange = (event) => {
     this.setState({
-      password: this.passwordInput.value,
-      passwordValid: this.checkPasswordValidity()
+      name: event.target.value,
+      nameValid: this.checkNameValidity(event.target.value)
     });
   }
 
-  authHandler = () => {
-    this.props.history.push('/account');
+  handlePasswordChange = (event) => {
+    this.setState({
+      password: event.target.value,
+      passwordValid: this.checkPasswordValidity(event.target.value)
+    });
+  }
+
+  authHandler = (authData) => {
+    
+    if(this.state.loginActive) {
+      this.props.history.push('/account');
+    }
+    else { //if we register user we set displayName and default picture
+      authData.updateProfile({
+        displayName: this.state.name,
+        photoURL: "https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=d26705f2-7d77-4c1e-b628-9cc1bd1a69e2"
+      }).then(function() {
+          this.props.history.push('/account');
+      }.bind(this)).catch(function(error) {
+          console.log(error);
+      });
+    }
   }
 
   authSocial = (provider) => {
@@ -109,14 +138,19 @@ class LoginTab extends Component {
       .then(this.authHandler);
   }
 
-  checkPasswordValidity() {
-      return this.state.password.length > 5
+  checkPasswordValidity(password) {
+      return password.length > 5
   }
 
-  checkEmailValidity() {
+  checkEmailValidity(email) {
       let pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
-      return pattern.test(this.state.email.toLowerCase()); 
+      return pattern.test(email.toLowerCase()); 
   }
+
+  checkNameValidity(name) {
+    let pattern = /[A-Z][a-zA-Z][^#&@<>\"~;$^%{}?]{1,20}$/g;
+    return pattern.test(name);
+}
 
   renderCurrentState() {
       if(this.state.loginActive) {

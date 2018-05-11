@@ -41,6 +41,7 @@ const PlacesWithStandaloneSearchBox = compose(
       onPlacesChanged={props.onPlacesChanged}
     >
       <input
+        required
         type="text"
         placeholder="Enter adress"
         style={{

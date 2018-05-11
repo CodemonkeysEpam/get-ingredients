@@ -22,8 +22,7 @@ export default class Menu extends React.Component {
 
         this.state = {
             isLogin : false,
-            loading : true,
-            user: null
+            loading : true
         }
     }
 
@@ -49,14 +48,12 @@ export default class Menu extends React.Component {
             //   })
                 this.setState({
                     isLogin: true,
-                    loading: false,
-                    user: user
+                    loading: false
                 })
               } else {
                 this.setState({
                     isLogin: false,
-                    loading: false,
-                    user: null
+                    loading: false
                 })
               }
             }.bind(this));
@@ -92,7 +89,7 @@ export default class Menu extends React.Component {
                 <PublicRoute path="/signup"  component={Login} isLogin={this.state.isLogin}/>
                 <PrivateRoute path="/logout"  component={Logout} isLogin={this.state.isLogin}/>
                 <Route path="/contact-us" component={ContactUs}/>
-                <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin} user={this.state.user}/>
+                <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin}/>
                 <Route path="/cart"  component={ShoppingCart}/>
                 <Route component={PageNotFound}/>
             </Switch>

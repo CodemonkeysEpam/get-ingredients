@@ -48,7 +48,7 @@ export default class AddPartners extends React.Component {
 
     changeFile = (event) => {
         this.setState({
-            file: event.target.files[0]
+            file: event.target.files[0] ? event.target.files[0] : null
         });
     }
 
@@ -121,7 +121,7 @@ export default class AddPartners extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Type:
-                    <select onChange={this.changeType} value={this.state.type}>
+                    <select onChange={this.changeType} value={this.state.type} required>
                         <option value="restaurant">Restaurant</option>
                         <option value="shop">Shop</option>
                     </select>
@@ -129,7 +129,7 @@ export default class AddPartners extends React.Component {
                 <br/>
                 <label>
                     Name:
-                    <input type="text" onChange={this.changeName} value={this.state.name}/>
+                    <input type="text" onChange={this.changeName} value={this.state.name} required/>
                 </label>
                 <br/>
                 <label>
@@ -140,17 +140,17 @@ export default class AddPartners extends React.Component {
                 <br/>
                 <label>
                     Phone number:
-                    <input type="text" onChange={this.changePhone} value={this.state.phone}/>
+                    <input type="text" onChange={this.changePhone} value={this.state.phone} required/>
                 </label>
                 <br/>
                 <label>
                     Photo:
-                    <input type="file" onChange={this.changeFile} accept="image/*"/>
+                    <input type="file" onChange={this.changeFile} accept="image/*" required/>
                 </label>
                 <br/>
                 <label>
                     Description:
-                    <textarea onChange={this.changeDesc} value={this.state.desc}></textarea>
+                    <textarea onChange={this.changeDesc} value={this.state.desc} required></textarea>
                 </label>
                 <br/>
                 <button type="sumbmit">Send</button>
