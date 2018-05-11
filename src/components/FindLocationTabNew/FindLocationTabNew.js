@@ -28,13 +28,17 @@ export default class FindLocationTabNew extends React.Component {
             return this.state.currentPlacesList.map((place, i) => {
                 return (
                     <React.Fragment key={i}>
-                        <div className="restaurant-item">
-                        <RestaurantItem
-                            logo={place.logo}
-                            name={place.name}
-                            address={place.address}
-                            detailsClick={() => this.detailsClick(place)}
-                        />
+                        <div className="restaurant-item" 
+                            onMouseEnter={() => this.onPlaceHover(place)} 
+                            onMouseLeave={() => this.onPlaceHover(null)}
+                            onClick={() => this.onPlaceClick(place)}
+                        >
+                            <RestaurantItem
+                                logo={place.logo}
+                                name={place.name}
+                                address={place.address}
+                                detailsClick={() => this.detailsClick(place)}
+                            />
                         </div>
                     </React.Fragment>
                 )
