@@ -35,6 +35,21 @@
             }
         }
     }
+    .search-container{
+        padding: 20px 0;
+        text-align: center;
+        h3, input {
+            display: inline-block;
+            padding: 10px 40px;
+        }
+        h3 {
+            color: white;
+            font-size: 25px;
+        }
+    }
+    .mealItems {
+        text-align: center;
+    }
 }
 .image-gallery-content:not(.fullscreen) .image-gallery-image {
   width: 100%;

@@ -1,0 +1,32 @@
+.mealItem {
+    border: 1px solid #fff;
+    width: 280px;
+    height: 300px;
+    margin: 10px 20px;
+    color: #fff;
+    padding: 20px;
+    display: inline-block;
+
+    .meal-name {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .meal-img img {
+        width: auto;
+        max-height: 150px;
+        padding: 10px 0;
+    }
+
+    .meal-price {
+        margin-top: 10px;
+    }
+
+    input{
+        margin: 0;
+        margin-top: 10px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

@@ -33,10 +33,10 @@ export default class Restaurant extends React.Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.state = {
             searchValue: '',
-            name: "McDonalds",
-            workingTime: "11:00 - 23:00",
-            phoneNumber: "0 800 340 11 11",
-            address: "Rynok Sq 23",
+            place: '',
+            mealsList: [],
+            menusList: [],
+            id: this.props.match.params.id,
             meals: [
                 {
                     'name': "Australian burger",
@@ -58,23 +58,32 @@ export default class Restaurant extends React.Component{
         this.setState({
             searchValue: event.target.value
         })
-        console.log(this.state.searchValue);
     }
 
     componentDidMount() {
-        this.refPlace = base.bindToState(`meals/places/${this.props.match.params.id - 1 }`, {
+        this.refPlace = base.bindToState(`meals/places/${this.state.id}`, {
             context: this,
-            state: 'place'
+            state: 'place',
          });
+        this.refMeals = base.bindToState(`meals/meals`, {
+             context: this,
+             state: 'mealsList',
+             asArray: true
+           });
+        this.refMenus = base.bindToState(`meals/menus`, {
+             context: this,
+             state: 'menusList',
+             asArray: true,
+           });
     }
 
     componentWillUnmount() {
         base.removeBinding(this.refPlace);
+        base.removeBinding(this.refMeals);
+        base.removeBinding(this.refMenus);
     }
 
     render() {
-        console.log(this.state.place);
-
         const images = [
             {
                 original: 'https://static.dezeen.com/uploads/2016/07/Musling_SPACE-Copenhagen_Joachim-Wichmann_dezeen_1568_0.jpg'
@@ -87,48 +96,69 @@ export default class Restaurant extends React.Component{
             }
         ]
 
-        let filteredArray = this.state.meals.filter((el)=>{
+        let filteredMenus = this.state.menusList.filter((el, index) => {
+            if(el.placeId == this.state.id) {
+                return true;
+            } else return false;
+        }).map((el) => {
+            let idOfMeal = el.mealId;
+            let meal = this.state.mealsList[idOfMeal];
+            meal.price = el.price;
+            return meal;
+        })
+
+        let filteredArray = filteredMenus.filter((el)=>{
             let index = el.name.toLowerCase().indexOf(this.state.searchValue);
             if(index !== -1){
                 return true;
             } else return false;
         })
 
+
         return (
             <div className="container restaurant">
-                <h2></h2>
+                {this.state.place  ?
+                    <div>
+                        <h2>{this.state.place.name}</h2>
+                        <hr/>
+                        <div className="carousel">
+                            <ImageGallery
+                                items={images}
+                                showThumbnails={false}
+                                showFullscreenButton={false}
+                                showPlayButton={false}
+                                showBullets={true}
+                                showNav={false}
+                            />
+                        </div>
+                        <div className="details">
+                            <ul>
+                                <li>{this.state.place.desc}</li>
+                                <li>{this.state.workingTime}</li>
+                                <li>{this.state.place.phone}</li>
+                                <li><address>{this.state.place.address}</address></li>
+                            </ul>
+                        </div>
+                        <div className="map">
+                            <MyMap />
+                        </div>
+                    </div>
+                    :
+                    <div>Loading</div>
+                }
+
                 <hr/>
-                <div className="carousel">
-                    <ImageGallery
-                        items={images}
-                        showThumbnails={false}
-                        showFullscreenButton={false}
-                        showPlayButton={false}
-                        showBullets={true}
-                        showNav={false}
-                    />
-                </div>
-                <div className="details">
-                    <ul>
-                        <li>{}</li>
-                        <li>{this.state.workingTime}</li>
-                        <li>{this.state.phoneNumber}</li>
-                        <li><address>{this.state.address}</address></li>
-                    </ul>
-                </div>
-                <div className="map">
-                    <MyMap />
-                </div>
-                <hr/>
-                <h3>Our products</h3>
                 <div className="search-container">
+                    <h3 className="search-header">Our products</h3>
                     <input type="text" className="searchInput" placeholder="Type the name here" onChange={this.handleInputChange} />
                 </div>
+                <div className="mealItems">
                 {
                     filteredArray.map((item, index) => {
-                        return <MealItem meal={item} key={index}/>
+                        return <MealItem meal={item} key={index} menus={filteredMenus}/>
                     })
                 }
+                </div>
             </div>
         )
     }

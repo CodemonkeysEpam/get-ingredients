@@ -3,7 +3,6 @@ import './RestaurantItem.scss'
 import { Link } from 'react-router-dom'
 
 const RestaurantItem = (props) => {
-    console.log("restauant item", props);
         return (
             <div className="restaurant">
                 <img className="restaurant-logo" src={props.logoUrl} alt={props.name} />
