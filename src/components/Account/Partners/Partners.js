@@ -1,6 +1,7 @@
 import React from 'react';
 import base from '../../../services/base';
 import AddPartners from "./AddPartners/AddPartners";
+import PartnersItem from "./PartnersItem/PartnersItem";
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 
@@ -52,8 +53,11 @@ class Partners extends React.Component {
         if(nextProps.location.pathname === "/account/partners/add") {
             currentTab = "AddPartners"
         }
-        else if(nextProps.location.pathname.includes("/account/partners/")) {
-            currentTab = "PartnersItem"
+        else if(nextProps.location.pathname.includes("/account/partners/restaurants/")) {
+            currentTab = "PartnersRestItem"
+        }
+        else if(nextProps.location.pathname.includes("/account/partners/shops/")) {
+            currentTab = "PartnersShopItem"
         }
         else {
             currentTab = "Partners"
@@ -70,19 +74,19 @@ class Partners extends React.Component {
                     <div className="type-container">
                         <div className="header">
                             <div className="title">Places:</div>
-                            <Link to="account/partners/add" className="add-button">Add new item</Link>
+                            <Link to="/account/partners/add" className="add-button">Add new item</Link>
                         </div>
                         
                         {this.state.placesList.length > 0 ?
                         this.state.placesList.map((place, index) => (
-                            <div className="item" key={place.id}>
+                            <Link to={`/account/partners/restaurants/${place.id}`} className="item" key={place.id}>
                                 <img src="https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=d26705f2-7d77-4c1e-b628-9cc1bd1a69e2" alt="logo"/>
                                 <div className="body">
                                     <div className="title">{place.name}</div>
                                     <div className="address">{place.address}</div>
                                     <div className="verified">Verified: {place.verified.toString()}</div>
                                 </div>
-                            </div>
+                            </Link>
                         ))
                         :
                         <div>No data</div>
@@ -92,19 +96,19 @@ class Partners extends React.Component {
                     <div className="type-container">
                         <div className="header">
                             <div className="title">Shops:</div>
-                            <Link to="account/partners/add" className="add-button">Add new item</Link>
+                            <Link to="/account/partners/add" className="add-button">Add new item</Link>
                         </div>
                         
                         {this.state.shopsList.length > 0 ?
                         this.state.shopsList.map((place, index) => (
-                            <div className="item" key={place.id}>
+                            <Link to={`/account/partners/shops/${place.id}`} className="item" key={place.id}>
                                 <img src="https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=d26705f2-7d77-4c1e-b628-9cc1bd1a69e2" alt="logo"/>
                                 <div className="body">
                                     <div className="title">{place.name}</div>
                                     <div className="address">{place.address}</div>
                                     <div className="verified">Verified: {place.verified.toString()}</div>
                                 </div>
-                            </div>
+                            </Link>
                         ))
                         :
                         <div>No data</div>
@@ -112,10 +116,20 @@ class Partners extends React.Component {
                     </div>
                 </React.Fragment>
             )
-        } else {
+        } else if(this.state.currentTab === "AddPartners"){
             return (        
                 <AddPartners uid={this.props.uid}/>
             )     
+        }
+        else if(this.state.currentTab === "PartnersRestItem"){
+            return (        
+                <PartnersItem uid={this.props.uid} type="restaurant"/>
+            )  
+        }
+        else if(this.state.currentTab === "PartnersShopItem") {
+            return (        
+                <PartnersItem uid={this.props.uid} type="shop"/>
+            )
         }
 
     }
