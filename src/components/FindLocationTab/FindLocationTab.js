@@ -140,14 +140,15 @@ export default class FindLocationTabNew extends React.Component {
                         {this.test()}
                     </Slider>
                 </div>
-
-                <div className="findplace-heading">
+                <div className="find-location-heading">
                     <h3>All Restaurants</h3>
+                </div>
+                <div className="view-buttons-container">
                     <button className="view-button" onClick={()=>{this.changeView("grid")}}>Grid</button>
                     <button className="view-button" onClick={()=>{this.changeView("map")}}>Map</button>
                 </div>
-                <div className="findplace-search">
-                    <input type="text" placeholder="Search by name" className="searchInput" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
+                <div className="find-location-search">
+                    <input type="text" placeholder="Search by name" className="search-input" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
                     <i className="fa fa-search"></i>
                 </div>
                 <div className={this.state.currentView === "map" ? 'list-container-map' : 'list-container-grid'}>
