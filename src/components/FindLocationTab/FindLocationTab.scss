@@ -1,67 +1,87 @@
-.place-item {
-    padding: 15px 20px;
+.findplace-heading {
+    position: absolute;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    height: 100px;
+    display: block;
+}
 
-    /*&:first-of-type {
-        padding-top: 0;
+.findplace-search {
+    position: absolute;
+    margin-top: 100px;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    .fa-search {
+        position: absolute;
+        top:50%;
+        right: 15px;
+        margin-top: -12.5px;
+        z-index: 1;
+        color: #000;
+        font-size: 25px;
+    }
+}
+
+.list-container-grid {
+    margin-top: 150px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 430px;
+    overflow: hidden;
+    
+    &:hover {
+        overflow-y: auto;
+    }
+}
+
+.list-container-map {
+    margin-top: 150px;
+    width: 45%;
+    margin-right: 5px;
+    text-align: center;
+    height: 430px;
+    overflow: hidden;
+
+    &:hover {
+        overflow-y: auto;
+    }
+}
+
+.restaurant-item {
+    display: inline-block;
+    width: 220px;
+    padding: 15px 20px;
+    text-align: center;
+
+    div {
+        padding: 5px;
     }
 
-    &:last-of-type {
-        padding-bottom: 0;
-    }*/
     &:hover, &.active {
         background: rgba(255, 255, 255, 0.2);
     }
 }
 
-.flex-item-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.map-container {
+    margin-top: 150px;
+    width: 80%;
+    height: 430px;
 }
 
-.place-info {
-    text-align: center;
-    margin: 0 5px;
-}
-
-.place-name {
-    font-size:19px;
-    color: #fff;
-}
-
-.place-address {
-    margin-top: 5px;
-    font-size:16px;
-    color: #fff;
-}
-
-.place-description {
-    padding-top: 15px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 300;
-}
-
-.place-price {
-    color: #fff;
-    font-size: 22px;
-    font-weight: 700;
-    text-align: center;
-    padding: 12px 0;
-}
-
-.fa-map-marker {
-    margin: 0 15px;
-    color: #fff;
-}
-
-.place-button {
+.view-button {
     width: 230px;
     text-align: center;
     height: 30px;
-    margin: 3px 0;
+    margin: 10px;
     background: #fff;
     color: #7c0f0f;
     text-transform: uppercase;
     border: none;
+    &:focus{
+        outline: none;
+    }
 }
