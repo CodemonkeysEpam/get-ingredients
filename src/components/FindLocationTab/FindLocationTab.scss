@@ -1,3 +1,7 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
 .findplace-heading {
     position: absolute;
     text-align: center;
@@ -5,11 +9,12 @@
     color: white;
     height: 100px;
     display: block;
+    top: 600px;
 }
 
 .findplace-search {
     position: absolute;
-    margin-top: 100px;
+    margin-top: 400px;
     vertical-align: middle;
     white-space: nowrap;
 
@@ -25,7 +30,7 @@
 }
 
 .list-container-grid {
-    margin-top: 150px;
+    margin-top: 450px;
     text-align: center;
     width: 100%;
     display: flex;
@@ -39,7 +44,7 @@
 }
 
 .list-container-map {
-    margin-top: 150px;
+    margin-top: 450px;
     width: 45%;
     margin-right: 5px;
     text-align: center;
@@ -67,7 +72,7 @@
 }
 
 .map-container {
-    margin-top: 150px;
+    margin-top: 400px;
     width: 80%;
     height: 430px;
 }
@@ -85,3 +90,56 @@
         outline: none;
     }
 }
+
+////////////////////////////////////
+.mySlider-container { 
+    width: 80%;
+    margin: 0 auto; 
+    // width: 90%; 
+    color: #333;
+    position: absolute;
+}
+
+.myitem{
+    width: 220px;
+    padding: 15px 20px;
+    text-align: center;
+
+    div {
+        padding: 5px;
+    }
+
+    &:hover, &.active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.content {
+    padding: 20px;
+    width: 90%;
+}
+
+.slick-slider {
+margin: 30px auto 50px;
+}
+
+.slick-dots {
+    margin-left: 0;
+}
+
+  @media (max-width: 768px) {
+    .center {
+      margin-left: -40px;
+      margin-right: -40px;
+    }
+  }
+
+  .slick-vertical .slick-slide {
+    height: 180px;
+  }
+  .slick-arrow {
+    background-color: grey;
+  }
+  .slick-arrow:hover {
+    background-color: grey;
+  }

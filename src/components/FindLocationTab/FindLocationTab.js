@@ -2,6 +2,7 @@ import React from 'react';
 import SimpleMap from '../GoogleMap/GoogleMap';
 import './FindLocationTab.scss';
 import { RestaurantItem } from '../RestaurantItem/RestaurantItem';
+import Slider from "react-slick";
 
 export default class FindLocationTabNew extends React.Component {
     constructor(props) {
@@ -106,10 +107,40 @@ export default class FindLocationTabNew extends React.Component {
         });
     }
 
+    test = () => {
+        return this.state.currentPlacesList.map((place, i) => {
+            return (
+                <React.Fragment key={i}>
+                    <div className="myitem">
+                        <RestaurantItem
+                            logo={place.logo}
+                            name={place.name}
+                            address={place.address}
+                            detailsClick={() => this.detailsClick(place)}
+                            showOnMapClick={() => this.showOnMapClick(place)}
+                        />
+                    </div>
+                </React.Fragment>
+            )
+        })
+    }
 
     render () {
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 1
+          };
         return (
             <React.Fragment>
+                <div className="mySlider-container">
+                    <Slider {...settings}>
+                        {this.test()}
+                    </Slider>
+                </div>
+
                 <div className="findplace-heading">
                     <h3>All Restaurants</h3>
                     <button className="view-button" onClick={()=>{this.changeView("grid")}}>Grid</button>
