@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Partners from "./Partners/Partners";
 import firebase from "firebase";
 import "./Account.scss";
+import { NavLink } from 'react-router-dom';
 
 class Account extends React.Component {
   constructor(props) {
@@ -16,12 +17,6 @@ class Account extends React.Component {
           isEditName: false
       }
   }
-
-  handleClick (tab) {
-    this.setState({
-        currentTab: tab
-    });
-}
 
 displayTab () {
     if(this.state.currentTab === "Dashboard") {
@@ -97,6 +92,22 @@ showEditName = () => {
     })
 }
 
+static getDerivedStateFromProps(nextProps, prevState) {
+    var currentTab;
+    if(nextProps.location.pathname.includes("/account/orders")) {
+        currentTab = "MyOrders"
+    }
+    else if(nextProps.location.pathname.includes("/account/partners")) {
+        currentTab = "Partners"
+    }
+    else {
+        currentTab = "Dashboard"
+    }
+    return {
+        currentTab
+    };
+}
+
 render () {
     return (
         <div className="main-section">
@@ -124,9 +135,9 @@ render () {
                         </div>
                     </div>
                     <div className="menu-profile">
-                        <div className="item" onClick={() => this.handleClick('Dashboard')}>Dashboard</div> 
-                        <div className="item" onClick={() => this.handleClick('MyOrders')}>My orders</div>
-                        <div className="item" onClick={() => this.handleClick('Partners')}>Partners</div>
+                        <NavLink exact to="/account/" className="item">Dashboard</NavLink> 
+                        <NavLink to="/account/orders" className="item">My orders</NavLink>
+                        <NavLink to="/account/partners" className="item">Partners</NavLink>
                     </div>
                     
                     </div>
