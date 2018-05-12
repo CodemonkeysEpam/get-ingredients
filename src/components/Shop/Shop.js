@@ -69,9 +69,6 @@ export default class Shop extends React.Component {
   }
 
   render () {
-
-    let newProducts = this.state.displayedProducts.map( el => <Product id={el.id} price={el.price} name={el.name} src={el.src} key={el.key}/>);
-    let newTags = this.state.tags.map( el => <Tag tag={el} activeTag={this.state.activeTag} key={el} callback={this.sortingProducts} /> );
     return (
     	<React.Fragment>
     		<div className='page-header'>Become one of us</div>
@@ -80,13 +77,18 @@ export default class Shop extends React.Component {
             <p>
               <span>Sort by: </span>
                 {
-                  newTags
+                  this.state.tags.map( (el, index) => 
+                    <Tag key={index} tag={el} activeTag={this.state.activeTag} key={el} callback={this.sortingProducts} /> 
+                  )
+                  
                 }
             </p>
           </div>
           <div className='products-container'>
             {
-              newProducts
+              this.state.displayedProducts.map( el => 
+                <Product key={el.id} el={el} addToShoppingCart={this.props.addToShoppingCart}/>
+              )
             }
           </div>
         </div>

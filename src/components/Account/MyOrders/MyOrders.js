@@ -7,8 +7,8 @@ export default class MyOrders extends React.Component {
         return <div className="orders-item">
                    <div>{orderItem.name}</div>
                    <div>{orderItem.price}</div>
-                   <div>{orderItem.quantity}</div>
-                   <div>{orderItem.price * orderItem.quantity}</div>
+                   <div>{orderItem.count}</div>
+                   <div>{orderItem.price * orderItem.count}</div>
                </div>
     }
 
@@ -28,7 +28,7 @@ export default class MyOrders extends React.Component {
                 <div className="orders-heading">
                     <div>Product</div>
                     <div>Price</div>
-                    <div>Quantity</div>
+                    <div>Count</div>
                     <div>Total</div>
                 </div>
                 {this.renderOrders()}

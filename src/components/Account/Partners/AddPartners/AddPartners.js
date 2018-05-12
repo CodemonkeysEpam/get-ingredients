@@ -77,19 +77,6 @@ export default class AddPartners extends React.Component {
         .child(this.state.type === "restaurant" ? "meals/places" : "meat/shops")
         .push().key;
 
-        // var immediatelyAvailableReference = base.push(this.state.type === "restaurant" ?
-        // "meals/places" : "meat/shops", {
-        //     data: {
-        //         name: this.state.name, //some data to get key
-        //     },
-        //     then(err){
-        //         if(err){
-        //             console.log(err);
-        //         }
-        //     }
-        // });
-
-        // var generatedKey = immediatelyAvailableReference.key;
         var type = this.state.file.name.split('.').pop();
         var filename = `logo-${this.getFormattedTime()}.${type}`;
 

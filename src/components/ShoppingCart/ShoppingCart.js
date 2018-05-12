@@ -8,7 +8,7 @@ export default class ShoppingCart extends React.Component {
     return (
         <div className="main-section">
             <div className="page-heading">Shopping Cart</div>
-            <MyOrders ordersList={OrdersList.list} />
+            <MyOrders ordersList={this.props.shoppingCart} />
         </div>
     );
   }

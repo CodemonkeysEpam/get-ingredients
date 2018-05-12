@@ -14,8 +14,10 @@ import ContactUs from '../ContactUs/ContactUs';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Restaurant from '../Restaurant/Restaurant';
 import PageNotFound from '../PageNotFound/PageNotFound';
-import PrivateRoute from '../../services/PrivateRoute.js';
-import PublicRoute from '../../services/PublicRoute.js';
+import PrivateRoute from '../../services/PrivateRoute';
+import PublicRoute from '../../services/PublicRoute';
+import RouteWithProps from '../../services/RouteWithProps';
+
 
 export default class Menu extends React.Component {
     constructor(props) {
@@ -23,11 +25,47 @@ export default class Menu extends React.Component {
 
         this.state = {
             isLogin : false,
-            loading : true
+            loading : true,
+            shoppingCart: {}
         }
     }
 
+    addToShoppingCart = (type, itemInfo, count, providerDetails) => {
+        const shoppingCart = {...this.state.shoppingCart};
+        if(type === "shop") {
+            if(itemInfo.id in shoppingCart) {
+                shoppingCart[itemInfo.id].count = shoppingCart[itemInfo.id].count + count;
+            }
+            else {
+                shoppingCart[itemInfo.id] = {
+                    id: itemInfo.id,
+                    name: itemInfo.id,
+                    type: type,
+                    src: itemInfo.src,
+                    price: itemInfo.price,
+                    count: count
+                }
+            }
+        }
+        else {
+
+        }    
+
+        this.setState({shoppingCart})
+    }
+    
+    componentDidUpdate() {
+        console.log(this.state.shoppingCart);
+        localStorage.setItem("shoppingCart", JSON.stringify(this.state.shoppingCart));
+    }
+
     componentDidMount() {
+        const localStorageRef = localStorage.getItem("shoppingCart");
+        if(localStorageRef) {
+            this.setState({
+                shoppingCart: JSON.parse(localStorageRef)
+            })
+        }
         firebase.auth().onAuthStateChanged(
             function(user) {
               if (user) {
@@ -56,11 +94,13 @@ export default class Menu extends React.Component {
 
                 {this.state.isLogin ?
                 <div className="sign">
-                    <Link to="/account">Account</Link> | <Link to="/logout">Log out</Link><Link to="/cart"><i className="fa fa-shopping-cart"></i></Link>
+                    <Link to="/cart"><i className="fa fa-shopping-cart"></i>{Object.keys(this.state.shoppingCart).length}</Link>
+                    <Link to="/account">Account</Link> | <Link to="/logout">Log out</Link>
                 </div>
                 :
                 <div className="sign">
-                    <Link to="/login">Sign In</Link> | <Link to="/signup">Sign Up</Link><Link to="/cart"><i className="fa fa-shopping-cart"></i></Link>
+                    <Link to="/cart"><i className="fa fa-shopping-cart"></i>{Object.keys(this.state.shoppingCart).length}</Link>
+                    <Link to="/login">Sign In</Link> | <Link to="/signup">Sign Up</Link>
                 </div>
                 }
             </div>
@@ -69,13 +109,13 @@ export default class Menu extends React.Component {
                 <Route path="/meals" component={MealsSection}/>
                 <Route path="/meat"  component={MeatSection}/>
                 <Route path="/recepies"  component={Recipes}/>
-                <Route path="/shop"  component={Shop}/>
-                <PublicRoute path="/login"  component={Login} isLogin={this.state.isLogin}/>
-                <PublicRoute path="/signup"  component={Login} isLogin={this.state.isLogin}/>
-                <PrivateRoute path="/logout"  component={Logout} isLogin={this.state.isLogin}/>
+                <RouteWithProps path="/shop" component={Shop} addToShoppingCart={this.addToShoppingCart}/>
+                <PublicRoute path="/login" component={Login} isLogin={this.state.isLogin}/>
+                <PublicRoute path="/signup" component={Login} isLogin={this.state.isLogin}/>
+                <PrivateRoute path="/logout" component={Logout} isLogin={this.state.isLogin}/>
                 <Route path="/contact-us" component={ContactUs}/>
                 <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin}/>
-                <Route path="/cart"  component={ShoppingCart}/>
+                <RouteWithProps path="/cart" component={ShoppingCart} shoppingCart={Object.values(this.state.shoppingCart)}/>
                 <Route path="/restaurant/:id" component={Restaurant}/>
                 <Route component={PageNotFound}/>
             </Switch>
