@@ -2,6 +2,7 @@ import React from 'react';
 import base from '../../../../services/base';
 import SearchAddress from './SearchAddress';
 import firebase from 'firebase';
+import { Link } from 'react-router-dom';
 
 export default class AddPartners extends React.Component {
     constructor(props) {
@@ -118,43 +119,54 @@ export default class AddPartners extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Type:
-                    <select onChange={this.changeType} value={this.state.type} required>
-                        <option value="restaurant">Restaurant</option>
-                        <option value="shop">Shop</option>
-                    </select>
-                </label>
-                <br/>
-                <label>
-                    Name:
-                    <input type="text" onChange={this.changeName} value={this.state.name} required/>
-                </label>
-                <br/>
-                <label>
-                    Address:
-                    <SearchAddress getAddressInfo={this.getAddressInfo}/>
-                    {this.state.address && <span>+</span>}
-                </label>
-                <br/>
-                <label>
-                    Phone number:
-                    <input type="text" onChange={this.changePhone} value={this.state.phone} required/>
-                </label>
-                <br/>
-                <label>
-                    Photo:
-                    <input type="file" onChange={this.changeFile} accept="image/*" required/>
-                </label>
-                <br/>
-                <label>
-                    Description:
-                    <textarea onChange={this.changeDesc} value={this.state.desc} required></textarea>
-                </label>
-                <br/>
-                <button type="sumbmit">Send</button>
-            </form>
+            <div className="add-partner">
+                <div className="header">
+                    <Link to="/account/partners" className="back-button">Back</Link>
+                    <div className="title">Add new item:</div>
+                </div>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="label">
+                        <div className="title">Type:</div>
+                        <select onChange={this.changeType} value={this.state.type} required>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="shop">Shop</option>
+                        </select>
+                    </div>
+                    <div className="label">
+                        <div className="title">Name:</div>
+                        <input type="text" onChange={this.changeName} placeholder="Enter name" value={this.state.name} required/>
+                    </div>
+                    <div className="label">
+                        <div className="title">Address:</div>
+                        <SearchAddress getAddressInfo={this.getAddressInfo}/>
+                        {this.state.address && <span>+</span>}
+                    </div>
+                    <div className="label">
+                        <div className="title">Phone number:</div>
+                        <input type="text" onChange={this.changePhone} placeholder="Enter phone number" value={this.state.phone} required/>
+                    </div>
+                    <div className="label">
+                        <div className="title">Photo:</div>
+                        <label htmlFor="file-add-partner">
+                                <div className="file">
+                                    <span>{this.state.file === null ? 
+                                    "Choose a file..." : 
+                                    this.state.file.name}
+                                    </span>
+                                </div>
+                        </label>
+                        <input type="file" id="file-add-partner" onChange={this.changeFile} accept="image/*" required/>
+                    </div>
+                    
+                    <div className="label">
+                        <div className="title">Description:</div>
+                        <textarea onChange={this.changeDesc} placeholder="Enter description" value={this.state.desc} required></textarea>
+                    </div>
+                        
+                    <br/>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
         )
     }
 }

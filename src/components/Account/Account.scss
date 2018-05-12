@@ -102,6 +102,11 @@
                 padding: 20px;
                 color: #fff;
                 border: 1px solid #fff;
+                display: block;
+
+                &.active , &:hover {
+                    background: rgba(255,255,255,.2);
+                }
             }
         }
     }
@@ -146,13 +151,141 @@
 
                     img {
                         width: 100px;
+                        height: 100px;
                     }
 
                     .body {
                         flex: auto;
                         margin-left: 20px;
+
+                        .title{
+                            font-size: 22px;
+                            font-weight: 700;
+                            margin-bottom: 5px;
+                        }
+
+                        .address {
+                            font-size: 16px;
+                            margin: 5px 0;
+
+                            &:before {
+                                font-family: FontAwesome;
+                                content: "\f041";
+                                margin-right: 5px;
+                            }
+                        }
                     }
                 }
+            }
+
+            .add-partner {
+                border: 1px solid #fff;
+                padding: 20px;
+
+                & > .header {
+                    position: relative;
+
+                    .back-button {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        padding: 10px 20px;;
+                        border: 1px solid #fff;
+                        background: inherit;
+                        color: #fff;
+                    }
+
+                    .title {
+                        font-size: 24px;
+                        margin-bottom: 25px;
+                        text-align: center;
+                    }
+                }
+
+                .label {
+                    display: flex;
+                    align-items: center;
+
+                    &:nth-child(n+2) {
+                        margin-top: 10px;
+                    }
+
+                    & > .title {
+                        width: 200px;
+                        font-size: 18px;
+                    }
+
+                    input[type="text"], select, .file {
+                        width: 300px;
+                        box-sizing: border-box;
+                        border: 1px solid transparent;
+                        height: 32px;
+                        padding: 0 12px;
+                        border-radius: 3px;
+                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                        font-size: 14px;
+                        background: #fff;
+                        outline: none;
+                        text-overflow: ellipses;
+                        color: #000;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+
+                    .file {
+                        line-height: 32px;
+                        width: 150px;
+                        text-align: center;
+
+                        &:hover {
+                            background: darken(#fff,10%);
+                        }
+                    }
+
+                    input[type="file"]{
+                        display: none;
+                    }
+
+                    textarea {
+                        width: 300px;
+                        border: 1px solid transparent;
+                        box-sizing: border-box;
+                        padding: 12px;
+                        border-radius: 3px;
+                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                        font-size: 14px;
+                        outline: none;
+                        text-overflow: ellipses;
+                        font-family: 'Roboto', sans-serif;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+
+                button {
+                    width: 100px;
+                    height: 40px;
+                   
+                    text-align: center;
+                    border: 1px solid #fff;
+                    background: inherit;
+                    color: #fff;
+                    cursor: pointer;
+
+                    &:focus {
+                        outline: none;
+                    }
+
+                    &:hover {
+                        background: rgba(255,255,255,.2)
+                    }
+
+                }
+                
             }
         }
     }
