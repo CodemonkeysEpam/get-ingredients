@@ -15,7 +15,7 @@ export default class Shop extends React.Component {
 			productsList: [],
 			tshirtSizes: [],
       tags: [],
-      activeTag: ''
+      activeTag: 'All'
 		}
 
     this.sortingProducts = this.sortingProducts.bind(this);
@@ -52,7 +52,8 @@ export default class Shop extends React.Component {
   sortingProducts(tag){
     if( tag === 'All' ){
       this.setState({
-        displayedProducts: this.state.productsList
+        displayedProducts: this.state.productsList,
+        activeTag: 'All'
       });
     } else {
       let newList = this.state.productsList.filter( el => 
@@ -60,7 +61,8 @@ export default class Shop extends React.Component {
       );
 
       this.setState({
-        displayedProducts: newList
+        displayedProducts: newList,
+        activeTag: tag
       });
 
     }
@@ -69,7 +71,7 @@ export default class Shop extends React.Component {
   render () {
 
     let newProducts = this.state.displayedProducts.map( el => <Product id={el.id} price={el.price} name={el.name} src={el.src} key={el.key}/>);
-    let newTags = this.state.tags.map( el => <Tag tag={el} key={el} callback={this.sortingProducts} /> );
+    let newTags = this.state.tags.map( el => <Tag tag={el} activeTag={this.state.activeTag} key={el} callback={this.sortingProducts} /> );
     return (
     	<React.Fragment>
     		<div className='page-header'>Become one of us</div>

@@ -25,10 +25,13 @@
 	}
 }
 .sorting-tags{
-	&:hover, &:active{
+	&:hover{
 			border-bottom: 1px solid #fff;
 			cursor: pointer;
 		}
+}
+.sorting-tags-active{
+	border-bottom: 1px solid #fff;
 }
 
 .products-container{
