@@ -146,11 +146,9 @@ class LoginTab extends Component {
     });
   }
 
-  authHandler = (authData) => {
-    if(this.state.loginActive) {
-      this.props.history.push('/account');
-    }
-    else { //if we register user we set displayName and default picture
+  authHandler = (authData, provider) => {
+     //if we register user we set displayName and default picture
+    if(provider === "email" && !this.state.loginActive) {
       authData.updateProfile({
         displayName: this.state.name,
         photoURL: "https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=d26705f2-7d77-4c1e-b628-9cc1bd1a69e2"
@@ -159,6 +157,8 @@ class LoginTab extends Component {
       }.bind(this)).catch(function(error) {
           console.log(error);
       });
+    } else {
+      this.props.history.push('/account');
     }
   }
 
@@ -174,7 +174,7 @@ class LoginTab extends Component {
         alert(errorMessage);
         console.log(error);
         })
-      .then(this.authHandler)
+      .then((data) => this.authHandler(data, "social"))
   }
 
   authEmail = event => {
@@ -192,7 +192,7 @@ class LoginTab extends Component {
       }
       console.log(error);
       })
-      .then(this.authHandler);
+      .then((data) => this.authHandler(data, "email"));
     }
     else {
       alert("not valid");
