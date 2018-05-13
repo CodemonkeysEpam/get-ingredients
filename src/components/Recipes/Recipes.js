@@ -36,7 +36,7 @@ export default class Recipes extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="container">
         <div className="carousel">
           <ImageGallery
             items={RecepiesResources.images}

@@ -18,11 +18,11 @@
   }
 
   .image-gallery-left-nav{
-    margin-left: 150px;
+    margin-left: 50px;
   }
 
   .image-gallery-right-nav{
-    margin-right: 150px;
+    margin-right: 50px;
   }
 
   .image-gallery-left-nav:hover::before, .image-gallery-right-nav:hover::before {
@@ -46,7 +46,7 @@
       display: flex;
       justify-content: space-around;
       flex-direction: row;
-      padding: 15px 146px;
+      padding: 15px 50px;
 
       .image-gallery-thumbnail-label{
         color: #fff;

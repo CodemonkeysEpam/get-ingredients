@@ -55,7 +55,6 @@ export default class Menu extends React.Component {
     }
     
     componentDidUpdate() {
-        console.log(this.state.shoppingCart);
         localStorage.setItem("shoppingCart", JSON.stringify(this.state.shoppingCart));
     }
 
@@ -85,24 +84,28 @@ export default class Menu extends React.Component {
     return this.state.loading === true ? <h1>Loading</h1> : (
         <React.Fragment>
             <div className="menu">
-                <Link to="/" className="title"></Link>
-                <NavLink exact to="/" className="item item-maroon">Home</NavLink>
-                <NavLink to="/meals" className="item item-red">Meals</NavLink>
-                <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>
-                <NavLink to="/recepies" className="item item-light-green">Recipes</NavLink>
-                <NavLink to="/shop" className="item item-dark-green">Shop</NavLink>
-
-                {this.state.isLogin ?
-                <div className="sign">
-                    <Link to="/cart"><i className="fa fa-shopping-cart"></i>{Object.keys(this.state.shoppingCart).length}</Link>
-                    <Link to="/account">Account</Link> | <Link to="/logout">Log out</Link>
+                <div className="container">
+                    <Link to="/" className="title" >Meat is Life</Link>
+                    <NavLink exact to="/" className="item item-maroon">Home</NavLink>
+                    <NavLink to="/meals" className="item item-red">Meals</NavLink>
+                    <NavLink to="/meat" className="item item-yellow" >Meat</NavLink>
+                    <NavLink to="/recepies" className="item item-light-green">Recipes</NavLink>
+                    <NavLink to="/shop" className="item item-dark-green">Shop</NavLink>
+                    <Link to="/cart" className="shopping-cart">
+                        <i className="fa fa-shopping-cart">
+                            <span className="count">{Object.keys(this.state.shoppingCart).length}</span>
+                        </i>
+                    </Link>
+                    {this.state.isLogin ?
+                        <div className="sign">
+                            <NavLink to="/account">Account</NavLink> | <NavLink to="/logout">Log out</NavLink>
+                        </div>
+                        :
+                        <div className="sign">
+                            <NavLink to="/login">Sign In</NavLink> | <NavLink to="/signup">Sign Up</NavLink>
+                        </div>
+                    }
                 </div>
-                :
-                <div className="sign">
-                    <Link to="/cart"><i className="fa fa-shopping-cart"></i>{Object.keys(this.state.shoppingCart).length}</Link>
-                    <Link to="/login">Sign In</Link> | <Link to="/signup">Sign Up</Link>
-                </div>
-                }
             </div>
             <Switch>
                 <Route path="/" exact component={Home}/>
