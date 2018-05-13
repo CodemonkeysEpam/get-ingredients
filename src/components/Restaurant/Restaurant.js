@@ -1,30 +1,9 @@
 import React from 'react';
 import './Restaurant.scss';
 import ImageGallery from 'react-image-gallery';
-import { compose, withProps } from "recompose";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker,} from "react-google-maps";
 import { MealItem } from '../MealItem/MealItem.js';
 import base from "../../services/base.js";
-
-const MyMap = compose(
-withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
-    }),
-  withScriptjs,
-  withGoogleMap
-)(props =>
-  <GoogleMap
-    defaultZoom={15}
-    defaultCenter={{lat: 49.8426, lng: 23.9997}}
-  >
-    <Marker
-      position={{lat: 49.8426, lng: 23.9997}}
-    />
-  </GoogleMap>
-  );
+import Map from '../OneMarkerMap/OneMarkerMap.js'
 
 export default class Restaurant extends React.Component{
 
@@ -140,7 +119,7 @@ export default class Restaurant extends React.Component{
                             </ul>
                         </div>
                         <div className="map">
-                            <MyMap />
+                            <Map lat={this.state.place.lat} lng={this.state.place.lng} name={this.state.place.name} address={this.state.place.address}/>
                         </div>
                     </div>
                     :
