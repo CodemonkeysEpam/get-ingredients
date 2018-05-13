@@ -8,7 +8,8 @@ const MealItem = (props) => {
                 <div className='meal-img'><img src={props.meal.src} /></div>
                 {props.place && <div className='meal-place'>{props.place.name}</div>}
                 {props.price && <div className='meal-price'>{`${props.price}$`}</div>}
-                <button>ADD TO CARD</button>
+                {props.addToCartButton && <button>ADD TO CART</button>}
+                {props.detailsButton && <button>DETAILS</button>}
             </div>
         )
 }

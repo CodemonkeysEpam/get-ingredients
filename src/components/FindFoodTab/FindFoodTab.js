@@ -61,7 +61,12 @@ export default class FindFoodTab extends React.Component {
     return this.state.specialOffersList.map((item, i) => {
         return (
             <React.Fragment key={i}>
-                <MealItem meal={item.meal} place={item.place} price={item.price} />
+                <MealItem 
+                    meal={item.meal} 
+                    place={item.place} 
+                    price={item.price}
+                    addToCartButton={true}
+                />
             </React.Fragment>
         )
     })
@@ -71,7 +76,10 @@ export default class FindFoodTab extends React.Component {
     return this.state.currentMealsList.map((item, i) => {
         return (
             <React.Fragment key={i}>
-                <MealItem meal={item} />
+                <MealItem 
+                    meal={item}
+                    detailsButton={true} 
+                />
             </React.Fragment>
         )
     })
