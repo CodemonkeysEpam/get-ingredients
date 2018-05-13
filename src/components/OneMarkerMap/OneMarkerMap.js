@@ -1,3 +1,4 @@
+/* global google */  //must be here to work (else we got to add window before google)
 import React from 'react';
 import { compose, withProps } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
@@ -16,12 +17,25 @@ withProps({
         defaultZoom={15}
         defaultCenter={{lat: props.lat, lng: props.lng}}
     >
-        <InfoWindow position={{lat: props.lat, lng: props.lng}}>
+        <Marker 
+        position={{lat: props.lat, lng: props.lng}}
+        icon= {{
+            path: google.maps.SymbolPath.CIRCLE,
+            // strokeColor: '#ccc',
+            fillColor: '#fff',
+            fillOpacity: 1,
+            strokeWeight: 2,
+            strokeColor: "#e33834",
+            scale: 8,
+        }}
+        >
+        <InfoWindow>
             <div>
                 <h1 style={{color: '#e33834', fontSize: '16px', fontWeight: 'bold'}}>{props.name}</h1>
                 <p style={{color: 'grey'}}>Address: {props.address}</p>
             </div>
         </InfoWindow>
+        </Marker>
   </GoogleMap>
   );
 
