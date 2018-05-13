@@ -46,7 +46,7 @@ export default class ShoppingCart extends React.Component {
                       </div>
                     </div>
                     <div className="price">${item.price}</div>
-                    <div className="subtotal">{item.price * item.count}</div>
+                    <div className="subtotal">${item.price * item.count}</div>
                     <div className="delete"><i className="fa fa-times" onClick={()=>this.props.deleteFromCart(item)}></i></div>
                   </div>
                 ))
