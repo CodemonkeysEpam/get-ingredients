@@ -107,7 +107,7 @@ export default class FindLocationTabNew extends React.Component {
         });
     }
 
-    test = () => {
+    renderSlider = () => {
         return this.props.list.map((place, i) => {
             return (
                 <React.Fragment key={i}>
@@ -137,7 +137,7 @@ export default class FindLocationTabNew extends React.Component {
             <React.Fragment>
                 <div className="mySlider-container">
                     <Slider {...settings}>
-                        {this.test()}
+                        {this.renderSlider()}
                     </Slider>
                 </div>
                 <div className="find-location-heading">
@@ -147,7 +147,7 @@ export default class FindLocationTabNew extends React.Component {
                     <button className="view-button" onClick={()=>{this.changeView("grid")}}>Grid</button>
                     <button className="view-button" onClick={()=>{this.changeView("map")}}>Map</button>
                 </div>
-                <div className="find-location-search">
+                <div className="search-input-container">
                     <input type="text" placeholder="Search by name" className="search-input" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
                     <i className="fa fa-search"></i>
                 </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import base from "../../services/base";
 import './MeatSection.scss';
-import FindFoodTab from '../FindFoodTab/FindFoodTab';
+import FindFoodTabOld from '../FindFoodTabOld/FindFoodTabOld';
 import FindLocationTab from '../FindLocationTab/FindLocationTab';
 
 export default class MeatSection extends React.Component {
@@ -65,7 +65,7 @@ displayTab () {
         return (
             <div className="find-tab-body">
                 {this.state.meatList.length > 0 && this.state.shopsList.length > 0 && this.state.productsList.length > 0 ?
-                <FindFoodTab itemsList={this.state.meatList} placesList={this.state.shopsList} menusList={this.state.productsList}/>
+                <FindFoodTabOld itemsList={this.state.meatList} placesList={this.state.shopsList} menusList={this.state.productsList}/>
                 :
                 <div>...</div>}
             </div>

@@ -13,7 +13,8 @@ export default class MainSection extends React.Component {
             currentTab: 'findyourmeal',
             placesList: [],
             mealsList: [],
-            menusList: []
+            menusList: [],
+            specialList: []
       }
   }
   
@@ -33,12 +34,18 @@ export default class MainSection extends React.Component {
         state: 'menusList',
         asArray: true,
       });
+    this.refSpecial = base.bindToState(`meals/special`, {
+        context: this,
+        state: 'specialList',
+        asArray: true
+      });
   }
 
   componentWillUnmount() {
       base.removeBinding(this.refPlaces);
       base.removeBinding(this.refMeals);
       base.removeBinding(this.refMenus);
+      base.removeBinding(this.refSpecial);
   }
 
 displayTab () {
@@ -56,7 +63,7 @@ displayTab () {
         return (
         <React.Fragment>
             {this.state.mealsList.length > 0 && this.state.placesList.length > 0 && this.state.menusList.length > 0 ?
-            <FindFoodTab itemsList={this.state.mealsList} placesList={this.state.placesList} menusList={this.state.menusList} />
+            <FindFoodTab itemsList={this.state.mealsList} placesList={this.state.placesList} menusList={this.state.menusList} specialList={this.state.specialList} />
             :
             <div>...</div>
             }
