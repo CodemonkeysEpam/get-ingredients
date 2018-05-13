@@ -86,14 +86,12 @@ static getDerivedStateFromProps(nextProps, prevState) {
             <div className="find-tabs">
                 <div className="container">
                     <div className="flex-tabs">
-                    <Link to="/meat?findmeatshop" className={this.state.currentTab === 'findmeatshop' ? "find-tab tab-red active": "find-tab tab-red"}>Find meat shop</Link>
-                    <Link to="/meat?findyourmeal" className={this.state.currentTab === 'findyourmeat' ? "find-tab tab-yellow active": "find-tab tab-yellow"}>Find your meat</Link>
+                        <Link to="/meat?findmeatshop" className={this.state.currentTab === 'findmeatshop' ? "find-tab tab-red active": "find-tab tab-red"}>Find meat shop</Link>
+                        <Link to="/meat?findyourmeal" className={this.state.currentTab === 'findyourmeat' ? "find-tab tab-yellow active": "find-tab tab-yellow"}>Find your meat</Link>
                     </div>
                 </div>
             </div>
-            <div className="container">
-                {this.displayTab()}
-            </div>
+            {this.displayTab()}
         </div>
     );
   }

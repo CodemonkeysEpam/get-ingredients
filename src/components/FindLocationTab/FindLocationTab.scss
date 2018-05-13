@@ -1,6 +1,3 @@
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
-
 .find-location-heading {
     text-align: center;
     font-size: 20px;
@@ -79,8 +76,9 @@
 
 .list-container-map {
     margin: auto;
+    padding-left: 20px;
     margin-top: 50px;
-    width: 30%;
+    width: 25%;
     display: inline-block;
     height: 430px;
     overflow: hidden;
@@ -95,7 +93,9 @@
 }
 
 .map-container {
-    width: 70%;
+    width: 60%;
+    margin-left: 30px;
+    margin-right: 30px;
     display: inline-block;
     height: 430px;
 }
@@ -138,19 +138,3 @@ margin: 30px auto 50px;
     margin-left: 0;
 }
 
-  @media (max-width: 768px) {
-    .center {
-      margin-left: -40px;
-      margin-right: -40px;
-    }
-  }
-
-  .slick-vertical .slick-slide {
-    height: 180px;
-  }
-  .slick-arrow {
-    background-color: grey;
-  }
-  .slick-arrow:hover {
-    background-color: grey;
-  }

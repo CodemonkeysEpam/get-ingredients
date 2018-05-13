@@ -90,10 +90,8 @@ static getDerivedStateFromProps(nextProps, prevState) {
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <div className="find-tab-body">
-                    {this.displayTab()}
-                </div>
+            <div className="find-tab-body">
+                {this.displayTab()}
             </div>
         </div>
     );
