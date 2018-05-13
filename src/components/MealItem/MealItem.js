@@ -6,7 +6,7 @@ const MealItem = (props) => {
             <div className="mealItem">
                 <div className="meal-name">{props.meal.name}</div>
                 <div className='meal-img'><img src={props.meal.src} /></div>
-                <div className='meal-place'>{props.place.name}</div>
+                {props.place && <div className='meal-place'>{props.place.name}</div>}
                 {props.price && <div className='meal-price'>{`${props.price}$`}</div>}
                 <button>ADD TO CARD</button>
             </div>

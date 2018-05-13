@@ -70,10 +70,9 @@ export default class FindFoodTab extends React.Component {
   renderMealsList = () => {
     return this.state.currentMealsList.map((item, i) => {
         return (
-                <div className="meal-item" key={i}>
-                    <img className="meal-logo" src={item.img} alt={item.name} />
-                    <div className="meal-name">{item.name}</div>
-                </div>
+            <React.Fragment key={i}>
+                <MealItem meal={item} />
+            </React.Fragment>
         )
     })
   }
@@ -84,7 +83,27 @@ export default class FindFoodTab extends React.Component {
         infinite: true,
         speed: 500,
         slidesToShow: 4,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1250,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 950,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 650,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+          ]
     };
     return (
         <React.Fragment>
