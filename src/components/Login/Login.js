@@ -151,7 +151,7 @@ class LoginTab extends Component {
     if(provider === "email" && !this.state.loginActive) {
       authData.updateProfile({
         displayName: this.state.name,
-        photoURL: "https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=d26705f2-7d77-4c1e-b628-9cc1bd1a69e2"
+        photoURL: "https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=031b3b81-bbf8-4d3a-a696-7f418d2ab892"
       }).then(function() {
           this.props.history.push('/account');
       }.bind(this)).catch(function(error) {

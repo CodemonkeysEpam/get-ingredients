@@ -80,7 +80,7 @@ class Partners extends React.Component {
                         {this.state.placesList.length > 0 ?
                         this.state.placesList.map((place, index) => (
                             <Link to={`/account/partners/restaurants/${place.id}`} className="item" key={place.id}>
-                                <img src="https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=d26705f2-7d77-4c1e-b628-9cc1bd1a69e2" alt="logo"/>
+                                <img src={place.logoURL} alt="logo"/>
                                 <div className="body">
                                     <div className="title">{place.name}</div>
                                     <div className="address">{place.address}</div>

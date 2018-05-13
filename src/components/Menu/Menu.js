@@ -39,7 +39,7 @@ export default class Menu extends React.Component {
             else {
                 shoppingCart[itemInfo.id] = {
                     id: itemInfo.id,
-                    name: itemInfo.id,
+                    name: itemInfo.name,
                     type: type,
                     src: itemInfo.src,
                     price: itemInfo.price,
@@ -53,6 +53,37 @@ export default class Menu extends React.Component {
 
         this.setState({shoppingCart})
     }
+
+    increaseCountCart = (item) => {
+        const shoppingCart = {...this.state.shoppingCart};
+		if( item.count < 1000 ) {
+            shoppingCart[item.id].count = item.count + 1;
+			this.setState({shoppingCart})
+        };
+    }
+
+	decreaseCountCart = (item) => {
+        const shoppingCart = {...this.state.shoppingCart};
+		if( item.count > 1 ){
+            shoppingCart[item.id].count = item.count - 1;
+            this.setState({shoppingCart})
+		}
+    }
+
+    deleteFromCart = (item) => {
+        const shoppingCart = {...this.state.shoppingCart};
+        delete shoppingCart[item.id];
+        this.setState({shoppingCart})
+    }
+
+    changeCountCart = (value, item) => {
+        const shoppingCart = {...this.state.shoppingCart};
+		if(value > 0 && value < 1000 ){
+            let newValue = parseInt(value, 10);
+            shoppingCart[item.id].count = parseInt(value, 10);
+			this.setState({shoppingCart})
+		}
+	}
     
     componentDidUpdate() {
         localStorage.setItem("shoppingCart", JSON.stringify(this.state.shoppingCart));
@@ -118,7 +149,13 @@ export default class Menu extends React.Component {
                 <PrivateRoute path="/logout" component={Logout} isLogin={this.state.isLogin}/>
                 <Route path="/contact-us" component={ContactUs}/>
                 <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin}/>
-                <RouteWithProps path="/cart" component={ShoppingCart} shoppingCart={Object.values(this.state.shoppingCart)}/>
+                <RouteWithProps path="/cart" component={ShoppingCart} 
+                shoppingCart={Object.values(this.state.shoppingCart)}
+                increaseCountCart={this.increaseCountCart}
+                decreaseCountCart={this.decreaseCountCart}
+                deleteFromCart={this.deleteFromCart}
+                changeCountCart={this.changeCountCart}
+                />
                 <Route path="/restaurant/:id" component={Restaurant}/>
                 <Route component={PageNotFound}/>
             </Switch>

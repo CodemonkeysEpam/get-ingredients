@@ -94,16 +94,16 @@
 
 	input[type=number]{
 		border: 1px solid #fff;
-	background-color: rgba(255, 255, 255, 0.8);
-	&:focus{
-		outline: 0;
-	}
+		background-color: rgba(255, 255, 255, 0.8);
+		&:focus{
+			outline: 0;
+		}
 	}
 
 	input[type=number]::-webkit-inner-spin-button, 
 	input[type=number]::-webkit-outer-spin-button { 
-	-webkit-appearance: none;
-	margin: 0;
+		-webkit-appearance: none;
+		margin: 0;
 	}
 
 	input[type=button] {
