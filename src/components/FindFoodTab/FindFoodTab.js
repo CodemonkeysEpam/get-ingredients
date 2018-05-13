@@ -1,6 +1,7 @@
 import React from 'react';
 import './FindFoodTab.scss';
 import Slider from "react-slick";
+import { MealItem } from '../MealItem/MealItem';
 
 export default class FindFoodTab extends React.Component {
 
@@ -33,7 +34,6 @@ export default class FindFoodTab extends React.Component {
 
   specialOffers = () => {
       let specialArray = [];
-      console.log(this.props.specialList);
       this.props.specialList.forEach(item => {
           let newItem = {
             meal: this.props.itemsList[item.mealId],
@@ -42,7 +42,6 @@ export default class FindFoodTab extends React.Component {
           };
           specialArray.push(newItem);
       });
-      console.log(specialArray);
       return specialArray;
   }
 
@@ -62,11 +61,7 @@ export default class FindFoodTab extends React.Component {
     return this.state.specialOffersList.map((item, i) => {
         return (
             <React.Fragment key={i}>
-                <div className="meal-item">
-                    <p>{item.meal.name}</p>
-                    <p>{item.place.name}</p>
-                    <p>{item.price}</p>    
-                </div>
+                <MealItem meal={item.meal} place={item.place} price={item.price} />
             </React.Fragment>
         )
     })

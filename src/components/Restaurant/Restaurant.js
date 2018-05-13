@@ -3,7 +3,7 @@ import './Restaurant.scss';
 import ImageGallery from 'react-image-gallery';
 import { compose, withProps } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker,} from "react-google-maps";
-import MealItem from '../MealItem/MealItem.js';
+import { MealItem } from '../MealItem/MealItem.js';
 import base from "../../services/base.js";
 
 const MyMap = compose(

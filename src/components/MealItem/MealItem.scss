@@ -1,7 +1,8 @@
 .mealItem {
     border: 1px solid #fff;
-    width: 280px;
-    height: 300px;
+    text-align: center;
+    width: 200px;
+    height: 250px;
     margin: 10px 20px;
     color: #fff;
     padding: 20px;
@@ -13,20 +14,31 @@
     }
 
     .meal-img img {
-        width: auto;
-        max-height: 150px;
-        padding: 10px 0;
+        max-width: 90%;
+        height: 150px;
+        margin: auto;
     }
 
     .meal-price {
         margin-top: 10px;
     }
 
-    input{
-        margin: 0;
-        margin-top: 10px;
-        &:hover {
-            cursor: pointer;
+    button     {
+        width: 90%;
+        text-align: center;
+        height: 25px;
+        margin: 3px 0;
+        background: #fff;
+        color: #7c0f0f;
+        text-transform: uppercase;
+        border: none;
+        &:focus{
+            outline: none;
+        }
+        &:hover{
+            background: inherit;
+            color: #fff;
+            border: 1px solid #fff;
         }
     }
 }
