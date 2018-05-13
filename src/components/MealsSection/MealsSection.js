@@ -62,7 +62,7 @@ displayTab () {
     } else {
         return (
         <React.Fragment>
-            {this.state.mealsList.length > 0 && this.state.placesList.length > 0 && this.state.menusList.length > 0 ?
+            {this.state.mealsList.length > 0 && this.state.placesList.length > 0 && this.state.menusList.length > 0  && this.state.specialList.length > 0 ?
             <FindFoodTab itemsList={this.state.mealsList} placesList={this.state.placesList} menusList={this.state.menusList} specialList={this.state.specialList} />
             :
             <div>...</div>
