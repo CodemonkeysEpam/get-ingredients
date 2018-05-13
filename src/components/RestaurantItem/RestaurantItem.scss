@@ -39,8 +39,8 @@
         outline: none;
     }
     &:hover{
-        border: 2px solid #fff;
-		background-color: #7c0f0f;
-		color: #fff;
+        background: inherit;
+        color: #fff;
+        border: 1px solid #fff;
 	}
 }

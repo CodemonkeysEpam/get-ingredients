@@ -108,7 +108,7 @@ export default class FindLocationTabNew extends React.Component {
     }
 
     test = () => {
-        return this.state.currentPlacesList.map((place, i) => {
+        return this.props.list.map((place, i) => {
             return (
                 <React.Fragment key={i}>
                     <div className="myitem">
