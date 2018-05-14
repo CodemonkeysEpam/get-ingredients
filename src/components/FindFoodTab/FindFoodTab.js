@@ -1,7 +1,7 @@
 import React from 'react';
 import './FindFoodTab.scss';
 import Slider from "react-slick";
-import { MealItem } from '../MealItem/MealItem';
+import MealItem from '../MealItem/MealItem';
 
 export default class FindFoodTab extends React.Component {
 
@@ -63,10 +63,11 @@ export default class FindFoodTab extends React.Component {
         return (
             <React.Fragment key={i}>
                 <MealItem 
+                    id={item.id}
                     meal={item.meal} 
                     place={item.place} 
                     price={item.price}
-                    addToCartButton={true}
+                    addToShoppingCart={this.props.addToShoppingCart}
                 />
             </React.Fragment>
         )

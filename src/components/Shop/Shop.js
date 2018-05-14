@@ -87,7 +87,7 @@ export default class Shop extends React.Component {
           <div className='products-container'>
             {
               this.state.displayedProducts.map( el =>
-                <Product key={el.id} el={el} /*addToShoppingCart={this.props.addToShoppingCart}*//>
+                <Product key={el.id} el={el}/>
               )
             }
           </div>

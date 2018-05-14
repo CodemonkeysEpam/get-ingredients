@@ -39,13 +39,14 @@
         margin: auto;
         background: #fff;
         color: #7c0f0f;
+        border: 1px solid #fff;
         text-transform: uppercase;
         border: none;
         &:focus{
             outline: none;
         }
         &:hover{
-            background: inherit;
+            background: #7c0f0f;
             color: #fff;
             border: 1px solid #fff;
         }

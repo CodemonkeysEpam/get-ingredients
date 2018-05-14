@@ -1,7 +1,7 @@
 import React from 'react';
 import './Restaurant.scss';
 import ImageGallery from 'react-image-gallery';
-import { MealItem } from '../MealItem/MealItem.js';
+import MealItem from '../MealItem/MealItem.js';
 import base from "../../services/base.js";
 import Map from '../OneMarkerMap/OneMarkerMap.js'
 
