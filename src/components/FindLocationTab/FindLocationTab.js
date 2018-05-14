@@ -108,7 +108,7 @@ export default class FindLocationTabNew extends React.Component {
     }
 
     renderSlider = () => {
-        return this.props.list.map((place, i) => {
+        let arr = this.props.list.map((place, i) => {
             return (
                 <React.Fragment key={i}>
                     <div className="myitem">
@@ -123,11 +123,12 @@ export default class FindLocationTabNew extends React.Component {
                 </React.Fragment>
             )
         })
+        return arr.slice(Math.max(arr.length - 7, 1));
     }
 
     render () {
         var settings = {
-            dots: false,
+            dots: true,
             infinite: true,
             speed: 500,
             slidesToShow: 4,
