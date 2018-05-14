@@ -5,8 +5,13 @@
     max-height: 250px;
     margin: 10px;
     color: #fff;
-    padding: 0;
     display: inline-block;
+    border: 1px solid #fff;
+    vertical-align: middle;
+
+    div {
+        padding: 5px;
+    }
 
     &:hover, &.active {
         background: rgba(255, 255, 255, 0.2);
@@ -19,7 +24,7 @@
 
     .meal-img img {
         width: 90%;
-        height: 150px;
+        height: 100px;
         margin: auto;
     }
 
@@ -36,7 +41,7 @@
         width: 90%;
         text-align: center;
         height: 25px;
-        margin: auto;
+        margin: 10px auto;
         background: #fff;
         color: #7c0f0f;
         text-transform: uppercase;
