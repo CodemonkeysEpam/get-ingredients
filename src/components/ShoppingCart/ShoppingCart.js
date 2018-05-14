@@ -31,7 +31,7 @@ export default class ShoppingCart extends React.Component {
                       <img src={item.src} alt={item.name} />
                       <div className="body">
                         <div className="name">{item.name}</div>
-                        <div className="seller">Seller:
+                        <div className="seller">Seller:&#160;
                         <Link to={item.type==="shop" ? "/": `/${item.type}/${item.place.id}`}>
                           {item.type==="shop" ? "Meat is Life": item.place.name}
                         </Link>
@@ -56,9 +56,8 @@ export default class ShoppingCart extends React.Component {
                   Total: ${this.getTotalPrice(this.props.shoppingCart)}
                 </div>
                 <div className="continue">
-                  <button>Continue</button>
+                  <Link to="/order">Continue</Link>
                 </div>
-                
               </div>
               :
               <div>Shopping cart is empty</div>
