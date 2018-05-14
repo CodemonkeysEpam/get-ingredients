@@ -13,16 +13,16 @@ export default class Product extends React.Component{
 		this.changeValue = this.changeValue.bind(this);
 	}
 
-	increaseValue(){
+	increaseValue = () => {
 		if( this.state.value < 1000 ) {
 			let newValue = this.state.value + 1;
 			this.setState({
 				value: newValue
 			});
-	};
-}
+		};
+	}
 
-	decreaseValue(){
+	decreaseValue = () => {
 		if( this.state.value > 1 ){
 			let newValue = this.state.value - 1;
 			this.setState({
@@ -35,7 +35,7 @@ export default class Product extends React.Component{
 		}
 	}
 
-	changeValue(evt){
+	changeValue = (evt) => {
 		if( evt.target.value > 0 && evt.target.value < 1000 ){
 			let newValue = parseInt(evt.target.value, 10);
 			this.setState({
@@ -53,9 +53,9 @@ export default class Product extends React.Component{
 				<p className='product-title'>{this.props.el.name}</p>
 				<p className='product-price'>Price: {this.props.el.price}</p>
 				<div className='product-calc'>
-					<span onClick={() => this.decreaseValue()}> - </span> 
+					<span onClick={decreaseValue}> - </span> 
 					<input type='number' className='product-amount' value={this.state.value} onChange={this.changeValue}></input>
-					<span onClick={() => this.increaseValue()}> + </span>
+					<span onClick={increaseValue}> + </span>
 				</div>
 				<div className='product-button'>
 					<Button handleClick={() => this.props.addToShoppingCart("shop", this.props.el, this.state.value)} label="ADD TO CARD"/>

@@ -62,7 +62,7 @@ export default class AddPartners extends React.Component {
     getFormattedTime = () =>{
         var today = new Date();
         var Y = today.getFullYear();
-        var M = today.getMonth();
+        var M = today.getMonth() + 1;
         var D = today.getDate();
         var h = today.getHours();
         var m = today.getMinutes();

@@ -76,11 +76,10 @@ class DoOrder extends React.Component {
                 productName: item.name,
                 productCount: item.count,
                 productPrice: item.price,
-                totalPrice: item.count * item.price,
                 placeId: item.type ==="shop" ? "shop" : item.place.id,
                 placeName: item.type ==="shop" ? "Meat is Life" : item.place.name,
                 type: item.type,
-                date: Date.now(),
+                date: this.getFormattedTime(),
                 deliveryinfo: {
                     contactName: this.state.name,
                     address: this.state.address,
@@ -89,7 +88,7 @@ class DoOrder extends React.Component {
                     postal: this.state.postal,
                 },
                 userId: this.state.user.uid,
-                status: 0,
+                status: "Open",
             }}).
             then((err) => {
                 if(this.props.shoppingCart.length === index + 1) {
@@ -99,6 +98,17 @@ class DoOrder extends React.Component {
             }
         );
     });
+}
+
+getFormattedTime = () =>{
+    var today = new Date();
+    var Y = today.getFullYear();
+    var M = today.getMonth() + 1;
+    var D = today.getDate();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    return `${D < 10 ? "0" : ""}${D}/${M < 10 ? "0" : ""}${M}/${Y} ${h}:${m < 10 ? "0" : ""}${m}`;
 }
   
   render () {
