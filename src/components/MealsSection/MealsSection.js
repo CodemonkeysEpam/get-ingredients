@@ -67,6 +67,7 @@ displayTab () {
                 itemsList={this.state.mealsList} 
                 placesList={this.state.placesList} 
                 menusList={this.state.menusList} 
+                specialOffers = {true}
                 specialList={this.state.specialList} 
             />
             :

@@ -12,7 +12,8 @@ export default class FindFoodTab extends React.Component {
           currentMealsList: this.mealsList(),
           specialOffersList: this.specialOffers(),
           currentMeal: this.mealsList()[0],
-          searchItemQuery: ""
+          searchItemQuery: "",
+          specialOffers: this.props.specialOffers
       }
   }
 
@@ -115,11 +116,11 @@ export default class FindFoodTab extends React.Component {
     };
     return (
         <React.Fragment>
-            <div className="mySlider-container">
+            {this.state.specialOffers && <div className="mySlider-container">
                 <Slider {...settings}>
                     {this.renderSlider()}
                 </Slider>
-            </div>
+            </div>}
             <div className="meal-heading">
                 <h3>All Meals</h3>
             </div>

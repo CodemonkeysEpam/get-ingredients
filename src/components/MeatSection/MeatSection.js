@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import base from "../../services/base";
 import './MeatSection.scss';
-import FindFoodTabOld from '../FindFoodTabOld/FindFoodTabOld';
+import FindFoodTab from '../FindFoodTab/FindFoodTab';
 import FindLocationTab from '../FindLocationTab/FindLocationTab';
 
 export default class MeatSection extends React.Component {
@@ -14,6 +14,7 @@ export default class MeatSection extends React.Component {
             shopsList: [],
             meatList: [],
             productsList: [],
+            specialList: []
         }
     }
 
@@ -31,6 +32,11 @@ componentDidMount() {
   this.refProducts = base.syncState(`meat/products`, {
       context: this,
       state: 'productsList',
+      asArray: true
+    });
+  this.refSpecial = base.syncState(`meat/special`, {
+      context: this,
+      state: 'specialList',
       asArray: true
     });
 
@@ -65,7 +71,13 @@ displayTab () {
         return (
             <div className="find-tab-body">
                 {this.state.meatList.length > 0 && this.state.shopsList.length > 0 && this.state.productsList.length > 0 ?
-                <FindFoodTabOld itemsList={this.state.meatList} placesList={this.state.shopsList} menusList={this.state.productsList}/>
+                <FindFoodTab 
+                    itemsList={this.state.meatList} 
+                    placesList={this.state.shopsList}
+                    menusList={this.state.productsList}
+                    specialOffers = {false}
+                    specialList={this.state.specialList} 
+                />
                 :
                 <div>...</div>}
             </div>
