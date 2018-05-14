@@ -9,7 +9,7 @@ const MealItem = (props) => {
                 {props.place && <div className='meal-place'>{props.place.name}</div>}
                 {props.price && <div className='meal-price'>{`${props.price}$`}</div>}
                 {props.addToCartButton && <button>ADD TO CART</button>}
-                {props.detailsButton && <button>DETAILS</button>}
+                {props.detailsButtonClick && <button onClick={props.detailsButtonClick}>DETAILS</button>}
             </div>
         )
 }

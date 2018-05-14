@@ -2,6 +2,7 @@ import React from 'react';
 import './FindFoodTab.scss';
 import Slider from "react-slick";
 import { MealItem } from '../MealItem/MealItem';
+import Modal from 'react-modal';
 
 export default class FindFoodTab extends React.Component {
 
@@ -13,8 +14,11 @@ export default class FindFoodTab extends React.Component {
           specialOffersList: this.specialOffers(),
           currentMeal: this.mealsList()[0],
           searchItemQuery: "",
-          specialOffers: this.props.specialOffers
-      }
+          specialOffers: this.props.specialOffers,
+          detailsOpen: false
+      };
+
+      this.handleDetailsClick = this.handleDetailsClick.bind(this);
   }
 
   mealsList = () => {
@@ -58,6 +62,19 @@ export default class FindFoodTab extends React.Component {
     });
   }
 
+  handleDetailsClick = (meal) => {
+      this.setState({
+          currentMeal: meal,
+          detailsOpen: true
+      })
+  }
+
+  closeModal = () => {
+    this.setState({
+        detailsOpen: false
+    })
+  }
+
   renderSlider = () => {
     return this.state.specialOffersList.map((item, i) => {
         return (
@@ -79,7 +96,7 @@ export default class FindFoodTab extends React.Component {
             <React.Fragment key={i}>
                 <MealItem 
                     meal={item}
-                    detailsButton={true} 
+                    detailsButtonClick={() => this.handleDetailsClick(item)} 
                 />
             </React.Fragment>
         )
@@ -87,7 +104,7 @@ export default class FindFoodTab extends React.Component {
   }
 
   render () {
-    var settings = {
+    const settings = {
         dots: false,
         infinite: true,
         speed: 500,
@@ -114,6 +131,16 @@ export default class FindFoodTab extends React.Component {
             }
           ]
     };
+    const customStyles = {
+        content : {
+          top                   : '50%',
+          left                  : '50%',
+          right                 : 'auto',
+          bottom                : 'auto',
+          marginRight           : '-50%',
+          transform             : 'translate(-50%, -50%)'
+        }
+      };
     return (
         <React.Fragment>
             {this.state.specialOffers && <div className="mySlider-container">
@@ -131,6 +158,18 @@ export default class FindFoodTab extends React.Component {
             <div className="meal-container">
                 {this.renderMealsList()}
             </div>
+            <Modal
+                isOpen={this.state.detailsOpen}
+                onRequestClose={this.closeModal}
+                style={customStyles}
+            >
+                <div className="meal-details">
+                    <button className="meal-details-close-button" onClick={this.closeModal}>close</button>
+                    <h2 className="meal-details-heading">{this.state.currentMeal.name}</h2>
+                    <div className="meal-details-img"><img src={this.state.currentMeal.src} /></div>
+                    <button className="meal-details-add-button">add to cart</button>
+                </div>
+            </Modal>
         </React.Fragment>
     );
   }
