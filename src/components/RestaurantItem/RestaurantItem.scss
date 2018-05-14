@@ -3,7 +3,10 @@
     width: 220px;
     padding: 15px 20px;
     text-align: center;
-
+    border: 1px solid #fff;
+    vertical-align: middle;
+    height: 220px;
+    margin: 10px;
     div {
         padding: 5px;
     }
@@ -35,6 +38,8 @@
     color: #7c0f0f;
     text-transform: uppercase;
     border: none;
+    cursor: pointer;
+    
     &:focus{
         outline: none;
     }
