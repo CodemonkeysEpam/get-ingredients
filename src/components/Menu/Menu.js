@@ -18,6 +18,7 @@ import PrivateRoute from '../../services/PrivateRoute';
 import PublicRoute from '../../services/PublicRoute';
 import RouteWithProps from '../../services/RouteWithProps';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 
 class Menu extends React.Component {
@@ -165,7 +166,8 @@ class Menu extends React.Component {
   }
 }
 
-export default connect(
+export default withRouter(
+    connect(
     state => ({}),
     dispatch => ({})
-)(Menu);
+)(Menu));

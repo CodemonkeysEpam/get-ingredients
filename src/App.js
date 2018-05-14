@@ -2,25 +2,22 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'font-awesome/scss/font-awesome.scss';
 import { BrowserRouter } from 'react-router-dom';
+
 import Menu from './components/Menu/Menu';
 import Footer from './components/Footer/Footer';
 
 import { Provider } from 'react-redux'
-import { configureStore } from './store'
+import store from './store/index.js'
 
-const store = configureStore();
+import { syncHistoryWithStore } from 'react-router-redux';
 
 
-store.dispatch({
-  type: 'ADD_ORDER',
-  text: 'Use Redux'
-})
 
 class App extends Component {
   render() {
     return (
         <Provider store={store}>
-            <BrowserRouter>
+            <BrowserRouter >
                 <div>
                     <Menu />
                     <Footer />
