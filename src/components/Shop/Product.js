@@ -53,9 +53,9 @@ export default class Product extends React.Component{
 				<p className='product-title'>{this.props.el.name}</p>
 				<p className='product-price'>Price: {this.props.el.price}</p>
 				<div className='product-calc'>
-					<span onClick={decreaseValue}> - </span> 
+					<span onClick={this.decreaseValue}> - </span> 
 					<input type='number' className='product-amount' value={this.state.value} onChange={this.changeValue}></input>
-					<span onClick={increaseValue}> + </span>
+					<span onClick={this.increaseValue}> + </span>
 				</div>
 				<div className='product-button'>
 					<Button handleClick={() => this.props.addToShoppingCart("shop", this.props.el, this.state.value)} label="ADD TO CARD"/>
