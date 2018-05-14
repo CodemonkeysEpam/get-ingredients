@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../Shared/Button/Button';
 
 export default class Product extends React.Component{
 
@@ -57,7 +58,7 @@ export default class Product extends React.Component{
 					<span onClick={() => this.increaseValue()}> + </span>
 				</div>
 				<div className='product-button'>
-					<input type='button' onClick={() => this.props.addToShoppingCart("shop", this.props.el, this.state.value)} value='ADD TO CARD'></input>
+					<Button handleClick={() => this.props.addToShoppingCart("shop", this.props.el, this.state.value)} label="ADD TO CARD"/>
 				</div>
 			</div>
 		);

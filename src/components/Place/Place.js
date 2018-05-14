@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../Shared/Button/Button';
 
 const Place = (props) => {
     let price, add, phone;
@@ -7,10 +8,10 @@ const Place = (props) => {
         price = <div className="place-price">{props.price} $</div>
     }
     if (props.addCard){
-        add = <button className="place-button">ADD TO CARD</button>
+        add = <Button styles="place-button" label="ADD TO CARD"/>
     }
     if (props.phone){
-        phone = <button className="place-button">PHONE</button>
+        phone = <Button styles="place-button" label="PHONE"/>
     }
 
     return (

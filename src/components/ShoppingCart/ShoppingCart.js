@@ -2,6 +2,7 @@ import React from 'react';
 import MyOrders from "../Account/MyOrders/MyOrders";
 import "./ShoppingCart.scss";
 import { Link } from 'react-router-dom';
+import { Button } from '../Shared/Button/Button';
 
 export default class ShoppingCart extends React.Component {
   getTotalPrice = (items) => {
