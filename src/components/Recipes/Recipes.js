@@ -2,8 +2,9 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import './Recipes.scss';
 import RecepiesResources from './RecipesResources';
+import { connect } from 'react-redux'
 
-export default class Recipes extends React.Component {
+class Recipes extends React.Component {
   constructor(props) {
     super(props);
 
@@ -52,3 +53,8 @@ export default class Recipes extends React.Component {
     );
   }
 }
+
+export default connect(
+    state => ({}),
+    dispatch => ({})
+)(Recipes);

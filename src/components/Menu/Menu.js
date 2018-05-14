@@ -17,9 +17,10 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import PrivateRoute from '../../services/PrivateRoute';
 import PublicRoute from '../../services/PublicRoute';
 import RouteWithProps from '../../services/RouteWithProps';
+import { connect } from 'react-redux';
 
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
     constructor(props) {
         super(props);
 
@@ -49,7 +50,7 @@ export default class Menu extends React.Component {
         }
         else {
 
-        }    
+        }
 
         this.setState({shoppingCart})
     }
@@ -84,7 +85,7 @@ export default class Menu extends React.Component {
 			this.setState({shoppingCart})
 		}
 	}
-    
+
     componentDidUpdate() {
         localStorage.setItem("shoppingCart", JSON.stringify(this.state.shoppingCart));
     }
@@ -149,7 +150,7 @@ export default class Menu extends React.Component {
                 <PrivateRoute path="/logout" component={Logout} isLogin={this.state.isLogin}/>
                 <Route path="/contact-us" component={ContactUs}/>
                 <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin}/>
-                <RouteWithProps path="/cart" component={ShoppingCart} 
+                <RouteWithProps path="/cart" component={ShoppingCart}
                 shoppingCart={Object.values(this.state.shoppingCart)}
                 increaseCountCart={this.increaseCountCart}
                 decreaseCountCart={this.decreaseCountCart}
@@ -163,3 +164,8 @@ export default class Menu extends React.Component {
     );
   }
 }
+
+export default connect(
+    state => ({}),
+    dispatch => ({})
+)(Menu);

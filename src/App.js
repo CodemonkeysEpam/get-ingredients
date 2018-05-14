@@ -5,15 +5,28 @@ import { BrowserRouter } from 'react-router-dom';
 import Menu from './components/Menu/Menu';
 import Footer from './components/Footer/Footer';
 
+import { Provider } from 'react-redux'
+import { configureStore } from './store'
+
+const store = configureStore();
+
+
+store.dispatch({
+  type: 'ADD_ORDER',
+  text: 'Use Redux'
+})
+
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <Menu />
-          <Footer />
-        </div>
-      </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <div>
+                    <Menu />
+                    <Footer />
+                </div>
+            </BrowserRouter>
+        </Provider>
     );
   }
 }

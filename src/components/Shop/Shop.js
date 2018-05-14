@@ -4,9 +4,11 @@ import base from '../../services/base';
 import Product from './Product';
 import Tag from './Tag';
 
+import { connect } from 'react-redux';
+
 import './Shop.scss';
 
-export default class Shop extends React.Component {
+class Shop extends React.Component {
 	constructor(props){
 		super(props);
 
@@ -56,7 +58,7 @@ export default class Shop extends React.Component {
         activeTag: 'All'
       });
     } else {
-      let newList = this.state.productsList.filter( el => 
+      let newList = this.state.productsList.filter( el =>
         el.tag.indexOf(tag) !== -1
       );
 
@@ -77,16 +79,16 @@ export default class Shop extends React.Component {
             <p>
               <span>Sort by: </span>
                 {
-                  this.state.tags.map( (el, index) => 
-                    <Tag key={index} tag={el} activeTag={this.state.activeTag} key={el} callback={this.sortingProducts} /> 
+                  this.state.tags.map( (el, index) =>
+                    <Tag key={index} tag={el} activeTag={this.state.activeTag} key={el} callback={this.sortingProducts} />
                   )
-                  
+
                 }
             </p>
           </div>
           <div className='products-container'>
             {
-              this.state.displayedProducts.map( el => 
+              this.state.displayedProducts.map( el =>
                 <Product key={el.id} el={el} addToShoppingCart={this.props.addToShoppingCart}/>
               )
             }
@@ -96,3 +98,8 @@ export default class Shop extends React.Component {
     );
   }
 }
+
+export default connect(
+    state => ({}),
+    dispatch => ({})
+)(Shop);

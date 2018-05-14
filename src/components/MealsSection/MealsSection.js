@@ -4,8 +4,9 @@ import base from '../../services/base';
 import FindFoodTab from '../FindFoodTab/FindFoodTab';
 import FindLocationTab from '../FindLocationTab/FindLocationTab';
 import './MealsSection.scss';
+import { connect } from 'react-redux';
 
-export default class MainSection extends React.Component {
+class MainSection extends React.Component {
   constructor(props) {
       super(props);
 
@@ -17,7 +18,7 @@ export default class MainSection extends React.Component {
             specialList: []
       }
   }
-  
+
   componentDidMount() {
     this.refPlaces = base.bindToState(`meals/places`, {
         context: this,
@@ -63,12 +64,12 @@ displayTab () {
         return (
         <React.Fragment>
             {this.state.mealsList.length > 0 && this.state.placesList.length > 0 && this.state.menusList.length > 0  && this.state.specialList.length > 0 ?
-            <FindFoodTab 
-                itemsList={this.state.mealsList} 
-                placesList={this.state.placesList} 
-                menusList={this.state.menusList} 
+            <FindFoodTab
+                itemsList={this.state.mealsList}
+                placesList={this.state.placesList}
+                menusList={this.state.menusList}
                 specialOffers = {true}
-                specialList={this.state.specialList} 
+                specialList={this.state.specialList}
             />
             :
             <div>...</div>
@@ -103,3 +104,8 @@ static getDerivedStateFromProps(nextProps, prevState) {
     );
   }
 }
+
+export default connect(
+    state => ({}),
+    dispatch => ({})
+)(MainSection);
