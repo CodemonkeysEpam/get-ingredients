@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const RestaurantItem = (props) => {
         return (
             <div className="restaurant">
-                <img className="restaurant-logo" src={props.logoUrl} alt={props.name} />
+                <img className="restaurant-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt={props.name} />
                 <div className="restaurant-name">{props.name}</div>
                 {props.address && <div className="restaurant-address">{props.address}</div>}
                 {props.showOnMapClick && <button className="restaurant-item-button" onClick={props.showOnMapClick}>Show on map</button>}
