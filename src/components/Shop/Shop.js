@@ -4,11 +4,9 @@ import base from '../../services/base';
 import Product from './Product';
 import Tag from './Tag';
 
-import { connect } from 'react-redux';
-
 import './Shop.scss';
 
-class Shop extends React.Component {
+export default class Shop extends React.Component {
 	constructor(props){
 		super(props);
 
@@ -89,7 +87,7 @@ class Shop extends React.Component {
           <div className='products-container'>
             {
               this.state.displayedProducts.map( el =>
-                <Product key={el.id} el={el} addToShoppingCart={this.props.addToShoppingCart}/>
+                <Product key={el.id} el={el} /*addToShoppingCart={this.props.addToShoppingCart}*//>
               )
             }
           </div>
@@ -98,8 +96,3 @@ class Shop extends React.Component {
     );
   }
 }
-
-export default connect(
-    state => ({}),
-    dispatch => ({})
-)(Shop);

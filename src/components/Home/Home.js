@@ -1,8 +1,7 @@
 import React from 'react';
 import './Home.scss';
-import { connect } from 'react-redux';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
   render () {
 
     let homeStyle = {
@@ -19,7 +18,3 @@ class Home extends React.Component {
     );
   }
 }
-export default connect(
-    state => ({}),
-    dispatch => ({})
-)(Home);

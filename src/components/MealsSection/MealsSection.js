@@ -6,7 +6,7 @@ import FindLocationTab from '../FindLocationTab/FindLocationTab';
 import './MealsSection.scss';
 import { connect } from 'react-redux';
 
-class MainSection extends React.Component {
+export default class MainSection extends React.Component {
   constructor(props) {
       super(props);
 
@@ -104,8 +104,3 @@ static getDerivedStateFromProps(nextProps, prevState) {
     );
   }
 }
-
-export default connect(
-    state => ({}),
-    dispatch => ({})
-)(MainSection);
