@@ -1,6 +1,6 @@
 import React from 'react';
-import './RestaurantItem.scss'
-import { Link } from 'react-router-dom'
+import './RestaurantItem.scss';
+import { Link } from 'react-router-dom';
 
 const RestaurantItem = (props) => {
         return (
@@ -14,6 +14,19 @@ const RestaurantItem = (props) => {
         )
 }
 
+const RestaurantItemMap = (props) => {
+    return (
+        <React.Fragment>
+            <img className="restaurant-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt={props.name} />
+            <div className="restaurant-body">
+                <div className="restaurant-name">{props.name}</div>
+                <div className="restaurant-address">{props.address}</div>
+            </div>
+        </React.Fragment>
+    )
+}
+
 export {
-    RestaurantItem
+    RestaurantItem,
+    RestaurantItemMap
 }
