@@ -53,6 +53,7 @@ displayTab () {
         return (
             <React.Fragment>
                 <div className="meat-icons">
+                    <div className="item"><div className="item-icon"></div><div className="item-name">All</div></div>
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/beef.png" alt="Beef" /></div><div className="item-name">Beef</div></div>
                     <div className="item"><div className="item-icon active"><img src="img/meat_icons/pork.png" alt="Pork" /></div><div className="item-name">Pork</div></div>
                     <div className="item"><div className="item-icon"><img src="img/meat_icons/lamb.png" alt="Lamb" /></div><div className="item-name">Lamb</div></div>
