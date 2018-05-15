@@ -36,8 +36,20 @@ export default class Recipes extends React.Component {
           {this.state.recepiesList[index][str].map((item, i)=>{
             return <div className="recept" key={i}>
                 <img src={item.image} alt=""/>
-                <h1>{item.name}</h1>
-                {/* <h4>Ingredients:</h4> */}
+                <h1>{item.name}</h1>         
+                { 
+                item.ingredients == true ?
+                <div>
+                <h4>Ingredients:</h4>
+                <ul className="ingredients">
+                {item.ingredients.map((ingr, j)=>{
+                  return <li>{ingr}</li>
+                })}
+                </ul>
+                </div>
+                :
+                <p>No ingredients</p>
+                }                                       
                 <p>{item.recipe}</p>
               </div>
           })}
@@ -47,11 +59,7 @@ export default class Recipes extends React.Component {
     else return;
   }
  
-//   <ul className="ingredients">
-//   {item.ingredients.map((ingr, j)=>{
-//     return <li>{ingr}</li>
-//   })}
-// </ul>
+
 
   _onSlide(index) {
     this.setState({currentIndex: index});
