@@ -50,7 +50,7 @@ export default class Menu extends React.Component {
         }
         else {
 
-        }    
+        }
 
         this.setState({shoppingCart})
     }
@@ -89,7 +89,7 @@ export default class Menu extends React.Component {
 			this.setState({shoppingCart})
 		}
 	}
-    
+
     componentDidUpdate() {
         localStorage.setItem("shoppingCart", JSON.stringify(this.state.shoppingCart));
     }
@@ -154,18 +154,19 @@ export default class Menu extends React.Component {
                 <PrivateRoute path="/logout" component={Logout} isLogin={this.state.isLogin}/>
                 <Route path="/contact-us" component={ContactUs}/>
                 <PrivateRoute path="/account"  component={Account} isLogin={this.state.isLogin}/>
-                <RouteWithProps path="/cart" component={ShoppingCart} 
+                <RouteWithProps path="/cart" component={ShoppingCart}
                 shoppingCart={Object.values(this.state.shoppingCart)}
                 increaseCountCart={this.increaseCountCart}
                 decreaseCountCart={this.decreaseCountCart}
                 deleteFromCart={this.deleteFromCart}
                 changeCountCart={this.changeCountCart}
                 />
-                <RouteWithProps path="/order" component={DoOrder} 
+                <RouteWithProps path="/order" component={DoOrder}
                 shoppingCart={Object.values(this.state.shoppingCart)}
                 clearCart={this.clearCart}
                 />
-                <Route path="/restaurant/:id" component={Restaurant}/>
+                <Route path="/restaurant/:id/:type" component={Restaurant}/>
+                <Route path="/meat-shop/:id/:type" component={Restaurant}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </React.Fragment>

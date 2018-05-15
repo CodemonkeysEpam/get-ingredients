@@ -17,7 +17,7 @@ export default class MainSection extends React.Component {
             specialList: []
       }
   }
-  
+
   componentDidMount() {
     this.refPlaces = base.bindToState(`meals/places`, {
         context: this,
@@ -53,7 +53,7 @@ displayTab () {
         return (
         <React.Fragment>
             {this.state.placesList.length > 0 ?
-            <FindLocationTab list={this.state.placesList} />
+            <FindLocationTab list={this.state.placesList} type={"meal"}/>
             :
             <div>...</div>
             }
@@ -63,12 +63,12 @@ displayTab () {
         return (
         <React.Fragment>
             {this.state.mealsList.length > 0 && this.state.placesList.length > 0 && this.state.menusList.length > 0  && this.state.specialList.length > 0 ?
-            <FindFoodTab 
-                itemsList={this.state.mealsList} 
-                placesList={this.state.placesList} 
-                menusList={this.state.menusList} 
+            <FindFoodTab
+                itemsList={this.state.mealsList}
+                placesList={this.state.placesList}
+                menusList={this.state.menusList}
                 specialOffers = {true}
-                specialList={this.state.specialList} 
+                specialList={this.state.specialList}
                 mealsPage = {true}
             />
             :

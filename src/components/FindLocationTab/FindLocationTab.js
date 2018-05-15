@@ -16,6 +16,11 @@ export default class FindLocationTabNew extends React.Component {
             hoverPlace: null,
             currentView: 'grid'
         }
+        if(this.props.type === "meal"){
+            this.state.url = "restaurant"
+        } else if (this.props.type === "meat"){
+            this.state.url = "meat-shop"
+        }
     }
 
 
@@ -30,7 +35,7 @@ export default class FindLocationTabNew extends React.Component {
             return this.state.currentPlacesList.map((place, i) => {
                 return (
                     <div>
-                        <Link to={`/restaurant/${place.id}`} className="restaurant-item-map" key={i}
+                        <Link to={`/${this.state.url}/${place.id}/${this.props.type}`} className="restaurant-item-map" key={i}
                             onMouseEnter={() => this.onPlaceHover(place)}
                             onMouseLeave={() => this.onPlaceHover(null)}
                         >
@@ -57,6 +62,7 @@ export default class FindLocationTabNew extends React.Component {
                             address={place.address}
                             detailsClick={() => this.detailsClick(place)}
                             showOnMapClick={() => this.showOnMapClick(place)}
+                            type={this.props.type}
                         />
                     </div>
                 )
@@ -116,6 +122,7 @@ export default class FindLocationTabNew extends React.Component {
                             address={place.address}
                             detailsClick={() => this.detailsClick(place)}
                             showOnMapClick={() => this.showOnMapClick(place)}
+                            type={this.props.type}
                         />
                     </div>
                 </React.Fragment>
@@ -125,6 +132,7 @@ export default class FindLocationTabNew extends React.Component {
     }
 
     render () {
+        console.log(this.props.type);
         var settings = {
             dots: true,
             infinite: true,
@@ -170,7 +178,7 @@ export default class FindLocationTabNew extends React.Component {
                     <button className="view-button" onClick={()=>{this.changeView("grid")}}>Grid</button>
                     <button className="view-button" onClick={()=>{this.changeView("map")}}>Map</button>
                 </div>
-                {this.state.currentView === "map" ? 
+                {this.state.currentView === "map" ?
                     <div className="container-map">
                         <div className='list-container-map'>
                             {this.renderPlacesList()}
@@ -190,7 +198,7 @@ export default class FindLocationTabNew extends React.Component {
                         </div>
                     </div>
                 }
-                
+
             </React.Fragment>
         );
     }

@@ -62,7 +62,7 @@ displayTab () {
                 </div>
                 <div className="find-tab-body">
                     {this.state.shopsList.length > 0 ?
-                    <FindLocationTab list={this.state.shopsList} />
+                    <FindLocationTab list={this.state.shopsList} type={'meat'}/>
                     :
                     <div>...</div>}
                 </div>
@@ -72,12 +72,12 @@ displayTab () {
         return (
             <div className="find-tab-body">
                 {this.state.meatList.length > 0 && this.state.shopsList.length > 0 && this.state.productsList.length > 0 ?
-                <FindFoodTab 
-                    itemsList={this.state.meatList} 
+                <FindFoodTab
+                    itemsList={this.state.meatList}
                     placesList={this.state.shopsList}
                     menusList={this.state.productsList}
                     specialOffers = {false}
-                    specialList={this.state.specialList} 
+                    specialList={this.state.specialList}
                 />
                 :
                 <div>...</div>}
