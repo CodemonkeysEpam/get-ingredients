@@ -56,7 +56,15 @@ class AddPartners extends React.Component {
                 <div>No data</div>
                 :
                 this.state.place.userId === this.props.uid ?
-                <div>{this.state.place.name} </div>
+                <div>{this.state.place.name} photo
+
+                __________________________
+                line
+                Dashboard | Orders | Menu | Info 
+
+
+                --tab--
+                </div>
                 :
                 <div>Access denied</div>
                 }

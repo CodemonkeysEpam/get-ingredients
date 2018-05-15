@@ -38,7 +38,11 @@ class AddPartners extends React.Component {
                 {Object.keys(this.state.place).length === 0 && this.state.place.constructor === Object ? 
                 <div>No data</div>
                 :
-                <div>{this.state.place.name} </div>
+                <div>
+                {this.state.place.name}
+                {this.state.place.address}
+                
+                </div>
                 }
             </div>
         

@@ -84,7 +84,9 @@ export default class Orders extends React.Component {
                                 {order.type==="shop" ? "Meat is Life": order.placeName}
                                 </Link>
                             </div>
-                            <div className="seller">User:&#160;John Boyko</div>
+                            <div className="seller">User:&#160;
+                            {order.deliveryInfo.contactName}
+                            </div>
                             <div className="mult"><span>${order.productPrice}</span>x{order.productCount}</div>
                             </div>
                             <div className="status">{order.status}</div>

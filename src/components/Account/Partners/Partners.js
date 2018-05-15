@@ -84,7 +84,7 @@ class Partners extends React.Component {
                                 <div className="body">
                                     <div className="title">{place.name}</div>
                                     <div className="address">{place.address}</div>
-                                    <div className="verified">Verified: {place.verified.toString()}</div>
+                                    <div className="verified">Status: {place.status}</div>
                                 </div>
                             </Link>
                         ))

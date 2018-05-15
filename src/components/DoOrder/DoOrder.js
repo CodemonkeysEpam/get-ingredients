@@ -80,7 +80,7 @@ class DoOrder extends React.Component {
                 placeName: item.type ==="shop" ? "Meat is Life" : item.place.name,
                 type: item.type,
                 date: this.getFormattedTime(),
-                deliveryinfo: {
+                deliveryInfo: {
                     contactName: this.state.name,
                     address: this.state.address,
                     city: this.state.city,
