@@ -182,6 +182,7 @@ export default class FindFoodTab extends React.Component {
           ]
     };
     const customStyles = {
+        overlay: {zIndex: 3},
         content : {
           top                   : '50%',
           left                  : '50%',
