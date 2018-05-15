@@ -477,34 +477,10 @@ const images = [
     thumbnailLabel: "Beef"
   },
   {
-    renderItem: renderPork,
-    thumbnail: 'icons/1x/pork.png',
-    thumbnailClass: "ashot-icons-item",
-    thumbnailLabel: "Pork"
-  },
-  {
     renderItem: renderChicken,
     thumbnail: 'icons/1x/chicken.png',
     thumbnailClass: "ashot-icons-item",
     thumbnailLabel: "Chicken"
-  },
-  {
-    renderItem: renderLamb,
-    thumbnail: 'icons/1x/lamb.png',
-    thumbnailClass: "ashot-icons-item",
-    thumbnailLabel: "Lamb"
-  },
-  {
-    renderItem: renderRabbit,
-    thumbnail: 'icons/1x/rabbit.png',
-    thumbnailClass: "ashot-icons-item",
-    thumbnailLabel: "Rabbit"
-  },
-  {
-    renderItem: renderFish,
-    thumbnail: 'icons/1x/fish.png',
-    thumbnailClass: "ashot-icons-item",
-    thumbnailLabel: "Fish"
   },
   {
     renderItem: renderCrab,
@@ -513,10 +489,10 @@ const images = [
     thumbnailLabel: "Crab"
   },
   {
-    renderItem: renderShrink,
-    thumbnail: 'icons/1x/shrink.png',
+    renderItem: renderFish,
+    thumbnail: 'icons/1x/fish.png',
     thumbnailClass: "ashot-icons-item",
-    thumbnailLabel: "Shrimp"
+    thumbnailLabel: "Fish"
   },
   {
     renderItem: renderKnives,
@@ -524,6 +500,31 @@ const images = [
     thumbnailClass: "ashot-icons-item",
     thumbnailLabel: "Knives"
   },
+  {
+    renderItem: renderLamb,
+    thumbnail: 'icons/1x/lamb.png',
+    thumbnailClass: "ashot-icons-item",
+    thumbnailLabel: "Lamb"
+  },
+  {
+    renderItem: renderPork,
+    thumbnail: 'icons/1x/pork.png',
+    thumbnailClass: "ashot-icons-item",
+    thumbnailLabel: "Pork"
+  },
+  {
+    renderItem: renderRabbit,
+    thumbnail: 'icons/1x/rabbit.png',
+    thumbnailClass: "ashot-icons-item",
+    thumbnailLabel: "Rabbit"
+  },
+  {
+    renderItem: renderShrink,
+    thumbnail: 'icons/1x/shrink.png',
+    thumbnailClass: "ashot-icons-item",
+    thumbnailLabel: "Shrimp"
+  },
+
 ]
 
 export default {
