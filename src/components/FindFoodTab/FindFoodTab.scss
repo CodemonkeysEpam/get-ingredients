@@ -71,10 +71,25 @@
     }
 }
 
+.selects-container {
+    box-sizing: border-box;
+    widtH: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    .search-input-container {
+        position: static;
+        .fa-search {
+            position: relative;
+            margin-left: -20px;
+        }
+    }
+}
+
 .place-select,
 .ingredients-select {
-    display: inline-block;
-    position: relative;
     div {
         padding: 10px;
     }
@@ -90,11 +105,11 @@
 }
 
 .place-select {
-    left: 500px;
+
 }
 
 .ingredients-select {
-    left: 400px;
+
 }
 
 .highlighted {

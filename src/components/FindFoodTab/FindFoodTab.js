@@ -201,6 +201,7 @@ export default class FindFoodTab extends React.Component {
             <div className="meal-heading">
                 <h3>All Meals</h3>
             </div>
+            <div className="selects-container">
             <div className="search-input-container">
                 <input type="text" placeholder="Search by name" className="search-input" ref={input => this.searchMealsInput = input} onChange={this.handleMealsInputChange} />
                 <i className="fa fa-search"></i>
@@ -230,6 +231,7 @@ export default class FindFoodTab extends React.Component {
                 value={this.state.selectedPlace}
                 onSelect={(val) => this.onPlaceSelect(val)}
             />
+            </div>
             </div>
             <div className="meal-container">
                 {this.renderMealsList()}
