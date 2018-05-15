@@ -38,17 +38,17 @@ export default class Recipes extends React.Component {
                 <img src={item.image} alt=""/>
                 <h1>{item.name}</h1>         
                 { 
-                item.ingredients == true ?
+                item.ingredients ?
                 <div>
                 <h4>Ingredients:</h4>
                 <ul className="ingredients">
                 {item.ingredients.map((ingr, j)=>{
-                  return <li>{ingr}</li>
+                  return <li key={j}>{ingr}</li>
                 })}
                 </ul>
                 </div>
                 :
-                <p>No ingredients</p>
+                <p></p>
                 }                                       
                 <p>{item.recipe}</p>
               </div>
