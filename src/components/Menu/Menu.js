@@ -165,8 +165,8 @@ export default class Menu extends React.Component {
                 shoppingCart={Object.values(this.state.shoppingCart)}
                 clearCart={this.clearCart}
                 />
-                <Route path="/restaurant/:id/:type" component={Restaurant}/>
-                <Route path="/meat-shop/:id/:type" component={Restaurant}/>
+                <Route path="/restaurant/:id" component={Restaurant}/>
+                <Route path="/meat-shop/:id" component={Restaurant}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </React.Fragment>

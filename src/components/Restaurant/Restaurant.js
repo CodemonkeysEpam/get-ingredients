@@ -16,7 +16,7 @@ export default class Restaurant extends React.Component{
             mealsList: [],
             menusList: [],
             id: this.props.match.params.id,
-            type: this.props.match.params.type,
+            type: this.props.location.pathname.includes("/restaurant/") ? "meals" : "meat",
             isLoading: true
         }
     }
