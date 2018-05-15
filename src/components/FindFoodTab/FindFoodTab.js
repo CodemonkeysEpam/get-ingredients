@@ -16,7 +16,9 @@ export default class FindFoodTab extends React.Component {
           currentMeal: this.mealsList()[0],
           searchItemQuery: "",
           specialOffers: this.props.specialOffers,
-          detailsOpen: false
+          detailsOpen: false,
+          selectedIngredient: "Select ingredient",
+          selectedPlace: "Select place" 
       };
 
       this.handleDetailsClick = this.handleDetailsClick.bind(this);
@@ -59,7 +61,9 @@ export default class FindFoodTab extends React.Component {
     this.setState({
         searchItemQuery: this.searchMealsInput.value,
         currentMealsList: filtered,
-        currentMeal: filtered[0] || {}
+        currentMeal: filtered[0] || {},
+        selectedIngredient: "Select ingredient",
+        selectedPlace: "Select place"
     });
   }
 
@@ -104,7 +108,9 @@ export default class FindFoodTab extends React.Component {
           return arr.indexOf(item.id) !== -1;
       });
       this.setState({
-          currentMealsList: mealsArr
+          currentMealsList: mealsArr,
+          selectedPlace: val,
+          selectedIngredient: "Select ingredient"
       })
   }
 
@@ -113,7 +119,9 @@ export default class FindFoodTab extends React.Component {
          return item.ingredients.indexOf(val) !== -1
       });
       this.setState({
-          currentMealsList: arr
+          currentMealsList: arr,
+          selectedIngredient: val,
+          selectedPlace: "Select place"
       })
   }
 
@@ -202,11 +210,11 @@ export default class FindFoodTab extends React.Component {
                 getItemValue={(item) => item}
                 items={this.formIngredientsList()}
                 renderItem={(item, isHighlighted) =>
-                <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                <div className={ isHighlighted ? 'highlighted' : 'not-highlighted' }>
                     {item}
                 </div>
                 }
-                value={"Select ingredient"}
+                value={this.state.selectedIngredient}
                 onSelect={(val) => this.onIngredientSelect(val)}
             />
             </div>}
@@ -215,11 +223,11 @@ export default class FindFoodTab extends React.Component {
                 getItemValue={(item) => item.name}
                 items={this.props.placesList}
                 renderItem={(item, isHighlighted) =>
-                <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                <div className={ isHighlighted ? 'highlighted' : 'not-highlighted' }>
                     {item.name}
                 </div>
                 }
-                value={"Select place"}
+                value={this.state.selectedPlace}
                 onSelect={(val) => this.onPlaceSelect(val)}
             />
             </div>
