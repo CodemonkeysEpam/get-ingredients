@@ -12,7 +12,7 @@ export default class Restaurant extends React.Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.state = {
             searchValue: '',
-            place: '',
+            refPlace: '',
             mealsList: [],
             menusList: [],
             id: this.props.match.params.id,
@@ -48,7 +48,7 @@ export default class Restaurant extends React.Component{
                   asArray: true,
                 });
         } else if(this.state.type === "meat"){
-            this.refPlace = base.bindToState(`meat/places/${this.state.id}`, {
+            this.refPlace = base.bindToState(`meat/shops/${this.state.id}`, {
                 context: this,
                 state: 'place',
                 then() {
@@ -56,12 +56,22 @@ export default class Restaurant extends React.Component{
                         isLoading: false
                     })
                 }
-             });
+            });
+            this.refMeals = base.bindToState(`meat/meat`, {
+                context: this,
+                state: 'mealsList',
+                asArray: true
+            });
+            this.refMenus = base.bindToState(`meat/products`, {
+                context: this,
+                state: 'menusList',
+                asArray: true,
+            });
         }
     }
 
     componentWillUnmount() {
-        if(this.state.type === "meal") {
+        if(this.state.type) {
             base.removeBinding(this.refPlace);
             base.removeBinding(this.refMeals);
             base.removeBinding(this.refMenus);
@@ -69,7 +79,7 @@ export default class Restaurant extends React.Component{
     }
 
     render() {
-        console.log(this.state.refPlace);
+        console.log(this.state);
         const images = [
             {
                 original: 'https://static.dezeen.com/uploads/2016/07/Musling_SPACE-Copenhagen_Joachim-Wichmann_dezeen_1568_0.jpg'
@@ -86,12 +96,16 @@ export default class Restaurant extends React.Component{
             if(el.placeId == this.state.id) {
                 return true;
             } else return false;
-        }).map((el) => {
+        })
+        console.log(filteredMenus);
+
+        filteredMenus = filteredMenus.map((el) => {
             let idOfMeal = el.mealId;
-            let meal = this.state.mealsList[idOfMeal];
+            let meal = this.state.mealsList[idOfMeal - 1];
             meal.price = el.price;
             return meal;
-        })
+        });
+        console.log(filteredMenus);
 
         let filteredArray = filteredMenus.filter((el)=>{
             let index = el.name.toLowerCase().indexOf(this.state.searchValue);
@@ -121,7 +135,7 @@ export default class Restaurant extends React.Component{
                         </div>
                         <div className="details">
                             <ul>
-                                <li>{this.state.place.desc}</li>
+                                <li>{this.state.place.description}</li>
                                 <li>{this.state.workingTime}</li>
                                 <li>{this.state.place.phone}</li>
                                 <li><address>{this.state.place.address}</address></li>
@@ -136,7 +150,7 @@ export default class Restaurant extends React.Component{
                 }
                 <hr/>
                 {
-                    filteredArray.length ?
+                    filteredMenus.length ?
                         <React.Fragment>
                             <div className="search-container">
                                 <h3 className="search-header">Our products</h3>
