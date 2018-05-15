@@ -16,20 +16,7 @@ export default class Restaurant extends React.Component{
             mealsList: [],
             menusList: [],
             id: this.props.match.params.id,
-            meals: [
-                {
-                    'name': "Australian burger",
-                    'ingredients': ["meat", "bread", "souse", "tomato"]
-                },
-                {
-                    'name': "Californian burger",
-                    'ingredients': ["meat", "bread", "souse", "tomato"]
-                },
-                {
-                    'name': "Cheeseburger",
-                    'ingredients': ["meat", "bread", "souse", "cheese"]
-                }
-            ]
+            type: this.props.match.params.type
         }
     }
 
@@ -40,29 +27,49 @@ export default class Restaurant extends React.Component{
     }
 
     componentDidMount() {
-        this.refPlace = base.bindToState(`meals/places/${this.state.id}`, {
-            context: this,
-            state: 'place',
-         });
-        this.refMeals = base.bindToState(`meals/meals`, {
-             context: this,
-             state: 'mealsList',
-             asArray: true
-           });
-        this.refMenus = base.bindToState(`meals/menus`, {
-             context: this,
-             state: 'menusList',
-             asArray: true,
-           });
+        if(this.state.type === "meal") {
+            this.refPlace = base.bindToState(`meals/places/${this.state.id}`, {
+                context: this,
+                state: 'place',
+                then() {
+                    this.setState({
+                        isLoading: false
+                    })
+                }
+             });
+             this.refMeals = base.bindToState(`meals/meals`, {
+                  context: this,
+                  state: 'mealsList',
+                  asArray: true
+                });
+             this.refMenus = base.bindToState(`meals/menus`, {
+                  context: this,
+                  state: 'menusList',
+                  asArray: true,
+                });
+        } else if(this.state.type === "meat"){
+            this.refPlace = base.bindToState(`meat/places/${this.state.id}`, {
+                context: this,
+                state: 'place',
+                then() {
+                    this.setState({
+                        isLoading: false
+                    })
+                }
+             });
+        }
     }
 
     componentWillUnmount() {
-        base.removeBinding(this.refPlace);
-        base.removeBinding(this.refMeals);
-        base.removeBinding(this.refMenus);
+        if(this.state.type === "meal") {
+            base.removeBinding(this.refPlace);
+            base.removeBinding(this.refMeals);
+            base.removeBinding(this.refMenus);
+        }
     }
 
     render() {
+        console.log(this.state.refPlace);
         const images = [
             {
                 original: 'https://static.dezeen.com/uploads/2016/07/Musling_SPACE-Copenhagen_Joachim-Wichmann_dezeen_1568_0.jpg'
@@ -127,19 +134,25 @@ export default class Restaurant extends React.Component{
                     :
                     <div>Loading</div>
                 }
-
                 <hr/>
-                <div className="search-container">
-                    <h3 className="search-header">Our products</h3>
-                    <input type="text" className="searchInput" placeholder="Type the name here" onChange={this.handleInputChange} />
-                </div>
-                <div className="mealItems">
                 {
-                    filteredArray.map((item, index) => {
-                        return <MealItem meal={item} key={index} menus={filteredMenus}/>
-                    })
+                    filteredArray.length ?
+                        <React.Fragment>
+                            <div className="search-container">
+                                <h3 className="search-header">Our products</h3>
+                                <input type="text" className="searchInput" placeholder="Type the name here" onChange={this.handleInputChange} />
+                            </div>
+                            <div className="mealItems">
+                            {
+                                filteredArray.map((item, index) => {
+                                    return <MealItem meal={item} key={index} menus={filteredMenus}/>
+                                })
+                            }
+                            </div>
+                        </React.Fragment> : <div></div>
                 }
-                </div>
+
+
             </div>
         )
     }

@@ -10,7 +10,7 @@ const RestaurantItem = (props) => {
                 <div className="restaurant-name">{props.name}</div>
                 {props.address && <div className="restaurant-address">{props.address}</div>}
                 {props.showOnMapClick && <Button styles="restaurant-item-button" handleClick={props.showOnMapClick} label="Show on map"/>}
-                <Link to={`/restaurant/${props.id}`}><Button styles="restaurant-item-button" handleClick={props.detailsClick} label="Details"/></Link>
+                <Link to={`/restaurant/${props.id}/${props.type}`}><Button styles="restaurant-item-button" handleClick={props.detailsClick} label="Details"/></Link>
             </div>
         )
 }
