@@ -1,119 +1,281 @@
 import React from 'react';
 
-
 const Recepies = [
     // BEAR
     {
-      "head": `HEAD`,
-      "ear": "EAR",
-      "neck": "NECK",
-      "chuck": "CHUCK",
-      "rib": "RIB",
-      "shotr-loin": "shotr-loin",
-      "loin": "loin",
-      "rump": "RUMP",
-      "tail": "TAIL",
-      "brisket": "brisket",
-      "shoulder": "shoulder",
-      "short-ribs":"short-ribs",
-      "plate":"plate",
-      "flank":"flank",
-      "round":"round",
-      "fore-shank":"fore-shank",
-      "fore-shank-1":"fore-shank-1",
-      "hind-shank":"hind-shank",
-      "hind-shank-1":"hind-shank-1",
-      img: '/ashot-images/bear.jpg'
+      "head": [
+        {name: "МЕДВЕЖЬИ РЕБРА С ТЫКВОЙ И ГЛАЗУРЬЮ ИЗ КВАСНОГО СУСЛА", recept: `Приготовление ребер: 
+        - ребра зачистить от жил и лишнего жира; 
+        - вымачивать ребра 3 дня в воде или вине со специями, перцем, чесноком и солью; 
+        - после вымачивания ребра промыть под проточной водой и равномерно сдобрить специями и несколькими каплями растительного масла;
+        - ребра можно протомить при низкой температуре, около 50 градусов, в течении 8 часов или же потушить 4 часа в обычном режиме, на средне-слабом огне, вместе с порезанным сельдереем, помидорами, морковью, луком репчатым, лавровым листом, маслом растительным и 150 граммами квасного сусла, добавив воду;
+        - ребра извлечь на тарелку и накрыть крышкой.
+        
+        Приготовление соуса:
+        
+        - в сковороду, где томились ребра, добавить оставшееся сусло и потушить до полного превращения овощей в кашу;
+        - при необходимости в процессе приготовления соуса добавить в сковороду воды.
+        
+        Приготовление гарнира:
+        
+        - картофель промыть, сделать вилкой прокол, сдобрить маслом и солью;
+        - положить картофель в фольгу и запечь в духовке;
+        - тыкву нарезать кубиками и бланшировать 8-10 минут в небольшом количестве подсоленной воды, слить воду и немного остудить;
+        - масло с зеленью для начинки картофеля делается путем смешивания размягченного масла с измельченными укропом, чесноком и солью.
+        
+        Подготовка к сервировке и сервировка:
+        
+        - обжарить томленые ранее ребра на сковороде до легкой корочки с двух сторон, полив их соусом из овощей и квасного сусла;
+        - лук репчатый обжарить на гриле и надеть на зубочистки;
+        - мелко порубить зеленый лук для украшения;
+        - выложить на блюдо тыкву, лук на зубочистках и печеный картофель в фольге, разрезанный пополам и нафаршированный ароматным маслом;
+        - ребра выложить на центр блюда, посыпать зеленым луком и украсить красной смородиной.
+        
+        Эти ребра стоят потраченного времени! Приятного аппетита!`, image: '/ashot-images/bear.jpg'},
+      ],
+      "ear": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "neck": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "chuck": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "rib": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "shotr-loin": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "loin": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "rump": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "tail": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "brisket": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "shoulder": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "short-ribs":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "plate":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "flank":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "round": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "fore-shank":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "fore-shank-1":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "hind-shank":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "hind-shank-1":[
+        {name: "", recept: "No recepies", image: ''},
+      ]
     },
     // BEEF
     {
-      "head": `HEAD`,
-      "chuck": "CHUCK",
-      "rib":"RIB",
-      "loin":"LOIN",
-      "sirloin":"sirloin",
-      "round":"ROUND",
-      "brisket": "BRISKET",
-      "plate":"PLATE",
-      "flank":"FLANK",
-      "shank":"SHANK",
-      img: '/ashot-images/beef.png'
+      "head": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "chuck": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "rib": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "loin":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "sirloin":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "round":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "brisket": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "plate":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "flank":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "shank":[
+        {name: "", recept: "No recepies", image: ''},
+      ]
     },
     // PORK 
     {
-      "head": `HEAD`,
-      "arm-shoulder": "arm-shoulder",
-      "blade-shoulder": "blade-shoulder",
-      "hock": "hock",
-      "loin":"LOIN",
-      "spare-rib":"spare-rib",
-      "side":"side",
-      "leg":"leg",
-      img: '/ashot-images/pork.jpg'
+      "head": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "arm-shoulder": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "blade-shoulder": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "hock": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "loin":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "spare-rib":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "side":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "leg":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
     },
     // CHICKEN
     {
-      "neck": `neck`,
-      "breast": "BREAST",
-      "leg":"LEG",
-      "wing":"WING",
-      "tail":"TAIL",
-      "thign":"THIGN",
-      img: '/ashot-images/pork.jpg'
+      "neck": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "breast": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "leg":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "wing":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "tail":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "thign":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
     },
     // LAMB
     {
-      "neck": `NECK`,
-      "chuck":"CHUCK",
-      "sholder":"sholder",
-      "breast":"breast",
-      "loin":"loin",
-      "leg":"leg",
-      img: '/ashot-images/pork.jpg'
+      "neck": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "chuck":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "sholder":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "breast":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "loin":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "leg":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
     },
     // RABBIT
     {
-      "shoulder": `shoulder`,
-      "front-leg":"front-leg",
-      "saddle":"saddle",
-      "rib":"rib",
-      "loin":"loin",
-      "hind-leg":"LEG",
-      img: '/ashot-images/pork.jpg'
+      "shoulder": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "front-leg":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "saddle":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "rib":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "loin":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "hind-leg":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
     },
     // FISH
     {
-      "head": `HEAD`,
-      "back":"BACK",
-      "caviar":"CAVIAR",
-      "abdomen-meat":"abdomen-meat",
-      "tail-meat":"MEAT",
-      img: '/ashot-images/pork.jpg'
+      "head": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "back":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "caviar":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "abdomen-meat":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "tail-meat":[
+        {name: "", recept: "No recepies", image: ''},
+      ],
     },
     // CRAB
     {
-      "legs": `LEGS`,
-      "claw-meat": `CLAW-MEAT`,
-      "white-meat": "WHITE-MEAT",
-      img: '/ashot-images/pork.jpg'
+      "legs": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "claw-meat": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
+      "white-meat": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
     },
     // SHRINK
     {
-      "tail-meat": `tail-meat`,
-      img: '/ashot-images/pork.jpg'
+      "tail-meat": [
+        {name: "", recept: "No recepies", image: ''},
+      ],
     },
     // KNIVES
     {
-      "knives-french-or-chef": `knives-french-or-chef`,
-      "knives-boning":"knives-boning",
-      "knives-filleting":"knives-filleting",
-      "knives-cleaver":"knives-cleaver",
-      "knives-carving":"knives-carving",
-      "knives-fork":"knives-fork",
-      "knives-slicing":"knives-slicing",
-      "knives-scimitar":"knives-scimitar",
-      "knives-butcher":"knives-butcher",
-      img: '/ashot-images/pork.jpg'
+      "knives-french-or-chef": [
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-boning":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-filleting":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-cleaver":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-carving":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-fork":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-slicing":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-scimitar":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
+      "knives-butcher":[
+        {name: "", recept: "No instructions", image: ''},
+      ],
     },
 ];
 

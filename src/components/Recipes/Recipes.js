@@ -9,16 +9,23 @@ export default class Recipes extends React.Component {
 
     this.state = {
       currentIndex: 0,
-      str: ""
+      str: "",
+      list: RecepiesResources.Recepies,
+      images: RecepiesResources.images
     }
   }
 
   renderRecept(index, str){
-    if (RecepiesResources.Recepies[index][str]){
+    if (this.state.list[index][str]){
       return(
         <div className="recepts">
-          <p>{RecepiesResources.Recepies[index][str]}</p>
-          <img src={RecepiesResources.Recepies[index].img} alt=""/>
+            {this.state.list[index][str].map((item,i)=>{
+              return <div className="recept" key={i}>
+                  <h1>{item.name}</h1>
+                  <p>{item.recept}</p>
+                  <img src={item.image} alt=""/>
+                </div>
+            })}
         </div>
       );
     }
@@ -36,10 +43,11 @@ export default class Recipes extends React.Component {
 
   render () {
     return (
+      <div>
       <div className="container">
         <div className="carousel">
           <ImageGallery
-            items={RecepiesResources.images}
+            items={this.state.images}
             thumbnailPosition="top"
             showFullscreenButton={false}
             showPlayButton={false}
@@ -47,7 +55,8 @@ export default class Recipes extends React.Component {
             onClick={this._onImageClick.bind(this)}
           />
         </div>
-        {this.renderRecept(this.state.currentIndex, this.state.str)}
+      </div>
+      {this.renderRecept(this.state.currentIndex, this.state.str)}
       </div>
     );
   }
