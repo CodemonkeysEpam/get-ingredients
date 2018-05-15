@@ -117,7 +117,7 @@ export default class Restaurant extends React.Component{
 
         return (
             <div className="container restaurant">
-                {this.state.place  ?
+                {Object.keys(this.state.place).length > 0  ?
                     <div>
                         <h2>{this.state.place.name}</h2>
                         <hr/>
