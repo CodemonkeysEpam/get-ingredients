@@ -1,8 +1,6 @@
 import React from 'react';
 import base from '../../services/base';
-
 import Product from './Product';
-import Tag from './Tag';
 
 import './Shop.scss';
 
@@ -14,7 +12,6 @@ export default class Shop extends React.Component {
 			displayedProducts: [],
 			productsList: [],
 			tshirtSizes: [],
-      tags: [],
       activeTag: 'All'
 		}
 
@@ -25,21 +22,14 @@ export default class Shop extends React.Component {
     this.refProducts = base.bindToState('shop/products', {
       context: this,
       state: 'productsList',
-      asArray: true
-    });
-    this.refDisplayedProducts = base.bindToState('shop/products', {
-      context: this,
-      state: 'displayedProducts',
-      asArray: true
+      asArray: true,
+      then() {
+        this.setState({displayedProducts: this.state.productsList})
+      }
     });
     this.refSizes = base.bindToState('shop/sizes', {
       context: this,
       state: 'tshirtSizes',
-      asArray: true
-    });
-    this.refTags = base.bindToState('shop/tags', {
-      context: this,
-      state: 'tags',
       asArray: true
     });
   }
@@ -68,6 +58,34 @@ export default class Shop extends React.Component {
     }
   }
 
+  changeActiveTag = (tag) => {
+    if( tag === 'All' ){
+        this.setState({
+          displayedProducts: this.state.productsList,
+          activeTag: 'All'
+        });
+      } else {
+        let newList = this.state.productsList.filter( el => 
+          el.tag.indexOf(tag) !== -1
+        );
+        this.setState({
+          displayedProducts: newList,
+          activeTag: tag
+        });
+  
+      }
+  }
+
+  formTagsList = () => {
+    let tagsArr = [];
+    this.state.productsList.forEach(item => {
+        if(tagsArr.indexOf(item.tag) === -1) {
+            tagsArr.push(item.tag);
+        }
+    });
+    return tagsArr;
+  }
+
   render () {
     return (
     	<React.Fragment>
@@ -76,12 +94,16 @@ export default class Shop extends React.Component {
           <div className='sorting'>
             <p>
               <span>Sort by: </span>
-                {
-                  this.state.tags.map( (el, index) => 
-                    <Tag key={index} tag={el} activeTag={this.state.activeTag} key={el} callback={this.sortingProducts} /> 
-                  )
-                  
-                }
+              <span 
+                className={this.state.activeTag === "All" ? "sorting-tags-active" : "sorting-tags"}
+                onClick={()=>this.changeActiveTag("All")}
+                >All</span>
+                {this.formTagsList().map((tag, index) => (
+                    <span key={index}
+                    className={this.state.activeTag === tag ? "sorting-tags-active" : "sorting-tags"}
+                    onClick={()=>this.changeActiveTag(tag)}
+                    >{tag}</span>
+                ))}
             </p>
           </div>
           <div className='products-container'>

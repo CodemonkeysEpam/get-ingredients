@@ -110,7 +110,7 @@ static getDerivedStateFromProps(nextProps, prevState) {
     if(nextProps.location.pathname.includes("/account/orders")) {
         currentTab = "Orders"
     }
-    else if(nextProps.location.pathname.includes("/account/resturants")) {
+    else if(nextProps.location.pathname.includes("/account/restaurants")) {
         currentTab = "Restaurants"
     }
     else if(nextProps.location.pathname.includes("/account/shops")) {
@@ -163,7 +163,6 @@ render () {
                     
                     </div>
                     <div className="main-section">
-                    <div>sdasad</div>
                         {this.displayTab()}
                     </div>
                 </div> 

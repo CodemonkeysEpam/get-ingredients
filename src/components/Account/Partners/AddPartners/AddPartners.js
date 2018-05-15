@@ -95,7 +95,7 @@ export default class AddPartners extends React.Component {
                     userId: this.props.uid,
                     logoURL: snapshot.downloadURL,
                     desc: this.state.desc,
-                    verified: false
+                    status: "Not verified"
                 },
                 then(err){
                     if(!err){

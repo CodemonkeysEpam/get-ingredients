@@ -2,7 +2,7 @@ import React from 'react';
 import base from '../../../../services/base';
 import { Link } from 'react-router-dom';
 
-export default class MyOrders extends React.Component {
+export default class Orders extends React.Component {
     constructor(props) {
         super(props);
   

@@ -6,7 +6,7 @@ export default class MyInfo extends React.Component {
             <div>
                All orders: 5, Waiting shipment: 0, Received: 5
                <br/>
-               Recomended:
+               Recomended:hello
             </div>
         )
     }
