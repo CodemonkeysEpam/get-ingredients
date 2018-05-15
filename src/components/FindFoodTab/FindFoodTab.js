@@ -75,6 +75,18 @@ export default class FindFoodTab extends React.Component {
         detailsOpen: false
     })
   }
+
+  formIngredientsList = () => {
+      let ingredientsArr = [];
+      this.props.itemsList.forEach(item => {
+          item.ingredients.forEach(ingItem => {
+              if(ingredientsArr.indexOf(ingItem) === -1) {
+                  ingredientsArr.push(ingItem);
+              }
+          })
+      });
+      return ingredientsArr;
+  }
   
   onPlaceSelect = (val) => {
       let index = 0, arr = [];
@@ -93,6 +105,15 @@ export default class FindFoodTab extends React.Component {
       });
       this.setState({
           currentMealsList: mealsArr
+      })
+  }
+
+  onIngredientSelect = (val) => {
+      let arr = this.props.itemsList.filter(item => {
+         return item.ingredients.indexOf(val) !== -1
+      });
+      this.setState({
+          currentMealsList: arr
       })
   }
 
@@ -176,6 +197,19 @@ export default class FindFoodTab extends React.Component {
                 <input type="text" placeholder="Search by name" className="search-input" ref={input => this.searchMealsInput = input} onChange={this.handleMealsInputChange} />
                 <i className="fa fa-search"></i>
             </div>
+            {this.props.mealsPage && <div className="ingredients-select">
+            <Autocomplete
+                getItemValue={(item) => item}
+                items={this.formIngredientsList()}
+                renderItem={(item, isHighlighted) =>
+                <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                    {item}
+                </div>
+                }
+                value={"Select ingredient"}
+                onSelect={(val) => this.onIngredientSelect(val)}
+            />
+            </div>}
             <div className="place-select">
             <Autocomplete
                 getItemValue={(item) => item.name}

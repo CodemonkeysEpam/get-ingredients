@@ -69,6 +69,7 @@ displayTab () {
                 menusList={this.state.menusList} 
                 specialOffers = {true}
                 specialList={this.state.specialList} 
+                mealsPage = {true}
             />
             :
             <div>...</div>
