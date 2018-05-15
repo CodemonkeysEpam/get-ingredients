@@ -1,8 +1,12 @@
 import React from 'react';
 import './FindFoodTab.scss';
 import Slider from "react-slick";
+<<<<<<< HEAD
 import { MealItem } from '../MealItem/MealItem';
 import Modal from 'react-modal';
+=======
+import MealItem from '../MealItem/MealItem';
+>>>>>>> f8b5b5b99dd820f476c62b7a383ae73979e55e5e
 
 export default class FindFoodTab extends React.Component {
 
@@ -80,10 +84,11 @@ export default class FindFoodTab extends React.Component {
         return (
             <React.Fragment key={i}>
                 <MealItem 
+                    id={item.id}
                     meal={item.meal} 
                     place={item.place} 
                     price={item.price}
-                    addToCartButton={true}
+                    addToShoppingCart={this.props.addToShoppingCart}
                 />
             </React.Fragment>
         )

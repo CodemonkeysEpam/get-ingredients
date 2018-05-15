@@ -56,11 +56,9 @@ class Product extends React.Component{
 			count: this.state.value
 		}
 		this.props.onAddToCart(order);
-		console.log(order);
 	}
 
 	render(){
-		console.log(this.props.orders);
 		return(
 			<div className='product'>
 				<div className='product-img'>

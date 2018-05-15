@@ -147,8 +147,8 @@ class Menu extends React.Component {
             </div>
             <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="/meals" component={MealsSection}/>
-                <Route path="/meat"  component={MeatSection}/>
+                <Route path="/meals" component={MealsSection} addToShoppingCart={this.addToShoppingCart}/>
+                <Route path="/meat"  component={MeatSection} addToShoppingCart={this.addToShoppingCart}/>
                 <Route path="/recepies"  component={Recipes}/>
                 <RouteWithProps path="/shop" component={Shop} addToShoppingCart={this.addToShoppingCart}/>
                 <PublicRoute path="/login" component={Login} isLogin={this.state.isLogin}/>
