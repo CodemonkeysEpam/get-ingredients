@@ -12,6 +12,7 @@ import Logout from '../Logout/Logout';
 import Account from '../Account/Account';
 import ContactUs from '../ContactUs/ContactUs';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
+import DoOrder from '../DoOrder/DoOrder';
 import Restaurant from '../Restaurant/Restaurant';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import PrivateRoute from '../../services/PrivateRoute';
@@ -54,6 +55,10 @@ class Menu extends React.Component {
         }
 
         this.setState({shoppingCart})
+    }
+
+    clearCart = () => {
+        this.setState({shoppingCart: {}})
     }
 
     increaseCountCart = (item) => {
@@ -157,6 +162,10 @@ class Menu extends React.Component {
                 decreaseCountCart={this.decreaseCountCart}
                 deleteFromCart={this.deleteFromCart}
                 changeCountCart={this.changeCountCart}
+                />
+                <RouteWithProps path="/order" component={DoOrder} 
+                shoppingCart={Object.values(this.state.shoppingCart)}
+                clearCart={this.clearCart}
                 />
                 <Route path="/restaurant/:id" component={Restaurant}/>
                 <Route component={PageNotFound}/>

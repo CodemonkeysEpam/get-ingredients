@@ -1,8 +1,9 @@
-@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
-
 footer {
-    padding: 25px;
-    margin-top: 50px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: #fff;
+    padding: 25px 0;
 
     ul {
         display: inline-block;

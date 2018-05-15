@@ -1,5 +1,6 @@
 import React from 'react';
 import './MealItem.scss';
+import { Button } from '../Shared/Button/Button';
 
 const MealItem = (props) => {
         return(
@@ -8,8 +9,8 @@ const MealItem = (props) => {
                 <div className='meal-img'><img src={props.meal.src} /></div>
                 {props.place && <div className='meal-place'>{props.place.name}</div>}
                 {props.price && <div className='meal-price'>{`${props.price}$`}</div>}
-                {props.addToCartButton && <button>ADD TO CART</button>}
-                {props.detailsButton && <button>DETAILS</button>}
+                {props.addToCartButton && <Button label="ADD TO CART"/>}
+                {props.detailsButtonClick && <Button handleClick={props.detailsButtonClick} label="DETAILS"/>}
             </div>
         )
 }

@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import firebase from 'firebase';
 import { firebaseApp } from '../../services/base';
 import './Login.scss';
+import { Button } from '../Shared/Button/Button';
 
 
 class LoginTab extends Component {
@@ -24,7 +25,7 @@ class LoginTab extends Component {
   signInfo = () => {
     return  <div className="sign-info-container">
                 <h3>Meat is life</h3>
-                <button className="change-button" onClick={this.toggleActiveState}>{this.state.loginActive ? 'Sign Up' : 'Sign In'}</button>
+                <Button styles="change-button" handleClick={this.toggleActiveState} label={this.state.loginActive ? 'Sign Up' : 'Sign In'}></Button>
                 <p>{this.state.loginActive ? 'Do you want to sign up?' : 'Already have an account?'}</p>
             </div>
   }
@@ -48,7 +49,7 @@ class LoginTab extends Component {
                           <i className="fa fa-check-circle" style={{display: this.state.emailValid ? 'inline-block' : 'none'}}></i>
                           <i className="fa fa-times-circle" style={{display: this.state.emailValid ? 'none' : 'inline-block'}}></i>
                       </div>
-                      <button className="left-button" type="submit">Submit</button>
+                      <Button styles="left-button" type="submit" label="Submit"/>
                       <a href="#" onClick={this.handleForget}>Back</a>
                     </form> 
                     :
@@ -65,7 +66,7 @@ class LoginTab extends Component {
                           <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
                           <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
                       </div>
-                      <button className="left-button" type="submit">Sign In</button>
+                      <Button styles="left-button" type="submit" label="Sign in"/>
                       <a href="#" onClick={this.handleForget}>Forgot your password?</a>
                     </form> 
                   : 
@@ -88,7 +89,7 @@ class LoginTab extends Component {
                          <i className="fa fa-check-circle" style={{display: this.state.passwordValid ? 'inline-block' : 'none'}}></i>
                          <i className="fa fa-times-circle" style={{display: this.state.passwordValid ? 'none' : 'inline-block'}}></i>
                      </div>
-                     <button className="left-button" type="submit">Sign Up</button>
+                     <Button styles="left-button" type="submit" label="Sign Up"/>
                  </form>}
              </div>
   }

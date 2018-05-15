@@ -9,19 +9,16 @@ import Footer from './components/Footer/Footer';
 import { Provider } from 'react-redux'
 import store from './store/index.js'
 
-import { syncHistoryWithStore } from 'react-router-redux';
-
-
 
 class App extends Component {
   render() {
     return (
         <Provider store={store}>
             <BrowserRouter >
-                <div>
+                <React.Fragment>
                     <Menu />
                     <Footer />
-                </div>
+                </React.Fragment>
             </BrowserRouter>
         </Provider>
     );

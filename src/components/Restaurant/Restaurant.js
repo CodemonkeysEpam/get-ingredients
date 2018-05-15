@@ -107,7 +107,9 @@ export default class Restaurant extends React.Component{
                                 showFullscreenButton={false}
                                 showPlayButton={false}
                                 showBullets={true}
-                                showNav={false}
+                                showNav={true}
+                                autoPlay={true}
+                                slideDuration={1000}
                             />
                         </div>
                         <div className="details">

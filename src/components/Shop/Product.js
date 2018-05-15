@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from '../Shared/Button/Button';
 
 
 class Product extends React.Component{

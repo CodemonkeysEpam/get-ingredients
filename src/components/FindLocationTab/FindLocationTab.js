@@ -1,8 +1,9 @@
 import React from 'react';
 import SimpleMap from '../GoogleMap/GoogleMap';
 import './FindLocationTab.scss';
-import { RestaurantItem } from '../RestaurantItem/RestaurantItem';
+import { RestaurantItem, RestaurantItemMap } from '../RestaurantItem/RestaurantItem';
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 export default class FindLocationTabNew extends React.Component {
     constructor(props) {
@@ -28,29 +29,27 @@ export default class FindLocationTabNew extends React.Component {
         if(this.state.currentView === 'map') {
             return this.state.currentPlacesList.map((place, i) => {
                 return (
-                    <React.Fragment key={i}>
-                        <div className="restaurant-item"
+                    <div>
+                        <Link to={`/restaurant/${place.id}`} className="restaurant-item-map" key={i}
                             onMouseEnter={() => this.onPlaceHover(place)}
                             onMouseLeave={() => this.onPlaceHover(null)}
-                            onClick={() => this.onPlaceClick(place)}
                         >
-                            <RestaurantItem
+                            <RestaurantItemMap
                                 id={place.id}
                                 place={place}
                                 logo={place.logo}
                                 name={place.name}
                                 address={place.address}
-                                detailsClick={() => this.detailsClick(place)}
                             />
-                        </div>
-                    </React.Fragment>
+                        </Link>
+                        <hr/>
+                    </div>
                 )
             })
         } else {
             return this.state.currentPlacesList.map((place, i) => {
                 return (
-                    <React.Fragment key={i}>
-                        <div className="restaurant-item">
+                    <div className="restaurant-item" key={i}>
                         <RestaurantItem
                             id={place.id}
                             logo={place.logo}
@@ -59,8 +58,7 @@ export default class FindLocationTabNew extends React.Component {
                             detailsClick={() => this.detailsClick(place)}
                             showOnMapClick={() => this.showOnMapClick(place)}
                         />
-                        </div>
-                    </React.Fragment>
+                    </div>
                 )
             })
         }
@@ -165,25 +163,34 @@ export default class FindLocationTabNew extends React.Component {
                     <h3>All Restaurants</h3>
                 </div>
                 <div className="view-buttons-container">
+                    <div className="search-input-container">
+                        <input type="text" placeholder="Search by name" className="search-input" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
+                        <i className="fa fa-search"></i>
+                    </div>
                     <button className="view-button" onClick={()=>{this.changeView("grid")}}>Grid</button>
                     <button className="view-button" onClick={()=>{this.changeView("map")}}>Map</button>
                 </div>
-                <div className="search-input-container">
-                    <input type="text" placeholder="Search by name" className="search-input" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
-                    <i className="fa fa-search"></i>
-                </div>
-                <div className={this.state.currentView === "map" ? 'list-container-map' : 'list-container-grid'}>
-                    <div>
-                        {this.renderPlacesList()}
+                {this.state.currentView === "map" ? 
+                    <div className="container-map">
+                        <div className='list-container-map'>
+                            {this.renderPlacesList()}
+                        </div>
+                        <div className="map-container">
+                            <SimpleMap
+                            places={this.state.currentPlacesList}
+                            currentPlace={this.state.currentPlace}
+                            hoverPlace={this.state.hoverPlace}
+                            />
+                        </div>
                     </div>
-                </div>
-                {this.state.currentView==="map" && <div className="map-container">
-                    <SimpleMap
-                    places={this.state.currentPlacesList}
-                    currentPlace={this.state.currentPlace}
-                    hoverPlace={this.state.hoverPlace}
-                    />
-                </div>}
+                    :
+                    <div className='list-container-grid'>
+                        <div>
+                            {this.renderPlacesList()}
+                        </div>
+                    </div>
+                }
+                
             </React.Fragment>
         );
     }

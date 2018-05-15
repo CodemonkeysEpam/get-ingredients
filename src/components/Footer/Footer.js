@@ -7,7 +7,7 @@ export default class Footer extends React.Component {
     render() {
         return(
             <footer>
-                <div className="container-wrapper">
+                <div className="container">
                 <ul className="left-column">
                     <li><Link to="/contact-us">Contact Us</Link></li>
                     <li>
