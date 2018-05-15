@@ -247,7 +247,7 @@ export default class FindFoodTab extends React.Component {
                 style={customStyles}
             >
                 <div className="meal-details">
-                    <button className="meal-details-close-button" onClick={this.closeModal}>close</button>
+                    <button className="meal-details-close-button" onClick={this.closeModal}>X</button>
                     <h2 className="meal-details-heading">{this.state.currentMeal.name}</h2>
                     <div className="meal-details-img"><img src={this.state.currentMeal.src} /></div>
                     <button className="meal-details-add-button">add to cart</button>
