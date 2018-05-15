@@ -1,12 +1,9 @@
 import React from 'react';
 import './FindFoodTab.scss';
 import Slider from "react-slick";
-<<<<<<< HEAD
-import { MealItem } from '../MealItem/MealItem';
 import Modal from 'react-modal';
-=======
 import MealItem from '../MealItem/MealItem';
->>>>>>> f8b5b5b99dd820f476c62b7a383ae73979e55e5e
+
 
 export default class FindFoodTab extends React.Component {
 
@@ -83,10 +80,10 @@ export default class FindFoodTab extends React.Component {
     return this.state.specialOffersList.map((item, i) => {
         return (
             <React.Fragment key={i}>
-                <MealItem 
+                <MealItem
                     id={item.id}
-                    meal={item.meal} 
-                    place={item.place} 
+                    meal={item.meal}
+                    place={item.place}
                     price={item.price}
                     addToShoppingCart={this.props.addToShoppingCart}
                 />
@@ -99,9 +96,9 @@ export default class FindFoodTab extends React.Component {
     return this.state.currentMealsList.map((item, i) => {
         return (
             <React.Fragment key={i}>
-                <MealItem 
+                <MealItem
                     meal={item}
-                    detailsButtonClick={() => this.handleDetailsClick(item)} 
+                    detailsButtonClick={() => this.handleDetailsClick(item)}
                 />
             </React.Fragment>
         )

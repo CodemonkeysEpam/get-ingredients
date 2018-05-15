@@ -8,11 +8,11 @@ class MealItem extends React.Component {
 
     dispatchOrder(props){
         let order = {
-            id: this.props.id,
+            id: this.props.meal.id || this.props.id,
             name: this.props.meal.name,
             type: 'meal',
             src: this.props.meal.src,
-            price: this.props.price,
+            price: this.props.meal.price || this.props.price,
             count: 1
         }
         this.props.onAddToCart(order);
