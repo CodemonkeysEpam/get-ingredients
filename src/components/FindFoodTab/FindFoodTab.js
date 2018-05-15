@@ -208,6 +208,8 @@ export default class FindFoodTab extends React.Component {
             </div>
             {this.props.mealsPage && <div className="ingredients-select">
             <Autocomplete
+                wrapperStyle={{ position: 'relative' }}
+                menuStyle={{ position: 'absolute', top: '40px', left: 0 }}
                 getItemValue={(item) => item}
                 items={this.formIngredientsList()}
                 renderItem={(item, isHighlighted) =>
@@ -221,6 +223,8 @@ export default class FindFoodTab extends React.Component {
             </div>}
             <div className="place-select">
             <Autocomplete
+                wrapperStyle={{ position: 'relative' }}
+                menuStyle={{ position: 'absolute', top: '40px', left: 0 }}
                 getItemValue={(item) => item.name}
                 items={this.props.placesList}
                 renderItem={(item, isHighlighted) =>
