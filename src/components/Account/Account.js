@@ -3,6 +3,8 @@ import { withRouter } from "react-router";
 import MyOrders from "./MyOrders/MyOrders";
 import Dashboard from "./Dashboard/Dashboard";
 import Partners from "./Partners/Partners";
+import Admin from "./Admin/Admin"
+import base from '../../services/base';
 import firebase from "firebase";
 import "./Account.scss";
 import { NavLink } from 'react-router-dom';
@@ -14,9 +16,24 @@ class Account extends React.Component {
       this.state = {
           currentTab: 'Dashboard',
           user: firebase.auth().currentUser,
-          isEditName: false
+          isEditName: false,
+          isAdmin: {},
+          isLoading: true
       }
   }
+
+  componentDidMount() {
+    this.refAdmin = base.bindToState(`users/admins/${this.state.user.uid}`, {
+        context: this,
+        state: 'isAdmin',
+        then() {
+            this.setState({isLoading: false})
+        }
+      });
+  }
+  componentWillUnmount() {
+    base.removeBinding(this.refAdmin);
+}
 
 displayTab () {
     if(this.state.currentTab === "Dashboard") {
@@ -44,7 +61,7 @@ getPhotoURL(defaultURL) {
 getFormattedTime = () =>{
     var today = new Date();
     var Y = today.getFullYear();
-    var M = today.getMonth();
+    var M = today.getMonth() + 1;
     var D = today.getDate();
     var h = today.getHours();
     var m = today.getMinutes();
@@ -111,41 +128,48 @@ static getDerivedStateFromProps(nextProps, prevState) {
 render () {
     return (
         <div className="main-section">
-            <div className="page-heading">Account</div>
-            <div className="container">
-                <div className="account-body">
-                    <div className="left-sidebar">
-                    <div className="account-info">
-                        <div className="logo">
-                            <img src={this.getPhotoURL(this.state.user.photoURL)} alt="Profile" />
-                            <label htmlFor="file-input">
-                                <div className="change-button"><span>Change photo</span></div>
-                            </label>
-                            <input id="file-input" type="file" onChange={this.changeImage} accept="image/*"/>
+        {this.state.isLoading ? <div>Loading</div> :
+            this.state.isAdmin === true ? 
+            <Admin />
+            : 
+            <React.Fragment>
+                <div className="page-heading">Account</div>
+                <div className="container">
+                    <div className="account-body">
+                        <div className="left-sidebar">
+                        <div className="account-info">
+                            <div className="logo">
+                                <img src={this.getPhotoURL(this.state.user.photoURL)} alt="Profile" />
+                                <label htmlFor="file-input">
+                                    <div className="change-button"><span>Change photo</span></div>
+                                </label>
+                                <input id="file-input" type="file" onChange={this.changeImage} accept="image/*"/>
+                            </div>
+                            <div className="displayName">
+                                {this.state.isEditName ?
+                                    <input type="text" autoFocus ref={input => this.displayNameInput = input} defaultValue={this.state.user.displayName} onBlur={this.changeDispayName}/>
+                                    :
+                                    <React.Fragment>
+                                        <span className="text">{this.state.user.displayName}</span>
+                                        <i className="fa fa-pencil" onClick={this.showEditName}></i>
+                                    </React.Fragment>
+                                }
+                            </div>
                         </div>
-                        <div className="displayName">
-                            {this.state.isEditName ?
-                                <input type="text" autoFocus ref={input => this.displayNameInput = input} defaultValue={this.state.user.displayName} onBlur={this.changeDispayName}/>
-                                :
-                                <React.Fragment>
-                                    <span className="text">{this.state.user.displayName}</span>
-                                    <i className="fa fa-pencil" onClick={this.showEditName}></i>
-                                </React.Fragment>
-                            }
+                        <div className="menu-profile">
+                            <NavLink exact to="/account/" className="item">Dashboard</NavLink> 
+                            <NavLink to="/account/orders" className="item">My orders</NavLink>
+                            <NavLink to="/account/partners" className="item">Partners</NavLink>
                         </div>
-                    </div>
-                    <div className="menu-profile">
-                        <NavLink exact to="/account/" className="item">Dashboard</NavLink> 
-                        <NavLink to="/account/orders" className="item">My orders</NavLink>
-                        <NavLink to="/account/partners" className="item">Partners</NavLink>
-                    </div>
-                    
-                    </div>
-                    <div className="main-section">
-                        {this.displayTab()}
-                    </div>
-                </div> 
-            </div>
+                        
+                        </div>
+                        <div className="main-section">
+                            {this.displayTab()}
+                        </div>
+                    </div> 
+                </div>
+            </React.Fragment>
+        }
         </div>
 
     );
