@@ -885,9 +885,26 @@
       font-size: 24px;
     }
 
+    h4{
+      text-align: left;
+      margin-top: 10px;
+      margin-left: 300px;
+    }
+
+    .ingredients{
+      text-align: left;
+      margin-left: 300px;
+      list-style-type: circle;
+
+      li{
+        margin-left: 50px;
+        margin-top: 5px;
+      }
+    }
+
     p {
       width: 70%;
-      margin: 0 auto;
+      margin: 10px auto;
       text-align: justify;
     }
   

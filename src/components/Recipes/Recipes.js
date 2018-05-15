@@ -21,9 +21,15 @@ export default class Recipes extends React.Component {
         <div className="recepts">
             {this.state.list[index][str].map((item,i)=>{
               return <div className="recept" key={i}>
-                  <h1>{item.name}</h1>
-                  <p>{item.recept}</p>
                   <img src={item.image} alt=""/>
+                  <h1>{item.name}</h1>
+                  <h4>Ingredients:</h4>
+                  <ul className="ingredients">
+                    {item.ingredients.map((ingr, j)=>{
+                      return <li>{ingr}</li>
+                    })}
+                  </ul>
+                  <p>{item.recept}</p>
                 </div>
             })}
         </div>

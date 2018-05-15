@@ -4,34 +4,38 @@ const Recepies = [
     // BEAR
     {
       "head": [
-        {name: "МЕДВЕЖЬИ РЕБРА С ТЫКВОЙ И ГЛАЗУРЬЮ ИЗ КВАСНОГО СУСЛА", recept: `Приготовление ребер: 
-        - ребра зачистить от жил и лишнего жира; 
-        - вымачивать ребра 3 дня в воде или вине со специями, перцем, чесноком и солью; 
-        - после вымачивания ребра промыть под проточной водой и равномерно сдобрить специями и несколькими каплями растительного масла;
-        - ребра можно протомить при низкой температуре, около 50 градусов, в течении 8 часов или же потушить 4 часа в обычном режиме, на средне-слабом огне, вместе с порезанным сельдереем, помидорами, морковью, луком репчатым, лавровым листом, маслом растительным и 150 граммами квасного сусла, добавив воду;
-        - ребра извлечь на тарелку и накрыть крышкой.
-        
-        Приготовление соуса:
-        
-        - в сковороду, где томились ребра, добавить оставшееся сусло и потушить до полного превращения овощей в кашу;
-        - при необходимости в процессе приготовления соуса добавить в сковороду воды.
-        
-        Приготовление гарнира:
-        
-        - картофель промыть, сделать вилкой прокол, сдобрить маслом и солью;
-        - положить картофель в фольгу и запечь в духовке;
-        - тыкву нарезать кубиками и бланшировать 8-10 минут в небольшом количестве подсоленной воды, слить воду и немного остудить;
-        - масло с зеленью для начинки картофеля делается путем смешивания размягченного масла с измельченными укропом, чесноком и солью.
-        
-        Подготовка к сервировке и сервировка:
-        
-        - обжарить томленые ранее ребра на сковороде до легкой корочки с двух сторон, полив их соусом из овощей и квасного сусла;
-        - лук репчатый обжарить на гриле и надеть на зубочистки;
-        - мелко порубить зеленый лук для украшения;
-        - выложить на блюдо тыкву, лук на зубочистках и печеный картофель в фольге, разрезанный пополам и нафаршированный ароматным маслом;
-        - ребра выложить на центр блюда, посыпать зеленым луком и украсить красной смородиной.
-        
-        Эти ребра стоят потраченного времени! Приятного аппетита!`, image: '/ashot-images/bear.jpg'},
+        {
+          name: "BEAR RIBS WITH PUMP AND GLAZE FROM QUASONIC OUTSIDE", 
+          ingredients: ["Bear cub;", "Wine;", "Dry spices;", "Black pepper powder;", "Garlic;", "Salt;", "Vegetable oil;", "The stalk of celery;", "Tomatoes;", "Carrot;", "Kvas must;", "Potato;", "Pumpkin;", "Red currant;"],
+          recept: `Preparation of ribs:
+            - Ribs to clean off veins and excess fat;
+            - soak ribs 3 days in water or wine with spices, pepper, garlic and salt;
+            - After soaking the ribs, rinse them under running water and sprinkle them evenly with spices and a few drops of vegetable oil;
+            - the ribs can be protested at low temperature, about 50 degrees, for 8 hours or extinguished 4 hours in normal mode, on medium-low heat, along with cut celery, tomatoes, carrots, onions, bay leaf, vegetable oil and 150 grams of leavened wort by adding water;
+            - Remove the fins on the plate and cover with a lid.
+            
+            Preparation of sauce:
+            
+            - in a frying pan, where ribs are languishing, add the remaining wort and put it out until the vegetables are completely transformed into porridge;
+            - if necessary, add water to the pan during the sauce preparation.
+            
+            Preparation of garnish:
+            
+            - Wash the potatoes, make a fork with a puncture, sprinkle with oil and salt;
+            - Put the potatoes in foil and bake in the oven;
+            - pumpkin cut into cubes and blanch 8-10 minutes in a small amount of salted water, drain the water and cool a bit;
+            - oil with herbs for filling the potato is done by mixing the softened butter with chopped dill, garlic and salt.
+            
+            Preparation for serving and serving:
+            
+            - fry the stewed earlier ribs in a frying pan until light crust on both sides, watering them with vegetable sauce and kvass wort;
+            - Grilled onion and put on toothpicks;
+            - finely chop the green onions for decoration;
+            - put on the dish a pumpkin, onion on toothpicks and baked potatoes in foil, cut in half and stuffed with fragrant oil;
+            - Put the ribs on the center of the dish, sprinkle with green onions and decorate with red currants.
+                  
+                  These ribs are worth the time! Bon Appetit!`, 
+        image: '/ashot-images/bear.jpg'},
       ],
       "ear": [
         {name: "", recept: "No recepies", image: ''},
