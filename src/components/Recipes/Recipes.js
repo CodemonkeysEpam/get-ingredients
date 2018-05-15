@@ -2,6 +2,7 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import './Recipes.scss';
 import RecepiesResources from './RecipesResources';
+import base from '../../services/base';
 
 export default class Recipes extends React.Component {
   constructor(props) {
@@ -10,33 +11,47 @@ export default class Recipes extends React.Component {
     this.state = {
       currentIndex: 0,
       str: "",
-      list: RecepiesResources.Recepies,
-      images: RecepiesResources.images
+      animals: RecepiesResources.images,
+      recepiesList: [],
     }
   }
 
+
+  componentDidMount() {
+    this.refRecepies = base.bindToState('recipes', {
+      context: this,
+      state: 'recepiesList',
+      asArray: true,
+    });
+  }
+
+  componentWillUnmount(){
+    base.removeBinding(this.refRecepies);
+  }
+
   renderRecept(index, str){
-    if (this.state.list[index][str]){
+    if (this.state.recepiesList.length > 0 && this.state.recepiesList[index][str]){
       return(
         <div className="recepts">
-            {this.state.list[index][str].map((item,i)=>{
-              return <div className="recept" key={i}>
-                  <img src={item.image} alt=""/>
-                  <h1>{item.name}</h1>
-                  <h4>Ingredients:</h4>
-                  <ul className="ingredients">
-                    {item.ingredients.map((ingr, j)=>{
-                      return <li>{ingr}</li>
-                    })}
-                  </ul>
-                  <p>{item.recept}</p>
-                </div>
-            })}
+          {this.state.recepiesList[index][str].map((item, i)=>{
+            return <div className="recept" key={i}>
+                <img src={item.image} alt=""/>
+                <h1>{item.name}</h1>
+                {/* <h4>Ingredients:</h4> */}
+                <p>{item.recipe}</p>
+              </div>
+          })}
         </div>
-      );
+    );
     }
     else return;
   }
+ 
+//   <ul className="ingredients">
+//   {item.ingredients.map((ingr, j)=>{
+//     return <li>{ingr}</li>
+//   })}
+// </ul>
 
   _onSlide(index) {
     this.setState({currentIndex: index});
@@ -53,7 +68,7 @@ export default class Recipes extends React.Component {
       <div className="container">
         <div className="carousel">
           <ImageGallery
-            items={this.state.images}
+            items={this.state.animals}
             thumbnailPosition="top"
             showFullscreenButton={false}
             showPlayButton={false}
