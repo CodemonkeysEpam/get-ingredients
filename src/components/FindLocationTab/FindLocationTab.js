@@ -16,6 +16,11 @@ export default class FindLocationTabNew extends React.Component {
             hoverPlace: null,
             currentView: 'grid'
         }
+        if(this.props.type === "meal"){
+            this.state.url = "restaurant"
+        } else if (this.props.type === "meat"){
+            this.state.url = "meat-shop"
+        }
     }
 
 
@@ -30,7 +35,7 @@ export default class FindLocationTabNew extends React.Component {
             return this.state.currentPlacesList.map((place, i) => {
                 return (
                     <div>
-                        <Link to={`/restaurant/${place.id}/${this.props.type}`} className="restaurant-item-map" key={i}
+                        <Link to={`/${this.state.url}/${place.id}/${this.props.type}`} className="restaurant-item-map" key={i}
                             onMouseEnter={() => this.onPlaceHover(place)}
                             onMouseLeave={() => this.onPlaceHover(null)}
                         >
@@ -127,6 +132,7 @@ export default class FindLocationTabNew extends React.Component {
     }
 
     render () {
+        console.log(this.props.type);
         var settings = {
             dots: true,
             infinite: true,
