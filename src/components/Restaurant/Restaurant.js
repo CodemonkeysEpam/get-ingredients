@@ -121,7 +121,7 @@ export default class Restaurant extends React.Component{
                             </ul>
                         </div>
                         <div className="map">
-                            <Map lat={this.state.place.lat} lng={this.state.place.lng} name={this.state.place.name} address={this.state.place.address}/>
+                            <Map lat={this.state.place.location.lat} lng={this.state.place.location.lng} name={this.state.place.name} address={this.state.place.address}/>
                         </div>
                     </div>
                     :

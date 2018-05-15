@@ -69,7 +69,7 @@ const MapWithAMarkers = compose(
         {props.places.map((place, index) => (
             <Marker
                 key={index}
-                position={{ lat: place.lat, lng: place.lng }}
+                position={{ lat: place.location.lat, lng: place.location.lng }}
                 icon= {{
                     path: google.maps.SymbolPath.CIRCLE,
                     // strokeColor: '#ccc',
