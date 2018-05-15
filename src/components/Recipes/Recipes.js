@@ -48,7 +48,7 @@ export default class Recipes extends React.Component {
                 </ul>
                 </div>
                 :
-                <p>No ingredients</p>
+                <p></p>
                 }                                       
                 <p>{item.recipe}</p>
               </div>
