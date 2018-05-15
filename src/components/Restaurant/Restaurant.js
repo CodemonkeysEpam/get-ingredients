@@ -16,7 +16,8 @@ export default class Restaurant extends React.Component{
             mealsList: [],
             menusList: [],
             id: this.props.match.params.id,
-            type: this.props.match.params.type
+            type: this.props.match.params.type,
+            isLoading: true
         }
     }
 
@@ -30,12 +31,7 @@ export default class Restaurant extends React.Component{
         if(this.state.type === "meal") {
             this.refPlace = base.bindToState(`meals/places/${this.state.id}`, {
                 context: this,
-                state: 'place',
-                then() {
-                    this.setState({
-                        isLoading: false
-                    })
-                }
+                state: 'place'
              });
              this.refMeals = base.bindToState(`meals/meals`, {
                   context: this,
@@ -46,6 +42,11 @@ export default class Restaurant extends React.Component{
                   context: this,
                   state: 'menusList',
                   asArray: true,
+                then() {
+                    this.setState({
+                        isLoading: false
+                    })
+                }
                 });
         } else if(this.state.type === "meat"){
             this.refPlace = base.bindToState(`meat/shops/${this.state.id}`, {
@@ -66,6 +67,11 @@ export default class Restaurant extends React.Component{
                 context: this,
                 state: 'menusList',
                 asArray: true,
+                then() {
+                    this.setState({
+                        isLoading: false
+                    })
+                }
             });
         }
     }
@@ -115,7 +121,7 @@ export default class Restaurant extends React.Component{
         })
 
 
-        return (
+        return this.state.isLoading ? <div>Loading</div> :
             <div className="container restaurant">
                 {Object.keys(this.state.place).length > 0  ?
                     <div>
@@ -165,9 +171,6 @@ export default class Restaurant extends React.Component{
                             </div>
                         </React.Fragment> : <div></div>
                 }
-
-
             </div>
-        )
     }
 }
