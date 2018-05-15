@@ -3,6 +3,7 @@ import './FindFoodTab.scss';
 import Slider from "react-slick";
 import { MealItem } from '../MealItem/MealItem';
 import Modal from 'react-modal';
+import Autocomplete from 'react-autocomplete';
 
 export default class FindFoodTab extends React.Component {
 
@@ -73,6 +74,26 @@ export default class FindFoodTab extends React.Component {
     this.setState({
         detailsOpen: false
     })
+  }
+  
+  onPlaceSelect = (val) => {
+      let index = 0, arr = [];
+      this.props.placesList.forEach((item, i) => {
+          if (item.name === val) {
+              index = i;
+          };
+      });
+      this.props.menusList.forEach(item => {
+          if(item.placeId === this.props.placesList[index].id) {
+              arr.push(item.mealId);
+          };
+      })
+      let mealsArr = this.props.itemsList.filter(item => {
+          return arr.indexOf(item.id) !== -1;
+      });
+      this.setState({
+          currentMealsList: mealsArr
+      })
   }
 
   renderSlider = () => {
@@ -154,6 +175,19 @@ export default class FindFoodTab extends React.Component {
             <div className="search-input-container">
                 <input type="text" placeholder="Search by name" className="search-input" ref={input => this.searchMealsInput = input} onChange={this.handleMealsInputChange} />
                 <i className="fa fa-search"></i>
+            </div>
+            <div className="place-select">
+            <Autocomplete
+                getItemValue={(item) => item.name}
+                items={this.props.placesList}
+                renderItem={(item, isHighlighted) =>
+                <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                    {item.name}
+                </div>
+                }
+                value={"Select place"}
+                onSelect={(val) => this.onPlaceSelect(val)}
+            />
             </div>
             <div className="meal-container">
                 {this.renderMealsList()}
