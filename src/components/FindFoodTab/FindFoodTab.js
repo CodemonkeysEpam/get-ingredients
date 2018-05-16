@@ -17,6 +17,7 @@ export default class FindFoodTab extends React.Component {
           searchItemQuery: "",
           specialOffers: this.props.specialOffers,
           detailsOpen: false,
+          currentOffers: [],
           selectedIngredient: "Select ingredient",
           selectedPlace: "Select place" 
       };
@@ -71,8 +72,28 @@ export default class FindFoodTab extends React.Component {
       this.setState({
           currentMeal: meal,
           detailsOpen: true
-      })
+      });
   }
+
+  findPlacesWithMeal = (meal) => {
+      let arr = [];
+      this.props.menusList.forEach(item => {
+          if (item.mealId === meal.id) {
+              arr.push({place:this.props.placesList[item.placeId], price:item.price});
+          }
+      });
+      return arr;
+  }
+
+  renderPlacesWithMeal = (meal) => {
+      return this.findPlacesWithMeal(meal).map((item, i) => {
+          return <div className="meal-details-offer" key={i}>
+                     <div className="meal-details-offer-place">{item.place.name}</div>
+                     <div className="meal-details-offer-price">{item.price}$</div>
+                     <button className="meal-details-add-button">add to cart</button>
+                 </div>
+      });
+  } 
 
   closeModal = () => {
     this.setState({
@@ -250,7 +271,7 @@ export default class FindFoodTab extends React.Component {
                     <button className="meal-details-close-button" onClick={this.closeModal}>X</button>
                     <h2 className="meal-details-heading">{this.state.currentMeal.name}</h2>
                     <div className="meal-details-img"><img src={this.state.currentMeal.src} /></div>
-                    <button className="meal-details-add-button">add to cart</button>
+                    <div className="meal-details-offers">{this.renderPlacesWithMeal(this.state.currentMeal)}</div>
                 </div>
             </Modal>
         </React.Fragment>

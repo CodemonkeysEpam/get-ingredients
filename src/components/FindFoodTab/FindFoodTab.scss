@@ -56,9 +56,27 @@
     }
 }
 
+.meal-details-offers {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-details-offer {
+    width: 150px;
+    margin: 5px auto;
+    border: 1px solid #7c0f0f;
+    text-align: center;
+    color: #7c0f0f;
+    div {
+        margin: 5px 0px;
+    }
+}
+
 .meal-details-add-button {
     display: block;
     width: 120px;
+    font-size: 12px;
     text-align: center;
     height: 25px;
     margin: 10px auto;
