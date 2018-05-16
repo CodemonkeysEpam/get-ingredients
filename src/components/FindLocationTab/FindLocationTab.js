@@ -61,7 +61,6 @@ export default class FindLocationTabNew extends React.Component {
                             logo={place.logo}
                             name={place.name}
                             address={place.address}
-                            detailsClick={() => this.detailsClick(place)}
                             showOnMapClick={() => this.showOnMapClick(place)}
                             type={this.props.type}
                         />
@@ -93,10 +92,6 @@ export default class FindLocationTabNew extends React.Component {
         this.setState({
             hoverPlace: place
         });
-    }
-
-    detailsClick = (place) => {
-
     }
 
     showOnMapClick = (place) => {
@@ -172,10 +167,10 @@ export default class FindLocationTabNew extends React.Component {
                 <React.Fragment key={i}>
                     <div className="myitem">
                         <RestaurantItem
+                            id={place.id}
                             logo={place.logo}
                             name={place.name}
                             address={place.address}
-                            detailsClick={() => this.detailsClick(place)}
                             showOnMapClick={() => this.showOnMapClick(place)}
                             type={this.props.type}
                         />
