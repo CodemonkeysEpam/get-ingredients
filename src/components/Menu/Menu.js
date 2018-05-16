@@ -55,7 +55,6 @@ export default class Menu extends React.Component {
             else {
                 shoppingCart[itemProductInfo.id] = {
                     id: itemProductInfo.id,
-                    itemId: itemInfo.id,
                     name: itemInfo.name,
                     type: type,
                     src: itemInfo.src,

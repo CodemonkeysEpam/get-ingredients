@@ -73,7 +73,6 @@ class DoOrder extends React.Component {
             data: {
                 id: generatedKey,
                 productId: item.id,
-                productItemId: item.itedId,
                 productName: item.name,
                 productCount: item.count,
                 productPrice: item.price,

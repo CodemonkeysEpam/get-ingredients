@@ -14,7 +14,8 @@ export default class MainSection extends React.Component {
             placesList: [],
             mealsList: [],
             menusList: [],
-            specialList: []
+            specialList: [],
+            orders: []
       }
   }
 
@@ -34,6 +35,11 @@ export default class MainSection extends React.Component {
         state: 'menusList',
         asArray: true,
       });
+    this.refOrders = base.bindToState(`orders`, {
+        context: this,
+        state: 'orders',
+        asArray: true,
+    });
     this.refSpecial = base.bindToState(`meals/special`, {
         context: this,
         state: 'specialList',
@@ -45,6 +51,7 @@ export default class MainSection extends React.Component {
       base.removeBinding(this.refPlaces);
       base.removeBinding(this.refMeals);
       base.removeBinding(this.refMenus);
+      base.removeBinding(this.refOrders);
       base.removeBinding(this.refSpecial);
   }
 
@@ -53,7 +60,7 @@ displayTab () {
         return (
         <React.Fragment>
             {this.state.placesList.length > 0 ?
-            <FindLocationTab list={this.state.placesList} type={"meal"}/>
+            <FindLocationTab list={this.state.placesList} orders={this.state.orders} type={"meal"}/>
             :
             <div>...</div>
             }

@@ -162,9 +162,45 @@ export default class FindLocationTabNew extends React.Component {
                 </div>
     }
 
+    orderByCountOrder = (a,b) => {
+        if (a.countOrder > b.countOrder)
+          return -1;
+        if (a.countOrder < b.countOrder)
+          return 1;
+        return 0;
+      }
+
+    formTop7Places = () => {
+        const list = this.props.list;
+        const orders = this.props.orders;
+        var topPlaces = [];
+        for(var key in list) {
+            var placeItem = {};
+            placeItem.id = list[key].id;
+            placeItem.name = list[key].name;
+            placeItem.location = list[key].location;
+            placeItem.address = list[key].address;
+            placeItem.description = list[key].description;
+            placeItem.status = list[key].status;
+            placeItem.countOrder = 0;
+            for(var key2 in orders) {
+                if(orders[key2].placeId === placeItem.id) {
+                    placeItem.countOrder++;
+                }
+            }
+            topPlaces.push(placeItem);
+        }
+        topPlaces.sort(this.orderByCountOrder);
+        var top7Places = [];
+        for(var i=0; i< 7;i++) {
+            if(i === topPlaces.length) break;
+            top7Places.push(topPlaces[i])
+        }
+        return top7Places;
+    }
+
     renderSlider = () => {
-        let arr = this.props.list.map((place, i) => {
-            return (
+        return this.formTop7Places().map((place, i) =>  (
                 <React.Fragment key={i}>
                     <div className="myitem">
                         <RestaurantItem
@@ -178,12 +214,10 @@ export default class FindLocationTabNew extends React.Component {
                     </div>
                 </React.Fragment>
             )
-        })
-        return arr.slice(Math.max(arr.length - 7, 1));
+        );
     }
 
     render () {
-        console.log(this.props.type);
         var settings = {
             dots: true,
             infinite: true,
