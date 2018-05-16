@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import firebase from "firebase";
 import base from "../../services/base";
 import { withRouter } from "react-router";
+import { connect } from 'react-redux';
 
 class DoOrder extends React.Component {
     constructor(props) {
         super(props);
-  
+
         this.state = {
             name: firebase.auth().currentUser.displayName,
             address: "",
@@ -62,12 +63,12 @@ class DoOrder extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
+
     if(!this.state.user) {
         return this.setState({isError: "Please sign in to make order"});
     }
 
-    this.props.shoppingCart.map((item, index) => { 
+    this.props.shoppingCart.map((item, index) => {
         var generatedKey = firebase.database().ref().child('orders').push().key;
         base.update(`orders/${generatedKey}`, {
             data: {
@@ -110,19 +111,19 @@ getFormattedTime = () =>{
     var s = today.getSeconds();
     return `${D < 10 ? "0" : ""}${D}/${M < 10 ? "0" : ""}${M}/${Y} ${h}:${m < 10 ? "0" : ""}${m}`;
 }
-  
+
   render () {
     return (
         <div className="main-section">
             <div className="page-heading">Confirm your order</div>
             <div className="container">
-            {this.props.shoppingCart.length > 0 ?
+            {this.props.orders.length > 0 ?
               <div className="shopping-cart-list">
                  <form onSubmit={this.handleSubmit}>
                     <div className="do-order-container">
                     <div className="form">
                         <h2>Shipping information</h2>
-                
+
                         <div className="label">
                             <div className="title">Contact name:</div>
                             <input type="text" onChange={this.changeName} placeholder="Enter contact name" value={this.state.name} required/>
@@ -148,36 +149,47 @@ getFormattedTime = () =>{
 
                     <div className="shopping-cart">
                     <h2>Your order</h2>
-                    {this.props.shoppingCart.map(item => (
+                    {this.props.orders.map(item => (
                     <div className="items" key={item.id}>
                         <div className="product">{item.name}</div>
                         <div className="quantity">{item.count}</div>
                     </div>
                     ))}
                     <div className="total">
-                        Total: ${this.getTotalPrice(this.props.shoppingCart)}
+                        Total: ${this.getTotalPrice(this.props.orders)}
                     </div>
                     </div>
                 </div>
-                    
-                
+
+
 
                     <div className="do-order">
                         <button>Place order</button>
                     </div>
                     {this.state.isError && <p className="error-message">{this.state.isError}</p>}
-                    
+
                 </form>
-                
+
               </div>
               :
               <div>Shopping cart is empty</div>
             }
             </div>
-            
+
         </div>
     );
   }
 }
 
-export default withRouter(DoOrder);
+export default withRouter(
+    connect(
+        state => ({
+            orders: state.orders.orders
+        }),
+        dispatch => ({
+            onClearCart: () => {
+                dispatch({type:"CLEAR"})
+            }
+        })
+    )(DoOrder)
+);

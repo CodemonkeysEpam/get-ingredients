@@ -40,5 +40,8 @@ export default function (state=initialState, action) {
         }
         return Object.assign({}, state, { orders: orders });
     }
+    if(action.type === "CLEAR") {
+        return initialState;
+    }
     return state;
 }
