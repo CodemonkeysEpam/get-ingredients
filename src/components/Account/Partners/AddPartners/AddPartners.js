@@ -15,7 +15,8 @@ export default class AddPartners extends React.Component {
             location: null,
             phone: "",
             file: null,
-            desc: ""
+            desc: "",
+            assortment: ""
         }
     }
 
@@ -80,6 +81,8 @@ export default class AddPartners extends React.Component {
         var type = this.state.file.name.split('.').pop();
         var filename = `logo-${this.getFormattedTime()}.${type}`;
 
+        var assortment = this.state.assortment.split(/[ ,]+/);
+
         firebase.storage().ref('/places').child(generatedKey)
         .child(filename)
         .put(this.state.file, {contentType: this.state.file.type})
@@ -95,7 +98,8 @@ export default class AddPartners extends React.Component {
                     userId: this.props.uid,
                     logoURL: snapshot.downloadURL,
                     description: this.state.desc,
-                    status: "Not verified"
+                    status: "Not verified",
+                    assortment: assortment
                 },
                 then(err){
                     if(!err){
@@ -148,7 +152,10 @@ export default class AddPartners extends React.Component {
                         </label>
                         <input type="file" id="file-add-partner" onChange={this.changeFile} accept="image/*" required/>
                     </div>
-                    
+                    {this.state.type === "shop" && <div className="label">
+                        <div className="title">Assortment:</div>
+                        <input type="text" onChange={this.changeAssortment} placeholder="Enter assortment" value={this.state.assortment} required/>
+                    </div>}
                     <div className="label">
                         <div className="title">Description:</div>
                         <textarea onChange={this.changeDesc} placeholder="Enter description" value={this.state.desc} required></textarea>
