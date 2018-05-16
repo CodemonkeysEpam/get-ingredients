@@ -94,7 +94,7 @@ class DoOrder extends React.Component {
             then((err) => {
                 if(this.props.shoppingCart.length === index + 1) {
                     this.props.history.push('/account/orders');
-                    this.props.clearCart();
+                    this.props.onClearCart();
                 }
             }
         );

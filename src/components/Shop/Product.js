@@ -55,12 +55,10 @@ class Product extends React.Component{
 			type: 'shop',
 			count: this.state.value
 		}
-		console.log(order);
 		this.props.onAddToCart(order)
 	}
 
 	render(){
-		console.log(this.props.orders);
 		return(
 			<div className='product'>
 				<div className='product-img'>
@@ -82,7 +80,6 @@ class Product extends React.Component{
 	}
 }
 
-// <Button handleClick={() => this.props.addToShoppingCart("shop", this.props.el, this.state.value)} label="ADD TO CARD"/>
 
 export default connect(
 	state => ({
