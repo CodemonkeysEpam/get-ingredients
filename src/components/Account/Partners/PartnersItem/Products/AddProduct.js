@@ -121,7 +121,7 @@ export default class AddProduct extends React.Component {
                         <div className="title">Name:</div>
                         <Autocomplete
                             wrapperStyle={{ position: 'relative' }}
-                            menuStyle={{ position: 'absolute', top: '40px', left: 0 }}
+                            menuStyle={{ position: 'absolute', top: '32px', left: 0 }}
                             getItemValue={item => item.name}
                             items={this.props.mealsList}
                             shouldItemRender={(item, value) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1}
