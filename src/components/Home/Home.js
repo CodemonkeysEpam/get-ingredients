@@ -220,7 +220,7 @@ export default class Home extends React.Component {
                     }
                 },
                 {
-                    breakpoint: 1250,
+                    breakpoint: 1550,
                     settings: {
                         slidesToShow: 3
                     }
@@ -253,7 +253,7 @@ export default class Home extends React.Component {
                     }
                 },
                 {
-                    breakpoint: 1250,
+                    breakpoint: 1550,
                     settings: {
                         slidesToShow: 3
                     }
