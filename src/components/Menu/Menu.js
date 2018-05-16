@@ -133,7 +133,7 @@ export default class Menu extends React.Component {
       }
   render () {
     return this.state.loading === true ? <h1>Loading</h1> : (
-        <React.Fragment>
+        <div className="wrapper-container">
             <div className="menu">
                 <div className="container">
                     <Link to="/" className="title" >Meat is Life</Link>
@@ -184,7 +184,7 @@ export default class Menu extends React.Component {
                 <Route path="/meat-shop/:id" component={Restaurant}/>
                 <Route component={PageNotFound}/>
             </Switch>
-        </React.Fragment>
+        </div>
     );
   }
 }
