@@ -216,6 +216,12 @@ export default class Home extends React.Component {
                 {
                     breakpoint: 5000,
                     settings: {
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 1250,
+                    settings: {
                         slidesToShow: 3
                     }
                 },
@@ -242,6 +248,12 @@ export default class Home extends React.Component {
             responsive: [
                 {
                     breakpoint: 5000,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 1250,
                     settings: {
                         slidesToShow: 3
                     }

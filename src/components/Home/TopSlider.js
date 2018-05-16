@@ -7,6 +7,7 @@ export default class TopSlider extends React.Component{
 	formTop7Places(){
     let list = this.props.list;
     const orders = this.props.orders;
+    console.log(orders);
     let topPlaces = [];
     for(let key in list) {
       let placeItem = {};
@@ -32,6 +33,7 @@ export default class TopSlider extends React.Component{
       if(i === topPlaces.length) break;
       top7Places.push(topPlaces[i])
     }
+
     return top7Places;
   }
 
@@ -66,6 +68,12 @@ export default class TopSlider extends React.Component{
             responsive: [
                 {
                     breakpoint: 5000,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 1250,
                     settings: {
                         slidesToShow: 3
                     }
