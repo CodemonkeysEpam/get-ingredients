@@ -3,8 +3,9 @@ import base from '../../../../services/base';
 import SearchAddress from './SearchAddress';
 import firebase from 'firebase';
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 
-export default class AddPartners extends React.Component {
+class AddPartners extends React.Component {
     constructor(props) {
         super(props);
   
@@ -99,17 +100,11 @@ export default class AddPartners extends React.Component {
                     logoURL: snapshot.downloadURL,
                     description: this.state.desc,
                     status: "Not verified",
-                    assortment: assortment
-                },
-                then(err){
-                    if(!err){
-                        console.log("yes");
-                    }
-                    else {
-                        console.log(err);
-                    }
-                }
-            });
+                    assortment: this.state.type === 'restaurant' ? null : assortment
+                }}).
+                then((err) => {
+                    this.props.history.push('/account/partners')
+               })
         })
     }
 
@@ -168,3 +163,5 @@ export default class AddPartners extends React.Component {
         )
     }
 }
+
+export default withRouter(AddPartners)

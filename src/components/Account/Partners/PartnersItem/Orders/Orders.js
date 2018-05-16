@@ -84,11 +84,13 @@ export default class MyOrders extends React.Component {
                             <div className="date">{order.date}</div>
                             <div className="product">
                             <div className="name">{order.productName}</div>
-                            <div className="seller">Seller:&#160;
-                                <Link to={order.type==="shop" ? "/": `/${order.type}/${order.placeId}`}>
-                                {order.type==="shop" ? "Meat is Life": order.placeName}
-                                </Link>
+                            <div className="seller">User:&#160;
+                                {order.deliveryInfo.contactName}
                             </div>
+                            <div className="seller">City:&#160;
+                            {order.deliveryInfo.postal} {order.deliveryInfo.city} {order.deliveryInfo.adress} {order.deliveryInfo.phone}
+                            </div>
+
                             <div className="mult"><span>${order.productPrice}</span>x{order.productCount}</div>
                             </div>
                             <div className="status">{order.status}</div>
