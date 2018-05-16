@@ -54,7 +54,9 @@ class ShoppingCart extends React.Component {
                 {this.props.orders.map(item => (
                   <div className="item" key={item.id}>
                     <div className="product">
-                      <img src={item.src} alt={item.name} />
+                      <div className='product-img-container'>
+                        <img src={item.src} alt={item.name} />
+                      </div>
                       <div className="body">
                         <div className="name">{item.name}</div>
                         <div className="seller">Seller:&#160;
