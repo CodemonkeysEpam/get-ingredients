@@ -81,26 +81,6 @@ export default class Home extends React.Component {
     base.removeBinding(this.refAdvertising);
   }
 
-  renderSliderPopularPlaces = (arr) => {
-    arr = arr.map((place, i) => {
-        return (
-        <React.Fragment key={i}>
-          <div className="myitem">
-            <RestaurantItem
-              id={place.id}
-              logo={place.logo}
-              name={place.name}
-              address={place.address}
-              showOnMapClick={() => this.showOnMapClick(place)}
-              type={this.props.type}
-            />
-          </div>
-        </React.Fragment>
-        )
-      });
-      return arr;
-    }
-
   renderSpecialOffer = () => {
     let specialArray = [];
     this.state.specialList.forEach(item => {
@@ -234,7 +214,7 @@ export default class Home extends React.Component {
             slidesToScroll: 1,
             responsive: [
                 {
-                    breakpoint: 1250,
+                    breakpoint: 5000,
                     settings: {
                         slidesToShow: 3
                     }
@@ -261,7 +241,7 @@ export default class Home extends React.Component {
             slidesToScroll: 1,
             responsive: [
                 {
-                    breakpoint: 1250,
+                    breakpoint: 5000,
                     settings: {
                         slidesToShow: 3
                     }
