@@ -247,12 +247,12 @@ export default class FindLocationTabNew extends React.Component {
           };
         return (
             <React.Fragment>
-                {this.props.type === "meat" && this.renderMeatIcons()}
                 <div className="mySlider-container">
                     <Slider {...settings}>
                         {this.renderSlider()}
                     </Slider>
                 </div>
+                {this.props.type === "meat" && this.renderMeatIcons()}
                 <div className="find-location-heading">
                     <h3>All Restaurants</h3>
                 </div>
