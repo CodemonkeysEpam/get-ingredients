@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router";
 import Dashboard from "./Dashboard/Dashboard";
 import Orders from "./Orders/Orders";
-import Info from "./Info/Info";
+import Photos from "./Photos/Photos";
 import Products from "./Products/Products";
 
 class AddPartners extends React.Component {
@@ -72,9 +72,10 @@ class AddPartners extends React.Component {
             return <Orders placeId={this.state.place.id}/>
         } else if (this.state.currentTab === "Products") { 
             return <Products placeId={this.state.place.id}/>
-        } else if (this.state.currentTab === "Info") { 
-            return <Info placeId={this.state.place.id}/>
-        }
+        } 
+        else if (this.state.currentTab === "Photos") { 
+            return <Photos placeId={this.state.place.id}/>
+        } 
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -88,8 +89,8 @@ class AddPartners extends React.Component {
         else if(nextProps.location.pathname.includes("/products")) {
             currentTab = "Products"
         }
-        else if(nextProps.location.pathname.includes("/info")) {
-            currentTab = "Info"
+        else if(nextProps.location.pathname.includes("/photos")) {
+            currentTab = "Photos"
         }
         else {
             currentTab = "Dashboard"
@@ -120,9 +121,9 @@ class AddPartners extends React.Component {
                     <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/menu`}
                     className="sorting-tags"
                     >{this.props.type === 'restaurant' ? "Menu" : "Products"}</NavLink>
-                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/info`}
+                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/photos`}
                     className="sorting-tags"
-                    >Info</NavLink>
+                    >Photos</NavLink>
                 </div>
                 <div>
                 {this.displayTab()}
