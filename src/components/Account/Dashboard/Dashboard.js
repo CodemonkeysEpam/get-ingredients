@@ -6,9 +6,6 @@ export default class MyInfo extends React.Component {
     render() {
         return (
             <div className="dashboard">
-               {/* All orders: 5, Waiting shipment: 0, Received: 5
-               <br/>
-               Recomended: */}
                <div className="dashboard-item">
                 <div>All orders:</div>
                 <div>5</div>
@@ -21,7 +18,6 @@ export default class MyInfo extends React.Component {
                 <div>Received:</div>
                 <div>5</div>
                </div>
-
             </div>
         )
     }
