@@ -71,6 +71,7 @@ export default class TopSlider extends React.Component{
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1,
+            centerMode: true,
             responsive: [
                 {
                     breakpoint: 5000,
@@ -79,7 +80,7 @@ export default class TopSlider extends React.Component{
                     }
                 },
                 {
-                    breakpoint: 1250,
+                    breakpoint: 1300,
                     settings: {
                         slidesToShow: 3
                     }

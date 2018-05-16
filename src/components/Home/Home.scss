@@ -8,6 +8,7 @@ h1{
 }
 .banner{
 	margin-bottom: 70px!important;
+	max-height: 650px;
 	button{
 		font-size: 3em;
 		&:before{
@@ -30,6 +31,13 @@ h1{
 		background: #7c0f0f!important;
 		border-color: #fff!important;
 	}
+	.image-gallery-content:not(.fullscreen) .image-gallery-image img {
+    max-height: 650px;
+  }
+  .image-gallery-content:not(.fullscreen) .image-gallery-image {
+    height: 650px;
+    padding: 0;
+  }
 }
 .slider-places{
 	margin-bottom: 20px;
