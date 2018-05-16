@@ -5,10 +5,15 @@ let initialState = {
 export default function (state=initialState, action) {
     if(action.type === "ADD_ORDER") {
         let orders = state.orders.splice(0);
+        let pushed = false;
         for(let i = 0; i < orders.length; i++){
             if(orders[i].id === action.payload.id && orders[i].type === action.payload.type){
-                orders[i].count = action.payload.count
+                orders[i].count += action.payload.count;
+                pushed = true;
             }
+        }
+        if(!pushed){
+            orders.push(action.payload);
         }
         return Object.assign({}, state, { orders: orders });
     }
@@ -27,7 +32,6 @@ export default function (state=initialState, action) {
         for(let i = 0; i < orders.length; i++){
             if(orders[i].id === action.payload.id && orders[i].type === action.payload.type){
                 index = orders.indexOf(orders[i]);
-                console.log(index);
                 break;
             }
         }

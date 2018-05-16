@@ -146,7 +146,7 @@ class Menu extends React.Component {
                     <NavLink to="/shop" className="item item-dark-green">Shop</NavLink>
                     <Link to="/cart" className="shopping-cart">
                         <i className="fa fa-shopping-cart">
-                            <span className="count">{Object.keys(this.state.shoppingCart).length}</span>
+                            <span className="count">{this.props.orders.length}</span>
                         </i>
                     </Link>
                     {this.state.isLogin ?
@@ -193,7 +193,9 @@ class Menu extends React.Component {
 
 export default withRouter(
     connect(
-        state => ({}),
+        state => ({
+            orders: state.orders.orders
+        }),
         dispatch => ({})
     )(Menu)
 );

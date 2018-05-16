@@ -2,8 +2,9 @@ import React from 'react';
 import "./ShoppingCart.scss";
 import { Link } from 'react-router-dom';
 import { Button } from '../Shared/Button/Button';
+import { connect } from 'react-redux';
 
-export default class ShoppingCart extends React.Component {
+class ShoppingCart extends React.Component {
   getTotalPrice = (items) => {
     var total = 0;
     items.forEach(item => {
@@ -11,13 +12,38 @@ export default class ShoppingCart extends React.Component {
     });
     return Math.round(total * 100) / 100;
   }
-  
+
+  deleteOrder(item) {
+      this.props.onDeleteFromCart(item);
+  }
+
+  decreaseCountValue(item) {
+      if(item.count > 1){
+          item.count--;
+          this.props.onUpdateOrder(item);
+      }
+  }
+  increaseCountValue(item) {
+      if(item.count < 1000){
+          item.count++;
+          this.props.onUpdateOrder(item);
+      }
+  }
+  changeCountValue(value, item) {
+      if(value){
+          item.count = value;
+          this.props.onUpdateOrder(item);
+      } else {
+          value = item.value
+      }
+  }
+
   render () {
     return (
         <div className="main-section">
             <div className="page-heading">Shopping Cart</div>
             <div className="container">
-            {this.props.shoppingCart.length > 0 ?
+            {this.props.orders.length > 0 ?
               <div className="shopping-cart-list">
                 <div className="titles">
                   <div className="product">Product</div>
@@ -25,7 +51,7 @@ export default class ShoppingCart extends React.Component {
                   <div className="price">Price</div>
                   <div className="subtotal">Subtotal</div>
                 </div>
-                {this.props.shoppingCart.map(item => (
+                {this.props.orders.map(item => (
                   <div className="item" key={item.id}>
                     <div className="product">
                       <img src={item.src} alt={item.name} />
@@ -40,20 +66,20 @@ export default class ShoppingCart extends React.Component {
                     </div>
                     <div className="quantity">
                       <div className='product-calc'>
-                        <span onClick={() => this.props.decreaseCountCart(item)}> - </span> 
-                        <input type='number' className='product-amount' value={item.count} onChange={(event)=>this.props.changeCountCart(event.target.value, item)}></input>
-                        <span onClick={() => this.props.increaseCountCart(item)}> + </span>
+                        <span onClick={() => this.decreaseCountValue(item)}> - </span>
+                        <input type='number' className='product-amount' value={item.count} onFocus={(event)=>event.target.value=''} onChange={(event)=>this.changeCountValue(event.target.value, item)} onBlur={(event)=>{event.target.value=item.count}}></input>
+                        <span onClick={() => this.increaseCountValue(item)}> + </span>
                       </div>
                     </div>
                     <div className="price">${item.price}</div>
                     <div className="subtotal">${Math.round(item.price * item.count * 100) / 100}</div>
-                    <div className="delete"><i className="fa fa-times" onClick={()=>this.props.deleteFromCart(item)}></i></div>
+                    <div className="delete"><i className="fa fa-times" onClick={()=>this.deleteOrder(item)}></i></div>
                   </div>
                 ))
                 }
-                
+
                 <div className="total">
-                  Total: ${this.getTotalPrice(this.props.shoppingCart)}
+                  Total: ${this.getTotalPrice(this.props.orders)}
                 </div>
                 <div className="continue">
                   <Link to="/order">Continue</Link>
@@ -63,8 +89,22 @@ export default class ShoppingCart extends React.Component {
               <div>Shopping cart is empty</div>
             }
             </div>
-            
+
         </div>
     );
   }
 }
+
+export default connect(
+    state => ({
+        orders: state.orders.orders
+    }),
+    dispatch => ({
+        onDeleteFromCart: (order) => {
+            dispatch({type: "DELETE_ORDER", payload: order});
+        },
+        onUpdateOrder: (order) => {
+            dispatch({type: "UPDATE_ORDER", payload: order})
+        }
+    })
+)(ShoppingCart)
