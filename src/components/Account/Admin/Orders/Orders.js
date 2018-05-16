@@ -90,7 +90,7 @@ export default class Orders extends React.Component {
                             <div className="mult"><span>${order.productPrice}</span>x{order.productCount}</div>
                             </div>
                             <div className="status">{order.status}</div>
-                            <div className="total">${order.productPrice * order.productCount}</div>
+                            <div className="total">${Math.round(order.productPrice * order.productCount * 100) / 100}</div>
                         </div>
                     ))}
                 </React.Fragment>

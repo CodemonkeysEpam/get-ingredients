@@ -34,6 +34,7 @@ export default class TopSlider extends React.Component{
       topPlaces.push(placeItem);
     }
     topPlaces.sort(this.orderByCountOrder);
+    console.log(topPlaces);
     let top7Places = [];
     
     for(let i=0; i< 7;i++) {

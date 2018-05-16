@@ -1,8 +1,12 @@
 import React from 'react';
 import base from '../../../../services/base';
 import firebase from 'firebase';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router";
+import Dashboard from "./Dashboard/Dashboard";
+import Orders from "./Orders/Orders";
+import Info from "./Info/Info";
+import Products from "./Products/Products";
 
 class AddPartners extends React.Component {
     constructor(props) {
@@ -61,6 +65,41 @@ class AddPartners extends React.Component {
       }
 
    
+      displayTab () {
+        if(this.state.currentTab === "Dashboard") {
+            return <Dashboard/>
+        } else if(this.state.currentTab === "Orders") {
+            return <Orders placeId={this.state.place.id}/>
+        } else if (this.state.currentTab === "Products") { 
+            return <Products placeId={this.state.place.id}/>
+        } else if (this.state.currentTab === "Info") { 
+            return <Info placeId={this.state.place.id}/>
+        }
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        var currentTab;
+        if(nextProps.location.pathname.includes("/orders")) {
+            currentTab = "Orders"
+        }
+        else if(nextProps.location.pathname.includes("/menu")) {
+            currentTab = "Products"
+        }
+        else if(nextProps.location.pathname.includes("/products")) {
+            currentTab = "Products"
+        }
+        else if(nextProps.location.pathname.includes("/info")) {
+            currentTab = "Info"
+        }
+        else {
+            currentTab = "Dashboard"
+        }
+        return {
+            currentTab
+        };
+    }
+
+   
     render() {
         return this.state.isLoading ? <div>Loading</div> :
             <div className="partners-item">
@@ -68,14 +107,27 @@ class AddPartners extends React.Component {
                 <div>No data</div>
                 :
                 this.state.place.userId === this.props.uid ?
-                <div>{this.state.place.name} photo
-
-                __________________________
-                line
-                Dashboard | Orders | Menu | Info 
-
-
-                --tab--
+                <div>
+                <div>{this.state.place.name}</div>
+                
+                <div className="sorting">
+                    <NavLink exact to={`/account/partners/${this.props.type}s/${this.state.place.id}`}
+                    className="sorting-tags"
+                    >Dashboard</NavLink>
+                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/orders`}
+                    className="sorting-tags"
+                    >Orders</NavLink>
+                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/menu`}
+                    className="sorting-tags"
+                    >{this.props.type === 'restaurant' ? "Menu" : "Products"}</NavLink>
+                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/info`}
+                    className="sorting-tags"
+                    >Info</NavLink>
+                </div>
+                <div>
+                {this.displayTab()}
+                </div>
+                
                 </div>
                 :
                 <div>Access denied</div>

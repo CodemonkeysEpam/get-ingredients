@@ -1,6 +1,6 @@
 import React from 'react';
-import './MyOrders.scss';
-import base from '../../../services/base';
+// import './MyOrders.scss';
+import base from '../../../../../services/base';
 import { Link } from 'react-router-dom';
 
 export default class MyOrders extends React.Component {
@@ -20,8 +20,8 @@ export default class MyOrders extends React.Component {
             state: 'orders',
             asArray: true,
             queries: {
-                orderByChild: 'userId',
-                equalTo: this.props.uid
+                orderByChild: 'placeId',
+                equalTo: this.props.placeId
             },
             then() {
                 this.setState({displayedOrders: this.state.orders})
