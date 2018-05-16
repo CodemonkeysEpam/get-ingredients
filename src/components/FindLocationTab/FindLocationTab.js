@@ -14,7 +14,8 @@ export default class FindLocationTabNew extends React.Component {
             searchPlaceQuery: "",
             currentPlace: null,
             hoverPlace: null,
-            currentView: 'grid'
+            currentView: 'grid',
+            currentFilter: "all"
         }
         if(this.props.type === "meal"){
             this.state.url = "restaurant"
@@ -111,6 +112,60 @@ export default class FindLocationTabNew extends React.Component {
         });
     }
 
+    onIconClick = (icon) => {
+        let current = [];
+        if (icon === "all") {
+            current = this.props.list.slice();
+        } else {
+            current = this.props.list.filter(item => {
+                return item.assortment.indexOf(icon) !== -1;
+            })
+        };
+        this.setState({
+            currentPlacesList: current.slice(),
+            currentFilter: icon
+        })
+    }
+
+    renderMeatIcons = () => {
+        return  <div className="meat-icons">
+                        <div className="item">
+                            <div className={this.state.currentFilter === "all" ? "item-icon active": "item-icon"} onClick={() => this.onIconClick("all")}></div>
+                            <div className="item-name">All</div>
+                        </div>
+                    <div className="item">
+                        <div className={this.state.currentFilter === "beef" ? "item-icon active": "item-icon"} onClick={() => this.onIconClick("beef")}>
+                            <img src="img/meat_icons/beef.png" alt="Beef" />
+                        </div>
+                        <div className="item-name">Beef</div>
+                    </div>
+                    <div className="item">
+                        <div className={this.state.currentFilter === "pork" ? "item-icon active": "item-icon"} onClick={() => this.onIconClick("pork")}>
+                            <img src="img/meat_icons/pork.png" alt="Pork" />
+                        </div>
+                        <div className="item-name">Pork</div>
+                    </div>
+                    <div className="item">
+                        <div className={this.state.currentFilter === "lamb" ? "item-icon active": "item-icon"} onClick={() => this.onIconClick("lamb")}>
+                            <img src="img/meat_icons/lamb.png" alt="Lamb" />
+                        </div>
+                        <div className="item-name">Lamb</div>
+                    </div>
+                    <div className="item">
+                        <div className={this.state.currentFilter === "chicken" ? "item-icon active": "item-icon"} onClick={() => this.onIconClick("chicken")}>
+                            <img src="img/meat_icons/chicken.png" alt="Chicken" />
+                        </div>
+                        <div className="item-name">Chicken</div>
+                    </div>
+                    <div className="item">
+                        <div className={this.state.currentFilter === "sea food" ? "item-icon active": "item-icon"} onClick={() => this.onIconClick("sea food")}>
+                            <img src="img/meat_icons/sea_food.png" alt="Sea food" />
+                        </div>
+                        <div className="item-name">Sea food</div>
+                    </div>
+                </div>
+    }
+
     renderSlider = () => {
         let arr = this.props.list.map((place, i) => {
             return (
@@ -162,6 +217,7 @@ export default class FindLocationTabNew extends React.Component {
           };
         return (
             <React.Fragment>
+                {this.props.type === "meat" && this.renderMeatIcons()}
                 <div className="mySlider-container">
                     <Slider {...settings}>
                         {this.renderSlider()}

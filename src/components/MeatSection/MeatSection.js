@@ -39,7 +39,6 @@ componentDidMount() {
       state: 'specialList',
       asArray: true
     });
-
 }
 
 componentWillUnmount() {
@@ -48,18 +47,11 @@ componentWillUnmount() {
     base.removeBinding(this.refProducts);
 }
 
+
 displayTab () {
     if (this.state.currentTab === 'findmeatshop') {
         return (
             <React.Fragment>
-                <div className="meat-icons">
-                    <div className="item"><div className="item-icon"></div><div className="item-name">All</div></div>
-                    <div className="item"><div className="item-icon"><img src="img/meat_icons/beef.png" alt="Beef" /></div><div className="item-name">Beef</div></div>
-                    <div className="item"><div className="item-icon active"><img src="img/meat_icons/pork.png" alt="Pork" /></div><div className="item-name">Pork</div></div>
-                    <div className="item"><div className="item-icon"><img src="img/meat_icons/lamb.png" alt="Lamb" /></div><div className="item-name">Lamb</div></div>
-                    <div className="item"><div className="item-icon"><img src="img/meat_icons/chicken.png" alt="Chicken" /></div><div className="item-name">Chicken</div></div>
-                    <div className="item"><div className="item-icon"><img src="img/meat_icons/sea_food.png" alt="Sea food" /></div><div className="item-name">Sea food</div></div>
-                </div>
                 <div className="find-tab-body">
                     {this.state.shopsList.length > 0 ?
                     <FindLocationTab list={this.state.shopsList} type={'meat'}/>
