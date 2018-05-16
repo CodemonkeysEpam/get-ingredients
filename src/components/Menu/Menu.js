@@ -18,9 +18,11 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import PrivateRoute from '../../services/PrivateRoute';
 import PublicRoute from '../../services/PublicRoute';
 import RouteWithProps from '../../services/RouteWithProps';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
     constructor(props) {
         super(props);
 
@@ -188,3 +190,10 @@ export default class Menu extends React.Component {
     );
   }
 }
+
+export default withRouter(
+    connect(
+        state => ({}),
+        dispatch => ({})
+    )(Menu)
+);
