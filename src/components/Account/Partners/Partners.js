@@ -1,6 +1,7 @@
 import React from 'react';
 import base from '../../../services/base';
 import AddPartners from "./AddPartners/AddPartners";
+import AddProduct from "./PartnersItem/Products/AddProduct";
 import PartnersItem from "./PartnersItem/PartnersItem";
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
@@ -12,7 +13,8 @@ class Partners extends React.Component {
         this.state = {
             currentTab: 'Partners',
             placesList: [],
-            shopsList: []
+            shopsList: [],
+            mealsList: []
         }
     }
   
@@ -41,11 +43,21 @@ class Partners extends React.Component {
                 equalTo: this.props.uid
             }
           });
+          this.refMeals = base.bindToState(`meals/meals`, {
+            context: this,
+            state: 'mealsList',
+            asArray: true,
+            queries: {
+                orderByChild: 'userId',
+                equalTo: this.props.uid
+            }
+          });
       }
     
       componentWillUnmount() {
           base.removeBinding(this.refPlaces);
           base.removeBinding(this.refShops);
+          base.removeBinding(this.refMeals);
       }
 
       static getDerivedStateFromProps(nextProps, prevState) {
@@ -58,6 +70,8 @@ class Partners extends React.Component {
         }
         else if(nextProps.location.pathname.includes("/account/partners/shops/")) {
             currentTab = "PartnersShopItem"
+        } else if(nextProps.location.pathname.includes("/account/partners/meals/")) {
+            currentTab = "PartnersMealItem"
         }
         else {
             currentTab = "Partners"
@@ -114,6 +128,27 @@ class Partners extends React.Component {
                         <div>No data</div>
                         }
                     </div>
+
+                    <div className="type-container">
+                        <div className="header">
+                            <div className="title">Products:</div>
+                            <Link to="/account/partners/meals/" className="add-button">Add new item</Link>
+                        </div>
+                        
+                        {this.state.shopsList.length > 0 ?
+                        this.state.mealsList.map((meal, index) => (
+                            <Link to={`/account/partners/meals/${meal.id}`} className="item" key={meal.id}>
+                                <img src="https://firebasestorage.googleapis.com/v0/b/meatislifeepam.appspot.com/o/default%2Fprofile.jpg?alt=media&token=d26705f2-7d77-4c1e-b628-9cc1bd1a69e2" alt="logo"/>
+                                <div className="body">
+                                    <div className="title">{meal.name}</div>
+                                    <div className="verified">Verified: {meal.verified.toString()}</div>
+                                </div>
+                            </Link>
+                        ))
+                        :
+                        <div>No data</div>
+                        }
+                    </div>
                 </React.Fragment>
             )
         } else if(this.state.currentTab === "AddPartners"){
@@ -129,6 +164,10 @@ class Partners extends React.Component {
         else if(this.state.currentTab === "PartnersShopItem") {
             return (        
                 <PartnersItem uid={this.props.uid} type="shop"/>
+            )
+        } else if(this.state.currentTab === "PartnersMealItem") {
+            return (
+                <AddProduct uid={this.props.uid} type="meal"/>
             )
         }
 
