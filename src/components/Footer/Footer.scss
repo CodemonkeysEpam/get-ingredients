@@ -1,9 +1,13 @@
 footer {
-    position: absolute;
     width: 100%;
     bottom: 0;
     background: #fff;
     padding: 25px 0;
+
+    .container{
+        width: 80%;
+        margin: 0 auto;
+    }
 
     ul {
         display: inline-block;
