@@ -12,16 +12,16 @@
         .label {
             display: flex;
             align-items: center;
-        
+
             &:nth-child(n+2) {
                 margin-top: 10px;
             }
-        
+
             & > .title {
                 width: 300px;
                 font-size: 18px;
             }
-        
+
             input[type="text"] {
                 width: 400px;
                 box-sizing: border-box;
@@ -36,7 +36,7 @@
                 outline: none;
                 text-overflow: ellipses;
                 color: #000;
-        
+
                 &:focus {
                     outline: none;
                 }
@@ -61,16 +61,20 @@
             &:nth-child(2) {
                 border-top: 1px solid #000;
             }
-    
+
             .product{
                 width: 92%;
+<<<<<<< HEAD
                 color: #000;
                 padding-left: 10px;
+=======
+                color: black;
+>>>>>>> 62042c5be492d52b8103d390bf6a64740d0bd63d
             }
             .quantity {
                 width: 8%;
             }
-    
+
         }
 
         .total {
@@ -114,9 +118,13 @@
     color: #fff;
     padding: 15px 0;
     text-align: center;
+<<<<<<< HEAD
     background: red;
     width: 230px;
     margin: 0 auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+=======
+}
+>>>>>>> 62042c5be492d52b8103d390bf6a64740d0bd63d
