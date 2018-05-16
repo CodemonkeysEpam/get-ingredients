@@ -55,29 +55,25 @@ export default class Home extends React.Component {
     base.removeBinding(this.refAdvertising);
   }
 
-  detailsClick = (place) => {
-
-  }
-
   renderSliderPopularRestourants = () => {
-        let arr = this.state.placesList.map((place, i) => {
-            return (
-                <React.Fragment key={i}>
-                    <div className="myitem">
-                        <RestaurantItem
-                            logo={place.logo}
-                            name={place.name}
-                            address={place.address}
-                            detailsClick={() => this.detailsClick(place)}
-                            showOnMapClick={() => this.showOnMapClick(place)}
-                            type={this.props.type}
-                        />
-                    </div>
-                </React.Fragment>
-            )
-        })
-        return arr.slice(Math.max(arr.length - 7, 1));
-    }
+    let arr = this.state.placesList.map((place, i) => {
+      return (
+      <React.Fragment key={i}>
+        <div className="myitem">
+          <RestaurantItem
+            id={place.id}
+            logo={place.logo}
+            name={place.name}
+            address={place.address}
+            showOnMapClick={() => this.showOnMapClick(place)}
+            type={this.props.type}
+          />
+        </div>
+      </React.Fragment>
+      )
+    })
+    return arr.slice(Math.max(arr.length - 7, 1));
+  }
 
   renderSpecialOffer = () => {
     let specialArray = [];
