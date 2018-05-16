@@ -14,7 +14,8 @@ class Partners extends React.Component {
             currentTab: 'Partners',
             placesList: [],
             shopsList: [],
-            mealsList: []
+            mealsList: [],
+            menusList: []
         }
     }
   
@@ -28,29 +29,22 @@ class Partners extends React.Component {
         this.refPlaces = base.bindToState(`meals/places`, {
             context: this,
             state: 'placesList',
-            asArray: true,
-            queries: {
-                orderByChild: 'userId',
-                equalTo: this.props.uid
-            }
+            asArray: true
           });
           this.refShops = base.bindToState(`meat/places`, {
             context: this,
             state: 'shopsList',
-            asArray: true,
-            queries: {
-                orderByChild: 'userId',
-                equalTo: this.props.uid
-            }
+            asArray: true
           });
           this.refMeals = base.bindToState(`meals/meals`, {
             context: this,
             state: 'mealsList',
-            asArray: true,
-            queries: {
-                orderByChild: 'userId',
-                equalTo: this.props.uid
-            }
+            asArray: true
+          });
+          this.refMenus = base.bindToState(`meals/menus`, {
+            context: this,
+            state: 'menusList',
+            asArray: true
           });
       }
     
@@ -58,6 +52,7 @@ class Partners extends React.Component {
           base.removeBinding(this.refPlaces);
           base.removeBinding(this.refShops);
           base.removeBinding(this.refMeals);
+          base.removeBinding(this.refMenus);
       }
 
       static getDerivedStateFromProps(nextProps, prevState) {
@@ -167,7 +162,7 @@ class Partners extends React.Component {
             )
         } else if(this.state.currentTab === "PartnersMealItem") {
             return (
-                <AddProduct uid={this.props.uid} type="meal"/>
+                <AddProduct uid={this.props.uid} type="meal" mealsList={this.state.mealsList} menusList={this.state.menusList} />
             )
         }
 
