@@ -159,7 +159,7 @@ export default class Menu extends React.Component {
                 </div>
             </div>
             <Switch>
-                <Route path="/" exact component={Home}/>
+                <Route path="/" exact component={Home} addToShoppingCart={this.addToShoppingCart}/>
                 <RouteWithProps path="/meals" component={MealsSection} addToShoppingCart={this.addToShoppingCart}/>
                 <RouteWithProps path="/meat"  component={MeatSection} addToShoppingCart={this.addToShoppingCart}/>
                 <Route path="/recepies"  component={Recipes}/>
