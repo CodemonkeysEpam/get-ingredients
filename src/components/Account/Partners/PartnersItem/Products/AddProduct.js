@@ -14,7 +14,8 @@ export default class AddProduct extends React.Component {
             ingredients: "",
             mealExist: false,
             mealsList: [],
-            placesList: []
+
+            price: ""
         }
     }
 
@@ -73,7 +74,7 @@ export default class AddProduct extends React.Component {
 
     addMealToBase = () => {
         var generatedKey = firebase.database().ref()
-        .child("meals/menus")
+        .child("meals/meals")
         .push().key;
 
         var type = this.state.file.name.split('.').pop();
@@ -87,19 +88,24 @@ export default class AddProduct extends React.Component {
             base.update(`meals/meals/${generatedKey}`, {
                 data: {
                     id: generatedKey,
-                    name: this.state.name,
-                    userId: this.props.uid,
+                    name: this.state.value,
                     src: snapshot.downloadURL,
-                    ingredients: ingredients,
-                    status: "Not verified"
+                    ingredients: ingredients
                 },
                 then(err){
-                    if(!err){
-                        console.log("yes");
-                    }
-                    else {
-                        console.log(err);
-                    }
+                    var generatedKeyMenus = firebase.database().ref()
+                    .child("meals/menus")
+                    .push().key;
+                    base.update(`meals/meals/${generatedKey}`, {
+                        data: {
+                            id: generatedKeyMenus,
+                            mealId: generatedKey,
+                            price: this.state.price,
+                            placeId: this.props.placeId
+                        }}).then(()=>{
+
+                            
+                        })
                 }
             });
         })
@@ -113,7 +119,7 @@ export default class AddProduct extends React.Component {
         return (
             <div className="add-partner">
                 <div className="header">
-                    <Link to="/account/partners" className="back-button">Back</Link>
+                    <Link to={`/account/partners/restaurants/${this.props.placeId}/menu`} className="back-button">Back</Link>
                     <div className="title">Add new item:</div>
                 </div>
                 <form onSubmit={this.handleSubmit}>
