@@ -2,33 +2,43 @@ import React from 'react';
 import base from '../../../../../services/base';
 import firebase from 'firebase';
 import { Link } from 'react-router-dom';
+import Autocomplete from 'react-autocomplete';
 
-export default class AddPpoduct extends React.Component {
+export default class AddProduct extends React.Component {
     constructor(props) {
         super(props);
   
         this.state = {
             name: "",
             file: null,
-            desc: ""
+            ingredients: "",
+            mealExist: false,
+            mealsList: [],
+            placesList: []
         }
     }
 
-    changeName = (event) => {
+    onChangeName = (value) => {
         this.setState({
-            name: event.target.value
+            name: value
         });
     }
 
-    changeFile = (event) => {
+    onSelect = (value) => {
+        this.setState({
+            name: value
+        });    
+    }
+
+    onChangeFile = (event) => {
         this.setState({
             file: event.target.files[0] ? event.target.files[0] : null
         });
     }
 
-    changeDesc = (event) => {
+    onChangeIngredients = (event) => {
         this.setState({
-            desc: event.target.value
+            ingredients: event.target.value
         });
     }
 
@@ -45,13 +55,16 @@ export default class AddPpoduct extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+    }
 
+    addMealToBase = () => {
         var generatedKey = firebase.database().ref()
         .child("meals/meals")
         .push().key;
 
         var type = this.state.file.name.split('.').pop();
         var filename = `logo-${this.getFormattedTime()}.${type}`;
+        var ingredients = this.state.ingredients.split(/[ ,]+/);
 
         firebase.storage().ref('/meals').child(generatedKey)
         .child(filename)
@@ -63,7 +76,7 @@ export default class AddPpoduct extends React.Component {
                     name: this.state.name,
                     userId: this.props.uid,
                     src: snapshot.downloadURL,
-                    description: this.state.desc,
+                    ingredients: ingredients,
                     status: "Not verified"
                 },
                 then(err){
@@ -79,6 +92,7 @@ export default class AddPpoduct extends React.Component {
     }
 
     render() {
+        console.log(this.props.mealsList);
         return (
             <div className="add-partner">
                 <div className="header">
@@ -88,8 +102,23 @@ export default class AddPpoduct extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="label">
                         <div className="title">Name:</div>
-                        <input type="text" onChange={this.changeName} placeholder="Enter name" value={this.state.name} required/>
+                        <Autocomplete
+                            wrapperStyle={{ position: 'relative' }}
+                            menuStyle={{ position: 'absolute', top: '40px', left: 0 }}
+                            getItemValue={(item) => item}
+                            items={this.state.mealsList}
+                            shouldItemRender={(item, value) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1}
+                            renderItem={(item, isHighlighted) =>
+                                <div className={ isHighlighted ? 'highlighted' : 'not-highlighted' }>
+                                    {item.name}
+                                </div>
+                            }
+                            value={this.state.name}
+                            onSelect={(val) => this.onSelect(val)}
+                            onChange={(e) => this.onChangeName(e.target.value)}
+                        />
                     </div>
+                    {!this.state.mealExist && <React.Fragment> 
                     <div className="label">
                         <div className="title">Photo:</div>
                         <label htmlFor="file-add-partner">
@@ -100,13 +129,15 @@ export default class AddPpoduct extends React.Component {
                                     </span>
                                 </div>
                         </label>
-                        <input type="file" id="file-add-partner" onChange={this.changeFile} accept="image/*" required/>
+                        <input type="file" id="file-add-partner" onChange={this.onChangeFile} accept="image/*" required/>
                     </div>
                     
                     <div className="label">
-                        <div className="title">Description:</div>
-                        <textarea onChange={this.changeDesc} placeholder="Enter description" value={this.state.desc} required></textarea>
+                        <div className="title">Ingredients:</div>
+                        <textarea onChange={this.onChangeIngredients} placeholder="Enter description" value={this.state.ingredients} required></textarea>
                     </div>
+                    </React.Fragment>
+                    }
                         
                     <br/>
                     <button type="submit">Send</button>
