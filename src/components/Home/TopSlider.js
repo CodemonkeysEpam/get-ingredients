@@ -4,10 +4,17 @@ import Slider from "react-slick";
 
 export default class TopSlider extends React.Component{
 
+  orderByCountOrder = (a,b) => {
+    if (a.countOrder > b.countOrder)
+      return -1;
+    if (a.countOrder < b.countOrder)
+      return 1;
+    return 0;
+  }
+
 	formTop7Places(){
     let list = this.props.list;
     const orders = this.props.orders;
-    console.log(orders);
     let topPlaces = [];
     for(let key in list) {
       let placeItem = {};
@@ -33,7 +40,6 @@ export default class TopSlider extends React.Component{
       if(i === topPlaces.length) break;
       top7Places.push(topPlaces[i])
     }
-
     return top7Places;
   }
 

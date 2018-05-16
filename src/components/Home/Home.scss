@@ -70,65 +70,64 @@ h1{
 			outline: none;
 		}
 	}
-}
-.product-calc{
-	margin: 20px auto;
-	text-align: center;
-	span{
-		margin: auto 10px;
-		cursor: pointer;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none; 
-		user-select: none; 
+	.product-calc{
+		margin: 20px auto;
+		text-align: center;
+		span{
+			margin: auto 10px;
+			cursor: pointer;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none; 
+			user-select: none; 
+		}
 	}
-}
+	.product-img{
+		margin: 20px auto;
+		height: 180px;
+		width: 230px;
+		position: relative;
+		img{
+			position: absolute;
+			max-width:100%;
+			max-height:100%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
 
-.product-img{
-	margin: 20px auto;
-	height: 180px;
-	width: 230px;
-	position: relative;
-	img{
-		position: absolute;
-		max-width:100%;
-		max-height:100%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%);
+	.product-title{
+		font-size: 18px;
+		margin: 20px;
+		text-align: center;
+		text-overflow: ellipsis;
 	}
-}
 
-.product-title{
-	font-size: 18px;
-	margin: 20px;
-	text-align: center;
-	text-overflow: ellipsis;
-}
-
-.product-price{
-	text-align: center;
-	&:after{
-		content: ' $';
-		color: #fff;
+	.product-price{
+		text-align: center;
+		&:after{
+			content: ' $';
+			color: #fff;
+		}
 	}
-}
-.product-amount{
-	width: 40px;
-	height: 25px;
-	text-align: center;
-}
-input[type=number]{
-	border: 1px solid #fff;
-	background-color: rgba(255, 255, 255, 0.8);
-	&:focus{
-		outline: 0;
+	.product-amount{
+		width: 40px;
+		height: 25px;
+		text-align: center;
 	}
-}
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-	-webkit-appearance: none;
-	margin: 0;
+	input[type=number]{
+		border: 1px solid #fff;
+		background-color: rgba(255, 255, 255, 0.8);
+		&:focus{
+			outline: 0;
+		}
+	}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none;
+		margin: 0;
+	}
 }
