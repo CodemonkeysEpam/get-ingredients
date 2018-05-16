@@ -10,8 +10,8 @@ class AddPartners extends React.Component {
   
         this.state = {
             place: {},
+            meal: {},
             isLoading: true
-
         }
     }
 
@@ -27,7 +27,7 @@ class AddPartners extends React.Component {
                 }
             });
         }
-        else {
+        else if(this.props.type === "shops") {
           this.refShops = base.bindToState(`meat/places/${this.props.location.pathname.split("/").pop()}`, {
             context: this,
             state: 'place',
@@ -37,14 +37,26 @@ class AddPartners extends React.Component {
                 })
             }
           });
+        } else if(this.props.type === "meal") {
+            this.refMeals = base.bindToState(`meals/meals/${this.props.location.pathname.split("/").pop()}`, {
+              context: this,
+              state: 'meal',
+              then() {
+                  this.setState({
+                      isLoading: false
+                  })
+              }
+            });  
         }
       }
     
       componentWillUnmount() {
         if(this.props.type === "restaurant") {
             base.removeBinding(this.refPlaces);
-        } else {
+        } else if(this.props.type === "shop"){
             base.removeBinding(this.refShops);
+        } else {
+            base.removeBinding(this.refMeals);
         }
       }
 
