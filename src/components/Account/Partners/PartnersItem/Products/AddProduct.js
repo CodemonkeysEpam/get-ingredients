@@ -9,7 +9,7 @@ export default class AddProduct extends React.Component {
         super(props);
   
         this.state = {
-            name: "",
+            value: "",
             file: null,
             ingredients: "",
             mealExist: false,
@@ -19,15 +19,17 @@ export default class AddProduct extends React.Component {
     }
 
     onChangeName = (value) => {
+        let exist = false;
+        this.props.mealsList.forEach((item) => {
+            if (item.name.toLowerCase() === value.toLowerCase()) {
+                exist = true;
+            }
+        })
         this.setState({
-            name: value
+            value: value,
+            mealExist: exist
         });
-    }
-
-    onSelect = (value) => {
-        this.setState({
-            name: value
-        });    
+        console.log(this.state.mealExist);
     }
 
     onChangeFile = (event) => {
@@ -39,6 +41,12 @@ export default class AddProduct extends React.Component {
     onChangeIngredients = (event) => {
         this.setState({
             ingredients: event.target.value
+        });
+    }
+
+    onChangePrice = (event) => {
+        this.setState({
+            price: event.target.value
         });
     }
 
@@ -55,11 +63,17 @@ export default class AddProduct extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+
+        if(!this.mealExist) {
+            this.addMealToBase();
+        };
+
+        this.addMenuToBase();
     }
 
     addMealToBase = () => {
         var generatedKey = firebase.database().ref()
-        .child("meals/meals")
+        .child("meals/menus")
         .push().key;
 
         var type = this.state.file.name.split('.').pop();
@@ -91,8 +105,11 @@ export default class AddProduct extends React.Component {
         })
     }
 
+    addMenuToBase = () => {
+        //ToDo
+    }
+
     render() {
-        console.log(this.props.mealsList);
         return (
             <div className="add-partner">
                 <div className="header">
@@ -105,17 +122,17 @@ export default class AddProduct extends React.Component {
                         <Autocomplete
                             wrapperStyle={{ position: 'relative' }}
                             menuStyle={{ position: 'absolute', top: '40px', left: 0 }}
-                            getItemValue={(item) => item}
-                            items={this.state.mealsList}
+                            getItemValue={item => item.name}
+                            items={this.props.mealsList}
                             shouldItemRender={(item, value) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1}
                             renderItem={(item, isHighlighted) =>
-                                <div className={ isHighlighted ? 'highlighted' : 'not-highlighted' }>
+                                <div key={item.id} className={ isHighlighted ? 'highlighted' : 'not-highlighted' }>
                                     {item.name}
                                 </div>
                             }
-                            value={this.state.name}
-                            onSelect={(val) => this.onSelect(val)}
-                            onChange={(e) => this.onChangeName(e.target.value)}
+                            value={this.state.value}
+                            onSelect={value => this.setState({ value: value, mealExist: true })}
+                            onChange={e => this.onChangeName(e.target.value)}
                         />
                     </div>
                     {!this.state.mealExist && <React.Fragment> 
@@ -138,6 +155,11 @@ export default class AddProduct extends React.Component {
                     </div>
                     </React.Fragment>
                     }
+
+                    <div className="label">
+                        <div className="title">Price:</div>
+                        <input type="number" onChange={this.onChangePrice} placeholder="Enter price" value={this.state.price} required/>
+                    </div>
                         
                     <br/>
                     <button type="submit">Send</button>
