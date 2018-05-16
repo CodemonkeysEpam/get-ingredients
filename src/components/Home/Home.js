@@ -168,42 +168,6 @@ export default class Home extends React.Component {
   return newArray;
 }
 
-  formTop7Places(type){
-    let list = [];
-    const orders = this.state.orders;
-    if( type === 'store' ){
-      list = this.state.shopsList;
-    } else {
-      list = this.state.placesList;
-    }
-    var topPlaces = [];
-    for(var key in list) {
-      var placeItem = {};
-      placeItem.id = list[key].id;
-      placeItem.name = list[key].name;
-      placeItem.location = list[key].location;
-      placeItem.address = list[key].address;
-      placeItem.description = list[key].description;
-      placeItem.status = list[key].status;
-      placeItem.countOrder = 0;
-      
-      for(var key2 in orders) {
-        if(orders[key2].placeId === placeItem.id) {
-          placeItem.countOrder++;
-        }
-      }
-      topPlaces.push(placeItem);
-    }
-    topPlaces.sort(this.orderByCountOrder);
-    var top7Places = [];
-    
-    for(var i=0; i< 7;i++) {
-      if(i === topPlaces.length) break;
-      top7Places.push(topPlaces[i])
-    }
-    return top7Places;
-  }
-
   render () {
 
     let settings = {
@@ -220,7 +184,7 @@ export default class Home extends React.Component {
                     }
                 },
                 {
-                    breakpoint: 1550,
+                    breakpoint: 1250,
                     settings: {
                         slidesToShow: 3
                     }
