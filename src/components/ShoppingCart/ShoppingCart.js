@@ -9,7 +9,7 @@ export default class ShoppingCart extends React.Component {
     items.forEach(item => {
       total += item.price * item.count;
     });
-    return total;
+    return Math.round(total * 100) / 100;
   }
   
   render () {
@@ -32,8 +32,8 @@ export default class ShoppingCart extends React.Component {
                       <div className="body">
                         <div className="name">{item.name}</div>
                         <div className="seller">Seller:&#160;
-                        <Link to={item.type==="shop" ? "/": `/${item.type}/${item.place.id}`}>
-                          {item.type==="shop" ? "Meat is Life": item.place.name}
+                        <Link to={item.type==="shop" ? "/": `/${item.type}/${item.placeId}`}>
+                          {item.type==="shop" ? "Meat is Life": item.placeName}
                         </Link>
                         </div>
                       </div>
@@ -46,7 +46,7 @@ export default class ShoppingCart extends React.Component {
                       </div>
                     </div>
                     <div className="price">${item.price}</div>
-                    <div className="subtotal">${item.price * item.count}</div>
+                    <div className="subtotal">${Math.round(item.price * item.count * 100) / 100}</div>
                     <div className="delete"><i className="fa fa-times" onClick={()=>this.props.deleteFromCart(item)}></i></div>
                   </div>
                 ))

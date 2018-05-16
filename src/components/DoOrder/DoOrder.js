@@ -57,7 +57,7 @@ class DoOrder extends React.Component {
     items.forEach(item => {
       total += item.price * item.count;
     });
-    return total;
+    return Math.round(total * 100) / 100;
   }
 
   handleSubmit = (event) => {
@@ -73,11 +73,12 @@ class DoOrder extends React.Component {
             data: {
                 id: generatedKey,
                 productId: item.id,
+                productItemId: item.itedId,
                 productName: item.name,
                 productCount: item.count,
                 productPrice: item.price,
-                placeId: item.type ==="shop" ? "shop" : item.place.id,
-                placeName: item.type ==="shop" ? "Meat is Life" : item.place.name,
+                placeId: item.type ==="shop" ? "shop" : item.placeId,
+                placeName: item.type ==="shop" ? "Meat is Life" : item.placeName,
                 type: item.type,
                 date: this.getFormattedTime(),
                 deliveryInfo: {

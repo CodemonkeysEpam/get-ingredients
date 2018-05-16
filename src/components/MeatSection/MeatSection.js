@@ -70,6 +70,7 @@ displayTab () {
                     menusList={this.state.productsList}
                     specialOffers = {false}
                     specialList={this.state.specialList}
+                    addToShoppingCart={this.props.addToShoppingCart}
                 />
                 :
                 <div>...</div>}

@@ -17,13 +17,15 @@ const MapWithAMarkers = compose(
             if(isOpen !== index) {
                 return {
                     isOpen: index,
-                    isHoverSidebarItem: null
+                    isHoverSidebarItem: null,
+                    isCurrentSidebarItem: null
                 }
             }
             else {
                 return {
                     isOpen: null,
-                    isHoverSidebarItem: null
+                    isHoverSidebarItem: null,
+                    
                 }
             }
         },
@@ -32,6 +34,7 @@ const MapWithAMarkers = compose(
         componentWillReceiveProps(nextProps) {
             this.setState({
                 isHoverSidebarItem: nextProps.hoverPlace != null ? nextProps.hoverPlace.id : null,
+                isCurrentSidebarItem: nextProps.currentPlace != null ? nextProps.currentPlace.id: null,
                 zoomToMarkers: map => {
                     if(map != null) {
                         const bounds = new google.maps.LatLngBounds();
@@ -45,9 +48,10 @@ const MapWithAMarkers = compose(
                 }
             });
         },
-        componentDidMount() {  
+        componentDidMount() {
             this.setState({
-                isHoverSidebarItem: this.hoverPlace != null ? this.hoverPlace.id : null,
+                isHoverSidebarItem: this.props.hoverPlace != null ? this.props.hoverPlace.id : null,
+                isCurrentSidebarItem: this.props.currentPlace != null ? this.props.currentPlace.id: null,
                 zoomToMarkers: map => {
                     if(map != null) {
                         const bounds = new google.maps.LatLngBounds();
@@ -84,7 +88,7 @@ const MapWithAMarkers = compose(
                 onMouseOut={() => props.onToggleOpen(null)}
                 
             >
-                {(props.isOpen === index || props.isHoverSidebarItem === place.id ) && <InfoWindow onCloseClick={() => props.onToggleOpen(null)}>
+                {(props.isOpen === index || props.isHoverSidebarItem === place.id || props.isCurrentSidebarItem === place.id) && <InfoWindow onCloseClick={() => props.onToggleOpen(null)}>
                     <div>
                         <h1 style={{color: '#e33834', fontSize: '16px', fontWeight: 'bold'}}>{place.name}</h1>
                         <p>Address: {place.address}</p>

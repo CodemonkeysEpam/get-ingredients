@@ -31,7 +31,7 @@ export default class Menu extends React.Component {
         }
     }
 
-    addToShoppingCart = (type, itemInfo, count, providerDetails) => {
+    addToShoppingCart = (type, itemInfo, count, itemProductInfo, providerInfo) => {
         const shoppingCart = {...this.state.shoppingCart};
         if(type === "shop") {
             if(itemInfo.id in shoppingCart) {
@@ -49,7 +49,23 @@ export default class Menu extends React.Component {
             }
         }
         else {
-
+            if(itemProductInfo.id in shoppingCart) {
+                shoppingCart[itemProductInfo.id].count = shoppingCart[itemProductInfo.id].count + count;
+            }
+            else {
+                shoppingCart[itemProductInfo.id] = {
+                    id: itemProductInfo.id,
+                    itemId: itemInfo.id,
+                    name: itemInfo.name,
+                    type: type,
+                    src: itemInfo.src,
+                    price: itemProductInfo.price,
+                    count: count,
+                    placeId: providerInfo.id,
+                    placeName: providerInfo.name
+                }
+                console.log(shoppingCart[itemProductInfo.id])
+            }
         }
 
         this.setState({shoppingCart})
@@ -145,8 +161,8 @@ export default class Menu extends React.Component {
             </div>
             <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="/meals" component={MealsSection}/>
-                <Route path="/meat"  component={MeatSection}/>
+                <RouteWithProps path="/meals" component={MealsSection} addToShoppingCart={this.addToShoppingCart}/>
+                <RouteWithProps path="/meat"  component={MeatSection} addToShoppingCart={this.addToShoppingCart}/>
                 <Route path="/recepies"  component={Recipes}/>
                 <RouteWithProps path="/shop" component={Shop} addToShoppingCart={this.addToShoppingCart}/>
                 <PublicRoute path="/login" component={Login} isLogin={this.state.isLogin}/>

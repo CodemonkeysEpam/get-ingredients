@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { MealItem } from '../MealItem/MealItem';
 import Modal from 'react-modal';
 import Autocomplete from 'react-autocomplete';
+import ProductItemAddToCart from "../ProductItemAddToCart/ProductsItemAddToCart";
 
 export default class FindFoodTab extends React.Component {
 
@@ -19,7 +20,7 @@ export default class FindFoodTab extends React.Component {
           detailsOpen: false,
           currentOffers: [],
           selectedIngredient: "Select ingredient",
-          selectedPlace: "Select place" 
+          selectedPlace: "Select place",
       };
 
       this.handleDetailsClick = this.handleDetailsClick.bind(this);
@@ -64,7 +65,8 @@ export default class FindFoodTab extends React.Component {
         currentMealsList: filtered,
         currentMeal: filtered[0] || {},
         selectedIngredient: "Select ingredient",
-        selectedPlace: "Select place"
+        selectedPlace: "Select place",
+        value: ""
     });
   }
 
@@ -79,20 +81,17 @@ export default class FindFoodTab extends React.Component {
       let arr = [];
       this.props.menusList.forEach(item => {
           if (item.mealId === meal.id) {
-              arr.push({place:this.props.placesList[item.placeId], price:item.price});
+              arr.push({place:this.props.placesList[item.placeId], menusItem:item});
           }
       });
       return arr;
   }
 
   renderPlacesWithMeal = (meal) => {
-      return this.findPlacesWithMeal(meal).map((item, i) => {
-          return <div className="meal-details-offer" key={i}>
-                     <div className="meal-details-offer-place">{item.place.name}</div>
-                     <div className="meal-details-offer-price">{item.price}$</div>
-                     <button className="meal-details-add-button">add to cart</button>
-                 </div>
-      });
+      return this.findPlacesWithMeal(meal).map((item, i) => (
+          <ProductItemAddToCart key={i} item={item} meal={meal} addToShoppingCart={this.props.addToShoppingCart} closeModal={this.closeModal} mealsPage={this.props.mealsPage}/>
+      )
+    );
   } 
 
   closeModal = () => {

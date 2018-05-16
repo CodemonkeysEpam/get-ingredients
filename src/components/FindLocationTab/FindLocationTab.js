@@ -90,7 +90,8 @@ export default class FindLocationTabNew extends React.Component {
 
     onPlaceHover = (place) => {
         this.setState({
-            hoverPlace: place
+            hoverPlace: place,
+            currentPlace: null
         });
     }
 
