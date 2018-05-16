@@ -11,7 +11,7 @@ class DoOrder extends React.Component {
         super(props);
   
         this.state = {
-            name: firebase.auth().currentUser.displayName,
+            name: firebase.auth().currentUser ? firebase.auth().currentUser.displayName : "",
             address: "",
             city: "",
             phone: "",
