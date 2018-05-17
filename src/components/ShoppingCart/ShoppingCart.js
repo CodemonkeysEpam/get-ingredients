@@ -88,7 +88,7 @@ class ShoppingCart extends React.Component {
                 </div>
               </div>
               :
-              <div>Shopping cart is empty</div>
+              <div className='empty-cart'>Shopping cart is empty</div>
             }
             </div>
 
