@@ -77,11 +77,21 @@ export default class FindFoodTab extends React.Component {
       });
   }
 
+  getPlaceIndexById = (id) => {
+      let index = 0;
+      this.props.placesList.forEach((item, i) => {
+          if(item.id === id) {
+              index = i;
+          };
+      });
+      return index;
+  }
+
   findPlacesWithMeal = (meal) => {
       let arr = [];
       this.props.menusList.forEach(item => {
           if (item.mealId === meal.id) {
-              arr.push({place:this.props.placesList[item.placeId], menusItem:item});
+              arr.push({place:this.props.placesList[this.getPlaceIndexById(item.placeId)], menusItem:item});
           }
       });
       return arr;

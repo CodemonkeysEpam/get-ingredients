@@ -31,7 +31,23 @@ export default class Photos extends React.Component{
                         <button className="close">&times;</button>
                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg"/>
                     </div>
-                </div>
+                    <div className="photos-gallery-item">
+                        <button className="close">&times;</button>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg"/>
+                    </div>
+                    <div className="photos-gallery-item">
+                        <button className="close">&times;</button>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg"/>
+                    </div>
+                    <div className="photos-gallery-item">
+                        <button className="close">&times;</button>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg"/>
+                    </div>
+                    <div className="photos-gallery-item">
+                        <button className="close">&times;</button>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg"/>
+                    </div>
+                </div>         
             </div>
         );
     }
