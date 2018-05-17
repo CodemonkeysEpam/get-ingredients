@@ -3,8 +3,9 @@ import base from '../../../../../services/base';
 import firebase from 'firebase';
 import { Link } from 'react-router-dom';
 import Autocomplete from 'react-autocomplete';
+import { withRouter } from "react-router";
 
-export default class AddProduct extends React.Component {
+class AddProduct extends React.Component {
     constructor(props) {
         super(props);
   
@@ -63,12 +64,12 @@ export default class AddProduct extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-
         if(!this.mealExist) {
             this.addMealToBase();
-        };
-
-        this.addMenuToBase();
+        }
+        else {
+            this.addMenuToBase();
+        }
     }
 
     addMealToBase = () => {
@@ -90,26 +91,38 @@ export default class AddProduct extends React.Component {
                     name: this.state.value,
                     src: snapshot.downloadURL,
                     ingredients: ingredients
-                },
-                then(err){
+                }}).
+                then((err) => {
                     var generatedKeyMenus = firebase.database().ref()
                     .child("meals/menus")
                     .push().key;
-                    base.update(`meals/meals/${generatedKey}`, {
+                    base.update(`meals/menus/${generatedKeyMenus}`, {
                         data: {
                             id: generatedKeyMenus,
                             mealId: generatedKey,
                             price: this.state.price,
                             placeId: this.props.placeId
                         }}).then(()=>{
-                    })
+                            this.props.history.push(`/account/partners/restaurants/${this.props.placeId}/menu`);
+                        })
                 }
-            });
+            );
         })
     }
 
     addMenuToBase = () => {
-        //ToDo
+        // var generatedKeyMenus = firebase.database().ref()
+        // .child("meals/menus")
+        // .push().key;
+        // base.update(`meals/menus/${generatedKeyMenus}`, {
+        //     data: {
+        //         id: generatedKeyMenus,
+        //         mealId: 
+        //         price: this.state.price,
+        //         placeId: this.props.placeId
+        //     }}).then(()=>{
+        //         this.props.history.push(`/account/partners/restaurants/${this.props.placeId}/menu`);
+        //     })
     }
 
     render() {
@@ -124,7 +137,7 @@ export default class AddProduct extends React.Component {
                         <div className="title">Name:</div>
                         <Autocomplete
                             wrapperStyle={{ position: 'relative' }}
-                            menuStyle={{ position: 'absolute', top: '32px', left: 0 }}
+                            menuStyle={{ position: 'absolute', top: '32px', left: 0, zIndex: 4 }}
                             getItemValue={item => item.name}
                             items={this.props.mealsList}
                             shouldItemRender={(item, value) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1}
@@ -171,3 +184,5 @@ export default class AddProduct extends React.Component {
         )
     }
 }
+
+export default withRouter(AddProduct);
