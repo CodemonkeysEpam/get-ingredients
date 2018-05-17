@@ -243,7 +243,7 @@ export default class Home extends React.Component {
         <div className='slider-places'>
           <div className='slider-places-header'>
             <p>Popular Places</p>
-            <NavLink to="/meals">
+            <NavLink to="/meals?findyourplace">
               <input type='button' className='button button-places' value='SEE ALL'></input>
             </NavLink>
           </div>
@@ -267,7 +267,7 @@ export default class Home extends React.Component {
         <div className='slider-places'>
           <div className='slider-places-header'>
             <p>Best Stores</p>
-            <NavLink to="/meat">
+            <NavLink to="/meat?findmeatshop">
               <input type='button' className='button button-stores' value='SEE ALL'></input>
             </NavLink>         
           </div>
