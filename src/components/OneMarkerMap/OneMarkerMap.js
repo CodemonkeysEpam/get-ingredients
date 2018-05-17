@@ -32,7 +32,7 @@ withProps({
         <InfoWindow>
             <div>
                 <h1 style={{color: '#e33834', fontSize: '16px', fontWeight: 'bold'}}>{props.name}</h1>
-                <p style={{color: 'grey'}}>Address: {props.address}</p>
+                {/* <p style={{color: 'grey'}}>Address: {props.address}</p> */}
             </div>
         </InfoWindow>
         </Marker>
