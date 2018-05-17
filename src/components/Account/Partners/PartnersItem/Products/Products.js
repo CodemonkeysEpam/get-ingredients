@@ -144,17 +144,6 @@ class Products extends React.Component {
                 }
             </div>
 
-
-            {/* <Link to={`${this.props.location.pathname}/add`}>add</Link>
-
-        {this.state.menusList.length > 0 ?
-        <div>
-            {this.state.menusList.map(item => (
-                
-                <div key={item.id}>{this.state.mealsList[item.mealId].name} - {item.price}</div>
-            ))}
-        </div>
-        :<div>No data</div>} */}
         </div>
     }
 }

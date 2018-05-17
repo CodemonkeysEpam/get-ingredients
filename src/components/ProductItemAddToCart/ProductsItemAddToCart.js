@@ -48,7 +48,7 @@ class Product extends React.Component{
 
 	dispatchOrder(){
     let order = {
-      id: this.props.meal.id,
+      id: this.props.item.menusItem.id,
       name: this.props.meal.name,
       price: this.props.item.menusItem.price,
       src: this.props.meal.src,

@@ -1,5 +1,4 @@
 import React from 'react';
-// import './MyOrders.scss';
 import base from '../../../../../services/base';
 import { Link } from 'react-router-dom';
 

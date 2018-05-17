@@ -52,7 +52,7 @@ class ShoppingCart extends React.Component {
                   <div className="subtotal">Subtotal</div>
                 </div>
                 {this.props.orders.map(item => (
-                  <div className="item" key={item.id + item.placeId} >
+                  <div className="item" key={item.id} >
                     <div className="product">
                       <div className='product-img-container'>
                         <img src={item.src} alt={item.name} />
