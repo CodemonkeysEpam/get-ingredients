@@ -7,7 +7,7 @@ export default function (state=initialState, action) {
         let orders = state.orders.splice(0);
         let pushed = false;
         for(let i = 0; i < orders.length; i++){
-            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name && orders[i].placeId === action.payload.placeId){
+            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name && orders[i].placeId === action.payload.placeId && orders[i].price === action.payload.price){
                 orders[i].count += action.payload.count;
                 pushed = true;
             }
@@ -20,7 +20,7 @@ export default function (state=initialState, action) {
     if(action.type === "UPDATE_ORDER"){
         let orders = state.orders.splice(0);
         for(let i = 0; i < orders.length; i++){
-            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name && orders[i].placeId === action.payload.placeId){
+            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name && orders[i].placeId === action.payload.placeId && orders[i].price === action.payload.price){
                 orders[i] = action.payload
             }
         }
@@ -30,7 +30,7 @@ export default function (state=initialState, action) {
         let orders = state.orders.splice(0);
         let index;
         for(let i = 0; i < orders.length; i++){
-            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name && orders[i].placeId === action.payload.placeId){
+            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name && orders[i].placeId === action.payload.placeId && orders[i].price === action.payload.price){
                 index = orders.indexOf(orders[i]);
                 break;
             }
