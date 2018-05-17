@@ -118,7 +118,7 @@ class AddPartners extends React.Component {
                     <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/orders`}
                     className="sorting-tags"
                     >Orders</NavLink>
-                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/${this.props.type === 'restaurant' ? 'menu': 'products'}`}
+                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/menu`}
                     className="sorting-tags"
                     >{this.props.type === 'restaurant' ? "Menu" : "Products"}</NavLink>
                     <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/photos`}
@@ -135,7 +135,7 @@ class AddPartners extends React.Component {
                 }
             </div>
         
-        }
     }
+}
 
 export default withRouter(AddPartners);
