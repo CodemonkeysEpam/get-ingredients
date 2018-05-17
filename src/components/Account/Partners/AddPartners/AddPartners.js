@@ -61,6 +61,12 @@ class AddPartners extends React.Component {
         });
     }
 
+    changeAssortment = (event) => {
+        this.setState({
+            assortment: event.target.value
+        });
+    }
+
     getFormattedTime = () =>{
         var today = new Date();
         var Y = today.getFullYear();
