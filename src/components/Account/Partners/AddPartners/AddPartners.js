@@ -95,7 +95,7 @@ class AddPartners extends React.Component {
         .put(this.state.file, {contentType: this.state.file.type})
         .then(snapshot => {
             base.update(`${this.state.type === "restaurant" ?
-            "meals" : "meat"}/places/${generatedKey}`, {
+            "meals/places" : "meat/shops"}/${generatedKey}`, {
                 data: {
                     id: generatedKey,
                     name: this.state.name,

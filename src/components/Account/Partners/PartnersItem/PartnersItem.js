@@ -3,17 +3,17 @@ import base from '../../../../services/base';
 import firebase from 'firebase';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router";
-import Dashboard from "./Dashboard/Dashboard";
 import Orders from "./Orders/Orders";
 import Photos from "./Photos/Photos";
 import Products from "./Products/Products";
-
+import ProductsMeat from "./Products/ProductsMeat";
 class AddPartners extends React.Component {
     constructor(props) {
         super(props);
   
         this.state = {
             place: {},
+            currentTab: "Orders",
             meal: {},
             isLoading: true
         }
@@ -31,8 +31,8 @@ class AddPartners extends React.Component {
                 }
             });
         }
-        else if(this.props.type === "shops") {
-          this.refShops = base.bindToState(`meat/places/${this.props.location.pathname.split("/").pop()}`, {
+        else if(this.props.type === "shop") {
+          this.refShops = base.bindToState(`meat/shops/${this.props.location.pathname.split("/").pop()}`, {
             context: this,
             state: 'place',
             then() {
@@ -41,18 +41,8 @@ class AddPartners extends React.Component {
                 })
             }
           });
-        } else if(this.props.type === "meal") {
-            this.refMeals = base.bindToState(`meals/meals/${this.props.location.pathname.split("/").pop()}`, {
-              context: this,
-              state: 'meal',
-              then() {
-                  this.setState({
-                      isLoading: false
-                  })
-              }
-            });  
-        }
       }
+    }
     
       componentWillUnmount() {
         if(this.props.type === "restaurant") {
@@ -66,15 +56,15 @@ class AddPartners extends React.Component {
 
    
       displayTab () {
-        if(this.state.currentTab === "Dashboard") {
-            return <Dashboard/>
-        } else if(this.state.currentTab === "Orders") {
+        if(this.state.currentTab === "Orders") {
             return <Orders placeId={this.state.place.id}/>
         } else if (this.state.currentTab === "Products") { 
             return <Products placeId={this.state.place.id}/>
+        } else if (this.state.currentTab === "ProductsMeat") { 
+            return <ProductsMeat placeId={this.state.place.id}/>
         } 
         else if (this.state.currentTab === "Photos") { 
-            return <Photos placeId={this.state.place.id}/>
+            return <Photos placeId={this.state.place.id} type={this.props.type}/>
         } 
     }
 
@@ -87,13 +77,13 @@ class AddPartners extends React.Component {
             currentTab = "Products"
         }
         else if(nextProps.location.pathname.includes("/products")) {
-            currentTab = "Products"
+            currentTab = "ProductsMeat"
         }
         else if(nextProps.location.pathname.includes("/photos")) {
             currentTab = "Photos"
         }
         else {
-            currentTab = "Dashboard"
+            currentTab = "Orders"
         }
         return {
             currentTab
@@ -109,14 +99,11 @@ class AddPartners extends React.Component {
                 :
                 this.state.place.userId === this.props.uid ?
                 <div>
-                <div>{this.state.place.name}</div>
+                <div className="title-partenr-item">{this.state.place.name}</div>
                 
                 <div className="sorting">
-                    <NavLink exact to={`/account/partners/${this.props.type}s/${this.state.place.id}`}
-                    className="sorting-tags"
-                    >Dashboard</NavLink>
-                    <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/orders`}
-                    className="sorting-tags"
+                    <NavLink exact to={`/account/partners/${this.props.type}s/${this.state.place.id}/orders`}
+                    className="sorting-tags"className={this.state.currentTab==="Orders" ? "sorting-tags active": "sorting-tags"}
                     >Orders</NavLink>
                     <NavLink to={`/account/partners/${this.props.type}s/${this.state.place.id}/${this.props.type === 'restaurant' ? 'menu': 'products'}`}
                     className="sorting-tags"

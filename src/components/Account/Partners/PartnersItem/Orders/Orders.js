@@ -53,7 +53,7 @@ export default class MyOrders extends React.Component {
     render() {
         return (
             <div className="orders-container">
-                <div className="title">My orders</div>
+                <div className="title">Orders</div>
                 {this.state.orders.length > 0 ?
                 <React.Fragment>
                     <div className="sorting">

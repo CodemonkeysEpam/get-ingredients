@@ -95,7 +95,7 @@ class AddProduct extends React.Component {
                             price: this.state.price,
                             placeId: this.props.placeId
                         }}).then(()=>{
-                            this.props.history.push(`/account/partners/restaurants/${this.props.placeId}/menu`);
+                            this.props.history.push(`/account/partners/shops/${this.props.placeId}/menu`);
                         })
                 }
             );
@@ -119,7 +119,7 @@ class AddProduct extends React.Component {
                  price: this.state.price,
                  placeId: this.props.placeId
              }}).then(()=>{
-                 this.props.history.push(`/account/partners/restaurants/${this.props.placeId}/menu`);
+                 this.props.history.push(`/account/partners/shops/${this.props.placeId}/products`);
              })
     }
 
@@ -127,7 +127,7 @@ class AddProduct extends React.Component {
         return (
             <div className="add-partner">
                 <div className="header">
-                    <Link to={`/account/partners/restaurants/${this.props.placeId}/menu`} className="back-button">Back</Link>
+                    <Link to={`/account/partners/shops/${this.props.placeId}/products`} className="back-button">Back</Link>
                     <div className="title">Add new item:</div>
                 </div>
                 <form onSubmit={this.handleSubmit}>

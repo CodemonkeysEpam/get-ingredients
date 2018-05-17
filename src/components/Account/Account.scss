@@ -338,9 +338,12 @@
     margin-left: 10px;
     margin-bottom: 20px;
     background-color: #fff;
+    text-align: center;
+    line-height: 30px;
     border: 1px solid #fff;
     font-size: 8pt;
     font-weight: 700;
+    cursor: pointer;
     color: #7c0f0f;
     &:hover{
         background-color: #7c0f0f;
@@ -355,6 +358,7 @@
 .photos-gallery{
     padding: 5px;
     display: flex;
+    max-width: 850px;
     flex-direction: row;
     flex-wrap: wrap;
 
@@ -381,4 +385,15 @@
 
 .result{
     width: 200px;
+}
+
+
+#add-photos {
+    display: none;
+}
+
+
+.title-partenr-item {
+    font-size: 22px;
+    font-weight: 500;
 }
