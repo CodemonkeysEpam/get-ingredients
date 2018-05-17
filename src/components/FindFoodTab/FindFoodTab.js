@@ -88,8 +88,15 @@ export default class FindFoodTab extends React.Component {
   }
 
   renderPlacesWithMeal = (meal) => {
+    let mealsPage;
+    if( typeof this.props.mealsPage === 'undefined' ){
+      mealsPage = false;
+      console.log(mealsPage);
+    } else {
+      mealsPage = this.props.mealsPage;
+    }
       return this.findPlacesWithMeal(meal).map((item, i) => (
-          <ProductItemAddToCart key={i} item={item} meal={meal} addToShoppingCart={this.props.addToShoppingCart} closeModal={this.closeModal} mealsPage={this.props.mealsPage}/>
+          <ProductItemAddToCart key={i} item={item} meal={meal} addToShoppingCart={this.props.addToShoppingCart} closeModal={this.closeModal} mealsPage={mealsPage}/>
       )
     );
   } 

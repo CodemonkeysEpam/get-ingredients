@@ -48,13 +48,13 @@ class Product extends React.Component{
 
 	dispatchOrder(){
     let order = {
-      id: this.props.item.place.id,
+      id: this.props.meal.id,
       name: this.props.meal.name,
       price: this.props.item.menusItem.price,
       src: this.props.meal.src,
       placeName: this.props.item.place.name,
       placeId: this.props.item.place.id,
-      type: 'meat-shop',
+      type: this.props.mealsPage ? "restaurant" :  "meat-shop",
       count: this.state.value
     }
     this.props.onAddToCart(order)
@@ -64,6 +64,7 @@ class Product extends React.Component{
         const item = this.props.item;
         const meal = this.props.meal;
         const type = this.props.mealsPage ? "restaurant" :  "meat-shop";
+        console.log(this.props.meatsPage);
 		return(
 			<div className="meal-details-offer">
                     <Link to={`/${type}/${item.place.id}`} className="meal-details-offer-place">{item.place.name}</Link>

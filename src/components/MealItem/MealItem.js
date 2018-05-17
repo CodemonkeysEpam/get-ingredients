@@ -14,7 +14,7 @@ class MealItem extends React.Component {
       src: this.props.meal.src,
       placeName: this.props.place.name,
       placeId: this.props.place.id,
-      type: 'meal',
+      type: 'restaurant',
       count: 1
     }
     this.props.onAddToCart(order)
