@@ -351,15 +351,16 @@
 
 .photos-gallery{
     padding: 5px;
-    font-size: 0;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: wrap;
 
     .photos-gallery-item { 
         width: 200px; 
         margin: 5px; 
         position: relative;
+        padding: 10px;
+        border: 1px solid #fff;
 
         .close{
             position: absolute;
@@ -367,7 +368,7 @@
             right: 2px;
             font-size: 14px;
         }
-
+        
         img { 
             width: 100%; 
             height: auto; 
@@ -377,8 +378,4 @@
 
 .result{
     width: 200px;
-}
-
-.mode{
-    margin-right: 50px;
 }
