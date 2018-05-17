@@ -42,11 +42,67 @@ h1{
 .slider-places{
 	margin-bottom: 20px;
 	.slider-places-header{
+		position: relative;
 		color: #fff;
 		font-size: 30px;
 		font-weight: 100;
 		width: 100%;
 		text-align: center;
+		p{
+			display: inline;
+		}
+		.button{
+			position: absolute;
+			display: inline;
+			right: 15%;
+			height: 35px;
+			margin-top: 5px;
+			border: 2px solid #fff;
+			font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+			&:focus{
+        outline: 0;
+      }
+      &:hover{
+				background-color: #fff;
+			}
+		}
+		.button-places{
+			background-color: #e33834;
+			&:hover{
+				color: #e33834;
+				border: 2px solid #e33834;
+			}
+		}
+		.button-meal-offers{
+			background-color: #e9a836;
+			&:hover{
+				color: #e9a836;
+				border: 2px solid #e9a836;
+			}
+		}
+		.button-stores{
+			background-color: #a0a90e;
+			&:hover{
+				color: #a0a90e;
+				border: 2px solid #a0a90e;
+			}
+		}
+		.button-meat-offers{
+			background-color: #252c05;
+			&:hover{
+				color: #252c05;
+				border: 2px solid #252c05;
+			}
+		}
+		.button-shop{
+			background-color: #468499;
+			&:hover{
+				color: #468499;
+				border: 2px solid #468499;
+			}
+		}
 	}
 }
 .mySlider-container{

@@ -3,6 +3,7 @@ import base from '../../services/base';
 import ImageGallery from 'react-image-gallery';
 
 import { RestaurantItem } from '../RestaurantItem/RestaurantItem';
+import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import MealItem from '../MealItem/MealItem';
@@ -242,6 +243,9 @@ export default class Home extends React.Component {
         <div className='slider-places'>
           <div className='slider-places-header'>
             <p>Popular Places</p>
+            <NavLink to="/meals">
+              <input type='button' className='button button-places' value='SEE ALL'></input>
+            </NavLink>
           </div>
           <TopSlider list={this.state.placesList} orders={this.state.orders} />
         </div>
@@ -249,6 +253,9 @@ export default class Home extends React.Component {
         <div className='slider-places'>
           <div className='slider-places-header'>
             <p>Special Offers</p>
+            <NavLink to="/meals">
+              <input type='button' className='button button-meal-offers' value='SEE ALL'></input>
+            </NavLink>
           </div>
           <div className="mySlider-container">
             <Slider {...settings}>
@@ -260,6 +267,9 @@ export default class Home extends React.Component {
         <div className='slider-places'>
           <div className='slider-places-header'>
             <p>Best Stores</p>
+            <NavLink to="/meat">
+              <input type='button' className='button button-stores' value='SEE ALL'></input>
+            </NavLink>         
           </div>
           <TopSlider list={this.state.shopsList} orders={this.state.orders} type={'meat'}/>
         </div>
@@ -267,6 +277,9 @@ export default class Home extends React.Component {
         <div className='slider-places'>
           <div className='slider-places-header'>
             <p>Special Meat</p>
+            <NavLink to="/meat">
+              <input type='button' className='button button-meat-offers' value='SEE ALL'></input>
+            </NavLink>
           </div>
           <div className="mySlider-container">
             <Slider {...settings}>
@@ -278,6 +291,9 @@ export default class Home extends React.Component {
         <div className='slider-places'>
           <div className='slider-places-header'>
             <p>Our Shop</p>
+            <NavLink to="/shop">
+              <input type='button' className='button button-shop' value='SEE ALL'></input>
+            </NavLink>
           </div>
           <div className="mySlider-container">
             <Slider {...settingsForShop}>

@@ -73,7 +73,7 @@ class Product extends React.Component{
 				</div>
 				<div className='product-button'>
 
-					<Button handleClick={() => this.dispatchOrder()} label="ADD TO CARD"/>
+					<Button handleClick={() => this.dispatchOrder()} label="ADD TO CART"/>
 				</div>
 			</div>
 		);
