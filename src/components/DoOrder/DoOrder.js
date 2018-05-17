@@ -63,12 +63,13 @@ class DoOrder extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
+    
     if(!this.state.user) {
         return this.setState({isError: "Please sign in to make order"});
     }
 
-    this.props.shoppingCart.map((item, index) => {
+    this.props.orders.map((item, index) => {
+        console.log("her")
         var generatedKey = firebase.database().ref().child('orders').push().key;
         base.update(`orders/${generatedKey}`, {
             data: {
@@ -92,7 +93,7 @@ class DoOrder extends React.Component {
                 status: "Open",
             }}).
             then((err) => {
-                if(this.props.shoppingCart.length === index + 1) {
+                if(this.props.orders.length === index + 1) {
                     this.props.history.push('/account/orders');
                     this.props.onClearCart();
                 }
