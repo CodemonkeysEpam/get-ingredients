@@ -91,7 +91,7 @@ const MapWithAMarkers = compose(
                 {(props.isOpen === index || props.isHoverSidebarItem === place.id || props.isCurrentSidebarItem === place.id) && <InfoWindow onCloseClick={() => props.onToggleOpen(null)}>
                     <div>
                         <h1 style={{color: '#e33834', fontSize: '16px', fontWeight: 'bold'}}>{place.name}</h1>
-                        <p>Address: {place.address}</p>
+                        {/* <p>Address: {place.address}</p> */}
                     </div>
                 </InfoWindow>}
             </Marker>

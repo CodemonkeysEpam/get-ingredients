@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from "react-router";
 import MyOrders from "./MyOrders/MyOrders";
-import Dashboard from "./Dashboard/Dashboard";
 import Partners from "./Partners/Partners";
 import Admin from "./Admin/Admin"
 import base from '../../services/base';
@@ -14,7 +13,7 @@ class Account extends React.Component {
       super(props);
 
       this.state = {
-          currentTab: 'Dashboard',
+          currentTab: 'Orders',
           user: firebase.auth().currentUser,
           isEditName: false,
           isAdmin: {},
@@ -36,9 +35,7 @@ class Account extends React.Component {
 }
 
 displayTab () {
-    if(this.state.currentTab === "Dashboard") {
-        return <Dashboard uid={this.state.user.uid}/>
-    } else if(this.state.currentTab === "MyOrders") {
+    if(this.state.currentTab === "MyOrders") {
         return <MyOrders uid={this.state.user.uid}/>
     } else if (this.state.currentTab === "Partners") { 
         return <Partners uid={this.state.user.uid}/>
@@ -118,7 +115,7 @@ static getDerivedStateFromProps(nextProps, prevState) {
         currentTab = "Partners"
     }
     else {
-        currentTab = "Dashboard"
+        currentTab = "Orders"
     }
     return {
         currentTab
@@ -157,7 +154,6 @@ render () {
                             </div>
                         </div>
                         <div className="menu-profile">
-                            <NavLink exact to="/account/" className="item">Dashboard</NavLink> 
                             <NavLink to="/account/orders" className="item">My orders</NavLink>
                             <NavLink to="/account/partners" className="item">Partners</NavLink>
                         </div>
