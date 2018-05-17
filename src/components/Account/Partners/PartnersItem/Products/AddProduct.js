@@ -64,7 +64,7 @@ class AddProduct extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        if(!this.mealExist) {
+        if(!this.state.mealExist) {
             this.addMealToBase();
         }
         else {
@@ -111,18 +111,24 @@ class AddProduct extends React.Component {
     }
 
     addMenuToBase = () => {
-        // var generatedKeyMenus = firebase.database().ref()
-        // .child("meals/menus")
-        // .push().key;
-        // base.update(`meals/menus/${generatedKeyMenus}`, {
-        //     data: {
-        //         id: generatedKeyMenus,
-        //         mealId: 
-        //         price: this.state.price,
-        //         placeId: this.props.placeId
-        //     }}).then(()=>{
-        //         this.props.history.push(`/account/partners/restaurants/${this.props.placeId}/menu`);
-        //     })
+        let currentMealId = 0;
+        this.props.mealsList.forEach(item => {
+            if (item.name === this.state.name) {
+                currentMealId = item.id;
+            };
+        });
+         var generatedKeyMenus = firebase.database().ref()
+         .child("meals/menus")
+         .push().key;
+         base.update(`meals/menus/${generatedKeyMenus}`, {
+             data: {
+                 id: generatedKeyMenus,
+                 mealId: currentMealId,
+                 price: this.state.price,
+                 placeId: this.props.placeId
+             }}).then(()=>{
+                 this.props.history.push(`/account/partners/restaurants/${this.props.placeId}/menu`);
+             })
     }
 
     render() {
