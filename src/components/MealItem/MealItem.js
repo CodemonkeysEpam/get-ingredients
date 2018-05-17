@@ -27,7 +27,7 @@ class MealItem extends React.Component {
                 <div className='meal-img'><img src={this.props.meal.src} /></div>
                 {this.props.place && <div className='meal-place'>{this.props.place.name}</div>}
                 {this.props.price && <div className='meal-price'>{`${this.props.price}$`}</div>}
-                {this.props.addToCartButton && <Button handleClick={() => this.dispatchOrder()} label="ADD TO CARD"/>}
+                {this.props.addToCartButton && <Button handleClick={() => this.dispatchOrder()} label="ADD TO CART"/>}
                 {this.props.detailsButtonClick && <Button handleClick={this.props.detailsButtonClick} label="DETAILS"/>}
             </div>
         );

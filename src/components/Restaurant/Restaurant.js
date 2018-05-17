@@ -165,7 +165,7 @@ export default class Restaurant extends React.Component{
                             <div className="mealItems">
                             {
                                 filteredArray.map((item, index) => {
-                                    return <MealItem meal={item} key={index} menus={filteredMenus}/>
+                                    return <MealItem meal={item} key={index} menus={filteredMenus} addToCartButton/>
                                 })
                             }
                             </div>
