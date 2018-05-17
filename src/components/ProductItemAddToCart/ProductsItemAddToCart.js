@@ -64,7 +64,6 @@ class Product extends React.Component{
         const item = this.props.item;
         const meal = this.props.meal;
         const type = this.props.mealsPage ? "restaurant" :  "meat-shop";
-        console.log(this.props.meatsPage);
 		return(
 			<div className="meal-details-offer">
                     <Link to={`/${type}/${item.place.id}`} className="meal-details-offer-place">{item.place.name}</Link>

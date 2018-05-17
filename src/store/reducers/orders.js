@@ -6,7 +6,6 @@ export default function (state=initialState, action) {
     if(action.type === "ADD_ORDER") {
         let orders = state.orders.splice(0);
         let pushed = false;
-        console.log(orders);
         for(let i = 0; i < orders.length; i++){
             if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name && orders[i].placeId === action.payload.placeId){
                 orders[i].count += action.payload.count;

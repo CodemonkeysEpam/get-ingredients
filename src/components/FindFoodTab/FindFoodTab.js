@@ -91,7 +91,6 @@ export default class FindFoodTab extends React.Component {
     let mealsPage;
     if( typeof this.props.mealsPage === 'undefined' ){
       mealsPage = false;
-      console.log(mealsPage);
     } else {
       mealsPage = this.props.mealsPage;
     }
