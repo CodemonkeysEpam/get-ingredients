@@ -6,8 +6,9 @@ export default function (state=initialState, action) {
     if(action.type === "ADD_ORDER") {
         let orders = state.orders.splice(0);
         let pushed = false;
+        console.log(orders);
         for(let i = 0; i < orders.length; i++){
-            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type){
+            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name){
                 orders[i].count += action.payload.count;
                 pushed = true;
             }
@@ -15,13 +16,12 @@ export default function (state=initialState, action) {
         if(!pushed){
             orders.push(action.payload);
         }
-        console.log(orders);
         return Object.assign({}, state, { orders: orders });
     }
     if(action.type === "UPDATE_ORDER"){
         let orders = state.orders.splice(0);
         for(let i = 0; i < orders.length; i++){
-            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type){
+            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name){
                 orders[i] = action.payload
             }
         }
@@ -31,7 +31,7 @@ export default function (state=initialState, action) {
         let orders = state.orders.splice(0);
         let index;
         for(let i = 0; i < orders.length; i++){
-            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type){
+            if(orders[i].id === action.payload.id && orders[i].type === action.payload.type && orders[i].name === action.payload.name){
                 index = orders.indexOf(orders[i]);
                 break;
             }
