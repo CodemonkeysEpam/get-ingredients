@@ -15,6 +15,7 @@ export default function (state=initialState, action) {
         if(!pushed){
             orders.push(action.payload);
         }
+        console.log(orders);
         return Object.assign({}, state, { orders: orders });
     }
     if(action.type === "UPDATE_ORDER"){

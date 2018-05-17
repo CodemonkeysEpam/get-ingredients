@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default class Product extends React.Component{
+import { connect } from 'react-redux';
+
+class Product extends React.Component{
 
 	constructor(props){
 		super(props);
@@ -44,6 +46,20 @@ export default class Product extends React.Component{
 		}
 	}
 
+	dispatchOrder(){
+    let order = {
+      id: this.props.item.place.id,
+      name: this.props.meal.name,
+      price: this.props.item.menusItem.price,
+      src: this.props.meal.src,
+      placeName: this.props.item.place.name,
+      placeId: this.props.item.place.id,
+      type: 'meat-shop',
+      count: this.state.value
+    }
+    this.props.onAddToCart(order)
+  }
+
 	render(){
         const item = this.props.item;
         const meal = this.props.meal;
@@ -58,10 +74,21 @@ export default class Product extends React.Component{
                     <span onClick={this.increaseValue}> + </span>
                 </div>
                     <button onClick={() => {
-                        this.props.addToShoppingCart(type, meal, this.state.value, item.menusItem, item.place);
+                        this.dispatchOrder();
                         this.props.closeModal();
                     }} className="meal-details-add-button">add to cart</button>
                 </div>
 		);
 	}
 }
+
+export default connect(
+    state => ({
+        orders: state.orders
+    }),
+    dispatch => ({
+        onAddToCart: (order) => {
+            dispatch({type: "ADD_ORDER", payload: order});
+        }
+    })
+)(Product);

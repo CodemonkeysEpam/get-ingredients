@@ -5,7 +5,7 @@ import ImageGallery from 'react-image-gallery';
 import { RestaurantItem } from '../RestaurantItem/RestaurantItem';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import { MealItem } from '../MealItem/MealItem';
+import MealItem from '../MealItem/MealItem';
 import Product from '../Shop/Product';
 import TopSlider from './TopSlider';
 
@@ -178,13 +178,7 @@ export default class Home extends React.Component {
             slidesToScroll: 1,
             responsive: [
                 {
-                    breakpoint: 5000,
-                    settings: {
-                        slidesToShow: 4
-                    }
-                },
-                {
-                    breakpoint: 1250,
+                    breakpoint: 1300,
                     settings: {
                         slidesToShow: 3
                     }
@@ -209,21 +203,16 @@ export default class Home extends React.Component {
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1,
+            centerMode: true,
             responsive: [
                 {
-                    breakpoint: 5000,
-                    settings: {
-                        slidesToShow: 4
-                    }
-                },
-                {
-                    breakpoint: 1550,
+                    breakpoint: 1600,
                     settings: {
                         slidesToShow: 3
                     }
                 },
                 {
-                    breakpoint: 1200,
+                    breakpoint: 1280,
                     settings: {
                         slidesToShow: 2
                     }
@@ -254,9 +243,7 @@ export default class Home extends React.Component {
           <div className='slider-places-header'>
             <p>Popular Places</p>
           </div>
-          <div className="mySlider-container">
-            <TopSlider list={this.state.placesList} orders={this.state.orders} />
-          </div>
+          <TopSlider list={this.state.placesList} orders={this.state.orders} />
         </div>
 
         <div className='slider-places'>
@@ -274,9 +261,7 @@ export default class Home extends React.Component {
           <div className='slider-places-header'>
             <p>Best Stores</p>
           </div>
-          <div className="mySlider-container">
-            <TopSlider list={this.state.shopsList} orders={this.state.orders} />
-          </div>
+          <TopSlider list={this.state.shopsList} orders={this.state.orders} />
         </div>
 
         <div className='slider-places'>

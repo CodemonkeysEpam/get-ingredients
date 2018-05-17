@@ -1,7 +1,7 @@
 import React from 'react';
 import './FindFoodTab.scss';
 import Slider from "react-slick";
-import { MealItem } from '../MealItem/MealItem';
+import MealItem from '../MealItem/MealItem';
 import Modal from 'react-modal';
 import Autocomplete from 'react-autocomplete';
 import ProductItemAddToCart from "../ProductItemAddToCart/ProductsItemAddToCart";

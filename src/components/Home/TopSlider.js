@@ -71,7 +71,7 @@ export default class TopSlider extends React.Component{
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1,
-            centerMode: true,
+            
             responsive: [
                 {
                     breakpoint: 5000,
@@ -101,9 +101,11 @@ export default class TopSlider extends React.Component{
           };
 
   	return (
-  		<Slider {...settings}>
-			  {this.renderSliderPopularPlaces(topPlaces)}
-			</Slider>
+      <div className="mySlider-container">
+    		<Slider {...settings}>
+  			  {this.renderSliderPopularPlaces(topPlaces)}
+  			</Slider>
+      </div>
   	);
   }
 }

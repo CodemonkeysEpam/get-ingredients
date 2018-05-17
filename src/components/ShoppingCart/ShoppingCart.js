@@ -14,6 +14,7 @@ class ShoppingCart extends React.Component {
   }
 
   deleteOrder(item) {
+    console.log(item);
       this.props.onDeleteFromCart(item);
   }
 
