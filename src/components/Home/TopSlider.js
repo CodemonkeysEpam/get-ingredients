@@ -54,6 +54,7 @@ export default class TopSlider extends React.Component{
             name={place.name}
             address={place.address}
             showOnMapClick={() => this.showOnMapClick(place)}
+            type={this.props.type}
           />
         </div>
       </React.Fragment>

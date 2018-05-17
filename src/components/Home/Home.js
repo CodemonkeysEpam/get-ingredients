@@ -261,7 +261,7 @@ export default class Home extends React.Component {
           <div className='slider-places-header'>
             <p>Best Stores</p>
           </div>
-          <TopSlider list={this.state.shopsList} orders={this.state.orders} />
+          <TopSlider list={this.state.shopsList} orders={this.state.orders} type={'meat'}/>
         </div>
 
         <div className='slider-places'>
