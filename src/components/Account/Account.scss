@@ -325,7 +325,52 @@
 
 
 .partners-dash-info{
-    // border: 1px solid #fff;
     margin-top: 10px;
     height: auto;
+}
+
+.add-photo{
+    width: 200px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #7c0f0f;
+    &:hover{
+        background-color: #7c0f0f;
+        color: #fff;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+
+.photos-gallery{
+    padding: 5px;
+    font-size: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .photos-gallery-item { 
+        width: 200px; 
+        margin: 5px; 
+        position: relative;
+
+        .close{
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 14px;
+        }
+
+        img { 
+            width: 100%; 
+            height: auto; 
+        }
+    }
 }
