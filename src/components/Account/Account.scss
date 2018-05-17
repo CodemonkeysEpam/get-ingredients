@@ -140,9 +140,11 @@
                         border: 1px solid #fff;
                         text-align: center;
                         padding: 20px;
+                        color: #7c0f0f;
+                        background: #fff;
                         &:hover {
-                            color: #7c0f0f;
-                            background: #fff;
+                            color: #fff;
+                            background: #7c0f0f;
                         }
                     }
                 }

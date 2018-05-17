@@ -37,12 +37,19 @@
         flex-direction: row;
         font-weight: 700;
         text-align: center;
+        background-color: #fff;
+        width: 100%;
+        color: #7c0f0f;
 
         .product{
             width: 40%;
         }
         .status, .total,.date {
             width: 20%;
+        }
+        .date, .product, .status, .total{
+            font-weight: 500;
+            font-size: 14px;
         }
     }
 
