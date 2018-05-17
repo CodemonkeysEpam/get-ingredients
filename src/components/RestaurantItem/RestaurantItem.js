@@ -11,8 +11,8 @@ const RestaurantItem = (props) => {
         url = "meat-shop"
     }
         return (
-            <div className="restaurant">
-                <img className="restaurant-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt={props.name} />
+            <div className="restaurant">{console.log(props)}
+                <img className="restaurant-logo" src="https://cdn.shopify.com/s/files/1/2047/5173/products/Anime-Miss-Kobayashi-s-Dragon-Maid-Tohru-Cosplay-Props-Dragon-Tail-Sleep-Pillow-Multifunction-Plush-Doll_0f8fbfd0-a545-46ef-b565-dda7319b0112_800x.jpg?v=1498479728" alt={props.name} />
                 <div className="restaurant-name">{props.name}</div>
                 {props.address && <div className="restaurant-address">{props.address}</div>}
                 {props.showOnMapClick && <Button styles="restaurant-item-button" handleClick={props.showOnMapClick} label="Show on map"/>}
@@ -24,7 +24,7 @@ const RestaurantItem = (props) => {
 const RestaurantItemMap = (props) => {
     return (
         <React.Fragment>
-            <img className="restaurant-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt={props.name} />
+            <img className="restaurant-logo" src="https://cdn.shopify.com/s/files/1/2047/5173/products/Anime-Miss-Kobayashi-s-Dragon-Maid-Tohru-Cosplay-Props-Dragon-Tail-Sleep-Pillow-Multifunction-Plush-Doll_0f8fbfd0-a545-46ef-b565-dda7319b0112_800x.jpg?v=1498479728" alt={props.name} />
             <div className="restaurant-body">
                 <div className="restaurant-name">{props.name}</div>
                 <div className="restaurant-address">{props.address}</div>

@@ -129,7 +129,7 @@ export default class Restaurant extends React.Component{
                         <hr/>
                         <div className="carousel">
                             <ImageGallery
-                                items={images}
+                                items={this.state.place.photos != null ? this.state.place.photos : images}
                                 showThumbnails={false}
                                 showFullscreenButton={false}
                                 showPlayButton={false}

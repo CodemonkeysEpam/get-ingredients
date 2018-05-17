@@ -50,6 +50,24 @@ export default class MyOrders extends React.Component {
           base.removeBinding(this.refOrders);
       }
 
+      checkOrder = (order) => {
+        base.update(`/orders/${order.id}`, {
+            data: {
+                id: order.id,
+                placeId: order.placeId,
+                placeName: order.placeName,
+                productCount: order.productCount,
+                productId: order.productId,
+                productName: order.productName,
+                productPrice: order.productPrice,
+                status: "Completed",
+                type: order.type,
+                userId: order.userId
+            }}).then(()=>{
+                this.changeActiveTag(this.state.activeTag);
+            })
+      }
+
     render() {
         return (
             <div className="orders-container">
@@ -83,16 +101,18 @@ export default class MyOrders extends React.Component {
                             <div className="date">{order.date}</div>
                             <div className="product">
                             <div className="name">{order.productName}</div>
-                            <div className="seller">User:&#160;
-                                {order.deliveryInfo.contactName}
-                            </div>
-                            <div className="seller">City:&#160;
-                            {order.deliveryInfo.postal} {order.deliveryInfo.city} {order.deliveryInfo.adress} {order.deliveryInfo.phone}
-                            </div>
-
+                            <div className="seller">User:&#160;{order.deliveryInfo.contactName}</div>
+                            <div className="seller">Phone:&#160;{order.deliveryInfo.phone}</div>
+                            <div className="seller">Postal:&#160;{order.deliveryInfo.postal}</div>
+                            <div className="seller">City:&#160;{order.deliveryInfo.city}</div>
+                            <div className="seller">Address:&#160;{order.deliveryInfo.address} </div>
                             <div className="mult"><span>${order.productPrice}</span>x{order.productCount}</div>
                             </div>
-                            <div className="status">{order.status}</div>
+                            <div className="status">{order.status} {order.status === "Open" ?
+                            <React.Fragment>
+                            (<i className="fa fa-check" style={{cursor: "pointer"}} onClick={()=>this.checkOrder(order)}></i>)
+                            </React.Fragment> : null}
+                            </div>
                             <div className="total">${Math.round(order.productPrice * order.productCount * 100) / 100}</div>
                         </div>
                     ))}

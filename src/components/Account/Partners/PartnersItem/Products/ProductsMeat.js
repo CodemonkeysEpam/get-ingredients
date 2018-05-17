@@ -101,7 +101,7 @@ class Products extends React.Component {
 
             <div className="ourshop-container">
                 <div className="header">
-                    <div className="title">Menu</div>
+                    <div className="title">Products</div>
                     <Link to={`${this.props.location.pathname}/add`} className="add-button">Add new item</Link>
                 </div>
                 {this.state.menusList.length > 0 ?

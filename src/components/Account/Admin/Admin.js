@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from "react-router";
 import Restaurants from "./Restaurants/Restaurants";
 import Shops from "./Shops/Shops";
-import Dashboard from "./Dashboard/Dashboard";
 import Orders from "./Orders/Orders";
 import OurShop from "./OurShop/OurShop";
 import base from '../../../services/base';
@@ -14,7 +13,7 @@ class Account extends React.Component {
       super(props);
 
       this.state = {
-          currentTab: "Dashboard",
+          currentTab: "Restaurants",
           user: firebase.auth().currentUser,
           isEditName: false,
       }
@@ -28,9 +27,7 @@ class Account extends React.Component {
 }
 
 displayTab () {
-    if(this.state.currentTab === "Dashboard") {
-        return <Dashboard/>
-    } else if(this.state.currentTab === "Orders") {
+     if(this.state.currentTab === "Orders") {
         return <Orders/>
     } else if (this.state.currentTab === "Restaurants") { 
         return <Restaurants/>
@@ -120,7 +117,7 @@ static getDerivedStateFromProps(nextProps, prevState) {
         currentTab = "OurShop"
     }
     else {
-        currentTab = "Dashboard"
+        currentTab = "Restaurants"
     }
     return {
         currentTab
@@ -154,8 +151,7 @@ render () {
                         </div>
                     </div>
                     <div className="menu-profile">
-                        <NavLink exact to="/account/" className="item">Dashboard</NavLink> 
-                        <NavLink to="/account/restaurants" className="item">Restaurants</NavLink>
+                        <NavLink exact to="/account/restaurants" className="item">Restaurants</NavLink>
                         <NavLink to="/account/shops" className="item">Shops</NavLink>
                         <NavLink to="/account/orders" className="item">Orders</NavLink>
                         <NavLink to="/account/ourshop" className="item">Our shop</NavLink>
