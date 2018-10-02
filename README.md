@@ -1,6 +1,6 @@
-Name: Meat is Life
+Name: Meat is Life<br/>
 Description: This site is for meat lovers who are confident that the vegaterans steal food from animals.
-The service offers to order delivery of meat from the distant Alpine mountains and the nearby mountain valleys. Our selection of restaurants will help you choose meat dishes right on the table. You imagine - we offer. We persuade vegaterians that meat is still tastier than green food.
+The service offers to order delivery of meat from the distant Alpine mountains and the nearby mountain valleys. Our selection of restaurants will help you choose meat dishes right on the table. You imagine - we offer. We persuade vegaterians that meat is still tastier than green food.<br/>
 Link: https://meatislifeepam.firebaseapp.com/
 
 Participants of the project:
